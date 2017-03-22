@@ -1,0 +1,537 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		9A32CAA81E82C58A0097324D /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A32CAA71E82C58A0097324D /* main.m */; };
+		9A32CAAB1E82C58A0097324D /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A32CAAA1E82C58A0097324D /* AppDelegate.m */; };
+		9A32CAAE1E82C58A0097324D /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A32CAAD1E82C58A0097324D /* ViewController.m */; };
+		9A32CAB11E82C58A0097324D /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9A32CAAF1E82C58A0097324D /* Main.storyboard */; };
+		9A32CAB31E82C58A0097324D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9A32CAB21E82C58A0097324D /* Assets.xcassets */; };
+		9A32CAB61E82C58A0097324D /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9A32CAB41E82C58A0097324D /* LaunchScreen.storyboard */; };
+		9A32CAC11E82C58A0097324D /* FIDDBTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A32CAC01E82C58A0097324D /* FIDDBTests.m */; };
+		9A32CACC1E82C58A0097324D /* FIDDBUITests.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A32CACB1E82C58A0097324D /* FIDDBUITests.m */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		9A32CABD1E82C58A0097324D /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 9A32CA9B1E82C58A0097324D /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 9A32CAA21E82C58A0097324D;
+			remoteInfo = FIDDB;
+		};
+		9A32CAC81E82C58A0097324D /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 9A32CA9B1E82C58A0097324D /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 9A32CAA21E82C58A0097324D;
+			remoteInfo = FIDDB;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		9A32CAA31E82C58A0097324D /* FIDDB.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FIDDB.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		9A32CAA71E82C58A0097324D /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		9A32CAA91E82C58A0097324D /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
+		9A32CAAA1E82C58A0097324D /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
+		9A32CAAC1E82C58A0097324D /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
+		9A32CAAD1E82C58A0097324D /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
+		9A32CAB01E82C58A0097324D /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		9A32CAB21E82C58A0097324D /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		9A32CAB51E82C58A0097324D /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		9A32CAB71E82C58A0097324D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		9A32CABC1E82C58A0097324D /* FIDDBTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = FIDDBTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		9A32CAC01E82C58A0097324D /* FIDDBTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FIDDBTests.m; sourceTree = "<group>"; };
+		9A32CAC21E82C58A0097324D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		9A32CAC71E82C58A0097324D /* FIDDBUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = FIDDBUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		9A32CACB1E82C58A0097324D /* FIDDBUITests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FIDDBUITests.m; sourceTree = "<group>"; };
+		9A32CACD1E82C58A0097324D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		9A32CAA01E82C58A0097324D /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		9A32CAB91E82C58A0097324D /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		9A32CAC41E82C58A0097324D /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		9A32CA9A1E82C58A0097324D = {
+			isa = PBXGroup;
+			children = (
+				9A32CAA51E82C58A0097324D /* FIDDB */,
+				9A32CABF1E82C58A0097324D /* FIDDBTests */,
+				9A32CACA1E82C58A0097324D /* FIDDBUITests */,
+				9A32CAA41E82C58A0097324D /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		9A32CAA41E82C58A0097324D /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				9A32CAA31E82C58A0097324D /* FIDDB.app */,
+				9A32CABC1E82C58A0097324D /* FIDDBTests.xctest */,
+				9A32CAC71E82C58A0097324D /* FIDDBUITests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		9A32CAA51E82C58A0097324D /* FIDDB */ = {
+			isa = PBXGroup;
+			children = (
+				9A32CAA91E82C58A0097324D /* AppDelegate.h */,
+				9A32CAAA1E82C58A0097324D /* AppDelegate.m */,
+				9A32CAAC1E82C58A0097324D /* ViewController.h */,
+				9A32CAAD1E82C58A0097324D /* ViewController.m */,
+				9A32CAAF1E82C58A0097324D /* Main.storyboard */,
+				9A32CAB21E82C58A0097324D /* Assets.xcassets */,
+				9A32CAB41E82C58A0097324D /* LaunchScreen.storyboard */,
+				9A32CAB71E82C58A0097324D /* Info.plist */,
+				9A32CAA61E82C58A0097324D /* Supporting Files */,
+			);
+			path = FIDDB;
+			sourceTree = "<group>";
+		};
+		9A32CAA61E82C58A0097324D /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				9A32CAA71E82C58A0097324D /* main.m */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		9A32CABF1E82C58A0097324D /* FIDDBTests */ = {
+			isa = PBXGroup;
+			children = (
+				9A32CAC01E82C58A0097324D /* FIDDBTests.m */,
+				9A32CAC21E82C58A0097324D /* Info.plist */,
+			);
+			path = FIDDBTests;
+			sourceTree = "<group>";
+		};
+		9A32CACA1E82C58A0097324D /* FIDDBUITests */ = {
+			isa = PBXGroup;
+			children = (
+				9A32CACB1E82C58A0097324D /* FIDDBUITests.m */,
+				9A32CACD1E82C58A0097324D /* Info.plist */,
+			);
+			path = FIDDBUITests;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		9A32CAA21E82C58A0097324D /* FIDDB */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 9A32CAD01E82C58A0097324D /* Build configuration list for PBXNativeTarget "FIDDB" */;
+			buildPhases = (
+				9A32CA9F1E82C58A0097324D /* Sources */,
+				9A32CAA01E82C58A0097324D /* Frameworks */,
+				9A32CAA11E82C58A0097324D /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = FIDDB;
+			productName = FIDDB;
+			productReference = 9A32CAA31E82C58A0097324D /* FIDDB.app */;
+			productType = "com.apple.product-type.application";
+		};
+		9A32CABB1E82C58A0097324D /* FIDDBTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 9A32CAD31E82C58A0097324D /* Build configuration list for PBXNativeTarget "FIDDBTests" */;
+			buildPhases = (
+				9A32CAB81E82C58A0097324D /* Sources */,
+				9A32CAB91E82C58A0097324D /* Frameworks */,
+				9A32CABA1E82C58A0097324D /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				9A32CABE1E82C58A0097324D /* PBXTargetDependency */,
+			);
+			name = FIDDBTests;
+			productName = FIDDBTests;
+			productReference = 9A32CABC1E82C58A0097324D /* FIDDBTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+		9A32CAC61E82C58A0097324D /* FIDDBUITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 9A32CAD61E82C58A0097324D /* Build configuration list for PBXNativeTarget "FIDDBUITests" */;
+			buildPhases = (
+				9A32CAC31E82C58A0097324D /* Sources */,
+				9A32CAC41E82C58A0097324D /* Frameworks */,
+				9A32CAC51E82C58A0097324D /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				9A32CAC91E82C58A0097324D /* PBXTargetDependency */,
+			);
+			name = FIDDBUITests;
+			productName = FIDDBUITests;
+			productReference = 9A32CAC71E82C58A0097324D /* FIDDBUITests.xctest */;
+			productType = "com.apple.product-type.bundle.ui-testing";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		9A32CA9B1E82C58A0097324D /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0820;
+				ORGANIZATIONNAME = Fidetro;
+				TargetAttributes = {
+					9A32CAA21E82C58A0097324D = {
+						CreatedOnToolsVersion = 8.2.1;
+						DevelopmentTeam = J3BJ7G2PUN;
+						ProvisioningStyle = Automatic;
+					};
+					9A32CABB1E82C58A0097324D = {
+						CreatedOnToolsVersion = 8.2.1;
+						DevelopmentTeam = J3BJ7G2PUN;
+						ProvisioningStyle = Automatic;
+						TestTargetID = 9A32CAA21E82C58A0097324D;
+					};
+					9A32CAC61E82C58A0097324D = {
+						CreatedOnToolsVersion = 8.2.1;
+						DevelopmentTeam = J3BJ7G2PUN;
+						ProvisioningStyle = Automatic;
+						TestTargetID = 9A32CAA21E82C58A0097324D;
+					};
+				};
+			};
+			buildConfigurationList = 9A32CA9E1E82C58A0097324D /* Build configuration list for PBXProject "FIDDB" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 9A32CA9A1E82C58A0097324D;
+			productRefGroup = 9A32CAA41E82C58A0097324D /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				9A32CAA21E82C58A0097324D /* FIDDB */,
+				9A32CABB1E82C58A0097324D /* FIDDBTests */,
+				9A32CAC61E82C58A0097324D /* FIDDBUITests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		9A32CAA11E82C58A0097324D /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				9A32CAB61E82C58A0097324D /* LaunchScreen.storyboard in Resources */,
+				9A32CAB31E82C58A0097324D /* Assets.xcassets in Resources */,
+				9A32CAB11E82C58A0097324D /* Main.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		9A32CABA1E82C58A0097324D /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		9A32CAC51E82C58A0097324D /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		9A32CA9F1E82C58A0097324D /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				9A32CAAE1E82C58A0097324D /* ViewController.m in Sources */,
+				9A32CAAB1E82C58A0097324D /* AppDelegate.m in Sources */,
+				9A32CAA81E82C58A0097324D /* main.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		9A32CAB81E82C58A0097324D /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				9A32CAC11E82C58A0097324D /* FIDDBTests.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		9A32CAC31E82C58A0097324D /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				9A32CACC1E82C58A0097324D /* FIDDBUITests.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		9A32CABE1E82C58A0097324D /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 9A32CAA21E82C58A0097324D /* FIDDB */;
+			targetProxy = 9A32CABD1E82C58A0097324D /* PBXContainerItemProxy */;
+		};
+		9A32CAC91E82C58A0097324D /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 9A32CAA21E82C58A0097324D /* FIDDB */;
+			targetProxy = 9A32CAC81E82C58A0097324D /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		9A32CAAF1E82C58A0097324D /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				9A32CAB01E82C58A0097324D /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		9A32CAB41E82C58A0097324D /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				9A32CAB51E82C58A0097324D /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		9A32CACE1E82C58A0097324D /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.2;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+			};
+			name = Debug;
+		};
+		9A32CACF1E82C58A0097324D /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.2;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = iphoneos;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		9A32CAD11E82C58A0097324D /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				DEVELOPMENT_TEAM = J3BJ7G2PUN;
+				INFOPLIST_FILE = FIDDB/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.Fidetro.FIDDB;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Debug;
+		};
+		9A32CAD21E82C58A0097324D /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				DEVELOPMENT_TEAM = J3BJ7G2PUN;
+				INFOPLIST_FILE = FIDDB/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.Fidetro.FIDDB;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Release;
+		};
+		9A32CAD41E82C58A0097324D /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				DEVELOPMENT_TEAM = J3BJ7G2PUN;
+				INFOPLIST_FILE = FIDDBTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.Fidetro.FIDDBTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/FIDDB.app/FIDDB";
+			};
+			name = Debug;
+		};
+		9A32CAD51E82C58A0097324D /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				DEVELOPMENT_TEAM = J3BJ7G2PUN;
+				INFOPLIST_FILE = FIDDBTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.Fidetro.FIDDBTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/FIDDB.app/FIDDB";
+			};
+			name = Release;
+		};
+		9A32CAD71E82C58A0097324D /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				DEVELOPMENT_TEAM = J3BJ7G2PUN;
+				INFOPLIST_FILE = FIDDBUITests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.Fidetro.FIDDBUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_TARGET_NAME = FIDDB;
+			};
+			name = Debug;
+		};
+		9A32CAD81E82C58A0097324D /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				DEVELOPMENT_TEAM = J3BJ7G2PUN;
+				INFOPLIST_FILE = FIDDBUITests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.Fidetro.FIDDBUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_TARGET_NAME = FIDDB;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		9A32CA9E1E82C58A0097324D /* Build configuration list for PBXProject "FIDDB" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				9A32CACE1E82C58A0097324D /* Debug */,
+				9A32CACF1E82C58A0097324D /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		9A32CAD01E82C58A0097324D /* Build configuration list for PBXNativeTarget "FIDDB" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				9A32CAD11E82C58A0097324D /* Debug */,
+				9A32CAD21E82C58A0097324D /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+		9A32CAD31E82C58A0097324D /* Build configuration list for PBXNativeTarget "FIDDBTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				9A32CAD41E82C58A0097324D /* Debug */,
+				9A32CAD51E82C58A0097324D /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+		9A32CAD61E82C58A0097324D /* Build configuration list for PBXNativeTarget "FIDDBUITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				9A32CAD71E82C58A0097324D /* Debug */,
+				9A32CAD81E82C58A0097324D /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 9A32CA9B1E82C58A0097324D /* Project object */;
+}
