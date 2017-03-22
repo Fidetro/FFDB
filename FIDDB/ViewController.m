@@ -7,7 +7,7 @@
 //
 
 #import "ViewController.h"
-
+#import "Person.h"
 @interface ViewController ()
 
 @end
@@ -16,13 +16,28 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    // Do any additional setup after loading the view, typically from a nib.
+    
+    [Person deleteAllObject];
+    Person *person = [[Person alloc]init];
+    person.name = @"hello";
+    //插入对象
+    [person insertObject];
+    
+    for (Person *person in [Person selectAllObject]) {
+
+        NSLog(@"%@",person.age);
+        NSLog(@"%ld",[person.age length]);
+    }
+    
+
+
+    
 }
 
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
+    
 }
 
 
