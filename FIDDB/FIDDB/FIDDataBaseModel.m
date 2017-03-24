@@ -93,7 +93,7 @@ NSString *const kDatabaseHeadname = @"FID";
             continue;
         }
         
-            values = [NSString stringWithFormat:@"%@,%@='%@'",values,propertyname,[self getIvarWithName:propertyname]];
+        values = [NSString stringWithFormat:@"%@,%@='%@'",values,propertyname,[self getIvarWithName:propertyname]];
     }
     
     return [FIDDataBaseModel executeUpdateWithSqlstatement:[NSString stringWithFormat:@"update `%@` set  %@ where %@",[[self class] getTableName],values,self.primaryID]];
@@ -124,6 +124,7 @@ NSString *const kDatabaseHeadname = @"FID";
     NSString *executableFile = [infoDictionary objectForKey:(NSString *)kCFBundleExecutableKey];
     NSString *datebaseName = [NSString stringWithFormat:@"%@.sqlite",executableFile];
     FMDatabase *database = [FMDatabase databaseWithPath:[[NSSearchPathForDirectoriesInDomains( NSDocumentDirectory, NSUserDomainMask, YES) lastObject]stringByAppendingPathComponent:datebaseName]];
+    
     return database;
 }
 
@@ -139,8 +140,26 @@ NSString *const kDatabaseHeadname = @"FID";
         tableKey = [NSString stringWithFormat:@"%@,%@ text",tableKey,propertyname];
     }
     [FIDDataBaseModel executeUpdateWithSqlstatement:[NSString stringWithFormat:@"create table if  not exists `%@%@` (primaryID integer PRIMARY KEY AUTOINCREMENT,%@)",kDatabaseHeadname,NSStringFromClass([self class]),tableKey]];
-    
+    [[self class]alertColumn];
     return [NSString stringWithFormat:@"%@%@",kDatabaseHeadname,NSStringFromClass([self class])];
+}
+
+
+
+/**
+ 添加新的字段
+ */
++ (void)alertColumn{
+    NSString *tablename = [NSString stringWithFormat:@"%@%@",kDatabaseHeadname,NSStringFromClass([self class])];
+    FMDatabase *database = [FIDDataBaseModel getDatabase];
+    if ([database open]) {
+        for (NSString *propertyname in [[self class]propertyOfSelf]) {
+            if (![database columnExists:propertyname inTableWithName:tablename]) {
+                [[self class]executeUpdateWithSqlstatement:[NSString stringWithFormat:@"alter table `%@` add %@ text",tablename,propertyname]];
+            }
+        }
+    }
+    [database close];
 }
 
 - (id)getIvarWithName:(NSString *)propertyname{
@@ -158,4 +177,5 @@ NSString *const kDatabaseHeadname = @"FID";
 
 
 @end
+
 
