@@ -37,6 +37,13 @@ extern NSString *const kDatabaseHeadname;
  */
 + (BOOL)deleteAllObject;
 
+
+/**
+ 删除对象
+
+ @return 返回是否成功
+ */
+- (BOOL)deleteObject;
 /**
  根据规则删除对象
  

@@ -36,9 +36,8 @@ NSString *const kDatabaseHeadname = @"FID";
             
             NSMutableDictionary *param = [NSMutableDictionary dictionary];
             for (NSString *propertyname in [[self class] propertyOfSelf]) {
-                
-                [param setObject:[resultSet stringForColumn:propertyname] forKey:propertyname];
-                
+                NSString *objStr = [resultSet stringForColumn:propertyname];
+                [param setObject:objStr == nil ? @"":objStr forKey:propertyname];
             }
             [param setObject:[resultSet stringForColumn:@"primaryID"] forKey:@"primaryID"];
             [params addObject:[[self class] yy_modelWithJSON:param]];
@@ -54,6 +53,10 @@ NSString *const kDatabaseHeadname = @"FID";
 + (BOOL)deleteAllObject
 {
     return [[self class] deleteObjectPredicateWithFormat:nil];
+}
+
+- (BOOL)deleteObject{
+    return [[self class] deleteObjectPredicateWithFormat:[NSString stringWithFormat:@"where primaryID = '%@'",self.primaryID]];
 }
 
 + (BOOL)deleteObjectPredicateWithFormat:(NSString *)format
