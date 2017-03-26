@@ -86,6 +86,10 @@ NSString *const kDatabaseHeadname = @"FID";
     return [FIDDataBaseModel executeUpdateWithSqlstatement:[NSString stringWithFormat:@"insert into `%@` (%@) values(%@) ",[[self class] getTableName],keys,values]];
 }
 
++ (BOOL)updateObjectPredicateWithFormat:(NSString *)format{
+    return [FIDDataBaseModel executeUpdateWithSqlstatement:[NSString stringWithFormat:@"update `%@` %@",[[self class] getTableName],format]];
+}
+
 - (BOOL)updateObject{
     NSString *values = [NSString string];
     for (NSInteger index = 0; index < [[[self class]propertyOfSelf]count]; index++) {

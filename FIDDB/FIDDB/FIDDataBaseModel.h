@@ -37,13 +37,13 @@ extern NSString *const kDatabaseHeadname;
  */
 + (BOOL)deleteAllObject;
 
-
 /**
  删除对象
 
  @return 返回是否成功
  */
 - (BOOL)deleteObject;
+
 /**
  根据规则删除对象
  
@@ -60,6 +60,14 @@ extern NSString *const kDatabaseHeadname;
  */
 - (BOOL)insertObject;
 
+
+/**
+ 根据规则更新对象
+
+ @param format 规则 example: set age = '24' where name = 'fidetro'
+ @return 返回是否成功
+ */
++ (BOOL)updateObjectPredicateWithFormat:(NSString *)format;
 /**
  更新对象
 
