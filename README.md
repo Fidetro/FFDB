@@ -1,7 +1,83 @@
 # FIDDB
 ### 为什么会有FIDDB？
-1. 因为作者很懒，但是在项目中经常会遇到不得不使用数据库去存储数据的情况;
-2. 主流的移动端数据库，用过的只有FMDB，CoreData，CoreData在使用的时候觉得要写太多代码了，后来放弃了，只用FMDB的话，没有OOP的感觉，所以有了FIDDB。
+1. 因为作者很懒，直接用FMDB代码会很散，而且并不能像使用CoreData能面向对象管理；
+2. 在项目中经常会遇到不得不使用数据库去存储数据的情况；
+3. 主流的移动端数据库，用过的只有FMDB，CoreData，CoreData在使用的时候觉得要写太多代码了，后来放弃了，只用FMDB的话，没有OOP的感觉，所以有了FIDDB。
+
+### CoreData、Realm和对FMDB封装后的FIDDB对比
+下面这部分代码出自于Realm的文档
+
+[从这里你可以找到](https://realm.io/news/migrating-from-core-data-to-realm)
+
+```
+CoreData插入对象
+//Create a new Dog
+Dog *newDog = [NSEntityDescription insertNewObjectForEntityForName:@"Dog" inManagedObjectContext:myContext]; 
+newDog.name = @"McGruff";
+
+//Save the new Dog object to disk
+NSError *saveError = nil;
+[newDog.managedObjectContext save:&saveError]; 
+
+//Rename the Dog
+newDog.name = @"Pluto";
+[newDog.managedObjectContext save:&saveError];
+```
+
+```
+Realm插入对象
+//Create the dog object
+Dog *newDog = [[Dog alloc] init];
+newDog.name = @"McGruff";
+
+//Save the new Dog object to disk (Using a block for the transaction)
+RLMRealm *defaultRealm = [RLMRealm defaultRealm];
+[defaultRealm transactionWithBlock:^{
+  [defaultRealm addObject:newDog];
+}];
+
+//Rename the dog (Using open/close methods for the transaction)
+[defaultRealm beginWriteTransaction];
+newDog.name = @"Pluto";
+[defaultRealm commitWriteTransaction];
+```
+```
+FIDDB插入对象
+Dog *newDog = [[Dog alloc] init];
+newDog.name = @"McGruff";
+[newDog insertObject];
+//重命名狗，更新对象
+newDog.name = @"Pluto";
+[newDog updateObject];
+
+CoreData查询
+NSManagedObjectContext *context = self.managedObjectContext;
+
+//A fetch request to get all dogs younger than 5 years old, in alphabetical order
+NSEntityDescription *entity = [NSEntityDescription
+entityForName:@"Dog" inManagedObjectContext:context];
+
+NSPredicate *predicate = [NSPredicate predicateWithFormat:@"age < 5"];
+
+NSSortDescriptor *sortDescriptor = [[NSSortDescriptor alloc] initWithKey:@"name" ascending:YES];
+
+NSFetchRequest *request = [[NSFetchRequest alloc] init];
+request.entity = entity;
+request.predicate = predicate;
+request.sortDescriptors = @[sortDescriptor];
+
+NSError *error;
+NSArray *dogs = [moc executeFetchRequest:request error:&error];
+```
+```
+Realm查询对象
+RLMResults *dogs = [[Dog objectsWhere:@"age < 5"] sortedResultsUsingProperty:@"name" ascending:YES];
+```
+
+```
+FIDDB查询对象
+NSArray<Dog *> *dogs = [Dog selectObjectPredicateWithFormat:@"where age < 5 order by name"];
+```
 
 
 > 类相当于一张表，对象即数据，这句话贯穿整个设计的思路
@@ -44,12 +120,11 @@ Person *person = [personArray lastObject];
 ```
 
 ### 补充
-目前FIDDB只是提供了简单的增删改查接口，如果要使用目前接口没办法满足的功能，可以通过获取FMDatabase和表名通过原来的FMDB语句进行扩充
+1. 目前FIDDB只是提供了简单的增删改查接口，如果要使用目前接口没办法满足的功能，可以通过获取FMDatabase和表名通过原来的FMDB语句进行扩充；
+2. 在性能上没有考虑，如果有什么好的建议，可以Issue我
 ```
 获取FMDatabase对象
 [Class getDatabase];
 获取类在FMDB对应的表名
 [Class getTableName];
 ```
-
-
