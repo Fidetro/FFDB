@@ -42,6 +42,7 @@ newDog.name = @"Pluto";
 [defaultRealm commitWriteTransaction];
 ```
 ```
+
 FIDDB插入对象
 Dog *newDog = [[Dog alloc] init];
 newDog.name = @"McGruff";
@@ -49,7 +50,8 @@ newDog.name = @"McGruff";
 //重命名狗，更新对象
 newDog.name = @"Pluto";
 [newDog updateObject];
-
+```
+```
 CoreData查询
 NSManagedObjectContext *context = self.managedObjectContext;
 
