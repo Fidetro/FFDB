@@ -103,7 +103,7 @@ NSString *const kDatabaseHeadname = @"FID";
         values = [NSString stringWithFormat:@"%@,%@='%@'",values,propertyname,[self getIvarWithName:propertyname]];
     }
     
-    return [FIDDataBaseModel executeUpdateWithSqlstatement:[NSString stringWithFormat:@"update `%@` set  %@ where %@",[[self class] getTableName],values,self.primaryID]];
+   return [FIDDataBaseModel executeUpdateWithSqlstatement:[NSString stringWithFormat:@"update `%@` set  %@ where primaryID = '%@'",[[self class] getTableName],values,self.primaryID]];
 }
 
 #pragma mark - --------------------------base method--------------------------
