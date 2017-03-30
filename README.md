@@ -2,7 +2,7 @@
 ### 为什么会有FFDB？
 1. 因为作者很懒，直接用FMDB代码会很散，而且并不能像使用CoreData能面向对象管理；
 2. 在项目中经常会遇到不得不使用数据库去存储数据的情况；
-3. 主流的移动端数据库，用过的只有FMDB，CoreData，CoreData在使用的时候觉得要写太多代码了，后来放弃了，只用FMDB的话，没有OOP的感觉，所以有了FIDDB。
+3. 主流的移动端数据库，用过的只有FMDB，CoreData，CoreData在使用的时候觉得要写太多代码了，后来放弃了，只用FMDB的话，没有OOP的感觉，所以有了FFDB。
 
 ### CoreData、Realm和对FMDB封装后的FFDB对比
 下面这部分代码出自于Realm的文档
