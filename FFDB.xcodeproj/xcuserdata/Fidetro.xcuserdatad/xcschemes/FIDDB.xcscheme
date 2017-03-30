@@ -15,9 +15,9 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "9A32CAA21E82C58A0097324D"
-               BuildableName = "FIDDB.app"
-               BlueprintName = "FIDDB"
-               ReferencedContainer = "container:FIDDB.xcodeproj">
+               BuildableName = "FFDB.app"
+               BlueprintName = "FFDB"
+               ReferencedContainer = "container:FFDB.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
       </BuildActionEntries>
@@ -33,9 +33,9 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "9A32CABB1E82C58A0097324D"
-               BuildableName = "FIDDBTests.xctest"
-               BlueprintName = "FIDDBTests"
-               ReferencedContainer = "container:FIDDB.xcodeproj">
+               BuildableName = "FFDBTests.xctest"
+               BlueprintName = "FFDBTests"
+               ReferencedContainer = "container:FFDB.xcodeproj">
             </BuildableReference>
          </TestableReference>
          <TestableReference
@@ -43,9 +43,9 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "9A32CAC61E82C58A0097324D"
-               BuildableName = "FIDDBUITests.xctest"
-               BlueprintName = "FIDDBUITests"
-               ReferencedContainer = "container:FIDDB.xcodeproj">
+               BuildableName = "FFDBUITests.xctest"
+               BlueprintName = "FFDBUITests"
+               ReferencedContainer = "container:FFDB.xcodeproj">
             </BuildableReference>
          </TestableReference>
       </Testables>
@@ -53,9 +53,9 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "9A32CAA21E82C58A0097324D"
-            BuildableName = "FIDDB.app"
-            BlueprintName = "FIDDB"
-            ReferencedContainer = "container:FIDDB.xcodeproj">
+            BuildableName = "FFDB.app"
+            BlueprintName = "FFDB"
+            ReferencedContainer = "container:FFDB.xcodeproj">
          </BuildableReference>
       </MacroExpansion>
       <AdditionalOptions>
@@ -76,9 +76,9 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "9A32CAA21E82C58A0097324D"
-            BuildableName = "FIDDB.app"
-            BlueprintName = "FIDDB"
-            ReferencedContainer = "container:FIDDB.xcodeproj">
+            BuildableName = "FFDB.app"
+            BlueprintName = "FFDB"
+            ReferencedContainer = "container:FFDB.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
       <AdditionalOptions>
@@ -95,9 +95,9 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "9A32CAA21E82C58A0097324D"
-            BuildableName = "FIDDB.app"
-            BlueprintName = "FIDDB"
-            ReferencedContainer = "container:FIDDB.xcodeproj">
+            BuildableName = "FFDB.app"
+            BlueprintName = "FFDB"
+            ReferencedContainer = "container:FFDB.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
    </ProfileAction>

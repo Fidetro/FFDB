@@ -1,10 +1,10 @@
-# FIDDB
-### 为什么会有FIDDB？
+# FFDB
+### 为什么会有FFDB？
 1. 因为作者很懒，直接用FMDB代码会很散，而且并不能像使用CoreData能面向对象管理；
 2. 在项目中经常会遇到不得不使用数据库去存储数据的情况；
 3. 主流的移动端数据库，用过的只有FMDB，CoreData，CoreData在使用的时候觉得要写太多代码了，后来放弃了，只用FMDB的话，没有OOP的感觉，所以有了FIDDB。
 
-### CoreData、Realm和对FMDB封装后的FIDDB对比
+### CoreData、Realm和对FMDB封装后的FFDB对比
 下面这部分代码出自于Realm的文档
 
 [从这里你可以找到](https://realm.io/news/migrating-from-core-data-to-realm)
@@ -43,7 +43,7 @@ newDog.name = @"Pluto";
 ```
 ```
 
-FIDDB插入对象
+FFDB插入对象
 Dog *newDog = [[Dog alloc] init];
 newDog.name = @"McGruff";
 [newDog insertObject];
@@ -77,7 +77,7 @@ RLMResults *dogs = [[Dog objectsWhere:@"age < 5"] sortedResultsUsingProperty:@"n
 ```
 
 ```
-FIDDB查询对象
+FFDB查询对象
 NSArray<Dog *> *dogs = [Dog selectObjectPredicateWithFormat:@"where age < 5 order by name"];
 ```
 
@@ -122,7 +122,7 @@ Person *person = [personArray lastObject];
 ```
 
 ### 补充
-1. 目前FIDDB只是提供了简单的增删改查接口，如果要使用目前接口没办法满足的功能，可以通过获取FMDatabase和表名通过原来的FMDB语句进行扩充；
+1. 目前FFDB只是提供了简单的增删改查接口，如果要使用目前接口没办法满足的功能，可以通过获取FMDatabase和表名通过原来的FMDB语句进行扩充；
 2. 在性能上没有考虑，如果有什么好的建议，可以Issue我
 ```
 获取FMDatabase对象
