@@ -13,8 +13,6 @@
 		9A32CAB11E82C58A0097324D /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9A32CAAF1E82C58A0097324D /* Main.storyboard */; };
 		9A32CAB31E82C58A0097324D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9A32CAB21E82C58A0097324D /* Assets.xcassets */; };
 		9A32CAB61E82C58A0097324D /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9A32CAB41E82C58A0097324D /* LaunchScreen.storyboard */; };
-		9A32CAC11E82C58A0097324D /* FIDDBTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A32CAC01E82C58A0097324D /* FIDDBTests.m */; };
-		9A32CACC1E82C58A0097324D /* FIDDBUITests.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A32CACB1E82C58A0097324D /* FIDDBUITests.m */; };
 		9A32CAEC1E82C5F10097324D /* FMDatabase.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A32CAE11E82C5F10097324D /* FMDatabase.m */; };
 		9A32CAED1E82C5F10097324D /* FMDatabaseAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A32CAE31E82C5F10097324D /* FMDatabaseAdditions.m */; };
 		9A32CAEE1E82C5F10097324D /* FMDatabasePool.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A32CAE51E82C5F10097324D /* FMDatabasePool.m */; };
@@ -57,11 +55,7 @@
 		9A32CAB21E82C58A0097324D /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		9A32CAB51E82C58A0097324D /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		9A32CABC1E82C58A0097324D /* FFDBTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = FFDBTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		9A32CAC01E82C58A0097324D /* FIDDBTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FIDDBTests.m; sourceTree = "<group>"; };
-		9A32CAC21E82C58A0097324D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		9A32CAC71E82C58A0097324D /* FFDBUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = FFDBUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		9A32CACB1E82C58A0097324D /* FIDDBUITests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FIDDBUITests.m; sourceTree = "<group>"; };
-		9A32CACD1E82C58A0097324D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		9A32CAE01E82C5F10097324D /* FMDatabase.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FMDatabase.h; sourceTree = "<group>"; };
 		9A32CAE11E82C5F10097324D /* FMDatabase.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FMDatabase.m; sourceTree = "<group>"; };
 		9A32CAE21E82C5F10097324D /* FMDatabaseAdditions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FMDatabaseAdditions.h; sourceTree = "<group>"; };
@@ -118,8 +112,6 @@
 			isa = PBXGroup;
 			children = (
 				9A32CAA51E82C58A0097324D /* FFDB */,
-				9A32CABF1E82C58A0097324D /* FIDDBTests */,
-				9A32CACA1E82C58A0097324D /* FIDDBUITests */,
 				9A32CAA41E82C58A0097324D /* Products */,
 				9A32CB021E82C69D0097324D /* Frameworks */,
 			);
@@ -161,24 +153,6 @@
 				9A32CAA71E82C58A0097324D /* main.m */,
 			);
 			name = "Supporting Files";
-			sourceTree = "<group>";
-		};
-		9A32CABF1E82C58A0097324D /* FIDDBTests */ = {
-			isa = PBXGroup;
-			children = (
-				9A32CAC01E82C58A0097324D /* FIDDBTests.m */,
-				9A32CAC21E82C58A0097324D /* Info.plist */,
-			);
-			path = FIDDBTests;
-			sourceTree = "<group>";
-		};
-		9A32CACA1E82C58A0097324D /* FIDDBUITests */ = {
-			isa = PBXGroup;
-			children = (
-				9A32CACB1E82C58A0097324D /* FIDDBUITests.m */,
-				9A32CACD1E82C58A0097324D /* Info.plist */,
-			);
-			path = FIDDBUITests;
 			sourceTree = "<group>";
 		};
 		9A32CADF1E82C5F10097324D /* fmdb */ = {
@@ -388,7 +362,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				9A32CAC11E82C58A0097324D /* FIDDBTests.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -396,7 +369,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				9A32CACC1E82C58A0097324D /* FIDDBUITests.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
