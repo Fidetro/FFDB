@@ -1,19 +1,25 @@
 # FFDB
 - [为什么会有FFDB？](#为什么会有FFDB？)
 - [CoreData、Realm和对FMDB封装后的FFDB对比](#CoreData、Realm和对FMDB封装后的FFDB对比)
-- [适合在什么地方使用？](#适合在什么地方使用？)
-- [优势](#优势)
+- [适合在什么地方使用以及优势](#适合在什么地方使用以及优势)
 - [怎么使用？](#怎么使用？)
 - [补充](#补充)
 
 
-## 为什么会有FFDB？
+
+<h2 id="为什么会有FFDB？">为什么会有FFDB？</h2>
+
 1. 因为作者很懒，直接用FMDB代码会很散，而且并不能像使用CoreData能面向对象管理；
 2. 在项目中经常会遇到不得不使用数据库去存储数据的情况；
 3. 主流的移动端数据库，用过的只有FMDB，CoreData，CoreData在使用的时候觉得要写太多代码了，后来放弃了，只用FMDB的话，没有OOP的感觉，所以有了FFDB。
 4. 最后解释下FFDB的名字含义，是因为了纪念可能再也见不到的芳芳，不能一起工作真是太可惜了
 
-## CoreData、Realm和对FMDB封装后的FFDB对比
+
+
+
+
+<h2 id="CoreData、Realm和对FMDB封装后的FFDB对比">CoreData、Realm和对FMDB封装后的FFDB对比</h2>
+
 下面这部分代码出自于Realm的文档
 
 [从这里你可以找到](https://realm.io/news/migrating-from-core-data-to-realm)
@@ -21,12 +27,12 @@
 ```
 CoreData插入对象
 //Create a new Dog
-Dog *newDog = [NSEntityDescription insertNewObjectForEntityForName:@"Dog" inManagedObjectContext:myContext]; 
+Dog *newDog = [NSEntityDescription insertNewObjectForEntityForName:@"Dog" inManagedObjectContext:myContext];
 newDog.name = @"McGruff";
 
 //Save the new Dog object to disk
 NSError *saveError = nil;
-[newDog.managedObjectContext save:&saveError]; 
+[newDog.managedObjectContext save:&saveError];
 
 //Rename the Dog
 newDog.name = @"Pluto";
@@ -42,7 +48,7 @@ newDog.name = @"McGruff";
 //Save the new Dog object to disk (Using a block for the transaction)
 RLMRealm *defaultRealm = [RLMRealm defaultRealm];
 [defaultRealm transactionWithBlock:^{
-  [defaultRealm addObject:newDog];
+[defaultRealm addObject:newDog];
 }];
 
 //Rename the dog (Using open/close methods for the transaction)
@@ -90,19 +96,20 @@ FFDB查询对象
 NSArray<Dog *> *dogs = [Dog selectObjectPredicateWithFormat:@"where age < 5 order by name"];
 ```
 
-
 > 类相当于一张表，对象即数据，这句话贯穿整个设计的思路
 
-## 适合在什么地方使用？
+
+
+<h2 id="适合在什么地方使用以及优势">适合在什么地方使用以及优势？</h2>
+
 1. 数据量大，NSUserDefault和plist都不能满足的时候；
 2. 对基础数据库语句不太懂的同学；
+3. 不需要对数据库进行很复杂的操作；
+4. 通过runtime实现，不需要接触到sqlite语句就能满足增删改查；
 
-## 优势
 
-1. 不需要对数据库进行很复杂的操作；
-2. 通过runtime实现，不需要接触到sqlite语句就能满足增删改查；
+<h2 id="怎么使用？">怎么使用？</h2>
 
-## 怎么使用？
 建立好要创建的类继承FIDDataBaseModel，声明属性，即可
 ```
 @interface Person : FIDDataBaseModel
@@ -128,7 +135,10 @@ person.age = @"24";
 NSArray *personArray = [Person selectObjectPredicateWithFormat:@"where name = 'fidetro' and age = '21'"];//先查询到要更新的数据
 Person *person = [personArray lastObject];
 [person deleteObject];
+
 ```
+
+
 <h2 id="补充">补充</h2>
 
 1. 目前FFDB只是提供了简单的增删改查接口，如果要使用目前接口没办法满足的功能，可以通过获取FMDatabase和表名通过原来的FMDB语句进行扩充；
