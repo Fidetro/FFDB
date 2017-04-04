@@ -8,16 +8,16 @@
 
 /* Begin PBXBuildFile section */
 		936A6D602D879F6BA7A7230F /* Pods_FFDB.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9411C3043211AE7CA790CB34 /* Pods_FFDB.framework */; };
-		9A32CAA81E82C58A0097324D /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A32CAA71E82C58A0097324D /* main.m */; };
 		9A32CAAB1E82C58A0097324D /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A32CAAA1E82C58A0097324D /* AppDelegate.m */; };
 		9A32CAAE1E82C58A0097324D /* ClassRoomViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A32CAAD1E82C58A0097324D /* ClassRoomViewController.m */; };
 		9A32CAB11E82C58A0097324D /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9A32CAAF1E82C58A0097324D /* Main.storyboard */; };
 		9A32CAB31E82C58A0097324D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9A32CAB21E82C58A0097324D /* Assets.xcassets */; };
 		9A32CAB61E82C58A0097324D /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9A32CAB41E82C58A0097324D /* LaunchScreen.storyboard */; };
-		9A32CAF81E82C6360097324D /* FIDDataBaseModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A32CAF51E82C6360097324D /* FIDDataBaseModel.m */; };
-		9A32CAF91E82C6360097324D /* NSObject+FIDProperty.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A32CAF71E82C6360097324D /* NSObject+FIDProperty.m */; };
 		9A32CB041E82C69D0097324D /* libsqlite3.0.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 9A32CB031E82C69D0097324D /* libsqlite3.0.tbd */; };
 		9A755F721E8D78BD00B2A4B5 /* Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 9A755F711E8D78BD00B2A4B5 /* Info.plist */; };
+		9AB7B9801E94003C001D837B /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 9AB7B97F1E94003C001D837B /* main.m */; };
+		9AB7B9851E940053001D837B /* FIDDataBaseModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 9AB7B9821E940053001D837B /* FIDDataBaseModel.m */; };
+		9AB7B9861E940053001D837B /* NSObject+FIDProperty.m in Sources */ = {isa = PBXBuildFile; fileRef = 9AB7B9841E940053001D837B /* NSObject+FIDProperty.m */; };
 		9AE672111E88020900F2AB6C /* ClassRoom.m in Sources */ = {isa = PBXBuildFile; fileRef = 9AE672101E88020900F2AB6C /* ClassRoom.m */; };
 /* End PBXBuildFile section */
 
@@ -43,23 +43,24 @@
 		9411C3043211AE7CA790CB34 /* Pods_FFDB.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_FFDB.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		9A32CAA31E82C58A0097324D /* FFDB.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FFDB.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		9A32CAA71E82C58A0097324D /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
-		9A32CAA91E82C58A0097324D /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
-		9A32CAAA1E82C58A0097324D /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
-		9A32CAAC1E82C58A0097324D /* ClassRoomViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ClassRoomViewController.h; sourceTree = "<group>"; };
-		9A32CAAD1E82C58A0097324D /* ClassRoomViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ClassRoomViewController.m; sourceTree = "<group>"; };
+		9A32CAA91E82C58A0097324D /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = AppDelegate.h; path = ../Example/AppDelegate.h; sourceTree = "<group>"; };
+		9A32CAAA1E82C58A0097324D /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = AppDelegate.m; path = ../Example/AppDelegate.m; sourceTree = "<group>"; };
+		9A32CAAC1E82C58A0097324D /* ClassRoomViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = ClassRoomViewController.h; path = ../Example/ClassRoomViewController.h; sourceTree = "<group>"; };
+		9A32CAAD1E82C58A0097324D /* ClassRoomViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = ClassRoomViewController.m; path = ../Example/ClassRoomViewController.m; sourceTree = "<group>"; };
 		9A32CAB01E82C58A0097324D /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
-		9A32CAB21E82C58A0097324D /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		9A32CAB21E82C58A0097324D /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Assets.xcassets; path = ../Example/Assets.xcassets; sourceTree = "<group>"; };
 		9A32CAB51E82C58A0097324D /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		9A32CABC1E82C58A0097324D /* FFDBTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = FFDBTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		9A32CAC71E82C58A0097324D /* FFDBUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = FFDBUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		9A32CAF41E82C6360097324D /* FIDDataBaseModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FIDDataBaseModel.h; sourceTree = "<group>"; };
-		9A32CAF51E82C6360097324D /* FIDDataBaseModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FIDDataBaseModel.m; sourceTree = "<group>"; };
-		9A32CAF61E82C6360097324D /* NSObject+FIDProperty.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSObject+FIDProperty.h"; sourceTree = "<group>"; };
-		9A32CAF71E82C6360097324D /* NSObject+FIDProperty.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSObject+FIDProperty.m"; sourceTree = "<group>"; };
 		9A32CB031E82C69D0097324D /* libsqlite3.0.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libsqlite3.0.tbd; path = usr/lib/libsqlite3.0.tbd; sourceTree = SDKROOT; };
-		9A755F711E8D78BD00B2A4B5 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		9AE6720F1E88020900F2AB6C /* ClassRoom.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ClassRoom.h; sourceTree = "<group>"; };
-		9AE672101E88020900F2AB6C /* ClassRoom.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ClassRoom.m; sourceTree = "<group>"; };
+		9A755F711E8D78BD00B2A4B5 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = Info.plist; path = ../Example/Info.plist; sourceTree = "<group>"; };
+		9AB7B97F1E94003C001D837B /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		9AB7B9811E940053001D837B /* FIDDataBaseModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FIDDataBaseModel.h; sourceTree = "<group>"; };
+		9AB7B9821E940053001D837B /* FIDDataBaseModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FIDDataBaseModel.m; sourceTree = "<group>"; };
+		9AB7B9831E940053001D837B /* NSObject+FIDProperty.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSObject+FIDProperty.h"; sourceTree = "<group>"; };
+		9AB7B9841E940053001D837B /* NSObject+FIDProperty.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSObject+FIDProperty.m"; sourceTree = "<group>"; };
+		9AE6720F1E88020900F2AB6C /* ClassRoom.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ClassRoom.h; path = ../Example/ClassRoom.h; sourceTree = "<group>"; };
+		9AE672101E88020900F2AB6C /* ClassRoom.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ClassRoom.m; path = ../Example/ClassRoom.m; sourceTree = "<group>"; };
 		CC342B4CDF9D60DDBF2363A2 /* Pods-FFDB.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FFDB.release.xcconfig"; path = "Pods/Target Support Files/Pods-FFDB/Pods-FFDB.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -122,17 +123,8 @@
 		9A32CAA51E82C58A0097324D /* FFDB */ = {
 			isa = PBXGroup;
 			children = (
-				9A32CAF31E82C6360097324D /* FFDB */,
-				9A32CAA91E82C58A0097324D /* AppDelegate.h */,
-				9A32CAAA1E82C58A0097324D /* AppDelegate.m */,
-				9A32CAAC1E82C58A0097324D /* ClassRoomViewController.h */,
-				9A32CAAD1E82C58A0097324D /* ClassRoomViewController.m */,
-				9AE6720F1E88020900F2AB6C /* ClassRoom.h */,
-				9AE672101E88020900F2AB6C /* ClassRoom.m */,
-				9A32CAAF1E82C58A0097324D /* Main.storyboard */,
-				9A32CAB21E82C58A0097324D /* Assets.xcassets */,
-				9A32CAB41E82C58A0097324D /* LaunchScreen.storyboard */,
-				9A755F711E8D78BD00B2A4B5 /* Info.plist */,
+				9AB7B97E1E93FFF0001D837B /* Example */,
+				9AB7B97D1E93FFB3001D837B /* FFDB */,
 				9A32CAA61E82C58A0097324D /* Supporting Files */,
 			);
 			path = FFDB;
@@ -146,17 +138,6 @@
 			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
-		9A32CAF31E82C6360097324D /* FFDB */ = {
-			isa = PBXGroup;
-			children = (
-				9A32CAF41E82C6360097324D /* FIDDataBaseModel.h */,
-				9A32CAF51E82C6360097324D /* FIDDataBaseModel.m */,
-				9A32CAF61E82C6360097324D /* NSObject+FIDProperty.h */,
-				9A32CAF71E82C6360097324D /* NSObject+FIDProperty.m */,
-			);
-			path = FFDB;
-			sourceTree = "<group>";
-		};
 		9A32CB021E82C69D0097324D /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
@@ -164,6 +145,36 @@
 				9411C3043211AE7CA790CB34 /* Pods_FFDB.framework */,
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		9AB7B97D1E93FFB3001D837B /* FFDB */ = {
+			isa = PBXGroup;
+			children = (
+				9AB7B9811E940053001D837B /* FIDDataBaseModel.h */,
+				9AB7B9821E940053001D837B /* FIDDataBaseModel.m */,
+				9AB7B9831E940053001D837B /* NSObject+FIDProperty.h */,
+				9AB7B9841E940053001D837B /* NSObject+FIDProperty.m */,
+			);
+			name = FFDB;
+			sourceTree = "<group>";
+		};
+		9AB7B97E1E93FFF0001D837B /* Example */ = {
+			isa = PBXGroup;
+			children = (
+				9AB7B97F1E94003C001D837B /* main.m */,
+				9A32CAA91E82C58A0097324D /* AppDelegate.h */,
+				9A32CAAA1E82C58A0097324D /* AppDelegate.m */,
+				9A32CAAC1E82C58A0097324D /* ClassRoomViewController.h */,
+				9A32CAAD1E82C58A0097324D /* ClassRoomViewController.m */,
+				9AE6720F1E88020900F2AB6C /* ClassRoom.h */,
+				9AE672101E88020900F2AB6C /* ClassRoom.m */,
+				9A32CAAF1E82C58A0097324D /* Main.storyboard */,
+				9A32CAB21E82C58A0097324D /* Assets.xcassets */,
+				9A32CAB41E82C58A0097324D /* LaunchScreen.storyboard */,
+				9A755F711E8D78BD00B2A4B5 /* Info.plist */,
+			);
+			name = Example;
+			path = ../Example;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -354,12 +365,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				9AB7B9801E94003C001D837B /* main.m in Sources */,
 				9A32CAAE1E82C58A0097324D /* ClassRoomViewController.m in Sources */,
+				9AB7B9861E940053001D837B /* NSObject+FIDProperty.m in Sources */,
+				9AB7B9851E940053001D837B /* FIDDataBaseModel.m in Sources */,
 				9A32CAAB1E82C58A0097324D /* AppDelegate.m in Sources */,
 				9AE672111E88020900F2AB6C /* ClassRoom.m in Sources */,
-				9A32CAF91E82C6360097324D /* NSObject+FIDProperty.m in Sources */,
-				9A32CAA81E82C58A0097324D /* main.m in Sources */,
-				9A32CAF81E82C6360097324D /* FIDDataBaseModel.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -399,6 +410,7 @@
 				9A32CAB01E82C58A0097324D /* Base */,
 			);
 			name = Main.storyboard;
+			path = ../Example;
 			sourceTree = "<group>";
 		};
 		9A32CAB41E82C58A0097324D /* LaunchScreen.storyboard */ = {
@@ -407,6 +419,7 @@
 				9A32CAB51E82C58A0097324D /* Base */,
 			);
 			name = LaunchScreen.storyboard;
+			path = ../Example;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */
@@ -506,7 +519,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				DEVELOPMENT_TEAM = J3BJ7G2PUN;
-				INFOPLIST_FILE = FFDB/Info.plist;
+				INFOPLIST_FILE = Example/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.Fidetro.FFDB;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -519,7 +532,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				DEVELOPMENT_TEAM = J3BJ7G2PUN;
-				INFOPLIST_FILE = FFDB/Info.plist;
+				INFOPLIST_FILE = Example/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.Fidetro.FFDB;
 				PRODUCT_NAME = "$(TARGET_NAME)";
