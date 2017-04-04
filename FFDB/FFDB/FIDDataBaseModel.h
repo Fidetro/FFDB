@@ -7,9 +7,10 @@
 //
 
 #import <Foundation/Foundation.h>
-#import "FMDB.h"
+#import <FMDB/FMDB.h>
+#import <YYModel/YYModel.h>
 #import "NSObject+FIDProperty.h"
-#import "YYModel.h"
+
 extern NSString *const kDatabaseHeadname;
 @interface FIDDataBaseModel : NSObject
 /** 主键id，作为更新的索引，不可以修改 **/
