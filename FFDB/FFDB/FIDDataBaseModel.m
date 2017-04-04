@@ -116,7 +116,7 @@ NSString *const kDatabaseHeadname = @"FID";
 + (BOOL)executeUpdateWithSqlstatement:(NSString *)sqlstatement
 {
     FMDatabase *database = [FIDDataBaseModel getDatabase];
-    BOOL update;
+    BOOL update = NO;
     if ([database open]) {
         update =  [database executeUpdate:sqlstatement];
     }
