@@ -7,21 +7,15 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		936A6D602D879F6BA7A7230F /* Pods_FFDB.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9411C3043211AE7CA790CB34 /* Pods_FFDB.framework */; };
 		9A32CAA81E82C58A0097324D /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A32CAA71E82C58A0097324D /* main.m */; };
 		9A32CAAB1E82C58A0097324D /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A32CAAA1E82C58A0097324D /* AppDelegate.m */; };
 		9A32CAAE1E82C58A0097324D /* ClassRoomViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A32CAAD1E82C58A0097324D /* ClassRoomViewController.m */; };
 		9A32CAB11E82C58A0097324D /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9A32CAAF1E82C58A0097324D /* Main.storyboard */; };
 		9A32CAB31E82C58A0097324D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9A32CAB21E82C58A0097324D /* Assets.xcassets */; };
 		9A32CAB61E82C58A0097324D /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9A32CAB41E82C58A0097324D /* LaunchScreen.storyboard */; };
-		9A32CAEC1E82C5F10097324D /* FMDatabase.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A32CAE11E82C5F10097324D /* FMDatabase.m */; };
-		9A32CAED1E82C5F10097324D /* FMDatabaseAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A32CAE31E82C5F10097324D /* FMDatabaseAdditions.m */; };
-		9A32CAEE1E82C5F10097324D /* FMDatabasePool.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A32CAE51E82C5F10097324D /* FMDatabasePool.m */; };
-		9A32CAEF1E82C5F10097324D /* FMDatabaseQueue.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A32CAE71E82C5F10097324D /* FMDatabaseQueue.m */; };
-		9A32CAF01E82C5F10097324D /* FMResultSet.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A32CAEA1E82C5F10097324D /* FMResultSet.m */; };
 		9A32CAF81E82C6360097324D /* FIDDataBaseModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A32CAF51E82C6360097324D /* FIDDataBaseModel.m */; };
 		9A32CAF91E82C6360097324D /* NSObject+FIDProperty.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A32CAF71E82C6360097324D /* NSObject+FIDProperty.m */; };
-		9A32CB001E82C6920097324D /* NSObject+YYModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A32CAFC1E82C6920097324D /* NSObject+YYModel.m */; };
-		9A32CB011E82C6920097324D /* YYClassInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A32CAFE1E82C6920097324D /* YYClassInfo.m */; };
 		9A32CB041E82C69D0097324D /* libsqlite3.0.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 9A32CB031E82C69D0097324D /* libsqlite3.0.tbd */; };
 		9A755F721E8D78BD00B2A4B5 /* Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 9A755F711E8D78BD00B2A4B5 /* Info.plist */; };
 		9AE672111E88020900F2AB6C /* ClassRoom.m in Sources */ = {isa = PBXBuildFile; fileRef = 9AE672101E88020900F2AB6C /* ClassRoom.m */; };
@@ -45,6 +39,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		1A7F6BC5AE4C00DBDD5385CE /* Pods-FFDB.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FFDB.debug.xcconfig"; path = "Pods/Target Support Files/Pods-FFDB/Pods-FFDB.debug.xcconfig"; sourceTree = "<group>"; };
+		9411C3043211AE7CA790CB34 /* Pods_FFDB.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_FFDB.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		9A32CAA31E82C58A0097324D /* FFDB.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FFDB.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		9A32CAA71E82C58A0097324D /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		9A32CAA91E82C58A0097324D /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -56,30 +52,15 @@
 		9A32CAB51E82C58A0097324D /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		9A32CABC1E82C58A0097324D /* FFDBTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = FFDBTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		9A32CAC71E82C58A0097324D /* FFDBUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = FFDBUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		9A32CAE01E82C5F10097324D /* FMDatabase.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FMDatabase.h; sourceTree = "<group>"; };
-		9A32CAE11E82C5F10097324D /* FMDatabase.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FMDatabase.m; sourceTree = "<group>"; };
-		9A32CAE21E82C5F10097324D /* FMDatabaseAdditions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FMDatabaseAdditions.h; sourceTree = "<group>"; };
-		9A32CAE31E82C5F10097324D /* FMDatabaseAdditions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FMDatabaseAdditions.m; sourceTree = "<group>"; };
-		9A32CAE41E82C5F10097324D /* FMDatabasePool.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FMDatabasePool.h; sourceTree = "<group>"; };
-		9A32CAE51E82C5F10097324D /* FMDatabasePool.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FMDatabasePool.m; sourceTree = "<group>"; };
-		9A32CAE61E82C5F10097324D /* FMDatabaseQueue.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FMDatabaseQueue.h; sourceTree = "<group>"; };
-		9A32CAE71E82C5F10097324D /* FMDatabaseQueue.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FMDatabaseQueue.m; sourceTree = "<group>"; };
-		9A32CAE81E82C5F10097324D /* FMDB.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FMDB.h; sourceTree = "<group>"; };
-		9A32CAE91E82C5F10097324D /* FMResultSet.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FMResultSet.h; sourceTree = "<group>"; };
-		9A32CAEA1E82C5F10097324D /* FMResultSet.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FMResultSet.m; sourceTree = "<group>"; };
 		9A32CAF41E82C6360097324D /* FIDDataBaseModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FIDDataBaseModel.h; sourceTree = "<group>"; };
 		9A32CAF51E82C6360097324D /* FIDDataBaseModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FIDDataBaseModel.m; sourceTree = "<group>"; };
 		9A32CAF61E82C6360097324D /* NSObject+FIDProperty.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSObject+FIDProperty.h"; sourceTree = "<group>"; };
 		9A32CAF71E82C6360097324D /* NSObject+FIDProperty.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSObject+FIDProperty.m"; sourceTree = "<group>"; };
-		9A32CAFB1E82C6920097324D /* NSObject+YYModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSObject+YYModel.h"; sourceTree = "<group>"; };
-		9A32CAFC1E82C6920097324D /* NSObject+YYModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSObject+YYModel.m"; sourceTree = "<group>"; };
-		9A32CAFD1E82C6920097324D /* YYClassInfo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YYClassInfo.h; sourceTree = "<group>"; };
-		9A32CAFE1E82C6920097324D /* YYClassInfo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YYClassInfo.m; sourceTree = "<group>"; };
-		9A32CAFF1E82C6920097324D /* YYModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YYModel.h; sourceTree = "<group>"; };
 		9A32CB031E82C69D0097324D /* libsqlite3.0.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libsqlite3.0.tbd; path = usr/lib/libsqlite3.0.tbd; sourceTree = SDKROOT; };
 		9A755F711E8D78BD00B2A4B5 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		9AE6720F1E88020900F2AB6C /* ClassRoom.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ClassRoom.h; sourceTree = "<group>"; };
 		9AE672101E88020900F2AB6C /* ClassRoom.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ClassRoom.m; sourceTree = "<group>"; };
+		CC342B4CDF9D60DDBF2363A2 /* Pods-FFDB.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FFDB.release.xcconfig"; path = "Pods/Target Support Files/Pods-FFDB/Pods-FFDB.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -88,6 +69,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				9A32CB041E82C69D0097324D /* libsqlite3.0.tbd in Frameworks */,
+				936A6D602D879F6BA7A7230F /* Pods_FFDB.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -108,12 +90,22 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		6625CD5F6D6E30292DF9EA8A /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				1A7F6BC5AE4C00DBDD5385CE /* Pods-FFDB.debug.xcconfig */,
+				CC342B4CDF9D60DDBF2363A2 /* Pods-FFDB.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
 		9A32CA9A1E82C58A0097324D = {
 			isa = PBXGroup;
 			children = (
 				9A32CAA51E82C58A0097324D /* FFDB */,
 				9A32CAA41E82C58A0097324D /* Products */,
 				9A32CB021E82C69D0097324D /* Frameworks */,
+				6625CD5F6D6E30292DF9EA8A /* Pods */,
 			);
 			sourceTree = "<group>";
 		};
@@ -131,7 +123,6 @@
 			isa = PBXGroup;
 			children = (
 				9A32CAF31E82C6360097324D /* FFDB */,
-				9A32CADF1E82C5F10097324D /* fmdb */,
 				9A32CAA91E82C58A0097324D /* AppDelegate.h */,
 				9A32CAAA1E82C58A0097324D /* AppDelegate.m */,
 				9A32CAAC1E82C58A0097324D /* ClassRoomViewController.h */,
@@ -155,28 +146,9 @@
 			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
-		9A32CADF1E82C5F10097324D /* fmdb */ = {
-			isa = PBXGroup;
-			children = (
-				9A32CAE01E82C5F10097324D /* FMDatabase.h */,
-				9A32CAE11E82C5F10097324D /* FMDatabase.m */,
-				9A32CAE21E82C5F10097324D /* FMDatabaseAdditions.h */,
-				9A32CAE31E82C5F10097324D /* FMDatabaseAdditions.m */,
-				9A32CAE41E82C5F10097324D /* FMDatabasePool.h */,
-				9A32CAE51E82C5F10097324D /* FMDatabasePool.m */,
-				9A32CAE61E82C5F10097324D /* FMDatabaseQueue.h */,
-				9A32CAE71E82C5F10097324D /* FMDatabaseQueue.m */,
-				9A32CAE81E82C5F10097324D /* FMDB.h */,
-				9A32CAE91E82C5F10097324D /* FMResultSet.h */,
-				9A32CAEA1E82C5F10097324D /* FMResultSet.m */,
-			);
-			path = fmdb;
-			sourceTree = "<group>";
-		};
 		9A32CAF31E82C6360097324D /* FFDB */ = {
 			isa = PBXGroup;
 			children = (
-				9A32CAFA1E82C6920097324D /* YYModel */,
 				9A32CAF41E82C6360097324D /* FIDDataBaseModel.h */,
 				9A32CAF51E82C6360097324D /* FIDDataBaseModel.m */,
 				9A32CAF61E82C6360097324D /* NSObject+FIDProperty.h */,
@@ -185,22 +157,11 @@
 			path = FFDB;
 			sourceTree = "<group>";
 		};
-		9A32CAFA1E82C6920097324D /* YYModel */ = {
-			isa = PBXGroup;
-			children = (
-				9A32CAFB1E82C6920097324D /* NSObject+YYModel.h */,
-				9A32CAFC1E82C6920097324D /* NSObject+YYModel.m */,
-				9A32CAFD1E82C6920097324D /* YYClassInfo.h */,
-				9A32CAFE1E82C6920097324D /* YYClassInfo.m */,
-				9A32CAFF1E82C6920097324D /* YYModel.h */,
-			);
-			path = YYModel;
-			sourceTree = "<group>";
-		};
 		9A32CB021E82C69D0097324D /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
 				9A32CB031E82C69D0097324D /* libsqlite3.0.tbd */,
+				9411C3043211AE7CA790CB34 /* Pods_FFDB.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -212,9 +173,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 9A32CAD01E82C58A0097324D /* Build configuration list for PBXNativeTarget "FFDB" */;
 			buildPhases = (
+				B6E03EF3C2B0131C34E36D8C /* [CP] Check Pods Manifest.lock */,
 				9A32CA9F1E82C58A0097324D /* Sources */,
 				9A32CAA01E82C58A0097324D /* Frameworks */,
 				9A32CAA11E82C58A0097324D /* Resources */,
+				D0A410D42C6ECC3C750DC3E5 /* [CP] Embed Pods Frameworks */,
+				D3FAAB043F6AF68531B5695F /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -337,6 +301,54 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		B6E03EF3C2B0131C34E36D8C /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		D0A410D42C6ECC3C750DC3E5 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-FFDB/Pods-FFDB-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		D3FAAB043F6AF68531B5695F /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-FFDB/Pods-FFDB-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		9A32CA9F1E82C58A0097324D /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
@@ -344,17 +356,10 @@
 			files = (
 				9A32CAAE1E82C58A0097324D /* ClassRoomViewController.m in Sources */,
 				9A32CAAB1E82C58A0097324D /* AppDelegate.m in Sources */,
-				9A32CAEC1E82C5F10097324D /* FMDatabase.m in Sources */,
 				9AE672111E88020900F2AB6C /* ClassRoom.m in Sources */,
-				9A32CAF01E82C5F10097324D /* FMResultSet.m in Sources */,
-				9A32CB011E82C6920097324D /* YYClassInfo.m in Sources */,
 				9A32CAF91E82C6360097324D /* NSObject+FIDProperty.m in Sources */,
 				9A32CAA81E82C58A0097324D /* main.m in Sources */,
 				9A32CAF81E82C6360097324D /* FIDDataBaseModel.m in Sources */,
-				9A32CAEE1E82C5F10097324D /* FMDatabasePool.m in Sources */,
-				9A32CB001E82C6920097324D /* NSObject+YYModel.m in Sources */,
-				9A32CAED1E82C5F10097324D /* FMDatabaseAdditions.m in Sources */,
-				9A32CAEF1E82C5F10097324D /* FMDatabaseQueue.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -497,6 +502,7 @@
 		};
 		9A32CAD11E82C58A0097324D /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 1A7F6BC5AE4C00DBDD5385CE /* Pods-FFDB.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				DEVELOPMENT_TEAM = J3BJ7G2PUN;
@@ -509,6 +515,7 @@
 		};
 		9A32CAD21E82C58A0097324D /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = CC342B4CDF9D60DDBF2363A2 /* Pods-FFDB.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				DEVELOPMENT_TEAM = J3BJ7G2PUN;

@@ -38,7 +38,7 @@
     return FMDBReturnAutoreleased([[self alloc] initWithPath:aPath flags:openFlags]);
 }
 
-- (instancetype)initWithPath:(NSString*)aPath flags:(int)openFlags vfs:(NSString *)vfsName {
+- (instancetype)initWithPath:(NSString*)aPath flags:(int)openFlags {
     
     self = [super init];
     
@@ -48,14 +48,9 @@
         _databaseInPool     = FMDBReturnRetained([NSMutableArray array]);
         _databaseOutPool    = FMDBReturnRetained([NSMutableArray array]);
         _openFlags          = openFlags;
-        _vfsName            = [vfsName copy];
     }
     
     return self;
-}
-
-- (instancetype)initWithPath:(NSString*)aPath flags:(int)openFlags {
-    return [self initWithPath:aPath flags:openFlags vfs:nil];
 }
 
 - (instancetype)initWithPath:(NSString*)aPath
@@ -68,9 +63,6 @@
     return [self initWithPath:nil];
 }
 
-+ (Class)databaseClass {
-    return [FMDatabase class];
-}
 
 - (void)dealloc {
     
@@ -136,13 +128,13 @@
                 }
             }
             
-            db = [[[self class] databaseClass] databaseWithPath:self->_path];
+            db = [FMDatabase databaseWithPath:self->_path];
             shouldNotifyDelegate = YES;
         }
         
         //This ensures that the db is opened before returning
 #if SQLITE_VERSION_NUMBER >= 3005000
-        BOOL success = [db openWithFlags:self->_openFlags vfs:self->_vfsName];
+        BOOL success = [db openWithFlags:self->_openFlags];
 #else
         BOOL success = [db open];
 #endif
