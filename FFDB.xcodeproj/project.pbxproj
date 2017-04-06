@@ -14,7 +14,6 @@
 		9A32CAB31E82C58A0097324D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9A32CAB21E82C58A0097324D /* Assets.xcassets */; };
 		9A32CAB61E82C58A0097324D /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9A32CAB41E82C58A0097324D /* LaunchScreen.storyboard */; };
 		9A32CB041E82C69D0097324D /* libsqlite3.0.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 9A32CB031E82C69D0097324D /* libsqlite3.0.tbd */; };
-		9A755F721E8D78BD00B2A4B5 /* Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 9A755F711E8D78BD00B2A4B5 /* Info.plist */; };
 		9AB7B9801E94003C001D837B /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 9AB7B97F1E94003C001D837B /* main.m */; };
 		9AB7B9851E940053001D837B /* FIDDataBaseModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 9AB7B9821E940053001D837B /* FIDDataBaseModel.m */; };
 		9AB7B9861E940053001D837B /* NSObject+FIDProperty.m in Sources */ = {isa = PBXBuildFile; fileRef = 9AB7B9841E940053001D837B /* NSObject+FIDProperty.m */; };
@@ -242,7 +241,7 @@
 		9A32CA9B1E82C58A0097324D /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastUpgradeCheck = 0820;
+				LastUpgradeCheck = 0830;
 				ORGANIZATIONNAME = Fidetro;
 				TargetAttributes = {
 					9A32CAA21E82C58A0097324D = {
@@ -289,7 +288,6 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				9A755F721E8D78BD00B2A4B5 /* Info.plist in Resources */,
 				9A32CAB61E82C58A0097324D /* LaunchScreen.storyboard in Resources */,
 				9A32CAB31E82C58A0097324D /* Assets.xcassets in Resources */,
 				9A32CAB11E82C58A0097324D /* Main.storyboard in Resources */,
@@ -519,6 +517,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				DEVELOPMENT_TEAM = J3BJ7G2PUN;
+				HEADER_SEARCH_PATHS = "$(SRCROOT)/FFDB";
 				INFOPLIST_FILE = Example/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.Fidetro.FFDB;
@@ -532,6 +531,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				DEVELOPMENT_TEAM = J3BJ7G2PUN;
+				HEADER_SEARCH_PATHS = "$(SRCROOT)/FFDB";
 				INFOPLIST_FILE = Example/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.Fidetro.FFDB;
