@@ -58,6 +58,7 @@
 		9AB7B9821E940053001D837B /* FIDDataBaseModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FIDDataBaseModel.m; sourceTree = "<group>"; };
 		9AB7B9831E940053001D837B /* NSObject+FIDProperty.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSObject+FIDProperty.h"; sourceTree = "<group>"; };
 		9AB7B9841E940053001D837B /* NSObject+FIDProperty.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSObject+FIDProperty.m"; sourceTree = "<group>"; };
+		9AC88E881E9A04B500A25688 /* FFDB.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FFDB.h; sourceTree = "<group>"; };
 		9AE6720F1E88020900F2AB6C /* ClassRoom.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ClassRoom.h; path = ../Example/ClassRoom.h; sourceTree = "<group>"; };
 		9AE672101E88020900F2AB6C /* ClassRoom.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ClassRoom.m; path = ../Example/ClassRoom.m; sourceTree = "<group>"; };
 		CC342B4CDF9D60DDBF2363A2 /* Pods-FFDB.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FFDB.release.xcconfig"; path = "Pods/Target Support Files/Pods-FFDB/Pods-FFDB.release.xcconfig"; sourceTree = "<group>"; };
@@ -149,6 +150,7 @@
 		9AB7B97D1E93FFB3001D837B /* FFDB */ = {
 			isa = PBXGroup;
 			children = (
+				9AC88E881E9A04B500A25688 /* FFDB.h */,
 				9AB7B9811E940053001D837B /* FIDDataBaseModel.h */,
 				9AB7B9821E940053001D837B /* FIDDataBaseModel.m */,
 				9AB7B9831E940053001D837B /* NSObject+FIDProperty.h */,

@@ -11,4 +11,5 @@
 @interface ClassRoom : FIDDataBaseModel
 /** classroom name **/
 @property(nonatomic,copy) NSString *name;
+
 @end
