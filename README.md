@@ -12,8 +12,11 @@ pod search FFDB如果没有找到，pod setup之后就ok了
 
 如果不使用CocoaPod，请导入YYModel和FMDB，并且在target的Linked Frameworks and Libraries导入
 libsqlite3.0.tbd
+
 ![image](https://github.com/Fidetro/FFDB/blob/master/src/1.png)
+
 同时把目录中的这些文件拉到工程中
+
 ![image](https://github.com/Fidetro/FFDB/blob/master/src/2.png)
 
 <h2 id="为什么会有FFDB？">为什么会有FFDB？</h2>
