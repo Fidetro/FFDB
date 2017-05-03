@@ -9,7 +9,6 @@
 #import <Foundation/Foundation.h>
 #import <FMDB/FMDB.h>
 #import <YYModel/YYModel.h>
-
 #import "NSObject+FIDProperty.h"
 
 extern NSString *const kDatabaseHeadname;
