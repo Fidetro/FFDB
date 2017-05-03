@@ -10,4 +10,14 @@
 
 @implementation ClassRoom
 
+- (instancetype)init
+{
+    self = [super init];
+    if (self)
+    {
+        self.name = @"new room";
+    }
+    return self;
+}
+
 @end

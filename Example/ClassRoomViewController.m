@@ -8,6 +8,7 @@
 
 #import "ClassRoomViewController.h"
 #import "ClassRoom.h"
+
 @interface ClassRoomViewController ()<UITableViewDelegate,UITableViewDataSource>
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
 /** 教室 **/
@@ -25,7 +26,7 @@
 - (IBAction)addNewClassRoom:(id)sender
 {
     ClassRoom *classRoom = [[ClassRoom alloc]init];
-    classRoom.name = @"new room";
+//    classRoom.name = @"new room";
     [classRoom insertObject];
     [self selectAndUpdateEvent];
     [self.tableView reloadData];
