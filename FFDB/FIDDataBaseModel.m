@@ -38,13 +38,15 @@ NSString *const kDatabaseHeadname = @"FID";
         
         while ([resultSet next])
         {
-            NSMutableDictionary *param = [NSMutableDictionary dictionary];
-            for (NSString *propertyname in [[self class] propertyOfSelf]) {
-                NSString *objStr = [resultSet stringForColumn:propertyname];
-                [param setObject:objStr == nil ? @"":objStr forKey:propertyname];
+            
+            id object = [[[self class]alloc]init];
+            for (NSString *propertyname in [[self class] propertyOfSelf])
+            {
+                NSString *objStr = [[resultSet stringForColumn:propertyname]length] == 0 ? @"" :[resultSet stringForColumn:propertyname];
+                [object setPropertyWithName:propertyname object:objStr];
             }
-            [param setObject:[resultSet stringForColumn:@"primaryID"] forKey:@"primaryID"];
-            [params addObject:[[self class] yy_modelWithJSON:param]];
+            [object setPropertyWithName:@"primaryID" object:[resultSet stringForColumn:@"primaryID"]];
+            [params addObject:object];
         }
         
     }

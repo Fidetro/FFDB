@@ -7,7 +7,7 @@
 //
 
 #import "NSObject+FIDProperty.h"
-#import <objc/runtime.h>
+
 
 @implementation NSObject (FIDProperty)
 
@@ -16,12 +16,19 @@
     unsigned int count = 0;
     Ivar *ivarList = class_copyIvarList(self, &count);
     NSMutableArray *propertyNames = [NSMutableArray array];
-    for (int i = 0; i < count; i++) {
+    for (int i = 0; i < count; i++)
+    {
         Ivar ivar = ivarList[i];
         NSString *name = [NSString stringWithUTF8String:ivar_getName(ivar)];
-        
-        NSString *key = [name substringFromIndex:1];
-        
+        NSString *key;
+        if ([[name substringToIndex:1] isEqualToString:@"_"])
+        {
+            key = [name substringFromIndex:1];
+        }
+        else
+        {
+            key = [name substringFromIndex:0];
+        }
         [propertyNames addObject:key];
     }
     free(ivarList);
@@ -29,7 +36,8 @@
     return [propertyNames copy];
 }
 
-- (NSArray *)getPublicObject{
+- (NSArray *)getPublicObject
+{
     
     NSMutableArray *objectArray = [NSMutableArray array];
     unsigned int outCount;
@@ -39,32 +47,40 @@
         
         [objectArray addObject:object_getIvar(self, ivar)];
     }
-    
     return [objectArray copy];
 }
 
-- (NSDictionary *)modelToDictionary{
+- (NSDictionary *)modelToDictionary
+{
     NSArray *propertyNames = [[self class] propertyOfSelf];
     NSMutableDictionary *objectParams = [NSMutableDictionary dictionary];
     
-    for (NSString *propertyName in propertyNames) {
+    for (NSString *propertyName in propertyNames)
+    {
         
-        if ([[self sendGetMethodWithPropertyName:propertyName] class] == nil) {
+        if ([[self sendGetMethodWithPropertyName:propertyName] class] == nil)
+        {
             [objectParams setObject:@"" forKey:propertyName];
-        }else
+        }
+        else
+        {
             [objectParams setObject:[self sendGetMethodWithPropertyName:propertyName] forKey:propertyName];
+        }
     }
     
     return [objectParams copy];
 }
 
-- (NSDictionary *)modelToDictionaryHaveNilProperty{
+- (NSDictionary *)modelToDictionaryHaveNilProperty
+{
     NSArray *propertyNames = [[self class] propertyOfSelf];
     NSMutableDictionary *objectParams = [NSMutableDictionary dictionary];
     
-    for (NSString *propertyName in propertyNames) {
+    for (NSString *propertyName in propertyNames)
+    {
         
-        if ([[self sendGetMethodWithPropertyName:propertyName] class] == nil) {
+        if ([[self sendGetMethodWithPropertyName:propertyName] class] == nil)
+        {
             continue;
         }
         
@@ -74,31 +90,43 @@
     return [objectParams copy];
 }
 
-- (NSArray *)modelToArray{
+- (NSArray *)modelToArray
+{
     NSArray *propertyNames = [[self class] propertyOfSelf];
     NSMutableArray *objectArray = [NSMutableArray array];
     
-    for (NSString *propertyName in propertyNames) {
+    for (NSString *propertyName in propertyNames)
+    {
         
-        if ([[self sendGetMethodWithPropertyName:propertyName] class] == nil) {
+        if ([[self sendGetMethodWithPropertyName:propertyName] class] == nil)
+        {
             [objectArray addObject:@""];
-        }else
+        }
+        else
+        {
         [objectArray addObject:[self sendGetMethodWithPropertyName:propertyName]];
+        }
     }
     
     return [objectArray copy];
 }
 
-- (NSDictionary *)modelToArrayHaveNilProperty{
+- (NSDictionary *)modelToArrayHaveNilProperty
+{
     NSArray *propertyNames = [[self class] propertyOfSelf];
     NSMutableArray *objectArray = [NSMutableArray array];
     
-    for (NSString *propertyName in propertyNames) {
+    for (NSString *propertyName in propertyNames)
+    {
         
-        if ([[self sendGetMethodWithPropertyName:propertyName] class] == nil) {
+        if ([[self sendGetMethodWithPropertyName:propertyName] class] == nil)
+        {
             continue;
-        }else
+        }
+        else
+        {
             [objectArray addObject:[self sendGetMethodWithPropertyName:propertyName]];
+        }
     }
     
     return [objectArray copy];
