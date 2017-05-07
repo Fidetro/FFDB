@@ -7,7 +7,7 @@
 
 
 ## 支持使用CocoaPod
-pod 'FFDB’,’~>1.0.7’
+pod 'FFDB’,’~>1.0.8’
 pod search FFDB如果没有找到，pod setup之后就ok了
 
 如果不使用CocoaPod，请导入FMDB，并且在target的Linked Frameworks and Libraries导入
