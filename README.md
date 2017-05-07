@@ -7,10 +7,10 @@
 
 
 ## 支持使用CocoaPod
-pod 'FFDB’,’~>1.0.4’
+pod 'FFDB’,’~>1.0.7’
 pod search FFDB如果没有找到，pod setup之后就ok了
 
-如果不使用CocoaPod，请导入YYModel和FMDB，并且在target的Linked Frameworks and Libraries导入
+如果不使用CocoaPod，请导入FMDB，并且在target的Linked Frameworks and Libraries导入
 libsqlite3.0.tbd
 
 ![image](https://github.com/Fidetro/FFDB/blob/master/src/1.png)
