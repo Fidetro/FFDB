@@ -107,12 +107,31 @@ NSString *const kDatabaseHeadname = @"FID";
         if (index == 0)
         {
             values = [NSString stringWithFormat:@"%@%@='%@'",values,propertyname,[self getIvarWithName:propertyname]];
-            continue;
         }
-        
+        else
+        {
         values = [NSString stringWithFormat:@"%@,%@='%@'",values,propertyname,[self getIvarWithName:propertyname]];
+        }
     }
     
+    return [FIDDataBaseModel executeUpdateWithSqlstatement:[NSString stringWithFormat:@"update `%@` set  %@ where primaryID = '%@'",[[self class] getTableName],values,self.primaryID]];
+}
+
+- (BOOL)updateObjectWithColumns:(NSArray *)columns
+{
+    NSString *values = [NSString string];
+    for (NSInteger index = 0; index < columns.count; index++)
+    {
+        NSString *column = columns[index];
+        if (index == 0)
+        {
+            values = [NSString stringWithFormat:@"%@%@='%@'",values,column,[self getIvarWithName:column]];
+        }
+        else
+        {
+            values = [NSString stringWithFormat:@"%@,%@='%@'",values,column,[self getIvarWithName:column]];
+        }
+    }
     return [FIDDataBaseModel executeUpdateWithSqlstatement:[NSString stringWithFormat:@"update `%@` set  %@ where primaryID = '%@'",[[self class] getTableName],values,self.primaryID]];
 }
 
@@ -162,7 +181,8 @@ NSString *const kDatabaseHeadname = @"FID";
     FMDatabase *database = [FIDDataBaseModel getDatabase];
     if ([database open])
     {
-        for (NSString *propertyname in [[self class]propertyOfSelf]) {
+        for (NSString *propertyname in [[self class]propertyOfSelf])
+        {
             if (![database columnExists:propertyname inTableWithName:tablename]) {
                 [[self class]executeUpdateWithSqlstatement:[NSString stringWithFormat:@"alter table `%@` add %@ text",tablename,propertyname]];
             }
@@ -176,10 +196,12 @@ NSString *const kDatabaseHeadname = @"FID";
     if ([NSStringFromClass([self class])isEqualToString:@"FIDDataBaseModel"])
     {
         return;
-    }else
+    }
+    else
     {
         NSString *tableKey = [NSString string];
-        for (NSInteger index = 0; index < [[[self class]propertyOfSelf]count]; index++) {
+        for (NSInteger index = 0; index < [[[self class]propertyOfSelf]count]; index++)
+        {
             NSString *propertyname = [[self class]propertyOfSelf][index];
             if (index == 0)
             {
@@ -203,7 +225,8 @@ NSString *const kDatabaseHeadname = @"FID";
         {
             obj = @"";
         }
-    }else if (obj == nil)
+    }
+    else if (obj == nil)
     {
         obj = @"";
     };

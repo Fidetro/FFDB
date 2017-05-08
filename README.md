@@ -4,13 +4,13 @@
 - [适合在什么地方使用以及优势](#适合在什么地方使用以及优势)
 - [怎么使用？](#怎么使用？)
 - [补充](#补充)
-
+- [Pod版本更新说明](#Pod版本更新说明)
 
 ## 支持使用CocoaPod
-pod 'FFDB’,’~>1.0.4’
+pod 'FFDB’,’~>1.0.9’
 pod search FFDB如果没有找到，pod setup之后就ok了
 
-如果不使用CocoaPod，请导入YYModel和FMDB，并且在target的Linked Frameworks and Libraries导入
+如果不使用CocoaPod，请导入FMDB，并且在target的Linked Frameworks and Libraries导入
 libsqlite3.0.tbd
 
 ![image](https://github.com/Fidetro/FFDB/blob/master/src/1.png)
@@ -161,6 +161,15 @@ Person *person = [personArray lastObject];
 获取类在FMDB对应的表名
 [Class getTableName];
 ```
+
+<h2 id="Pod版本更新说明">Pod版本更新说明</h2>
+### 1.0.9
+1. 新增updateObjectWithColumns方法，可以根据需要更新的字段更新，而不会像updateObject方法一样更新所有字段
+
+### 1.0.8
+1. 修复通过objc_allocateClassPair创建的类，查询的对象无法正确的set属性
+2. 移除YYModel
+
 
 GitHub有个比较简单的使用Demo，有问题可以通过Issue我
 

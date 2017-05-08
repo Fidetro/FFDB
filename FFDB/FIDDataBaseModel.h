@@ -75,6 +75,14 @@ extern NSString *const kDatabaseHeadname;
  */
 - (BOOL)updateObject;
 
+
+/**
+ 根据字段更新
+
+ @param columns 需要更新的字段
+ @return 返回是否成功
+ */
+- (BOOL)updateObjectWithColumns:(NSArray *)columns;
 /**
  获取FMDatabase对象
  
