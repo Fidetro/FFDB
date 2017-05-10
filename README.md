@@ -164,6 +164,16 @@ Person *person = [personArray lastObject];
 
 <h2 id="Pod版本更新说明">Pod版本更新说明</h2>
 
+### 1.1.0
+1. 新增更新的方法updateObjectWithBlock:(void(^)())update_block
+```
+[person updateObjectWithBlock:^{
+    person.name = @"newname";
+}];
+```
+block里面做了KVO，会对有变化的值进行update，对比起updateObject方法，效率会更高
+
+
 ### 1.0.9
 1. 新增updateObjectWithColumns方法，可以根据需要更新的字段更新，而不会像updateObject方法一样更新所有字段
 
