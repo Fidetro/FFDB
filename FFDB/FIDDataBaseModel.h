@@ -10,7 +10,7 @@
 #import <FMDB/FMDB.h>
 #import "NSObject+FIDProperty.h"
 
-extern NSString *const kDatabaseHeadname;
+
 @interface FIDDataBaseModel : NSObject
 /** 主键id，作为更新的索引，不可以修改 **/
 @property(nonatomic,strong,readonly) NSString *primaryID;
@@ -83,6 +83,15 @@ extern NSString *const kDatabaseHeadname;
  @return 返回是否成功
  */
 - (BOOL)updateObjectWithColumns:(NSArray *)columns;
+
+
+/**
+ 更新对象，相对于updateObject效率会更高
+
+ @param update_block 在block中写需要更新的属性
+ */
+- (void)updateObjectWithBlock:(void(^)())update_block;
+
 /**
  获取FMDatabase对象
  

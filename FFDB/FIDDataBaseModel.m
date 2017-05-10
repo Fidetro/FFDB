@@ -8,6 +8,8 @@
 
 #import "FIDDataBaseModel.h"
 NSString *const kDatabaseHeadname = @"FID";
+NSString const* kUpdateContext = @"kUpdateContext";
+
 @interface FIDDataBaseModel ()
 /** id **/
 @property(nonatomic,strong,readwrite) NSString *primaryID;
@@ -80,8 +82,9 @@ NSString *const kDatabaseHeadname = @"FID";
 {
     NSString *keys = [NSString string];
     NSString *values = [NSString string];
-    for (NSInteger index = 0; index < [[[self class]propertyOfSelf]count]; index++) {
-        NSString *propertyname = [[self class]propertyOfSelf][index];
+    NSArray *propertyNames = [[self class]propertyOfSelf];
+    for (NSInteger index = 0; index < [propertyNames count]; index++) {
+        NSString *propertyname = propertyNames[index];
         if (index == 0)
         {
             keys = [NSString stringWithFormat:@"%@'%@'",keys,propertyname];
@@ -102,8 +105,9 @@ NSString *const kDatabaseHeadname = @"FID";
 - (BOOL)updateObject
 {
     NSString *values = [NSString string];
-    for (NSInteger index = 0; index < [[[self class]propertyOfSelf]count]; index++) {
-        NSString *propertyname = [[self class]propertyOfSelf][index];
+    NSArray *propertyNames = [[self class]propertyOfSelf];
+    for (NSInteger index = 0; index < [propertyNames count]; index++) {
+        NSString *propertyname = propertyNames[index];
         if (index == 0)
         {
             values = [NSString stringWithFormat:@"%@%@='%@'",values,propertyname,[self getIvarWithName:propertyname]];
@@ -133,6 +137,31 @@ NSString *const kDatabaseHeadname = @"FID";
         }
     }
     return [FIDDataBaseModel executeUpdateWithSqlstatement:[NSString stringWithFormat:@"update `%@` set  %@ where primaryID = '%@'",[[self class] getTableName],values,self.primaryID]];
+}
+
+- (void)updateObjectWithBlock:(void(^)())update_block
+{
+    NSArray *propertyNames = [[self class]propertyOfSelf];
+    if (update_block)
+    {
+        for (NSString *propertyName in propertyNames)
+        {
+            [self addObserver:self forKeyPath:propertyName options:NSKeyValueObservingOptionNew|NSKeyValueObservingOptionOld context:&kUpdateContext];
+        }
+        update_block();
+        for (NSString *propertyName in propertyNames)
+        {
+            [self removeObserver:self forKeyPath:propertyName];
+        }
+    }
+}
+
+- (void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary<NSKeyValueChangeKey,id> *)change context:(void *)context
+{
+    if (context == &kUpdateContext)
+    {
+        [self updateObjectWithColumns:@[keyPath]];
+    }
 }
 
 #pragma mark - --------------------------base method--------------------------
@@ -200,9 +229,10 @@ NSString *const kDatabaseHeadname = @"FID";
     else
     {
         NSString *tableKey = [NSString string];
-        for (NSInteger index = 0; index < [[[self class]propertyOfSelf]count]; index++)
+        NSArray *propertyNames = [[self class]propertyOfSelf];
+        for (NSInteger index = 0; index < [propertyNames count]; index++)
         {
-            NSString *propertyname = [[self class]propertyOfSelf][index];
+            NSString *propertyname = propertyNames[index];
             if (index == 0)
             {
                 tableKey = [NSString stringWithFormat:@"%@%@ text",tableKey,propertyname];
