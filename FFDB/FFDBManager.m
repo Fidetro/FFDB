@@ -7,18 +7,44 @@
 //
 
 #import "FFDBManager.h"
+#import "FFDataBaseModel+Sqlite.h"
 
 @implementation FFDBManager
 
-
-+ (FMDatabase *)getDatabase
++ (NSString *)databasePath
 {
     NSDictionary *infoDictionary = [[NSBundle mainBundle] infoDictionary];
     NSString *executableFile = [infoDictionary objectForKey:(NSString *)kCFBundleExecutableKey];
     NSString *datebaseName = [NSString stringWithFormat:@"%@.sqlite",executableFile];
-    FMDatabase *database = [FMDatabase databaseWithPath:[[NSSearchPathForDirectoriesInDomains( NSDocumentDirectory, NSUserDomainMask, YES) lastObject]stringByAppendingPathComponent:datebaseName]];
-    
+    NSString *databasePath = [[NSSearchPathForDirectoriesInDomains( NSDocumentDirectory, NSUserDomainMask, YES) lastObject]stringByAppendingPathComponent:datebaseName];
+    return databasePath;
+}
+
++ (FMDatabase *)database
+{
+
+    FMDatabase *database = [FMDatabase databaseWithPath:[FFDBManager databasePath]];
     return database;
+}
+
++ (void)insertObjectList:(NSArray<FFDataBaseModel *> *)objectList
+{
+    FMDatabaseQueue *queue = [FMDatabaseQueue databaseQueueWithPath:[FFDBManager databasePath]];
+//    [queue inDatabase:^(FMDatabase *db) {
+//        for (FFDataBaseModel *dbModel in objectList)
+//        {
+//            [db executeUpdateWithSqlstatement:[dbModel insertObjectSqlstatement]];
+//        }
+//    }];
+    [queue inTransaction:^(FMDatabase *db, BOOL *rollback) {
+        
+        for (FFDataBaseModel *dbModel in objectList)
+        {
+            NSString *sql = [dbModel insertObjectSqlstatement];
+            BOOL res = [db executeUpdate:sql];
+
+        }
+    }];
 }
 
 @end

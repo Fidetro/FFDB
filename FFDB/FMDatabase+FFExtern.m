@@ -12,7 +12,6 @@
 
 - (BOOL)executeUpdateWithSqlstatement:(NSString *)sqlstatement
 {
-    
     BOOL update = NO;
     if ([self open])
     {

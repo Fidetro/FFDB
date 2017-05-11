@@ -10,9 +10,11 @@
 #import <FMDB/FMDB.h>
 #import "FFDBManager.h"
 #import "NSObject+FIDProperty.h"
-//#import "FMDatabase+FFExtern.h"
 
-@interface FIDDataBaseModel : NSObject
+extern NSString *const kDatabaseHeadname;
+
+
+@interface FFDataBaseModel : NSObject
 /** 主键id，作为更新的索引，不可以修改 **/
 @property(nonatomic,strong,readonly) NSString *primaryID;
 

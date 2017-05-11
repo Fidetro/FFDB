@@ -6,4 +6,4 @@
 //  Copyright © 2017年 Fidetro. All rights reserved.
 //
 
-#import "FIDDataBaseModel.h"
+#import "FFDataBaseModel.h"

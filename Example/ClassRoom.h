@@ -6,10 +6,11 @@
 //  Copyright © 2017年 Fidetro. All rights reserved.
 //
 
-#import "FIDDataBaseModel.h"
+#import "FFDataBaseModel.h"
 
-@interface ClassRoom : FIDDataBaseModel
+@interface ClassRoom : FFDataBaseModel
 /** classroom name **/
 @property(nonatomic,copy) NSString *name;
-
+/** number **/
+@property(nonatomic,copy) NSString *number;
 @end

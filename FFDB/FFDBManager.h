@@ -10,8 +10,12 @@
 #import <FMDB/FMDB.h>
 #import "FMDatabase+FFExtern.h"
 
+@class FFDataBaseModel;
 
 @interface FFDBManager : NSObject
 
-+ (FMDatabase *)getDatabase;
++ (FMDatabase *)database;
+
++ (void)insertObjectList:(NSArray <FFDataBaseModel *>*)objectList;
+
 @end
