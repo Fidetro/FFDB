@@ -8,8 +8,9 @@
 
 #import <Foundation/Foundation.h>
 #import <FMDB/FMDB.h>
+#import "FFDBManager.h"
 #import "NSObject+FIDProperty.h"
-
+//#import "FMDatabase+FFExtern.h"
 
 @interface FIDDataBaseModel : NSObject
 /** 主键id，作为更新的索引，不可以修改 **/

@@ -71,9 +71,9 @@ NSString const* kUpdateContext = @"kUpdateContext";
 {
     if ([format length] != 0)
     {
-        return [FIDDataBaseModel executeUpdateWithSqlstatement:[NSString stringWithFormat:@"delete from `%@` %@",[[self class] getTableName],format]];
+        return [[FIDDataBaseModel getDatabase] executeUpdateWithSqlstatement:[NSString stringWithFormat:@"delete from `%@` %@",[[self class] getTableName],format]];
     }else{
-        return [FIDDataBaseModel executeUpdateWithSqlstatement:[NSString stringWithFormat:@"delete from `%@`",[[self class] getTableName]]];
+        return [[FIDDataBaseModel getDatabase] executeUpdateWithSqlstatement:[NSString stringWithFormat:@"delete from `%@`",[[self class] getTableName]]];
     }
     
 }
@@ -83,30 +83,37 @@ NSString const* kUpdateContext = @"kUpdateContext";
     NSString *keys = [NSString string];
     NSString *values = [NSString string];
     NSArray *propertyNames = [[self class]propertyOfSelf];
-    for (NSInteger index = 0; index < [propertyNames count]; index++) {
+    for (NSInteger index = 0; index < [propertyNames count]; index++)
+    {
         NSString *propertyname = propertyNames[index];
         if (index == 0)
         {
             keys = [NSString stringWithFormat:@"%@'%@'",keys,propertyname];
             values = [NSString stringWithFormat:@"%@'%@'",values,[self getIvarWithName:propertyname]];
-            continue;
+            
         }
+        else
+        {
         keys = [NSString stringWithFormat:@"%@,'%@'",keys,propertyname];
         values = [NSString stringWithFormat:@"%@,'%@'",values,[self getIvarWithName:propertyname]];
+        }
     }
-    return [FIDDataBaseModel executeUpdateWithSqlstatement:[NSString stringWithFormat:@"insert into `%@` (%@) values(%@) ",[[self class] getTableName],keys,values]];
+    NSString *sqlstatement = [NSString stringWithFormat:@"insert into `%@` (%@) values(%@) ",[[self class] getTableName],keys,values];
+    return [[FIDDataBaseModel getDatabase] executeUpdateWithSqlstatement:sqlstatement];
 }
+
 
 + (BOOL)updateObjectPredicateWithFormat:(NSString *)format
 {
-    return [FIDDataBaseModel executeUpdateWithSqlstatement:[NSString stringWithFormat:@"update `%@` %@",[[self class] getTableName],format]];
+    return [[FIDDataBaseModel getDatabase] executeUpdateWithSqlstatement:[NSString stringWithFormat:@"update `%@` %@",[[self class] getTableName],format]];
 }
 
 - (BOOL)updateObject
 {
     NSString *values = [NSString string];
     NSArray *propertyNames = [[self class]propertyOfSelf];
-    for (NSInteger index = 0; index < [propertyNames count]; index++) {
+    for (NSInteger index = 0; index < [propertyNames count]; index++)
+    {
         NSString *propertyname = propertyNames[index];
         if (index == 0)
         {
@@ -118,7 +125,7 @@ NSString const* kUpdateContext = @"kUpdateContext";
         }
     }
     
-    return [FIDDataBaseModel executeUpdateWithSqlstatement:[NSString stringWithFormat:@"update `%@` set  %@ where primaryID = '%@'",[[self class] getTableName],values,self.primaryID]];
+    return [[FIDDataBaseModel getDatabase] executeUpdateWithSqlstatement:[NSString stringWithFormat:@"update `%@` set  %@ where primaryID = '%@'",[[self class] getTableName],values,self.primaryID]];
 }
 
 - (BOOL)updateObjectWithColumns:(NSArray *)columns
@@ -136,7 +143,7 @@ NSString const* kUpdateContext = @"kUpdateContext";
             values = [NSString stringWithFormat:@"%@,%@='%@'",values,column,[self getIvarWithName:column]];
         }
     }
-    return [FIDDataBaseModel executeUpdateWithSqlstatement:[NSString stringWithFormat:@"update `%@` set  %@ where primaryID = '%@'",[[self class] getTableName],values,self.primaryID]];
+    return [[FIDDataBaseModel getDatabase] executeUpdateWithSqlstatement:[NSString stringWithFormat:@"update `%@` set  %@ where primaryID = '%@'",[[self class] getTableName],values,self.primaryID]];
 }
 
 - (void)updateObjectWithBlock:(void(^)())update_block
@@ -171,27 +178,16 @@ NSString const* kUpdateContext = @"kUpdateContext";
  @param sqlstatement sqlite语句
  @return 返回是否更新成功
  */
-+ (BOOL)executeUpdateWithSqlstatement:(NSString *)sqlstatement
-{
-    FMDatabase *database = [FIDDataBaseModel getDatabase];
-    BOOL update = NO;
-    if ([database open])
-    {
-        update =  [database executeUpdate:sqlstatement];
-    }
-    [database close];
-    return update;
-}
+//+ (BOOL)executeUpdateWithSqlstatement:(NSString *)sqlstatement
+//{
+//    FMDatabase *database = [FIDDataBaseModel getDatabase];
+//    return [database executeUpdateWithSqlstatement:sqlstatement];
+//}
 
 
 + (FMDatabase *)getDatabase
 {
-    NSDictionary *infoDictionary = [[NSBundle mainBundle] infoDictionary];
-    NSString *executableFile = [infoDictionary objectForKey:(NSString *)kCFBundleExecutableKey];
-    NSString *datebaseName = [NSString stringWithFormat:@"%@.sqlite",executableFile];
-    FMDatabase *database = [FMDatabase databaseWithPath:[[NSSearchPathForDirectoriesInDomains( NSDocumentDirectory, NSUserDomainMask, YES) lastObject]stringByAppendingPathComponent:datebaseName]];
-    
-    return database;
+    return [FFDBManager getDatabase];
 }
 
 + (NSString *)getTableName
@@ -212,7 +208,8 @@ NSString const* kUpdateContext = @"kUpdateContext";
     {
         for (NSString *propertyname in [[self class]propertyOfSelf])
         {
-            if (![database columnExists:propertyname inTableWithName:tablename]) {
+            if (![database columnExists:propertyname inTableWithName:tablename])
+            {
                 [[self class]executeUpdateWithSqlstatement:[NSString stringWithFormat:@"alter table `%@` add %@ text",tablename,propertyname]];
             }
         }
@@ -240,7 +237,7 @@ NSString const* kUpdateContext = @"kUpdateContext";
             }
             tableKey = [NSString stringWithFormat:@"%@,%@ text",tableKey,propertyname];
         }
-        [FIDDataBaseModel executeUpdateWithSqlstatement:[NSString stringWithFormat:@"create table if  not exists `%@%@` (primaryID integer PRIMARY KEY AUTOINCREMENT,%@)",kDatabaseHeadname,NSStringFromClass([self class]),tableKey]];
+        [[FIDDataBaseModel getDatabase] executeUpdateWithSqlstatement:[NSString stringWithFormat:@"create table if  not exists `%@%@` (primaryID integer PRIMARY KEY AUTOINCREMENT,%@)",kDatabaseHeadname,NSStringFromClass([self class]),tableKey]];
         [[self class]alertColumn];
     }
 }

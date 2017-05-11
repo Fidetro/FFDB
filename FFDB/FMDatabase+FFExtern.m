@@ -1,0 +1,25 @@
+//
+//  FMDatabase+FFExtern.m
+//  FFDB
+//
+//  Created by Fidetro on 2017/5/11.
+//  Copyright © 2017年 Fidetro. All rights reserved.
+//
+
+#import "FMDatabase+FFExtern.h"
+
+@implementation FMDatabase (FFExtern)
+
+- (BOOL)executeUpdateWithSqlstatement:(NSString *)sqlstatement
+{
+    
+    BOOL update = NO;
+    if ([self open])
+    {
+        update =  [self executeUpdate:sqlstatement];
+    }
+    [self close];
+    return update;
+}
+
+@end

@@ -18,6 +18,8 @@
 		9AB7B9851E940053001D837B /* FIDDataBaseModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 9AB7B9821E940053001D837B /* FIDDataBaseModel.m */; };
 		9AB7B9861E940053001D837B /* NSObject+FIDProperty.m in Sources */ = {isa = PBXBuildFile; fileRef = 9AB7B9841E940053001D837B /* NSObject+FIDProperty.m */; };
 		9AE672111E88020900F2AB6C /* ClassRoom.m in Sources */ = {isa = PBXBuildFile; fileRef = 9AE672101E88020900F2AB6C /* ClassRoom.m */; };
+		9AE94CCC1EC49D3B006CBC5E /* FFDBManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 9AE94CCB1EC49D3B006CBC5E /* FFDBManager.m */; };
+		9AE94CD21EC4A75E006CBC5E /* FMDatabase+FFExtern.m in Sources */ = {isa = PBXBuildFile; fileRef = 9AE94CD11EC4A75E006CBC5E /* FMDatabase+FFExtern.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -61,6 +63,10 @@
 		9AC88E881E9A04B500A25688 /* FFDB.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FFDB.h; sourceTree = "<group>"; };
 		9AE6720F1E88020900F2AB6C /* ClassRoom.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ClassRoom.h; path = ../Example/ClassRoom.h; sourceTree = "<group>"; };
 		9AE672101E88020900F2AB6C /* ClassRoom.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ClassRoom.m; path = ../Example/ClassRoom.m; sourceTree = "<group>"; };
+		9AE94CCA1EC49D3B006CBC5E /* FFDBManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FFDBManager.h; sourceTree = "<group>"; };
+		9AE94CCB1EC49D3B006CBC5E /* FFDBManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FFDBManager.m; sourceTree = "<group>"; };
+		9AE94CD01EC4A75E006CBC5E /* FMDatabase+FFExtern.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "FMDatabase+FFExtern.h"; sourceTree = "<group>"; };
+		9AE94CD11EC4A75E006CBC5E /* FMDatabase+FFExtern.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "FMDatabase+FFExtern.m"; sourceTree = "<group>"; };
 		CC342B4CDF9D60DDBF2363A2 /* Pods-FFDB.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FFDB.release.xcconfig"; path = "Pods/Target Support Files/Pods-FFDB/Pods-FFDB.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -151,6 +157,10 @@
 			isa = PBXGroup;
 			children = (
 				9AC88E881E9A04B500A25688 /* FFDB.h */,
+				9AE94CD01EC4A75E006CBC5E /* FMDatabase+FFExtern.h */,
+				9AE94CD11EC4A75E006CBC5E /* FMDatabase+FFExtern.m */,
+				9AE94CCA1EC49D3B006CBC5E /* FFDBManager.h */,
+				9AE94CCB1EC49D3B006CBC5E /* FFDBManager.m */,
 				9AB7B9811E940053001D837B /* FIDDataBaseModel.h */,
 				9AB7B9821E940053001D837B /* FIDDataBaseModel.m */,
 				9AB7B9831E940053001D837B /* NSObject+FIDProperty.h */,
@@ -365,10 +375,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				9AE94CCC1EC49D3B006CBC5E /* FFDBManager.m in Sources */,
 				9AB7B9801E94003C001D837B /* main.m in Sources */,
 				9A32CAAE1E82C58A0097324D /* ClassRoomViewController.m in Sources */,
 				9AB7B9861E940053001D837B /* NSObject+FIDProperty.m in Sources */,
 				9AB7B9851E940053001D837B /* FIDDataBaseModel.m in Sources */,
+				9AE94CD21EC4A75E006CBC5E /* FMDatabase+FFExtern.m in Sources */,
 				9A32CAAB1E82C58A0097324D /* AppDelegate.m in Sources */,
 				9AE672111E88020900F2AB6C /* ClassRoom.m in Sources */,
 			);
