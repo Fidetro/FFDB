@@ -22,29 +22,10 @@
 
 + (FMDatabase *)database
 {
-
     FMDatabase *database = [FMDatabase databaseWithPath:[FFDBManager databasePath]];
     return database;
 }
 
-+ (void)insertObjectList:(NSArray<FFDataBaseModel *> *)objectList
-{
-    FMDatabaseQueue *queue = [FMDatabaseQueue databaseQueueWithPath:[FFDBManager databasePath]];
-//    [queue inDatabase:^(FMDatabase *db) {
-//        for (FFDataBaseModel *dbModel in objectList)
-//        {
-//            [db executeUpdateWithSqlstatement:[dbModel insertObjectSqlstatement]];
-//        }
-//    }];
-    [queue inTransaction:^(FMDatabase *db, BOOL *rollback) {
-        
-        for (FFDataBaseModel *dbModel in objectList)
-        {
-            NSString *sql = [dbModel insertObjectSqlstatement];
-            BOOL res = [db executeUpdate:sql];
 
-        }
-    }];
-}
 
 @end

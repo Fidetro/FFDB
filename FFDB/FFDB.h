@@ -7,3 +7,6 @@
 //
 
 #import "FFDataBaseModel.h"
+#import "FFDBLog.h"
+#import "FFDBTransaction.h"
+#import "FFDBManager.h"

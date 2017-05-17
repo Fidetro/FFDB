@@ -19,9 +19,9 @@ extern NSString *const kDatabaseHeadname;
 @property(nonatomic,strong,readonly) NSString *primaryID;
 
 /**
- 查询子类所有对象
+ 查询类所有对象
  
- @return 返回子类保存的所有对象
+ @return 返回类保存的所有对象
  */
 + (NSArray *)selectAllObject;
 
@@ -55,14 +55,12 @@ extern NSString *const kDatabaseHeadname;
  */
 + (BOOL)deleteObjectPredicateWithFormat:(NSString *)format;
 
-
 /**
  插入对象
  
  @return 返回是否成功
  */
 - (BOOL)insertObject;
-
 
 /**
  根据规则更新对象
@@ -71,6 +69,7 @@ extern NSString *const kDatabaseHeadname;
  @return 返回是否成功
  */
 + (BOOL)updateObjectPredicateWithFormat:(NSString *)format;
+
 /**
  更新对象
 

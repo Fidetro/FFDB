@@ -14,8 +14,10 @@
 
 @interface FFDBManager : NSObject
 
++ (NSString *)databasePath;
+
 + (FMDatabase *)database;
 
-+ (void)insertObjectList:(NSArray <FFDataBaseModel *>*)objectList;
+
 
 @end

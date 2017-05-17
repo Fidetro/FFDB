@@ -8,12 +8,15 @@
 
 /* Begin PBXBuildFile section */
 		3CEBC4B4DB9F0DF83198E3B3 /* Pods_FFDB.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9411C3043211AE7CA790CB34 /* Pods_FFDB.framework */; };
+		9A0E9E751ECA04EE008B9A8A /* FFDBSafeOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A0E9E741ECA04EE008B9A8A /* FFDBSafeOperation.m */; };
 		9A32CAAB1E82C58A0097324D /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A32CAAA1E82C58A0097324D /* AppDelegate.m */; };
 		9A32CAAE1E82C58A0097324D /* ClassRoomViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A32CAAD1E82C58A0097324D /* ClassRoomViewController.m */; };
 		9A32CAB11E82C58A0097324D /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9A32CAAF1E82C58A0097324D /* Main.storyboard */; };
 		9A32CAB31E82C58A0097324D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9A32CAB21E82C58A0097324D /* Assets.xcassets */; };
 		9A32CAB61E82C58A0097324D /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9A32CAB41E82C58A0097324D /* LaunchScreen.storyboard */; };
 		9A32CB041E82C69D0097324D /* libsqlite3.0.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 9A32CB031E82C69D0097324D /* libsqlite3.0.tbd */; };
+		9AB169861EC5FCAE00DDC817 /* FFDBLog.m in Sources */ = {isa = PBXBuildFile; fileRef = 9AB169851EC5FCAE00DDC817 /* FFDBLog.m */; };
+		9AB169891EC6087E00DDC817 /* FFDBTransaction.m in Sources */ = {isa = PBXBuildFile; fileRef = 9AB169881EC6087E00DDC817 /* FFDBTransaction.m */; };
 		9AB7B9801E94003C001D837B /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 9AB7B97F1E94003C001D837B /* main.m */; };
 		9AB7B9851E940053001D837B /* FFDataBaseModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 9AB7B9821E940053001D837B /* FFDataBaseModel.m */; };
 		9AB7B9861E940053001D837B /* NSObject+FIDProperty.m in Sources */ = {isa = PBXBuildFile; fileRef = 9AB7B9841E940053001D837B /* NSObject+FIDProperty.m */; };
@@ -43,6 +46,8 @@
 /* Begin PBXFileReference section */
 		1A7F6BC5AE4C00DBDD5385CE /* Pods-FFDB.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FFDB.debug.xcconfig"; path = "Pods/Target Support Files/Pods-FFDB/Pods-FFDB.debug.xcconfig"; sourceTree = "<group>"; };
 		9411C3043211AE7CA790CB34 /* Pods_FFDB.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_FFDB.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		9A0E9E731ECA04EE008B9A8A /* FFDBSafeOperation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FFDBSafeOperation.h; sourceTree = "<group>"; };
+		9A0E9E741ECA04EE008B9A8A /* FFDBSafeOperation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FFDBSafeOperation.m; sourceTree = "<group>"; };
 		9A32CAA31E82C58A0097324D /* FFDB.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FFDB.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		9A32CAA91E82C58A0097324D /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = AppDelegate.h; path = ../Example/AppDelegate.h; sourceTree = "<group>"; };
 		9A32CAAA1E82C58A0097324D /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = AppDelegate.m; path = ../Example/AppDelegate.m; sourceTree = "<group>"; };
@@ -55,6 +60,10 @@
 		9A32CAC71E82C58A0097324D /* FFDBUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = FFDBUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		9A32CB031E82C69D0097324D /* libsqlite3.0.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libsqlite3.0.tbd; path = usr/lib/libsqlite3.0.tbd; sourceTree = SDKROOT; };
 		9A755F711E8D78BD00B2A4B5 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = Info.plist; path = ../Example/Info.plist; sourceTree = "<group>"; };
+		9AB169841EC5FCAE00DDC817 /* FFDBLog.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FFDBLog.h; sourceTree = "<group>"; };
+		9AB169851EC5FCAE00DDC817 /* FFDBLog.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FFDBLog.m; sourceTree = "<group>"; };
+		9AB169871EC6087E00DDC817 /* FFDBTransaction.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FFDBTransaction.h; sourceTree = "<group>"; };
+		9AB169881EC6087E00DDC817 /* FFDBTransaction.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FFDBTransaction.m; sourceTree = "<group>"; };
 		9AB7B97F1E94003C001D837B /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = main.m; path = ../Example/main.m; sourceTree = "<group>"; };
 		9AB7B9811E940053001D837B /* FFDataBaseModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FFDataBaseModel.h; sourceTree = "<group>"; };
 		9AB7B9821E940053001D837B /* FFDataBaseModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FFDataBaseModel.m; sourceTree = "<group>"; };
@@ -167,6 +176,12 @@
 				9AE94CD11EC4A75E006CBC5E /* FMDatabase+FFExtern.m */,
 				9AE94CCA1EC49D3B006CBC5E /* FFDBManager.h */,
 				9AE94CCB1EC49D3B006CBC5E /* FFDBManager.m */,
+				9A0E9E731ECA04EE008B9A8A /* FFDBSafeOperation.h */,
+				9A0E9E741ECA04EE008B9A8A /* FFDBSafeOperation.m */,
+				9AB169871EC6087E00DDC817 /* FFDBTransaction.h */,
+				9AB169881EC6087E00DDC817 /* FFDBTransaction.m */,
+				9AB169841EC5FCAE00DDC817 /* FFDBLog.h */,
+				9AB169851EC5FCAE00DDC817 /* FFDBLog.m */,
 				9AB7B9811E940053001D837B /* FFDataBaseModel.h */,
 				9AB7B9821E940053001D837B /* FFDataBaseModel.m */,
 				9AE94CD31EC4B07D006CBC5E /* FFDataBaseModel+Sqlite.h */,
@@ -386,6 +401,9 @@
 				9AE94CD21EC4A75E006CBC5E /* FMDatabase+FFExtern.m in Sources */,
 				9AE94CD51EC4B07D006CBC5E /* FFDataBaseModel+Sqlite.m in Sources */,
 				9A32CAAB1E82C58A0097324D /* AppDelegate.m in Sources */,
+				9A0E9E751ECA04EE008B9A8A /* FFDBSafeOperation.m in Sources */,
+				9AB169891EC6087E00DDC817 /* FFDBTransaction.m in Sources */,
+				9AB169861EC5FCAE00DDC817 /* FFDBLog.m in Sources */,
 				9AE672111E88020900F2AB6C /* ClassRoom.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -535,6 +553,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				DEVELOPMENT_TEAM = J3BJ7G2PUN;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				HEADER_SEARCH_PATHS = "$(SRCROOT)/FFDB";
 				INFOPLIST_FILE = Example/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
@@ -549,6 +568,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				DEVELOPMENT_TEAM = J3BJ7G2PUN;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				HEADER_SEARCH_PATHS = "$(SRCROOT)/FFDB";
 				INFOPLIST_FILE = Example/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";

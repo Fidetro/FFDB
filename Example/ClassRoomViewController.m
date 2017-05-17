@@ -9,7 +9,7 @@
 #import "ClassRoomViewController.h"
 #import "ClassRoom.h"
 #import <mach/mach_time.h>
-
+#import "FFDBSafeOperation.h"
 @interface ClassRoomViewController ()<UITableViewDelegate,UITableViewDataSource>
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
 /** 教室 **/
@@ -32,29 +32,13 @@ CGFloat BNRTimeBlock (void (^block)(void)) {
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    [self insertMoreClassRoom];
 }
 
-- (void)insertMoreClassRoom
-{
-   float time =  BNRTimeBlock(^{
-       NSMutableArray *array = [NSMutableArray array];
-       for (int i = 0; i< 10000; i++) {
-           ClassRoom *room = [[ClassRoom alloc]init];
-           room.name = [NSString stringWithFormat:@"%02d",i];
-//           [room insertObject];
-           [array addObject:room];
-       }
-       [FFDBManager insertObjectList:array];
-    });
-    
-    printf("%lf",time);
-}
 
 - (IBAction)addNewClassRoom:(id)sender
 {
     ClassRoom *classRoom = [[ClassRoom alloc]init];
-//    classRoom.name = @"new room";
+    classRoom.name = @"new room";
     [classRoom insertObject];
     [self selectAndUpdateEvent];
     [self.tableView reloadData];
@@ -83,10 +67,9 @@ CGFloat BNRTimeBlock (void (^block)(void)) {
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
     
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"cell"];
-    if (cell == nil) {
-        
+    if (cell == nil)
+    {
         cell = [[UITableViewCell alloc]initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"cell"];
-        
     }
     
     ClassRoom *classRoom = self.classroomArray[indexPath.row];
@@ -150,7 +133,7 @@ CGFloat BNRTimeBlock (void (^block)(void)) {
 - (NSMutableArray<ClassRoom *> *)classroomArray
 {
     if (!_classroomArray) {
-        
+
         NSArray *dataArray = [ClassRoom selectAllObject];
         
         if (dataArray.count == 0) {
@@ -159,7 +142,7 @@ CGFloat BNRTimeBlock (void (^block)(void)) {
             [classRoom insertObject];
         }
         
-        _classroomArray = [NSMutableArray array];
+        _classroomArray = [NSMutableArray arrayWithArray:dataArray];
     }
     return _classroomArray;
 }
