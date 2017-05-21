@@ -107,7 +107,7 @@ NSArray<Dog *> *dogs = [Dog selectObjectPredicateWithFormat:@"where age < 5 orde
 3. 不需要对数据库进行很复杂的操作；
 4. 通过runtime实现，~~不需要接触到sqlite语句~~(还是要懂一点点的)就能满足增删改查；
 
-<h2 id="怎么使用？如何集成？？">怎么使用？如何集成？</h2>
+<h2 id="怎么使用？如何集成？">怎么使用？如何集成？</h2>
 
 [CocoaPod这里](https://cocoapods.org/pods/FFDB)
 
@@ -155,6 +155,7 @@ Person *person = [personArray lastObject];
 
 <h2 id="1.x和2.x的版本有什么不同？">1.x和2.x的版本有什么不同？</h2>
 因为业务的要求，发现之前设计的并没有把异步的操作考虑进去，去查了一下FMDB的文档，对于异步的操作有特别的说明，需要用到```FMDatabaseQueue``` ,对此对原有的代码进行了重构，同时引入了两个关键的类```FFDBSafeOperation```和```FFDBTransaction```，设计如下：
+
 ![image](https://github.com/Fidetro/FFDB/blob/master/src/3.png)
 
 ```FFDBSafeOperation```负责保证数据库的操作是线程安全的，而```FFDBTransaction```则是对事务操作的封装，在处理数据量大的时候对比起```FFDBSafeOperation```和直接操作```FFDataBaseModel```效率都要高很多。
