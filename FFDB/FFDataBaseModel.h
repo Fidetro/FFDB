@@ -5,6 +5,7 @@
 //  Created by Fidetro on 2017/3/22.
 //  Copyright © 2017年 Fidetro. All rights reserved.
 //
+//  https://github.com/Fidetro/FFDB
 
 #import <Foundation/Foundation.h>
 #import <FMDB/FMDB.h>
