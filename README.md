@@ -154,16 +154,18 @@ Person *person = [personArray lastObject];
 ```
 
 <h2 id="1.x和2.x的版本有什么不同？">1.x和2.x的版本有什么不同？</h2>
-因为业务的要求，发现之前设计的并没有把异步的操作考虑进去，去查了一下FMDB的文档，对于异步的操作有特别的说明，需要用到```FMDatabaseQueue``` ,对此对原有的代码进行了重构，同时引入了两个关键的类```FFDBSafeOperation```和```FFDBTransaction```，设计如下：
+因为业务的要求，发现之前设计的并没有把异步的操作考虑进去，去查了一下FMDB的文档，对于异步的操作有特别的说明，需要用到`FMDatabaseQueue` ,对此对原有的代码进行了重构，同时引入了两个关键的类`FFDBSafeOperation`和`FFDBTransaction`，设计如下：
 
 ![image](https://github.com/Fidetro/FFDB/blob/master/src/3.png)
 
-```FFDBSafeOperation```负责保证数据库的操作是线程安全的，而```FFDBTransaction```则是对事务操作的封装，在处理数据量大的时候对比起```FFDBSafeOperation```和直接操作```FFDataBaseModel```效率都要高很多。
+`FFDBSafeOperation`负责保证数据库的操作是线程安全的
+`FFDBTransaction`则是对事务操作的封装，在处理数据量大的时候对比起`FFDBSafeOperation`和直接操作`FFDataBaseModel`效率都要高很多。
 
 <h2 id="补充">补充</h2>
 1. 所有字段都是默认是TEXT，在后面的版本会增加自定义字段类型这个功能;
 2. 所有继承FFDataBaseModel的对象，在插入数据库后，都会自带一个primaryID作为唯一标识，同时这是一个自增的字段。
 3. 目前FFDB只是提供了简单的增删改查接口，如果要使用目前接口没办法满足的功能，可以通过以下几个方法进行扩充的操作；
+
 ```
 获取FMDatabase对象
 [FFDBManager database];
