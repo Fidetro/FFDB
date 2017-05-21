@@ -154,6 +154,7 @@ Person *person = [personArray lastObject];
 ```
 
 <h2 id="1.x和2.x的版本有什么不同？">1.x和2.x的版本有什么不同？</h2>
+
 因为业务的要求，发现之前设计的并没有把异步的操作考虑进去，去查了一下FMDB的文档，对于异步的操作有特别的说明，需要用到`FMDatabaseQueue` ,对此对原有的代码进行了重构，同时引入了两个关键的类`FFDBSafeOperation`和`FFDBTransaction`，设计如下：
 
 ![image](https://github.com/Fidetro/FFDB/blob/master/src/3.png)
