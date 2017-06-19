@@ -9,6 +9,7 @@
 
 #import "FFDBTransaction.h"
 #import "FFDBLog.h"
+#import "FFDataBaseModel+Sqlite.h"
 @implementation FFDBTransaction
 
 + (NSArray *)selectObjectWithFFDBClass:(Class)dbClass
@@ -22,7 +23,7 @@
     NSMutableArray *objectList = [NSMutableArray array];
     [queue inTransaction:^(FMDatabase *db, BOOL *rollback) {
         FMResultSet *resultSet;
-        resultSet = [db executeQuery:[dbClass selectObjectSqlstatementWithFormat:format]];
+        resultSet = [db executeQuery:[dbClass selectFromClassSQLStatementWithFormat:format]];
         while ([resultSet next])
         {
             
@@ -45,7 +46,7 @@
     [queue inTransaction:^(FMDatabase *db, BOOL *rollback) {
         for (FFDataBaseModel *dbModel in objectList)
         {
-            NSString *sql = [dbModel insertObjectSqlstatement];
+            NSString *sql = [dbModel insertFromClassSQLStatementWithColumns:[[dbModel class]propertyOfSelf]];
             BOOL result = [db executeUpdate:sql];
             if (result == NO)
             {
@@ -63,7 +64,7 @@
     [queue inTransaction:^(FMDatabase *db, BOOL *rollback) {
         for (FFDataBaseModel *dbModel in objectList)
         {
-            NSString *sql = [dbModel updateObjectSqlStatementWithColumns:[[dbModel class]propertyOfSelf]];
+            NSString *sql = [dbModel updateFromClassSQLStatementWithColumns:[[dbModel class]propertyOfSelf]];
             BOOL result = [db executeUpdate:sql];
             if (result == NO)
             {
@@ -91,7 +92,7 @@
     [queue inTransaction:^(FMDatabase *db, BOOL *rollback) {
         for (FFDataBaseModel *dbModel in objectList)
         {
-            NSString *sql = [[dbModel class] deleteObjectSqlstatementWithFormat:[dbModel deleteObjectSqlstatement]];
+            NSString *sql = [[dbModel class] deleteFromSQLStatementWithFormat:[dbModel deleteObjectSqlstatement]];
             BOOL result = [db executeUpdate:sql];
             if (result == NO)
             {
@@ -108,7 +109,7 @@
     FMDatabaseQueue *queue = [FMDatabaseQueue databaseQueueWithPath:[FFDBManager databasePath]];
     __block BOOL result = NO;
     [queue inTransaction:^(FMDatabase *db, BOOL *rollback) {
-        result = [db executeUpdate:[dbClass deleteObjectSqlstatementWithFormat:format]];
+        result = [db executeUpdate:[dbClass deleteFromSQLStatementWithFormat:format]];
     }];
     return result;
 }

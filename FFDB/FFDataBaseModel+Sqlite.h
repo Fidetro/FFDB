@@ -13,49 +13,51 @@
 
 
 /**
- 创建表的SQL语句
+ CREATE TABLE SQL statement
 
- @return 返回SQL语句
+ @return SQL statement String
  */
 + (NSString *)createTableSqlstatement;
 
 /**
- 查询SQL语句
+ SELECT SQL statement
 
- @param format 查询规则
- @return 返回SQL语句
+ @param format Select * from rule
+ @return SQL statement String
  */
-+ (NSString *)selectObjectSqlstatementWithFormat:(NSString *)format;
++ (NSString *)selectFromClassSQLStatementWithFormat:(NSString *)format;
+
 
 /**
- 插入对象的所有属性的SQL语句
-
- @return 返回SQL语句
+ INSERT SQL statement by colums
+ 
+ @param columns Need to insert colums
+ @return SQL statement String
  */
-- (NSString *)insertObjectSqlstatement;
+- (NSString *)insertFromClassSQLStatementWithColumns:(NSArray <NSString *>*)columns;
 
 /**
- 根据字段更新对象的SQL语句
+ UPDATE SQL statement by colums
 
- @param columns 更新的字段
- @return 返回SQL语句
+ @param columns Need to update colums
+ @return SQL statement String
  */
-- (NSString *)updateObjectSqlStatementWithColumns:(NSArray <NSString *>*)columns;
+- (NSString *)updateFromClassSQLStatementWithColumns:(NSArray <NSString *>*)columns;
 
 /**
- 根据对象的所有属性生成SQL语句
+ DELETE SQL statement String
 
- @return 返回SQL语句
+ @return SQL statement String
  */
 - (NSString *)deleteObjectSqlstatement;
 
 /**
- 根据规则删除SQL语句
+ DELETE SQL statement String
 
- @param format 删除规则
- @return 返回SQL语句
+ @param format Delete rule
+ @return SQL statement String
  */
-+ (NSString *)deleteObjectSqlstatementWithFormat:(NSString *)format;
++ (NSString *)deleteFromSQLStatementWithFormat:(NSString *)format;
 
 
 @end

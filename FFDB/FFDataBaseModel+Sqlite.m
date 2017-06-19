@@ -29,7 +29,7 @@
     return sqlstatement;
 }
 
-+ (NSString *)selectObjectSqlstatementWithFormat:(NSString *)format
++ (NSString *)selectFromClassSQLStatementWithFormat:(NSString *)format
 {
     NSString *sqlstatement = @"";
     if ([format length] != 0)
@@ -43,31 +43,32 @@
 }
 
 
-- (NSString *)insertObjectSqlstatement
+
+- (NSString *)insertFromClassSQLStatementWithColumns:(NSArray <NSString *>*)columns
 {
     NSString *keys = [NSString string];
     NSString *values = [NSString string];
-    NSArray *propertyNames = [[self class]propertyOfSelf];
-    for (NSInteger index = 0; index < [propertyNames count]; index++)
+    
+    for (NSInteger index = 0; index < [columns count]; index++)
     {
-        NSString *propertyname = propertyNames[index];
+        NSString *column = columns[index];
         if (index == 0)
         {
-            keys = [NSString stringWithFormat:@"%@'%@'",keys,propertyname];
-            values = [NSString stringWithFormat:@"%@'%@'",values,[self getIvarWithName:propertyname]];
+            keys = [NSString stringWithFormat:@"%@'%@'",keys,column];
+            values = [NSString stringWithFormat:@"%@'%@'",values,[self getIvarWithName:column]];
             
         }
         else
         {
-            keys = [NSString stringWithFormat:@"%@,'%@'",keys,propertyname];
-            values = [NSString stringWithFormat:@"%@,'%@'",values,[self getIvarWithName:propertyname]];
+            keys = [NSString stringWithFormat:@"%@,'%@'",keys,column];
+            values = [NSString stringWithFormat:@"%@,'%@'",values,[self getIvarWithName:column]];
         }
     }
     NSString *sqlstatement = [NSString stringWithFormat:@"insert into `%@` (%@) values(%@) ",[[self class] getTableName],keys,values];
     return sqlstatement;
 }
 
-- (NSString *)updateObjectSqlStatementWithColumns:(NSArray <NSString *>*)columns
+- (NSString *)updateFromClassSQLStatementWithColumns:(NSArray <NSString *>*)columns
 {
     NSString *values = [NSString string];
     for (NSInteger index = 0; index < columns.count; index++)
@@ -91,7 +92,7 @@
     return [NSString stringWithFormat:@"where primaryID = '%@'",self.primaryID];
 }
 
-+ (NSString *)deleteObjectSqlstatementWithFormat:(NSString *)format
++ (NSString *)deleteFromSQLStatementWithFormat:(NSString *)format
 {
     if ([format length] == 0)
     {

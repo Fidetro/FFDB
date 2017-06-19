@@ -8,63 +8,65 @@
 //  https://github.com/Fidetro/FFDB
 
 #import <Foundation/Foundation.h>
-#import "FFDataBaseModel+Sqlite.h"
+@class FFDataBaseModel;
 @interface FFDBSafeOperation : NSObject
 
 
 /**
- 查询对象
+ select all object
 
- @param dbClass 需要查询到类
- @return 返回类保存的所有对象
+ @param dbClass  by class
+ @return class objects
  */
-+ (NSArray *)selectObjectWithFFDBClass:(Class)dbClass;
++ (NSArray <FFDataBaseModel *>*)selectObjectWithFFDBClass:(Class)dbClass;
 
 /**
- 根据规则查询对象
+ select object by format
 
- @param dbClass 需要查询到类
- @param format 规则 example: where name = 'fidetro' and age = '21'
- @return 返回类保存的所有对象
+ @param dbClass by class
+ @param format Like sqlstatement rule, example: where name = 'fidetro' and age = '21'
+ @return class objects
  */
-+ (NSArray *)selectObjectWithFFDBClass:(Class)dbClass format:(NSString *)format;
++ (NSArray <FFDataBaseModel *>*)selectObjectWithFFDBClass:(Class)dbClass format:(NSString *)format;
+
 /**
- 插入对象
+ insert object
  
- @param objectList 需要插入的对象数组
+ @param objectList Need to insert the array of objects
  */
 + (void)insertObjectList:(NSArray <FFDataBaseModel *>*)objectList;
+
 /**
- 更新对象
+ update object
  
- @param objectList 需要更新的对象数组
+ @param objectList Need to update the array of objects
  */
 + (void)updateObjectList:(NSArray<FFDataBaseModel *> *)objectList;
 
 
 /**
- 根据规则更新对象
+ update object by format
 
- @param dbClass 需要更新的类
- @param format 规则 example: set age = '24' where name = 'fidetro'
- @return 返回是否成功
+ @param dbClass Need to update the class
+ @param format Like sqlstatement rule, example: set age = '24' where name = 'fidetro'
+ @return update successfully
  */
 + (BOOL)updateObjectWithFFDBClass:(Class)dbClass format:(NSString *)format;
 
 /**
- 删除对象
+ delete object
  
- @param objectList 需要删除的对象数组
+ @param objectList Need to delete the array of objects
  */
 + (void)deleteObjectList:(NSArray<FFDataBaseModel *> *)objectList;
 
 
 /**
- 根据规则删除对象
+ delete object by format
 
- @param dbClass 需要删除的类
- @param format format 规则 example: where name = 'fidetro' and age = '21'
- @return 返回是否成功
+ @param dbClass Need to update the class
+ @param format format Like sqlstatement rule, example: where name = 'fidetro' and age = '21'
+ @return delete successfully
  */
 + (BOOL)deleteObjectWithFFDBClass:(Class)dbClass format:(NSString *)format;
 

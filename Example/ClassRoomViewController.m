@@ -46,7 +46,7 @@ CGFloat BNRTimeBlock (void (^block)(void)) {
 
 - (void)selectAndUpdateEvent
 {
-    NSArray *dataArray = [ClassRoom selectAllObject];
+    NSArray *dataArray = [ClassRoom selectFromClassAllObject];
     self.classroomArray = [NSMutableArray arrayWithArray:dataArray];
 }
 
@@ -134,7 +134,7 @@ CGFloat BNRTimeBlock (void (^block)(void)) {
 {
     if (!_classroomArray) {
 
-        NSArray *dataArray = [ClassRoom selectAllObject];
+        NSArray *dataArray = [ClassRoom selectFromClassAllObject];
         
         if (dataArray.count == 0) {
             ClassRoom *classRoom = [[ClassRoom alloc]init];

@@ -16,96 +16,97 @@ extern NSString *const kDatabaseHeadname;
 
 
 @interface FFDataBaseModel : NSObject
-/** 主键id，作为更新的索引，不可以修改 **/
+/** primary id,use to update **/
 @property(nonatomic,strong,readonly) NSString *primaryID;
 
 /**
- 查询类所有对象
+ select all object from class
  
- @return 返回类保存的所有对象
+ @return class objects
  */
-+ (NSArray *)selectAllObject;
++ (NSArray <FFDataBaseModel *>*)selectFromClassAllObject;
 
 /**
- 根据规则查询
+ select object by format
  
- @param format 规则 example: where name = 'fidetro' and age = '21'
- @return 返回子类符合规则的对象
+ @param format Like sqlstatement rule, example: where name = 'fidetro' and age = '21'
+ @return class objects
  */
-+ (NSArray *)selectObjectPredicateWithFormat:(NSString *)format;
++ (NSArray <FFDataBaseModel *>*)selectFromClassPredicateWithFormat:(NSString *)format;
 
 /**
- 删除所有对象
+ delete all object from class
  
- @return 返回是否成功
+ @return delete successfully
  */
-+ (BOOL)deleteAllObject;
++ (BOOL)deleteFromClassAllObject;
 
 /**
- 删除对象
+ delete object
 
- @return 返回是否成功
+ @return delete successfully
  */
 - (BOOL)deleteObject;
 
 /**
- 根据规则删除对象
+ delete object by format
  
- @param format 规则 example: where name = 'fidetro' and age = '21'
- @return 是否成功
+ @param format Like sqlstatement rule,  example: where name = 'fidetro' and age = '21'
+ @return delete successfully
  */
-+ (BOOL)deleteObjectPredicateWithFormat:(NSString *)format;
++ (BOOL)deleteFromClassPredicateWithFormat:(NSString *)format;
 
 /**
- 插入对象
+ insert object
  
- @return 返回是否成功
+ @return insert successfully
  */
 - (BOOL)insertObject;
 
 /**
- 根据规则更新对象
+ update object by format
 
- @param format 规则 example: set age = '24' where name = 'fidetro'
- @return 返回是否成功
+ @param format Like sqlstatement rule,  example: set age = '24' where name = 'fidetro'
+ @return update successfully
  */
-+ (BOOL)updateObjectPredicateWithFormat:(NSString *)format;
++ (BOOL)updateFromClassPredicateWithFormat:(NSString *)format;
 
 /**
- 更新对象
+ update object for all columns
 
- @return 返回是否成功
+ @return update successfully
  */
 - (BOOL)updateObject;
 
 
 /**
- 根据字段更新
+ update object by columns
 
- @param columns 需要更新的字段
+ @param columns Need to update columns
  @return 返回是否成功
  */
-- (BOOL)updateObjectWithColumns:(NSArray *)columns;
+- (BOOL)updateObjectSetColumns:(NSArray *)columns;
 
 
 /**
- 更新对象，相对于updateObject效率会更高
-
- @param update_block 在block中写需要更新的属性
+ update object by KVO
+ 
+ @param update_block You can set object property into update_block
  */
 - (void)updateObjectWithBlock:(void(^)())update_block;
 
-/**
- 获取FMDatabase对象
- 
- @return FMDatabase对象
- */
-+ (FMDatabase *)getDatabase;
 
 /**
- 获取类在FMDB对应的表名
+ get database
  
- @return 表名
+ @return database
+ */
++ (FMDatabase *)FFDatabase;
+
+/**
+ get class table name
+ 
+ @return table name
  */
 + (NSString *)getTableName;
 

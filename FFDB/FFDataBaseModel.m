@@ -20,18 +20,18 @@ NSString const* kUpdateContext = @"kUpdateContext";
 
 @implementation FFDataBaseModel
 
-+ (NSArray *)selectAllObject
++ (NSArray *)selectFromClassAllObject
 {
-    return [[self class] selectObjectPredicateWithFormat:nil];
+    return [[self class] selectFromClassPredicateWithFormat:nil];
 }
 
-+ (NSArray *)selectObjectPredicateWithFormat:(NSString *)format{
-    FMDatabase *database = [self getDatabase];
++ (NSArray *)selectFromClassPredicateWithFormat:(NSString *)format{
+    FMDatabase *database = [self FFDatabase];
     NSMutableArray *params = [NSMutableArray array];
     if ([database open])
     {
         FMResultSet *resultSet;
-        resultSet = [database executeQuery:[[self class]selectObjectSqlstatementWithFormat:format]];
+        resultSet = [database executeQuery:[[self class]selectFromClassSQLStatementWithFormat:format]];
         while ([resultSet next])
         {
             
@@ -52,41 +52,47 @@ NSString const* kUpdateContext = @"kUpdateContext";
     return [params copy];
 }
 
-+ (BOOL)deleteAllObject
++ (BOOL)deleteFromClassAllObject
 {
-    return [[self class] deleteObjectPredicateWithFormat:nil];
+    return [[self class] deleteFromClassPredicateWithFormat:nil];
 }
 
 - (BOOL)deleteObject
 {
-    return [[self class] deleteObjectPredicateWithFormat:[self deleteObjectSqlstatement]];
+    return [[self class] deleteFromClassPredicateWithFormat:[self deleteObjectSqlstatement]];
 }
 
-+ (BOOL)deleteObjectPredicateWithFormat:(NSString *)format
++ (BOOL)deleteFromClassPredicateWithFormat:(NSString *)format
 {
-    return [[FFDataBaseModel getDatabase] executeUpdateWithSqlstatement:[[self class] deleteObjectSqlstatementWithFormat:format]];
+    return [[FFDataBaseModel FFDatabase] executeUpdateWithSqlstatement:[[self class] deleteFromSQLStatementWithFormat:format]];
 }
 
 - (BOOL)insertObject
 {
-    return [[FFDataBaseModel getDatabase] executeUpdateWithSqlstatement:[self insertObjectSqlstatement]];
+    NSArray *propertyNames = [[self class]propertyOfSelf];
+    return [[FFDataBaseModel FFDatabase] executeUpdateWithSqlstatement:[self insertFromClassSQLStatementWithColumns:propertyNames]];
 }
 
-+ (BOOL)updateObjectPredicateWithFormat:(NSString *)format
+- (BOOL)insertObjectWithColumns:(NSArray *)columns
 {
-    return [[FFDataBaseModel getDatabase] executeUpdateWithSqlstatement:[NSString stringWithFormat:@"update `%@` %@",[[self class] getTableName],format]];
+    return [[FFDataBaseModel FFDatabase] executeUpdateWithSqlstatement:[self insertFromClassSQLStatementWithColumns:columns]];
+}
+
++ (BOOL)updateFromClassPredicateWithFormat:(NSString *)format
+{
+    return [[FFDataBaseModel FFDatabase] executeUpdateWithSqlstatement:[NSString stringWithFormat:@"update `%@` %@",[[self class] getTableName],format]];
 }
 
 - (BOOL)updateObject
 {
     NSArray *propertyNames = [[self class]propertyOfSelf];
-    return [self updateObjectWithColumns:propertyNames];
+    return [self updateObjectSetColumns:propertyNames];
 }
 
-- (BOOL)updateObjectWithColumns:(NSArray *)columns
+- (BOOL)updateObjectSetColumns:(NSArray *)columns
 {
-    NSString *sqlstatement = [self updateObjectSqlStatementWithColumns:columns];
-    return [[FFDataBaseModel getDatabase] executeUpdateWithSqlstatement:sqlstatement];
+    NSString *sqlstatement = [self updateFromClassSQLStatementWithColumns:columns];
+    return [[FFDataBaseModel FFDatabase] executeUpdateWithSqlstatement:sqlstatement];
 }
 
 - (void)updateObjectWithBlock:(void(^)())update_block
@@ -110,13 +116,13 @@ NSString const* kUpdateContext = @"kUpdateContext";
 {
     if (context == &kUpdateContext)
     {
-        [self updateObjectWithColumns:@[keyPath]];
+        [self updateObjectSetColumns:@[keyPath]];
     }
 }
 
 #pragma mark - --------------------------base method--------------------------
 
-+ (FMDatabase *)getDatabase
++ (FMDatabase *)FFDatabase
 {
     return [FFDBManager database];
 }
@@ -132,7 +138,7 @@ NSString const* kUpdateContext = @"kUpdateContext";
 + (void)alertColumn
 {
     NSString *tablename = [NSString stringWithFormat:@"%@%@",kDatabaseHeadname,NSStringFromClass([self class])];
-    FMDatabase *database = [FFDataBaseModel getDatabase];
+    FMDatabase *database = [FFDataBaseModel FFDatabase];
     if ([database open])
     {
         for (NSString *propertyname in [[self class]propertyOfSelf])
@@ -158,7 +164,7 @@ NSString const* kUpdateContext = @"kUpdateContext";
     }
     else
     {
-        [[FFDataBaseModel getDatabase] executeUpdateWithSqlstatement:[self createTableSqlstatement]];
+        [[FFDataBaseModel FFDatabase] executeUpdateWithSqlstatement:[self createTableSqlstatement]];
         [[self class]alertColumn];
     }
 }

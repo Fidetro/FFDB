@@ -11,6 +11,9 @@
 
 @interface FMDatabase (FFExtern)
 
+/**
+ use FMDatabase update
+ */
 - (BOOL)executeUpdateWithSqlstatement:(NSString *)sqlstatement;
 
 @end
