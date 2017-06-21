@@ -140,6 +140,7 @@ CGFloat BNRTimeBlock (void (^block)(void)) {
             ClassRoom *classRoom = [[ClassRoom alloc]init];
             classRoom.name = @"default Room";
             [classRoom insertObject];
+            
         }
         
         _classroomArray = [NSMutableArray arrayWithArray:dataArray];

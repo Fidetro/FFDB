@@ -83,7 +83,7 @@ extern NSString *const kDatabaseHeadname;
  update object by columns
 
  @param columns Need to update columns
- @return 返回是否成功
+ @return update successfully
  */
 - (BOOL)updateObjectSetColumns:(NSArray *)columns;
 

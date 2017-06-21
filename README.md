@@ -93,7 +93,7 @@ RLMResults *dogs = [[Dog objectsWhere:@"age < 5"] sortedResultsUsingProperty:@"n
 
 ```
 FFDB查询对象
-NSArray<Dog *> *dogs = [Dog selectObjectPredicateWithFormat:@"where age < 5 order by name"];
+NSArray<Dog *> *dogs = [Dog selectFromClassPredicateWithFormat:@"where age < 5 order by name"];
 ```
 
 > 类相当于一张表，对象即数据，这句话贯穿整个设计的思路
@@ -138,16 +138,16 @@ person.name = @"Fidetro";//设置属性
 [person insertObject];//插入数据
 
 查询:
-[Person selectAllObject];//等同于查询Person表中所有的对象
-[Person selectObjectPredicateWithFormat:@"where age == '15' and name == 'Fidetro'"]//等同于查询年龄是15和名字叫Fidetro的数据
+[Person selectFromClassAllObject];//等同于查询Person表中所有的对象
+[Person selectFromClassPredicateWithFormat:@"where age == '15' and name == 'Fidetro'"]//等同于查询年龄是15和名字叫Fidetro的数据
 更新：
-NSArray *personArray = [Person selectObjectPredicateWithFormat:@"where name = 'fidetro' and age = '21'"];//先查询到要更新的数据
+NSArray *personArray = [Person selectFromClassPredicateWithFormat:@"where name = 'fidetro' and age = '21'"];//先查询到要更新的数据
 Person *person = [personArray lastObject];
 person.age = @"24";
 [person updateObject];
 
 删除:
-NSArray *personArray = [Person selectObjectPredicateWithFormat:@"where name = 'fidetro' and age = '21'"];//先查询到要更新的数据
+NSArray *personArray = [Person selectFromClassPredicateWithFormat:@"where name = 'fidetro' and age = '21'"];//先查询到要更新的数据
 Person *person = [personArray lastObject];
 [person deleteObject];
 
@@ -174,3 +174,7 @@ Person *person = [personArray lastObject];
 [Class getTableName];
 ```
 通过获取了这两个，可以自己结合FMDB原有的方法进行操作。
+
+<h2 id="Pod版本更新说明">Pod版本更新说明</h2>
+### 2.1.0 - 2.3.0
+强迫症更新了部分接口的名字，以及文档
