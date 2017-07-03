@@ -177,5 +177,8 @@ Person *person = [personArray lastObject];
 
 <h2 id="Pod版本更新说明">Pod版本更新说明</h2>
 
+### 2.4.0
+在返回模型的泛型的时候，增加了__kindof
+
 ### 2.1.0 - 2.3.0
 强迫症更新了部分接口的名字，以及文档
