@@ -86,7 +86,7 @@ CGFloat BNRTimeBlock (void (^block)(void)) {
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
     
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
-    
+    [[ClassRoom FFDatabase]executeQuery:@"asd",@"zxc"];
 }
 
 - (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath

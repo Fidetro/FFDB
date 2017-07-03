@@ -18,7 +18,7 @@
  @param dbClass  by class
  @return class objects
  */
-+ (NSArray <FFDataBaseModel *>*)selectObjectWithFFDBClass:(Class)dbClass;
++ (NSArray <__kindof FFDataBaseModel *>*)selectObjectWithFFDBClass:(Class)dbClass;
 
 /**
  select object by format
@@ -27,21 +27,21 @@
  @param format Like sqlstatement rule, example: where name = 'fidetro' and age = '21'
  @return class objects
  */
-+ (NSArray <FFDataBaseModel *>*)selectObjectWithFFDBClass:(Class)dbClass format:(NSString *)format;
++ (NSArray <__kindof FFDataBaseModel *>*)selectObjectWithFFDBClass:(Class)dbClass format:(NSString *)format;
 
 /**
  insert object
  
  @param objectList Need to insert the array of objects
  */
-+ (void)insertObjectList:(NSArray <FFDataBaseModel *>*)objectList;
++ (void)insertObjectList:(NSArray <__kindof FFDataBaseModel *>*)objectList;
 
 /**
  update object
  
  @param objectList Need to update the array of objects
  */
-+ (void)updateObjectList:(NSArray<FFDataBaseModel *> *)objectList;
++ (void)updateObjectList:(NSArray<__kindof FFDataBaseModel *> *)objectList;
 
 
 /**
@@ -58,7 +58,7 @@
  
  @param objectList Need to delete the array of objects
  */
-+ (void)deleteObjectList:(NSArray<FFDataBaseModel *> *)objectList;
++ (void)deleteObjectList:(NSArray<__kindof FFDataBaseModel *> *)objectList;
 
 
 /**

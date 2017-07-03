@@ -24,7 +24,7 @@ extern NSString *const kDatabaseHeadname;
  
  @return class objects
  */
-+ (NSArray <FFDataBaseModel *>*)selectFromClassAllObject;
++ (NSArray <__kindof FFDataBaseModel *>*)selectFromClassAllObject;
 
 /**
  select object by format
@@ -32,7 +32,7 @@ extern NSString *const kDatabaseHeadname;
  @param format Like sqlstatement rule, example: where name = 'fidetro' and age = '21'
  @return class objects
  */
-+ (NSArray <FFDataBaseModel *>*)selectFromClassPredicateWithFormat:(NSString *)format;
++ (NSArray <__kindof FFDataBaseModel *>*)selectFromClassPredicateWithFormat:(NSString *)format;
 
 /**
  delete all object from class

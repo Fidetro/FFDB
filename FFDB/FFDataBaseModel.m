@@ -20,12 +20,13 @@ NSString const* kUpdateContext = @"kUpdateContext";
 
 @implementation FFDataBaseModel
 
-+ (NSArray *)selectFromClassAllObject
++ (NSArray <__kindof FFDataBaseModel *>*)selectFromClassAllObject
 {
     return [[self class] selectFromClassPredicateWithFormat:nil];
 }
 
-+ (NSArray *)selectFromClassPredicateWithFormat:(NSString *)format{
++ (NSArray <__kindof FFDataBaseModel *>*)selectFromClassPredicateWithFormat:(NSString *)format
+{
     FMDatabase *database = [self FFDatabase];
     NSMutableArray *params = [NSMutableArray array];
     if ([database open])

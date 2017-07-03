@@ -12,12 +12,12 @@
 #import "FFDataBaseModel+Sqlite.h"
 @implementation FFDBTransaction
 
-+ (NSArray *)selectObjectWithFFDBClass:(Class)dbClass
++ (NSArray <__kindof FFDataBaseModel *>*)selectObjectWithFFDBClass:(Class)dbClass
 {
     return [FFDBTransaction selectObjectWithFFDBClass:dbClass format:nil];
 }
 
-+ (NSArray *)selectObjectWithFFDBClass:(Class)dbClass format:(NSString *)format
++ (NSArray <__kindof FFDataBaseModel *>*)selectObjectWithFFDBClass:(Class)dbClass format:(NSString *)format
 {
     FMDatabaseQueue *queue = [FMDatabaseQueue databaseQueueWithPath:[FFDBManager databasePath]];
     NSMutableArray *objectList = [NSMutableArray array];
@@ -40,7 +40,7 @@
     return [objectList copy];
 }
 
-+ (void)insertObjectList:(NSArray<FFDataBaseModel *> *)objectList
++ (void)insertObjectList:(NSArray <__kindof FFDataBaseModel *>*)objectList
 {
     FMDatabaseQueue *queue = [FMDatabaseQueue databaseQueueWithPath:[FFDBManager databasePath]];
     [queue inTransaction:^(FMDatabase *db, BOOL *rollback) {
@@ -58,7 +58,7 @@
     }];
 }
 
-+ (void)updateObjectList:(NSArray<FFDataBaseModel *> *)objectList
++ (void)updateObjectList:(NSArray<__kindof FFDataBaseModel *> *)objectList
 {
     FMDatabaseQueue *queue = [FMDatabaseQueue databaseQueueWithPath:[FFDBManager databasePath]];
     [queue inTransaction:^(FMDatabase *db, BOOL *rollback) {
@@ -86,7 +86,7 @@
     return result;
 }
 
-+ (void)deleteObjectList:(NSArray<FFDataBaseModel *> *)objectList
++ (void)deleteObjectList:(NSArray<__kindof FFDataBaseModel *> *)objectList
 {
     FMDatabaseQueue *queue = [FMDatabaseQueue databaseQueueWithPath:[FFDBManager databasePath]];
     [queue inTransaction:^(FMDatabase *db, BOOL *rollback) {
