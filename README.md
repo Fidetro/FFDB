@@ -16,7 +16,7 @@
 1. 直接用FMDB代码并不优雅而且十分繁琐，而且并不能像使用CoreData能面向对象管理;
 2. 在项目中经常会遇到不得不使用数据库去存储数据的情况；
 3. 主流的移动端数据库，用过的只有FMDB，CoreData，CoreData在使用的时候觉得要写太多代码了，后来放弃了，只用FMDB的话，没有OOP的感觉，所以有了FFDB。
-4. 最后解释下FFDB的名字含义，是因为了纪念可能再也见不到的芳芳，不能一起工作真是太可惜了
+4. 解释下FFDB的名字含义，是因为了纪念可能再也见不到的芳芳，不能一起工作真是太可惜了
 
 <h2 id="CoreData、Realm和对FMDB封装后的FFDB对比">CoreData、Realm和对FMDB封装后的FFDB对比</h2>
 
@@ -114,7 +114,7 @@ NSArray<Dog *> *dogs = [Dog selectFromClassPredicateWithFormat:@"where age < 5 o
 pod 'FFDB’,’~>2.x’
 pod search FFDB如果没有找到，pod setup之后就ok了
 
-如果不使用CocoaPod，请导入FMDB，并且在target的Linked Frameworks and Libraries导入
+如果不使用CocoaPod，请导入`FMDB`，并且在target的Linked Frameworks and Libraries导入
 libsqlite3.0.tbd
 
 ![image](https://github.com/Fidetro/FFDB/blob/master/src/1.png)
@@ -123,8 +123,8 @@ libsqlite3.0.tbd
 
 ![image](https://github.com/Fidetro/FFDB/blob/master/src/2.png)
 
-建立好要创建的类继承FFDataBaseModel，声明属性即可，
-如一个Person表里，有人名，年龄字段。
+建立好要创建的类继承`FFDataBaseModel`，声明属性即可，
+如一个`Person`表里，有人名，年龄字段。
 
 ```
 @interface Person : FFDataBaseModel
@@ -163,9 +163,9 @@ Person *person = [personArray lastObject];
 `FFDBTransaction`则是对事务操作的封装，在处理数据量大的时候对比起`FFDBSafeOperation`和直接操作`FFDataBaseModel`效率都要高很多。
 
 <h2 id="补充">补充</h2>
-1. 所有字段都是默认是TEXT，在后面的版本会增加自定义字段类型这个功能;
-2. 所有继承FFDataBaseModel的对象，在插入数据库后，都会自带一个primaryID作为唯一标识，同时这是一个自增的字段。
-3. 目前FFDB只是提供了简单的增删改查接口，如果要使用目前接口没办法满足的功能，可以通过以下几个方法进行扩充的操作；
+<br>1. 所有字段都是默认是TEXT，在后面的版本会增加自定义字段类型这个功能;
+<br>2. 所有继承FFDataBaseModel的对象，在插入数据库后，都会自带一个primaryID作为唯一标识，同时这是一个自增的字段。
+<br>3. 目前FFDB只是提供了简单的增删改查接口，如果要使用目前接口没办法满足的功能，可以通过以下几个方法进行扩充的操作；
 
 ```
 获取FMDatabase对象
@@ -212,7 +212,7 @@ Person *person = [personArray lastObject];
 
 
 ### 2.4.0
-在返回模型的泛型的时候，增加了__kindof
+在返回模型的泛型的时候，增加了`__kindof`
 
 ### 2.1.0 - 2.3.0
 强迫症更新了部分接口的名字，以及文档
