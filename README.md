@@ -155,7 +155,7 @@ Person *person = [personArray lastObject];
 
 <h2 id="1.x和2.x的版本有什么不同？">1.x和2.x的版本有什么不同？</h2>
 
-因为业务的要求，发现之前设计的并没有把异步的操作考虑进去，去查了一下FMDB的文档，对于异步的操作有特别的说明，需要用到`FMDatabaseQueue` ,对此对原有的代码进行了重构，同时引入了两个关键的类`FFDBSafeOperation`和`FFDBTransaction`，设计如下：
+发现之前设计的并没有把异步的操作考虑进去，去查了一下FMDB的文档，对于异步的操作有特别的说明，需要用到`FMDatabaseQueue` ,对此对原有的代码进行了重构，同时引入了两个关键的类`FFDBSafeOperation`和`FFDBTransaction`，设计如下：
 
 ![image](https://github.com/Fidetro/FFDB/blob/master/src/3.png)
 
@@ -179,7 +179,8 @@ Person *person = [personArray lastObject];
 
 
 ### 2.5.0
-1. 在创建'FFDataBaseModel'的子类，如果有不需要创建到表的属性的时候，现在可以通过在子类重写``` + (NSArray*)memoryPropertys```方法达到效果
+1. 在创建`FFDataBaseModel`的子类，如果有不需要创建到表的属性的时候，现在可以通过在子类重写
+``` + (NSArray*)memoryPropertys``` 方法达到效果
 
 ```
 //例子
@@ -197,7 +198,7 @@ Person *person = [personArray lastObject];
 
 ```
 
-2. 现在也可以通过重写 ```+ (NSDictionary *)columnsType``` 自定义字段的属性，修改字段属性，没有重写的字段都会默认是'text'类型
+2. 现在也可以通过重写 ```+ (NSDictionary *)columnsType``` 自定义字段的属性，修改字段属性，没有重写的字段都会默认是`text`类型
 
 ```
 //例子
