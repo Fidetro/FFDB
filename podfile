@@ -4,3 +4,6 @@ use_frameworks!
 target 'FFDB' do
     pod 'FMDB'
 end
+target 'FFDBTests'do
+pod 'FMDB'
+end

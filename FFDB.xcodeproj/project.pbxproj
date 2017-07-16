@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		16B41BB306AABCC4EC0FA1BB /* Pods_FFDBTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 465FC558033641CFF3804250 /* Pods_FFDBTests.framework */; };
 		3CEBC4B4DB9F0DF83198E3B3 /* Pods_FFDB.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9411C3043211AE7CA790CB34 /* Pods_FFDB.framework */; };
 		9A0E9E751ECA04EE008B9A8A /* FFDBSafeOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A0E9E741ECA04EE008B9A8A /* FFDBSafeOperation.m */; };
 		9A32CAAB1E82C58A0097324D /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A32CAAA1E82C58A0097324D /* AppDelegate.m */; };
@@ -41,6 +42,9 @@
 
 /* Begin PBXFileReference section */
 		1A7F6BC5AE4C00DBDD5385CE /* Pods-FFDB.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FFDB.debug.xcconfig"; path = "Pods/Target Support Files/Pods-FFDB/Pods-FFDB.debug.xcconfig"; sourceTree = "<group>"; };
+		2A2325B374B7D0B96F6DDEC1 /* Pods-FFDBTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FFDBTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-FFDBTests/Pods-FFDBTests.debug.xcconfig"; sourceTree = "<group>"; };
+		465FC558033641CFF3804250 /* Pods_FFDBTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_FFDBTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		901E82EF630587C1765E472A /* Pods-FFDBTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FFDBTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-FFDBTests/Pods-FFDBTests.release.xcconfig"; sourceTree = "<group>"; };
 		9411C3043211AE7CA790CB34 /* Pods_FFDB.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_FFDB.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		9A0E9E731ECA04EE008B9A8A /* FFDBSafeOperation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FFDBSafeOperation.h; sourceTree = "<group>"; };
 		9A0E9E741ECA04EE008B9A8A /* FFDBSafeOperation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FFDBSafeOperation.m; sourceTree = "<group>"; };
@@ -96,6 +100,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				16B41BB306AABCC4EC0FA1BB /* Pods_FFDBTests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -107,6 +112,8 @@
 			children = (
 				1A7F6BC5AE4C00DBDD5385CE /* Pods-FFDB.debug.xcconfig */,
 				CC342B4CDF9D60DDBF2363A2 /* Pods-FFDB.release.xcconfig */,
+				2A2325B374B7D0B96F6DDEC1 /* Pods-FFDBTests.debug.xcconfig */,
+				901E82EF630587C1765E472A /* Pods-FFDBTests.release.xcconfig */,
 			);
 			name = Pods;
 			sourceTree = "<group>";
@@ -158,6 +165,7 @@
 			children = (
 				9A32CB031E82C69D0097324D /* libsqlite3.0.tbd */,
 				9411C3043211AE7CA790CB34 /* Pods_FFDB.framework */,
+				465FC558033641CFF3804250 /* Pods_FFDBTests.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -240,9 +248,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 9AA7D4D31F1B29BE00177A32 /* Build configuration list for PBXNativeTarget "FFDBTests" */;
 			buildPhases = (
+				66C39BCF4724F47D3495A647 /* [CP] Check Pods Manifest.lock */,
 				9AA7D4C81F1B29BE00177A32 /* Sources */,
 				9AA7D4C91F1B29BE00177A32 /* Frameworks */,
 				9AA7D4CA1F1B29BE00177A32 /* Resources */,
+				C132B44B8C9D564AD58212D4 /* [CP] Embed Pods Frameworks */,
+				188627942AE3D69FB6CA86E4 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -316,6 +327,36 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
+		188627942AE3D69FB6CA86E4 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-FFDBTests/Pods-FFDBTests-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		66C39BCF4724F47D3495A647 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
 		B6E03EF3C2B0131C34E36D8C /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -329,6 +370,21 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		C132B44B8C9D564AD58212D4 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-FFDBTests/Pods-FFDBTests-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		D0A410D42C6ECC3C750DC3E5 /* [CP] Embed Pods Frameworks */ = {
@@ -545,6 +601,7 @@
 		};
 		9AA7D4D41F1B29BE00177A32 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 2A2325B374B7D0B96F6DDEC1 /* Pods-FFDBTests.debug.xcconfig */;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
@@ -560,6 +617,7 @@
 		};
 		9AA7D4D51F1B29BE00177A32 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 901E82EF630587C1765E472A /* Pods-FFDBTests.release.xcconfig */;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
@@ -601,6 +659,7 @@
 				9AA7D4D51F1B29BE00177A32 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

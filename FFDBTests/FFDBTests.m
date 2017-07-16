@@ -17,19 +17,28 @@
 
 - (void)setUp {
     [super setUp];
-    // Put setup code here. This method is called before the invocation of each test method in the class.
+
+    
 }
 
-- (void)insertTestModel
-{
+- (void)testInsertTestModel {
     TestModel *testModel = [[TestModel alloc]init];
     testModel.name = @"hello";
     testModel.memory = @"is me";
     testModel.time = [NSDate date].timeIntervalSince1970;
     [testModel insertObject];
     NSArray *testArray = [TestModel selectFromClassPredicateWithFormat:@"where name = 'hello'"];
-    XCTAssertTrue(testArray.count > 0,@"insert error");
+    XCTAssertTrue(testArray.count > 0,@"insert success");
 }
+
+- (void)testMemoryColumIsNull
+{
+        NSArray *testArray = [TestModel selectFromClassPredicateWithFormat:@"where name = 'hello'"];
+    for (TestModel *testModel in testArray) {
+        XCTAssertTrue([testModel.memory length] == 0,@"is ture");
+    }
+}
+
 
 - (void)tearDown {
     // Put teardown code here. This method is called after the invocation of each test method in the class.
@@ -37,8 +46,7 @@
 }
 
 - (void)testExample {
-    // This is an example of a functional test case.
-    // Use XCTAssert and related functions to verify your tests produce the correct results.
+    
 }
 
 - (void)testPerformanceExample {

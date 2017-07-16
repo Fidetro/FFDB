@@ -17,7 +17,7 @@
 
 + (NSDictionary *)columnsType
 {
-    return @{@"time":@"float"};
+    return @{@"time":@"double"};
 }
 
 @end
