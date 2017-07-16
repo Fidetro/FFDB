@@ -15,11 +15,14 @@
 		9A32CAB31E82C58A0097324D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9A32CAB21E82C58A0097324D /* Assets.xcassets */; };
 		9A32CAB61E82C58A0097324D /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9A32CAB41E82C58A0097324D /* LaunchScreen.storyboard */; };
 		9A32CB041E82C69D0097324D /* libsqlite3.0.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 9A32CB031E82C69D0097324D /* libsqlite3.0.tbd */; };
+		9A5863271F1B0A5300E2C0BC /* FFDataBaseModel+Custom.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A5863261F1B0A5300E2C0BC /* FFDataBaseModel+Custom.m */; };
+		9A58632F1F1B111E00E2C0BC /* NSObject+FIDProperty.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A58632D1F1B111D00E2C0BC /* NSObject+FIDProperty.m */; };
+		9AA7D4CF1F1B29BE00177A32 /* FFDBTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 9AA7D4CE1F1B29BE00177A32 /* FFDBTests.m */; };
+		9AA7D4D81F1B2A7C00177A32 /* TestModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 9AA7D4D71F1B2A7C00177A32 /* TestModel.m */; };
 		9AB169861EC5FCAE00DDC817 /* FFDBLog.m in Sources */ = {isa = PBXBuildFile; fileRef = 9AB169851EC5FCAE00DDC817 /* FFDBLog.m */; };
 		9AB169891EC6087E00DDC817 /* FFDBTransaction.m in Sources */ = {isa = PBXBuildFile; fileRef = 9AB169881EC6087E00DDC817 /* FFDBTransaction.m */; };
 		9AB7B9801E94003C001D837B /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 9AB7B97F1E94003C001D837B /* main.m */; };
 		9AB7B9851E940053001D837B /* FFDataBaseModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 9AB7B9821E940053001D837B /* FFDataBaseModel.m */; };
-		9AB7B9861E940053001D837B /* NSObject+FIDProperty.m in Sources */ = {isa = PBXBuildFile; fileRef = 9AB7B9841E940053001D837B /* NSObject+FIDProperty.m */; };
 		9AE672111E88020900F2AB6C /* ClassRoom.m in Sources */ = {isa = PBXBuildFile; fileRef = 9AE672101E88020900F2AB6C /* ClassRoom.m */; };
 		9AE94CCC1EC49D3B006CBC5E /* FFDBManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 9AE94CCB1EC49D3B006CBC5E /* FFDBManager.m */; };
 		9AE94CD21EC4A75E006CBC5E /* FMDatabase+FFExtern.m in Sources */ = {isa = PBXBuildFile; fileRef = 9AE94CD11EC4A75E006CBC5E /* FMDatabase+FFExtern.m */; };
@@ -27,19 +30,12 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
-		9A32CABD1E82C58A0097324D /* PBXContainerItemProxy */ = {
+		9AA7D4D11F1B29BE00177A32 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 9A32CA9B1E82C58A0097324D /* Project object */;
 			proxyType = 1;
 			remoteGlobalIDString = 9A32CAA21E82C58A0097324D;
-			remoteInfo = FIDDB;
-		};
-		9A32CAC81E82C58A0097324D /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 9A32CA9B1E82C58A0097324D /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = 9A32CAA21E82C58A0097324D;
-			remoteInfo = FIDDB;
+			remoteInfo = FFDB;
 		};
 /* End PBXContainerItemProxy section */
 
@@ -56,10 +52,17 @@
 		9A32CAB01E82C58A0097324D /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		9A32CAB21E82C58A0097324D /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Assets.xcassets; path = ../Example/Assets.xcassets; sourceTree = "<group>"; };
 		9A32CAB51E82C58A0097324D /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
-		9A32CABC1E82C58A0097324D /* FFDBTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = FFDBTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		9A32CAC71E82C58A0097324D /* FFDBUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = FFDBUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		9A32CB031E82C69D0097324D /* libsqlite3.0.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libsqlite3.0.tbd; path = usr/lib/libsqlite3.0.tbd; sourceTree = SDKROOT; };
+		9A5863251F1B0A5300E2C0BC /* FFDataBaseModel+Custom.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "FFDataBaseModel+Custom.h"; sourceTree = "<group>"; };
+		9A5863261F1B0A5300E2C0BC /* FFDataBaseModel+Custom.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "FFDataBaseModel+Custom.m"; sourceTree = "<group>"; };
+		9A58632D1F1B111D00E2C0BC /* NSObject+FIDProperty.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "NSObject+FIDProperty.m"; path = "../../NSObject+FIDProperty.m"; sourceTree = "<group>"; };
+		9A58632E1F1B111E00E2C0BC /* NSObject+FIDProperty.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "NSObject+FIDProperty.h"; path = "../../NSObject+FIDProperty.h"; sourceTree = "<group>"; };
 		9A755F711E8D78BD00B2A4B5 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = Info.plist; path = ../Example/Info.plist; sourceTree = "<group>"; };
+		9AA7D4CC1F1B29BE00177A32 /* FFDBTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = FFDBTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		9AA7D4CE1F1B29BE00177A32 /* FFDBTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FFDBTests.m; sourceTree = "<group>"; };
+		9AA7D4D01F1B29BE00177A32 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		9AA7D4D61F1B2A7C00177A32 /* TestModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TestModel.h; sourceTree = "<group>"; };
+		9AA7D4D71F1B2A7C00177A32 /* TestModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TestModel.m; sourceTree = "<group>"; };
 		9AB169841EC5FCAE00DDC817 /* FFDBLog.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FFDBLog.h; sourceTree = "<group>"; };
 		9AB169851EC5FCAE00DDC817 /* FFDBLog.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FFDBLog.m; sourceTree = "<group>"; };
 		9AB169871EC6087E00DDC817 /* FFDBTransaction.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FFDBTransaction.h; sourceTree = "<group>"; };
@@ -67,8 +70,6 @@
 		9AB7B97F1E94003C001D837B /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = main.m; path = ../Example/main.m; sourceTree = "<group>"; };
 		9AB7B9811E940053001D837B /* FFDataBaseModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FFDataBaseModel.h; sourceTree = "<group>"; };
 		9AB7B9821E940053001D837B /* FFDataBaseModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FFDataBaseModel.m; sourceTree = "<group>"; };
-		9AB7B9831E940053001D837B /* NSObject+FIDProperty.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSObject+FIDProperty.h"; sourceTree = "<group>"; };
-		9AB7B9841E940053001D837B /* NSObject+FIDProperty.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSObject+FIDProperty.m"; sourceTree = "<group>"; };
 		9AC88E881E9A04B500A25688 /* FFDB.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FFDB.h; sourceTree = "<group>"; };
 		9AE6720F1E88020900F2AB6C /* ClassRoom.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ClassRoom.h; path = ../Example/ClassRoom.h; sourceTree = "<group>"; };
 		9AE672101E88020900F2AB6C /* ClassRoom.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ClassRoom.m; path = ../Example/ClassRoom.m; sourceTree = "<group>"; };
@@ -91,14 +92,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		9A32CAB91E82C58A0097324D /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		9A32CAC41E82C58A0097324D /* Frameworks */ = {
+		9AA7D4C91F1B29BE00177A32 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -121,6 +115,7 @@
 			isa = PBXGroup;
 			children = (
 				9A32CAA51E82C58A0097324D /* FFDB */,
+				9AA7D4CD1F1B29BE00177A32 /* FFDBTests */,
 				9A32CAA41E82C58A0097324D /* Products */,
 				9A32CB021E82C69D0097324D /* Frameworks */,
 				6625CD5F6D6E30292DF9EA8A /* Pods */,
@@ -131,8 +126,7 @@
 			isa = PBXGroup;
 			children = (
 				9A32CAA31E82C58A0097324D /* FFDB.app */,
-				9A32CABC1E82C58A0097324D /* FFDBTests.xctest */,
-				9A32CAC71E82C58A0097324D /* FFDBUITests.xctest */,
+				9AA7D4CC1F1B29BE00177A32 /* FFDBTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -168,6 +162,17 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		9AA7D4CD1F1B29BE00177A32 /* FFDBTests */ = {
+			isa = PBXGroup;
+			children = (
+				9AA7D4D61F1B2A7C00177A32 /* TestModel.h */,
+				9AA7D4D71F1B2A7C00177A32 /* TestModel.m */,
+				9AA7D4CE1F1B29BE00177A32 /* FFDBTests.m */,
+				9AA7D4D01F1B29BE00177A32 /* Info.plist */,
+			);
+			path = FFDBTests;
+			sourceTree = "<group>";
+		};
 		9AB7B97D1E93FFB3001D837B /* FFDB */ = {
 			isa = PBXGroup;
 			children = (
@@ -184,10 +189,12 @@
 				9AB169851EC5FCAE00DDC817 /* FFDBLog.m */,
 				9AB7B9811E940053001D837B /* FFDataBaseModel.h */,
 				9AB7B9821E940053001D837B /* FFDataBaseModel.m */,
+				9A5863251F1B0A5300E2C0BC /* FFDataBaseModel+Custom.h */,
+				9A5863261F1B0A5300E2C0BC /* FFDataBaseModel+Custom.m */,
 				9AE94CD31EC4B07D006CBC5E /* FFDataBaseModel+Sqlite.h */,
 				9AE94CD41EC4B07D006CBC5E /* FFDataBaseModel+Sqlite.m */,
-				9AB7B9831E940053001D837B /* NSObject+FIDProperty.h */,
-				9AB7B9841E940053001D837B /* NSObject+FIDProperty.m */,
+				9A58632E1F1B111E00E2C0BC /* NSObject+FIDProperty.h */,
+				9A58632D1F1B111D00E2C0BC /* NSObject+FIDProperty.m */,
 			);
 			name = FFDB;
 			sourceTree = "<group>";
@@ -229,41 +236,23 @@
 			productReference = 9A32CAA31E82C58A0097324D /* FFDB.app */;
 			productType = "com.apple.product-type.application";
 		};
-		9A32CABB1E82C58A0097324D /* FFDBTests */ = {
+		9AA7D4CB1F1B29BE00177A32 /* FFDBTests */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 9A32CAD31E82C58A0097324D /* Build configuration list for PBXNativeTarget "FFDBTests" */;
+			buildConfigurationList = 9AA7D4D31F1B29BE00177A32 /* Build configuration list for PBXNativeTarget "FFDBTests" */;
 			buildPhases = (
-				9A32CAB81E82C58A0097324D /* Sources */,
-				9A32CAB91E82C58A0097324D /* Frameworks */,
-				9A32CABA1E82C58A0097324D /* Resources */,
+				9AA7D4C81F1B29BE00177A32 /* Sources */,
+				9AA7D4C91F1B29BE00177A32 /* Frameworks */,
+				9AA7D4CA1F1B29BE00177A32 /* Resources */,
 			);
 			buildRules = (
 			);
 			dependencies = (
-				9A32CABE1E82C58A0097324D /* PBXTargetDependency */,
+				9AA7D4D21F1B29BE00177A32 /* PBXTargetDependency */,
 			);
 			name = FFDBTests;
-			productName = FIDDBTests;
-			productReference = 9A32CABC1E82C58A0097324D /* FFDBTests.xctest */;
+			productName = FFDBTests;
+			productReference = 9AA7D4CC1F1B29BE00177A32 /* FFDBTests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
-		};
-		9A32CAC61E82C58A0097324D /* FFDBUITests */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = 9A32CAD61E82C58A0097324D /* Build configuration list for PBXNativeTarget "FFDBUITests" */;
-			buildPhases = (
-				9A32CAC31E82C58A0097324D /* Sources */,
-				9A32CAC41E82C58A0097324D /* Frameworks */,
-				9A32CAC51E82C58A0097324D /* Resources */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-				9A32CAC91E82C58A0097324D /* PBXTargetDependency */,
-			);
-			name = FFDBUITests;
-			productName = FIDDBUITests;
-			productReference = 9A32CAC71E82C58A0097324D /* FFDBUITests.xctest */;
-			productType = "com.apple.product-type.bundle.ui-testing";
 		};
 /* End PBXNativeTarget section */
 
@@ -279,14 +268,8 @@
 						DevelopmentTeam = J3BJ7G2PUN;
 						ProvisioningStyle = Automatic;
 					};
-					9A32CABB1E82C58A0097324D = {
-						CreatedOnToolsVersion = 8.2.1;
-						DevelopmentTeam = J3BJ7G2PUN;
-						ProvisioningStyle = Automatic;
-						TestTargetID = 9A32CAA21E82C58A0097324D;
-					};
-					9A32CAC61E82C58A0097324D = {
-						CreatedOnToolsVersion = 8.2.1;
+					9AA7D4CB1F1B29BE00177A32 = {
+						CreatedOnToolsVersion = 8.3.3;
 						DevelopmentTeam = J3BJ7G2PUN;
 						ProvisioningStyle = Automatic;
 						TestTargetID = 9A32CAA21E82C58A0097324D;
@@ -307,8 +290,7 @@
 			projectRoot = "";
 			targets = (
 				9A32CAA21E82C58A0097324D /* FFDB */,
-				9A32CABB1E82C58A0097324D /* FFDBTests */,
-				9A32CAC61E82C58A0097324D /* FFDBUITests */,
+				9AA7D4CB1F1B29BE00177A32 /* FFDBTests */,
 			);
 		};
 /* End PBXProject section */
@@ -324,14 +306,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		9A32CABA1E82C58A0097324D /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		9A32CAC51E82C58A0097324D /* Resources */ = {
+		9AA7D4CA1F1B29BE00177A32 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -396,7 +371,6 @@
 				9AE94CCC1EC49D3B006CBC5E /* FFDBManager.m in Sources */,
 				9AB7B9801E94003C001D837B /* main.m in Sources */,
 				9A32CAAE1E82C58A0097324D /* ClassRoomViewController.m in Sources */,
-				9AB7B9861E940053001D837B /* NSObject+FIDProperty.m in Sources */,
 				9AB7B9851E940053001D837B /* FFDataBaseModel.m in Sources */,
 				9AE94CD21EC4A75E006CBC5E /* FMDatabase+FFExtern.m in Sources */,
 				9AE94CD51EC4B07D006CBC5E /* FFDataBaseModel+Sqlite.m in Sources */,
@@ -404,36 +378,28 @@
 				9A0E9E751ECA04EE008B9A8A /* FFDBSafeOperation.m in Sources */,
 				9AB169891EC6087E00DDC817 /* FFDBTransaction.m in Sources */,
 				9AB169861EC5FCAE00DDC817 /* FFDBLog.m in Sources */,
+				9A5863271F1B0A5300E2C0BC /* FFDataBaseModel+Custom.m in Sources */,
 				9AE672111E88020900F2AB6C /* ClassRoom.m in Sources */,
+				9A58632F1F1B111E00E2C0BC /* NSObject+FIDProperty.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		9A32CAB81E82C58A0097324D /* Sources */ = {
+		9AA7D4C81F1B29BE00177A32 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		9A32CAC31E82C58A0097324D /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
+				9AA7D4CF1F1B29BE00177A32 /* FFDBTests.m in Sources */,
+				9AA7D4D81F1B2A7C00177A32 /* TestModel.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
-		9A32CABE1E82C58A0097324D /* PBXTargetDependency */ = {
+		9AA7D4D21F1B29BE00177A32 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = 9A32CAA21E82C58A0097324D /* FFDB */;
-			targetProxy = 9A32CABD1E82C58A0097324D /* PBXContainerItemProxy */;
-		};
-		9A32CAC91E82C58A0097324D /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = 9A32CAA21E82C58A0097324D /* FFDB */;
-			targetProxy = 9A32CAC81E82C58A0097324D /* PBXContainerItemProxy */;
+			targetProxy = 9AA7D4D11F1B29BE00177A32 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
@@ -577,53 +543,33 @@
 			};
 			name = Release;
 		};
-		9A32CAD41E82C58A0097324D /* Debug */ = {
+		9AA7D4D41F1B29BE00177A32 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				DEVELOPMENT_TEAM = J3BJ7G2PUN;
-				INFOPLIST_FILE = FIDDBTests/Info.plist;
+				INFOPLIST_FILE = FFDBTests/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.3;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.Fidetro.FIDDBTests;
+				PRODUCT_BUNDLE_IDENTIFIER = com.Fidetro.FFDBTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/FFDB.app/FFDB";
 			};
 			name = Debug;
 		};
-		9A32CAD51E82C58A0097324D /* Release */ = {
+		9AA7D4D51F1B29BE00177A32 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				DEVELOPMENT_TEAM = J3BJ7G2PUN;
-				INFOPLIST_FILE = FIDDBTests/Info.plist;
+				INFOPLIST_FILE = FFDBTests/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.3;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.Fidetro.FIDDBTests;
+				PRODUCT_BUNDLE_IDENTIFIER = com.Fidetro.FFDBTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/FFDB.app/FFDB";
-			};
-			name = Release;
-		};
-		9A32CAD71E82C58A0097324D /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				DEVELOPMENT_TEAM = J3BJ7G2PUN;
-				INFOPLIST_FILE = FIDDBUITests/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.Fidetro.FIDDBUITests;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				TEST_TARGET_NAME = FIDDB;
-			};
-			name = Debug;
-		};
-		9A32CAD81E82C58A0097324D /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				DEVELOPMENT_TEAM = J3BJ7G2PUN;
-				INFOPLIST_FILE = FIDDBUITests/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.Fidetro.FIDDBUITests;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				TEST_TARGET_NAME = FIDDB;
 			};
 			name = Release;
 		};
@@ -648,23 +594,13 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		9A32CAD31E82C58A0097324D /* Build configuration list for PBXNativeTarget "FFDBTests" */ = {
+		9AA7D4D31F1B29BE00177A32 /* Build configuration list for PBXNativeTarget "FFDBTests" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				9A32CAD41E82C58A0097324D /* Debug */,
-				9A32CAD51E82C58A0097324D /* Release */,
+				9AA7D4D41F1B29BE00177A32 /* Debug */,
+				9AA7D4D51F1B29BE00177A32 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
-		9A32CAD61E82C58A0097324D /* Build configuration list for PBXNativeTarget "FFDBUITests" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				9A32CAD71E82C58A0097324D /* Debug */,
-				9A32CAD81E82C58A0097324D /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

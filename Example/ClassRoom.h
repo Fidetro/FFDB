@@ -13,4 +13,5 @@
 @property(nonatomic,copy) NSString *name;
 /** number **/
 @property(nonatomic,copy) NSString *number;
+
 @end

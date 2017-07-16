@@ -9,7 +9,8 @@
 
 #import "FFDataBaseModel.h"
 #import "FFDataBaseModel+Sqlite.h"
-
+#import "FFDataBaseModel+Custom.h"
+#import "NSObject+FIDProperty.h"
 NSString *const kDatabaseHeadname = @"FID";
 NSString const* kUpdateContext = @"kUpdateContext";
 
@@ -37,7 +38,7 @@ NSString const* kUpdateContext = @"kUpdateContext";
         {
             
             id object = [[[self class]alloc]init];
-            for (NSString *propertyname in [[self class] propertyOfSelf])
+            for (NSString *propertyname in [[self class] columsOfSelf])
             {
                 NSString *objStr = [[resultSet stringForColumn:propertyname]length] == 0 ? @"" :[resultSet stringForColumn:propertyname];
                 [object setPropertyWithName:propertyname object:objStr];
@@ -70,7 +71,7 @@ NSString const* kUpdateContext = @"kUpdateContext";
 
 - (BOOL)insertObject
 {
-    NSArray *propertyNames = [[self class]propertyOfSelf];
+    NSArray *propertyNames = [[self class]columsOfSelf];
     return [[FFDataBaseModel FFDatabase] executeUpdateWithSqlstatement:[self insertFromClassSQLStatementWithColumns:propertyNames]];
 }
 
@@ -86,7 +87,7 @@ NSString const* kUpdateContext = @"kUpdateContext";
 
 - (BOOL)updateObject
 {
-    NSArray *propertyNames = [[self class]propertyOfSelf];
+    NSArray *propertyNames = [[self class]columsOfSelf];
     return [self updateObjectSetColumns:propertyNames];
 }
 
@@ -98,7 +99,7 @@ NSString const* kUpdateContext = @"kUpdateContext";
 
 - (void)updateObjectWithBlock:(void(^)())update_block
 {
-    NSArray *propertyNames = [[self class]propertyOfSelf];
+    NSArray *propertyNames = [[self class]columsOfSelf];
     if (update_block)
     {
         for (NSString *propertyName in propertyNames)
@@ -142,7 +143,7 @@ NSString const* kUpdateContext = @"kUpdateContext";
     FMDatabase *database = [FFDataBaseModel FFDatabase];
     if ([database open])
     {
-        for (NSString *propertyname in [[self class]propertyOfSelf])
+        for (NSString *propertyname in [[self class]columsOfSelf])
         {
             if (![database columnExists:propertyname inTableWithName:tablename])
             {
@@ -152,6 +153,8 @@ NSString const* kUpdateContext = @"kUpdateContext";
     }
     [database close];
 }
+
+
 
 + (void)initialize
 {

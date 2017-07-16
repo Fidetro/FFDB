@@ -10,6 +10,8 @@
 #import "FFDBSafeOperation.h"
 #import "FFDBLog.h"
 #import "FFDataBaseModel+Sqlite.h"
+#import "FFDataBaseModel+Custom.h"
+#import "NSObject+FIDProperty.h"
 
 @implementation FFDBSafeOperation
 
@@ -29,7 +31,7 @@
         {
             
             id object = [[dbClass alloc]init];
-            for (NSString *propertyname in [dbClass propertyOfSelf])
+            for (NSString *propertyname in [dbClass columsOfSelf])
             {
                 NSString *objStr = [[resultSet stringForColumn:propertyname]length] == 0 ? @"" :[resultSet stringForColumn:propertyname];
                 [object setPropertyWithName:propertyname object:objStr];
@@ -47,7 +49,7 @@
     [queue inDatabase:^(FMDatabase *db) {
         for (FFDataBaseModel *dbModel in objectList)
         {
-            NSString *sql = [dbModel insertFromClassSQLStatementWithColumns:[[dbModel class]propertyOfSelf]];
+            NSString *sql = [dbModel insertFromClassSQLStatementWithColumns:[[dbModel class]columsOfSelf]];
             BOOL result = [db executeUpdate:sql];
             if (result == NO)
             {
@@ -64,7 +66,7 @@
     [queue inDatabase:^(FMDatabase *db) {
         for (FFDataBaseModel *dbModel in objectList)
         {
-            NSString *sql = [dbModel updateFromClassSQLStatementWithColumns:[[dbModel class]propertyOfSelf]];
+            NSString *sql = [dbModel updateFromClassSQLStatementWithColumns:[[dbModel class]columsOfSelf]];
             BOOL result = [db executeUpdate:sql];
             if (result == NO)
             {

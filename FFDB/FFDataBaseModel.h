@@ -10,7 +10,7 @@
 #import <Foundation/Foundation.h>
 #import <FMDB/FMDB.h>
 #import "FFDBManager.h"
-#import "NSObject+FIDProperty.h"
+
 
 extern NSString *const kDatabaseHeadname;
 

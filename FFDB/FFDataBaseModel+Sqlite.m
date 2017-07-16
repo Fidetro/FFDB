@@ -8,22 +8,31 @@
 //  https://github.com/Fidetro/FFDB
 
 #import "FFDataBaseModel+Sqlite.h"
-
+#import "FFDataBaseModel+Custom.h"
+#import "NSObject+FIDProperty.h"
 @implementation FFDataBaseModel (Sqlite)
 
 + (NSString *)createTableSqlstatement
 {
     NSString *tableKey = [NSString string];
-    NSArray *propertyNames = [[self class]propertyOfSelf];
+    NSArray *propertyNames = [[self class]columsOfSelf];
+    
     for (NSInteger index = 0; index < [propertyNames count]; index++)
     {
         NSString *propertyname = propertyNames[index];
+        NSString *columnType = [[self columnsType][propertyname]length] == 0 ? @"text":[self columnsType][propertyname];
+        
         if (index == 0)
         {
-            tableKey = [NSString stringWithFormat:@"%@%@ text",tableKey,propertyname];
+            tableKey = [NSString stringWithFormat:@"%@%@ %@",tableKey,propertyname,columnType];
+            
             continue;
         }
-        tableKey = [NSString stringWithFormat:@"%@,%@ text",tableKey,propertyname];
+        else
+        {
+            tableKey = [NSString stringWithFormat:@"%@,%@ %@",tableKey,propertyname,columnType];
+            
+        }
     }
     NSString *sqlstatement = [NSString stringWithFormat:@"create table if  not exists `%@%@` (primaryID integer PRIMARY KEY AUTOINCREMENT,%@)",kDatabaseHeadname,NSStringFromClass([self class]),tableKey];
     return sqlstatement;
