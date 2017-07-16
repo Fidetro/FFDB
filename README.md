@@ -164,8 +164,8 @@ Person *person = [personArray lastObject];
 
 <h2 id="补充">补充</h2>
 <br>1. 所有字段都是默认是TEXT，在后面的版本会增加自定义字段类型这个功能;
-<br>2. 所有继承FFDataBaseModel的对象，在插入数据库后，都会自带一个primaryID作为唯一标识，同时这是一个自增的字段。
-<br>3. 目前FFDB只是提供了简单的增删改查接口，如果要使用目前接口没办法满足的功能，可以通过以下几个方法进行扩充的操作；
+<br>2. 所有继承FFDataBaseModel的对象，在插入数据库后，都会自带一个primaryID作为唯一标识，同时这是一个自增的字段;
+<br>3. 目前FFDB只是提供了简单的增删改查接口，如果要使用目前接口没办法满足的功能，可以通过以下几个方法进行扩充的操作;
 
 ```
 获取FMDatabase对象
@@ -174,12 +174,14 @@ Person *person = [personArray lastObject];
 [Class getTableName];
 ```
 通过获取了这两个，可以自己结合FMDB原有的方法进行操作。
+<br>4. FFDB支持与swift 3混编。
 
 <h2 id="Pod版本更新说明">Pod版本更新说明</h2>
 
 
 ### 2.5.0
-1. 在创建`FFDataBaseModel`的子类，如果有不需要创建到表的属性的时候，现在可以通过在子类重写
+1. 为了兼容swift3，将FMDB的依赖改成了`s.dependency "FMDB","~> 2.7.2"`
+2. 在创建`FFDataBaseModel`的子类，如果有不需要创建到表的属性的时候，现在可以通过在子类重写
 ``` + (NSArray*)memoryPropertys``` 方法达到效果
 
 ```
@@ -198,7 +200,7 @@ Person *person = [personArray lastObject];
 
 ```
 
-2. 现在也可以通过重写 ```+ (NSDictionary *)columnsType``` 自定义字段的属性，修改字段属性，没有重写的字段都会默认是`text`类型
+3. 现在也可以通过重写 ```+ (NSDictionary *)columnsType``` 自定义字段的属性，修改字段属性，没有重写的字段都会默认是`text`类型
 
 ```
 //例子
