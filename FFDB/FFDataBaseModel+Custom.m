@@ -11,7 +11,7 @@
 #import <objc/runtime.h>
 @implementation FFDataBaseModel (Custom)
 
-+ (NSArray *)memoryColumns
++ (NSArray *)memoryPropertys
 {
     return nil;
 }
@@ -39,7 +39,7 @@
         {
             key = [name substringFromIndex:0];
         }
-        if ([[self memoryColumns]containsObject:key])
+        if ([[self memoryPropertys]containsObject:key])
         {
             continue;
         }

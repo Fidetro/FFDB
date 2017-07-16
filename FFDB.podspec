@@ -10,7 +10,7 @@ Pod::Spec.new do |s|
   s.source       = { :git => "https://github.com/Fidetro/FFDB.git", :tag => "2.4.0" }
   s.source_files  = "FFDB", "FFDB/*.{h,m}"
   s.library = 'sqlite3'
-  s.dependency "FMDB","~> 2.6.2"
+  s.dependency "FMDB","~> 2.7.2"
 
 
 end

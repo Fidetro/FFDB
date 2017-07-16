@@ -177,6 +177,39 @@ Person *person = [personArray lastObject];
 
 <h2 id="Pod版本更新说明">Pod版本更新说明</h2>
 
+
+### 2.5.0
+1. 在创建'FFDataBaseModel'的子类，如果有不需要创建到表的属性的时候，现在可以通过在子类重写``` + (NSArray*)memoryPropertys```方法达到效果
+
+```
+//例子
+@interface TestModel : FFDataBaseModel
+@property(nonatomic,copy) NSString *name;
+/** 这是不需要加到表中的字段 **/
+@property(nonatomic,copy) NSString *memory;
+@property(nonatomic,assign) double time;
+@end
+
++ (NSArray *)memoryPropertys
+{
+   return @[@"memory"];
+}
+
+```
+
+2. 现在也可以通过重写 ```+ (NSDictionary *)columnsType``` 自定义字段的属性，修改字段属性，没有重写的字段都会默认是'text'类型
+
+```
+//例子
+
++ (NSDictionary *)columnsType
+{
+    return @{@"time":@"double"};
+}
+
+```
+
+
 ### 2.4.0
 在返回模型的泛型的时候，增加了__kindof
 

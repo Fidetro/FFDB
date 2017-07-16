@@ -10,7 +10,7 @@
 
 @implementation TestModel
 
-+ (NSArray *)memoryColumns
++ (NSArray *)memoryPropertys
 {
     return @[@"memory"];
 }

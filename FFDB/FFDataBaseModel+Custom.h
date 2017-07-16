@@ -11,9 +11,25 @@
 
 @interface FFDataBaseModel (Custom)
 
-+ (NSArray *)memoryColumns;
 
+/**
+ If you want this property does not exist in the table colums,you need overwirte in subclass ,like:
+ + (NSArray *)memoryPropertys
+ {
+    return @[@"memoryProperty"];
+ }
+ */
++ (NSArray *)memoryPropertys;
+
+/**
+ If you want custom columnType you need overwirte in subclass ,like:
+ + (NSDictionary *)columnsType
+ {
+    return @{@"property":@"columnType"};
+ }
+ */
 + (NSDictionary *)columnsType;
+
 
 + (NSArray *)columsOfSelf;
 
