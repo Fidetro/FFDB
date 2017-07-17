@@ -11,7 +11,12 @@
 
 @interface FFDataBaseModel (Custom)
 
-
+/**
+ get class table name
+ 
+ @return table name
+ */
++ (NSString *)tableName;
 /**
  If you want this property does not exist in the table colums,you need overwirte in subclass ,like:
  + (NSArray *)memoryPropertys

@@ -103,12 +103,7 @@ extern NSString *const kDatabaseHeadname;
  */
 + (FMDatabase *)FFDatabase;
 
-/**
- get class table name
- 
- @return table name
- */
-+ (NSString *)getTableName;
+
 
 
 @end

@@ -11,8 +11,8 @@
 #import "FFDataBaseModel+Sqlite.h"
 #import "FFDataBaseModel+Custom.h"
 #import "NSObject+FIDProperty.h"
-NSString *const kDatabaseHeadname = @"FID";
-NSString const* kUpdateContext = @"kUpdateContext";
+
+NSString *const kUpdateContext = @"kUpdateContext";
 
 @interface FFDataBaseModel ()
 
@@ -82,7 +82,7 @@ NSString const* kUpdateContext = @"kUpdateContext";
 
 + (BOOL)updateFromClassPredicateWithFormat:(NSString *)format
 {
-    return [[FFDataBaseModel FFDatabase] executeUpdateWithSqlstatement:[NSString stringWithFormat:@"update `%@` %@",[[self class] getTableName],format]];
+    return [[FFDataBaseModel FFDatabase] executeUpdateWithSqlstatement:[NSString stringWithFormat:@"update `%@` %@",[[self class] tableName],format]];
 }
 
 - (BOOL)updateObject
@@ -129,10 +129,7 @@ NSString const* kUpdateContext = @"kUpdateContext";
     return [FFDBManager database];
 }
 
-+ (NSString *)getTableName
-{
-    return [NSString stringWithFormat:@"%@%@",kDatabaseHeadname,NSStringFromClass([self class])];
-}
+
 
 /**
  添加新的字段

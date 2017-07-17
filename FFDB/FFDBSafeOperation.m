@@ -82,7 +82,7 @@
     FMDatabaseQueue *queue = [FMDatabaseQueue databaseQueueWithPath:[FFDBManager databasePath]];
     __block BOOL result = NO;
     [queue inDatabase:^(FMDatabase *db) {
-        result = [db executeUpdate:[NSString stringWithFormat:@"update `%@` %@",[dbClass getTableName],format]];
+        result = [db executeUpdate:[NSString stringWithFormat:@"update `%@` %@",[dbClass tableName],format]];
     }];
     return result;
 }

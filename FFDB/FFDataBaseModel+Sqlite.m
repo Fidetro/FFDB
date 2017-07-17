@@ -43,10 +43,10 @@
     NSString *sqlstatement = @"";
     if ([format length] != 0)
     {
-        sqlstatement = [NSString stringWithFormat:@"select *from `%@` %@",[[self class] getTableName],format];
+        sqlstatement = [NSString stringWithFormat:@"select *from `%@` %@",[[self class] tableName],format];
     }else
     {
-        sqlstatement = [NSString stringWithFormat:@"select *from `%@`",[[self class] getTableName]];
+        sqlstatement = [NSString stringWithFormat:@"select *from `%@`",[[self class] tableName]];
     }
     return sqlstatement;
 }
@@ -73,7 +73,7 @@
             values = [NSString stringWithFormat:@"%@,'%@'",values,[self getIvarWithName:column]];
         }
     }
-    NSString *sqlstatement = [NSString stringWithFormat:@"insert into `%@` (%@) values(%@) ",[[self class] getTableName],keys,values];
+    NSString *sqlstatement = [NSString stringWithFormat:@"insert into `%@` (%@) values(%@) ",[[self class] tableName],keys,values];
     return sqlstatement;
 }
 
@@ -92,7 +92,7 @@
             values = [NSString stringWithFormat:@"%@,%@='%@'",values,column,[self getIvarWithName:column]];
         }
     }
-    NSString *sqlstatement = [NSString stringWithFormat:@"update `%@` set  %@ where primaryID = '%@'",[[self class] getTableName],values,self.primaryID];
+    NSString *sqlstatement = [NSString stringWithFormat:@"update `%@` set  %@ where primaryID = '%@'",[[self class] tableName],values,self.primaryID];
     return sqlstatement;
 }
 
@@ -105,11 +105,11 @@
 {
     if ([format length] == 0)
     {
-        return [NSString stringWithFormat:@"delete from `%@`",[[self class] getTableName]];
+        return [NSString stringWithFormat:@"delete from `%@`",[[self class] tableName]];
     }
     else
     {
-        return [NSString stringWithFormat:@"delete from `%@` %@",[[self class] getTableName],format];
+        return [NSString stringWithFormat:@"delete from `%@` %@",[[self class] tableName],format];
     }
 }
 

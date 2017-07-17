@@ -171,10 +171,10 @@ Person *person = [personArray lastObject];
 获取FMDatabase对象
 [FFDBManager database];
 获取类在FMDB对应的表名
-[Class getTableName];
+[Class tableName];
 
-需要自定义表名，需要在子类重写 + (NSString *)getTableName;
-+ (NSString *)getTableName
+需要自定义表名，需要在子类重写 + (NSString *)tableName;
++ (NSString *)tableName
 {
    return @"CustomTableName";
 }
@@ -185,6 +185,10 @@ Person *person = [personArray lastObject];
 
 <h2 id="Pod版本更新说明">Pod版本更新说明</h2>
 
+
+
+### 2.5.1
+1.getTableName方法改名为tableName;
 
 ### 2.5.0
 1. 为了兼容swift3，将FMDB的依赖改成了`s.dependency "FMDB","~> 2.7.2"`
