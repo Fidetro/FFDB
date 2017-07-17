@@ -172,6 +172,13 @@ Person *person = [personArray lastObject];
 [FFDBManager database];
 获取类在FMDB对应的表名
 [Class getTableName];
+
+需要自定义表名，需要在子类重写 + (NSString *)getTableName;
++ (NSString *)getTableName
+{
+   return @"CustomTableName";
+}
+
 ```
 通过获取了这两个，可以自己结合FMDB原有的方法进行操作。
 <br>4. FFDB支持与swift 3混编。
