@@ -187,7 +187,7 @@ Person *person = [personArray lastObject];
 
 
 
-### 2.5.1
+### 2.5.2
 1.getTableName方法改名为tableName;
 
 ### 2.5.0
