@@ -12,7 +12,7 @@
 #import "FFDataBaseModel+Custom.h"
 #import "NSObject+FIDProperty.h"
 
-NSString *const kUpdateContext = @"kUpdateContext";
+NSString const* kUpdateContext = @"kUpdateContext";
 
 @interface FFDataBaseModel ()
 

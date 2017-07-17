@@ -9,6 +9,7 @@
 
 #import "FFDataBaseModel+Custom.h"
 #import <objc/runtime.h>
+
  NSString *const kDatabaseHeadname = @"FID";
 @implementation FFDataBaseModel (Custom)
 
