@@ -28,7 +28,7 @@
 + (NSString *)stringWithUpdateObject:(__kindof FFDataBaseModel *)model
                              columns:(NSArray <NSString *>*)columns;
 
-
++ (NSString *)stringWithCreateTableFromClass:(Class)dbClass;
 
 
 @end

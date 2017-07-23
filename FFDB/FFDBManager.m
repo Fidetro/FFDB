@@ -19,10 +19,15 @@
     SQLStatementWithFormat:(NSString *)format
 {
     FMDatabase *database = [self database];
+    NSArray *dataColumns = [NSArray array];
     NSMutableArray *dataArray = [NSMutableArray array];
     if (columns.count == 0)
     {
-        columns = [dbClass columsOfSelf];
+        dataColumns = [dbClass columsOfSelf];
+    }
+    else
+    {
+        dataColumns = columns;
     }
     if ([database open])
     {
@@ -30,9 +35,8 @@
         resultSet = [database executeQuery:[NSString stringWithSelectColumns:columns fromClasses:@[dbClass] SQLStatementWithFormat:format]];
         while ([resultSet next])
         {
-            
             id object = [[dbClass alloc]init];
-            for (NSString *propertyname in columns)
+            for (NSString *propertyname in dataColumns)
             {
                 NSString *result = [resultSet stringForColumn:propertyname];
                 NSString *objStr = [result length] == 0 ? @"" :result;
@@ -100,6 +104,13 @@
     [database close];
 }
 
++ (BOOL)CreateTableFromClass:(Class)dbClass
+{
+    FMDatabase *database = [self database];
+    return [database executeUpdateWithSqlstatement:[NSString stringWithCreateTableFromClass:dbClass]];
+    
+}
+
 + (NSString *)databasePath
 {
     NSDictionary *infoDictionary = [[NSBundle mainBundle] infoDictionary];
@@ -108,6 +119,8 @@
     NSString *databasePath = [[NSSearchPathForDirectoriesInDomains( NSDocumentDirectory, NSUserDomainMask, YES) lastObject]stringByAppendingPathComponent:datebaseName];
     return databasePath;
 }
+
+
 
 + (FMDatabase *)database
 {

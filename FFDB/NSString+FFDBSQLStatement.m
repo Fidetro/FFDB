@@ -86,10 +86,32 @@
     }
     [sqlstatement appendFormat:@"update `%@` ",tableName];
     [sqlstatement appendFormat:@"set %@",[model stringWithUpdateSetValueOfColumns:columns]];
-    [sqlstatement appendFormat:@"where primaryID = '%@'",model.primaryID];
+    [sqlstatement appendFormat:[model updateObjectSqlstatement]];
     return [sqlstatement copy];
 }
 
-
++ (NSString *)stringWithCreateTableFromClass:(Class)dbClass
+{
+    NSString *tableKey = [NSString string];
+    NSArray *propertyNames = [dbClass columsOfSelf];
+    NSString *tableName = [dbClass tableName];
+    
+    for (NSInteger index = 0; index < [propertyNames count]; index++)
+    {
+        NSString *propertyname = propertyNames[index];
+        NSString *columnType = [[dbClass columnsType][propertyname]length] == 0 ? @"text":[dbClass columnsType][propertyname];
+        
+        if (index == 0)
+        {
+            tableKey = [NSString stringWithFormat:@"%@%@ %@",tableKey,propertyname,columnType];
+        }
+        else
+        {
+            tableKey = [NSString stringWithFormat:@"%@,%@ %@",tableKey,propertyname,columnType];
+        }
+    }
+    NSString *sqlstatement = [NSString stringWithFormat:@"create table if  not exists `%@` (primaryID integer PRIMARY KEY AUTOINCREMENT,%@)",tableName,tableKey];
+    return sqlstatement;
+}
 
 @end

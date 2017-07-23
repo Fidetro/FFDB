@@ -106,14 +106,7 @@ NSString const* kUpdateContext = @"kUpdateContext";
 
 
 
-/**
- 添加新的字段
- */
-+ (void)alertColumn
-{
-    [FFDBManager alertFromClass:self columns:nil];
-    
-}
+
 
 
 
@@ -129,8 +122,8 @@ NSString const* kUpdateContext = @"kUpdateContext";
     }
     else
     {
-        [[FFDBManager database] executeUpdateWithSqlstatement:[self createTableSqlstatement]];
-        [[self class]alertColumn];
+        [FFDBManager CreateTableFromClass:self];
+        [FFDBManager alertFromClass:self columns:nil];
     }
 }
 

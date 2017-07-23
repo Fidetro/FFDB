@@ -105,6 +105,11 @@
     return [NSString stringWithFormat:@"where primaryID = '%@'",self.primaryID];
 }
 
+- (NSString *)updateObjectSqlstatement
+{
+    return [NSString stringWithFormat:@"where primaryID = '%@'",self.primaryID];
+}
+
 + (NSString *)deleteFromSQLStatementWithFormat:(NSString *)format
 {
     if ([format length] == 0)

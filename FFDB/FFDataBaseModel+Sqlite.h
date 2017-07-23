@@ -51,6 +51,8 @@
  */
 - (NSString *)deleteObjectSqlstatement;
 
+- (NSString *)updateObjectSqlstatement;
+
 /**
  DELETE SQL statement String
 
