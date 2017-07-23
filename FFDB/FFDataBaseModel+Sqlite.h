@@ -66,4 +66,6 @@
 
 - (NSString *)stringWithUpdateSetValueOfColumns:(NSArray <NSString *>*)columns;
 
++ (NSString *)stringToColumnTypeWithColumns:(NSArray <NSString *>*)columns;
+
 @end

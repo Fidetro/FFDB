@@ -154,6 +154,28 @@
     return values;
 }
 
++ (NSString *)stringToColumnTypeWithColumns:(NSArray <NSString *>*)columns
+{
+    NSMutableString *columnsType = [NSMutableString string];
+    
+    for (NSInteger index = 0; index < columns.count; index++)
+    {
+        NSString *propertyname = columns[index];
+        NSString *columnType = [[self columnsType][propertyname]length] == 0 ? @"text":[self columnsType][propertyname];
+        
+        if (index == 0)
+        {
+            [columnsType appendFormat:@"%@%@",propertyname,columnType];
+            
+        }
+        else
+        {
+            [columnsType appendFormat:@",%@%@",propertyname,columnType];
+        }
+    }
+    return columnsType;
+}
+
 - (id)getIvarWithName:(NSString *)propertyname
 {
     id obj = [self sendGetMethodWithPropertyName:propertyname];

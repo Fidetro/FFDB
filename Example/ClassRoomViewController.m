@@ -39,7 +39,7 @@ CGFloat BNRTimeBlock (void (^block)(void)) {
 - (IBAction)addNewClassRoom:(id)sender
 {
     ClassRoom *classRoom = [[ClassRoom alloc]init];
-    classRoom.name = @"new room";
+    classRoom.memberCount = @"new room";
     [classRoom insertObject];
     [self selectAndUpdateEvent];
     [self.tableView reloadData];
@@ -74,7 +74,7 @@ CGFloat BNRTimeBlock (void (^block)(void)) {
     }
     
     ClassRoom *classRoom = self.classroomArray[indexPath.row];
-    cell.textLabel.text = classRoom.name;
+    cell.textLabel.text = classRoom.memberCount;
     return cell;
     
 }
@@ -87,7 +87,6 @@ CGFloat BNRTimeBlock (void (^block)(void)) {
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
     
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
-    [[ClassRoom FFDatabase]executeQuery:@"asd",@"zxc"];
 }
 
 - (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath
@@ -106,7 +105,7 @@ CGFloat BNRTimeBlock (void (^block)(void)) {
         UIAlertAction *enterAction = [UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleDefault
                                                              handler:^(UIAlertAction * action) {
         UITextField *textField = [alert.textFields lastObject];
-        classRoom.name = textField.text;
+        classRoom.memberCount = textField.text;
         [classRoom updateObject];
         [tableView reloadRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationAutomatic];
                                                              }];

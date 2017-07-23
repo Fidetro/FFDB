@@ -31,6 +31,9 @@
 + (BOOL)updateObject:(__kindof FFDataBaseModel *)model
              columns:(NSArray <NSString *>*)columns;
 
++ (void)alertFromClass:(Class)dbClass
+               columns:(NSArray <NSString *>*)columns;
+
 + (NSString *)databasePath;
 
 + (FMDatabase *)database;

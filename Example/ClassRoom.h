@@ -14,4 +14,5 @@
 /** number **/
 @property(nonatomic,copy) NSString *number;
 
+@property(nonatomic,copy) NSString *memberCount;
 @end

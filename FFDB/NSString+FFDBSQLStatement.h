@@ -27,4 +27,8 @@
 
 + (NSString *)stringWithUpdateObject:(__kindof FFDataBaseModel *)model
                              columns:(NSArray <NSString *>*)columns;
+
+
+
+
 @end

@@ -13,4 +13,6 @@
 + (NSString *)stringWithColumns:(NSArray <NSString *>*)columns;
 
 + (NSString *)stringWithTableNameOfClasses:(NSArray <Class>*)Classes;
+
+
 @end

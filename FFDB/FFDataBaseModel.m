@@ -111,19 +111,8 @@ NSString const* kUpdateContext = @"kUpdateContext";
  */
 + (void)alertColumn
 {
-    NSString *tablename = [NSString stringWithFormat:@"%@%@",kDatabaseHeadname,NSStringFromClass([self class])];
-    FMDatabase *database = [FFDBManager database];
-    if ([database open])
-    {
-        for (NSString *propertyname in [[self class]columsOfSelf])
-        {
-            if (![database columnExists:propertyname inTableWithName:tablename])
-            {
-                [database executeUpdateWithSqlstatement:[NSString stringWithFormat:@"alter table `%@` add %@ text",tablename,propertyname]];
-            }
-        }
-    }
-    [database close];
+    [FFDBManager alertFromClass:self columns:nil];
+    
 }
 
 

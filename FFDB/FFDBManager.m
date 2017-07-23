@@ -11,7 +11,7 @@
 #import "FFDataBaseModel+Sqlite.h"
 #import "NSObject+FIDProperty.h"
 #import "NSString+FFDBSQLStatement.h"
-
+#import "FFDataBaseModel+Custom.h"
 @implementation FFDBManager
 
 + (NSArray *)selectColumns:(NSArray <NSString *>*)columns
@@ -20,9 +20,12 @@
 {
     FMDatabase *database = [self database];
     NSMutableArray *dataArray = [NSMutableArray array];
-    
+    if (columns.count == 0)
+    {
+        columns = [dbClass columsOfSelf];
+    }
     if ([database open])
-    {;
+    {
         FMResultSet *resultSet;
         resultSet = [database executeQuery:[NSString stringWithSelectColumns:columns fromClasses:@[dbClass] SQLStatementWithFormat:format]];
         while ([resultSet next])
@@ -71,6 +74,30 @@
 {
     FMDatabase *database = [self database];
     return [database executeUpdateWithSqlstatement:[NSString stringWithUpdateObject:model columns:columns]];
+}
+
++ (void)alertFromClass:(Class)dbClass
+               columns:(NSArray <NSString *>*)columns
+{
+    FMDatabase *database = [self database];
+    NSString *tableName = [dbClass tableName];
+    if (columns.count == 0)
+    {
+        columns = [dbClass columsOfSelf];
+    }
+    
+    if ([database open])
+    {
+        
+        for (NSString *propertyname in columns)
+        {
+            if (![database columnExists:propertyname inTableWithName:tableName])
+            {
+                [database executeUpdateWithSqlstatement:[NSString stringWithFormat:@"alter table `%@` add %@ text",tableName,propertyname]];
+            }
+        }
+    }
+    [database close];
 }
 
 + (NSString *)databasePath
