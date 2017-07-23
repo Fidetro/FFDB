@@ -28,56 +28,35 @@ NSString const* kUpdateContext = @"kUpdateContext";
 
 + (NSArray <__kindof FFDataBaseModel *>*)selectFromClassPredicateWithFormat:(NSString *)format
 {
-    FMDatabase *database = [self FFDatabase];
-    NSMutableArray *params = [NSMutableArray array];
-    if ([database open])
-    {
-        FMResultSet *resultSet;
-        resultSet = [database executeQuery:[[self class]selectFromClassSQLStatementWithFormat:format]];
-        while ([resultSet next])
-        {
-            
-            id object = [[[self class]alloc]init];
-            for (NSString *propertyname in [[self class] columsOfSelf])
-            {
-                NSString *objStr = [[resultSet stringForColumn:propertyname]length] == 0 ? @"" :[resultSet stringForColumn:propertyname];
-                [object setPropertyWithName:propertyname object:objStr];
-            }
-            [object setPropertyWithName:@"primaryID" object:[resultSet stringForColumn:@"primaryID"]];
-            [params addObject:object];
-        }
-        
-    }
     
-    [database close];
+    return [FFDBManager selectColumns:nil fromClass:[self class] SQLStatementWithFormat:format];
     
-    return [params copy];
 }
 
 + (BOOL)deleteFromClassAllObject
 {
-    return [[self class] deleteFromClassPredicateWithFormat:nil];
+    return [[self class]deleteFromClassPredicateWithFormat:nil];
 }
 
 - (BOOL)deleteObject
 {
-    return [[self class] deleteFromClassPredicateWithFormat:[self deleteObjectSqlstatement]];
+    return [[self class]deleteFromClassPredicateWithFormat:[self deleteObjectSqlstatement]];
 }
 
 + (BOOL)deleteFromClassPredicateWithFormat:(NSString *)format
 {
-    return [[FFDataBaseModel FFDatabase] executeUpdateWithSqlstatement:[[self class] deleteFromSQLStatementWithFormat:format]];
+    return [FFDBManager deleteFromClass:[self class] SQLStatementWithFormat:format];
 }
 
 - (BOOL)insertObject
 {
     NSArray *propertyNames = [[self class]columsOfSelf];
-    return [[FFDataBaseModel FFDatabase] executeUpdateWithSqlstatement:[self insertFromClassSQLStatementWithColumns:propertyNames]];
+    return [FFDBManager insertObject:self columns:propertyNames];
 }
 
 - (BOOL)insertObjectWithColumns:(NSArray *)columns
 {
-    return [[FFDataBaseModel FFDatabase] executeUpdateWithSqlstatement:[self insertFromClassSQLStatementWithColumns:columns]];
+    return [FFDBManager insertObject:self columns:columns];
 }
 
 + (BOOL)updateFromClassPredicateWithFormat:(NSString *)format

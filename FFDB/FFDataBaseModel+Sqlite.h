@@ -60,4 +60,8 @@
 + (NSString *)deleteFromSQLStatementWithFormat:(NSString *)format;
 
 
+
+
+- (NSString *)stringWithInsertValueOfColumns:(NSArray <NSString *>*)columns;
+
 @end

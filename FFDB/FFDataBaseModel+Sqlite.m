@@ -38,6 +38,10 @@
     return sqlstatement;
 }
 
+
+
+
+
 + (NSString *)selectFromClassSQLStatementWithFormat:(NSString *)format
 {
     NSString *sqlstatement = @"";
@@ -111,6 +115,25 @@
     {
         return [NSString stringWithFormat:@"delete from `%@` %@",[[self class] tableName],format];
     }
+}
+
+- (NSString *)stringWithInsertValueOfColumns:(NSArray <NSString *>*)columns
+{
+    NSMutableString *values = [NSMutableString string];
+    for (NSInteger index = 0; index < columns.count; index++)
+    {
+        NSString *column = columns[index];
+        if (index == 0)
+        {
+            [values appendFormat:@"'%@'",[self getIvarWithName:column]];
+            
+        }
+        else
+        {
+            [values appendFormat:@",'%@'",[self getIvarWithName:column]];
+        }
+    }
+    return values;
 }
 
 - (id)getIvarWithName:(NSString *)propertyname

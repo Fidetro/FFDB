@@ -28,13 +28,13 @@
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "FFDB/FFDataBaseModel+Sqlite.m"
-            timestampString = "521999778.930175"
+            filePath = "FFDBTests/SQLFormatTests.m"
+            timestampString = "522485708.820522"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "38"
-            endingLineNumber = "38"
-            landmarkName = "+createTableSqlstatement"
+            startingLineNumber = "53"
+            endingLineNumber = "53"
+            landmarkName = "-testInsertStatement"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>

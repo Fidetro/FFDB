@@ -15,6 +15,16 @@
 
 @interface FFDBManager : NSObject
 
++ (NSArray *)selectColumns:(NSArray <NSString *>*)columns
+                 fromClass:(Class)dbClass
+    SQLStatementWithFormat:(NSString *)format;
+
++ (BOOL)deleteFromClass:(Class)dbClass
+ SQLStatementWithFormat:(NSString *)format;
+
++ (BOOL)insertObject:(__kindof FFDataBaseModel *)model
+             columns:(NSArray <NSString *>*)columns;
+
 + (NSString *)databasePath;
 
 + (FMDatabase *)database;
