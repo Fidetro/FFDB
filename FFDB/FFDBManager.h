@@ -25,6 +25,12 @@
 + (BOOL)insertObject:(__kindof FFDataBaseModel *)model
              columns:(NSArray <NSString *>*)columns;
 
++ (BOOL)updateFromClass:(Class)dbClass
+ SQLStatementWithFormat:(NSString *)format;
+
++ (BOOL)updateObject:(__kindof FFDataBaseModel *)model
+             columns:(NSArray <NSString *>*)columns;
+
 + (NSString *)databasePath;
 
 + (FMDatabase *)database;

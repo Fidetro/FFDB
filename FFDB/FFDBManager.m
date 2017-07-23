@@ -55,11 +55,22 @@
 + (BOOL)insertObject:(__kindof FFDataBaseModel *)model
              columns:(NSArray <NSString *>*)columns
 {
-    
     FMDatabase *database = [self database];
     return [database executeUpdateWithSqlstatement:[NSString stringWithInsertObject:model columns:columns]];
-    
-    
+}
+
++ (BOOL)updateFromClass:(Class)dbClass
+ SQLStatementWithFormat:(NSString *)format
+{
+    FMDatabase *database = [self database];
+    return [database executeUpdateWithSqlstatement:[NSString stringWithUpdateFromClass:dbClass SQLStatementWithFormat:format]];
+}
+
++ (BOOL)updateObject:(__kindof FFDataBaseModel *)model
+             columns:(NSArray <NSString *>*)columns
+{
+    FMDatabase *database = [self database];
+    return [database executeUpdateWithSqlstatement:[NSString stringWithUpdateObject:model columns:columns]];
 }
 
 + (NSString *)databasePath

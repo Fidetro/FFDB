@@ -52,30 +52,41 @@
 + (NSString *)stringWithInsertObject:(__kindof FFDataBaseModel *)model
                             columns:(NSArray <NSString *>*)columns
 {
-    
+    NSMutableString *sqlstatement = [NSMutableString string];
+    NSString *tableName = [[model class] tableName];
+    NSString *columnsString = [NSString stringWithColumns:columns];
     if (columns.count == 0)
     {
         columns = [[model class]columsOfSelf];
     }
-    NSMutableString *sqlstatement = [NSMutableString string];
-    NSString *tableName = [[model class] tableName];
-    NSString *columnsString = [NSString stringWithColumns:columns];
+    
     [sqlstatement appendFormat:@"insert into `%@` ",tableName];
     [sqlstatement appendFormat:@"(%@)",columnsString];
     [sqlstatement appendFormat:@"values(%@)",[model stringWithInsertValueOfColumns:columns]];
     return [sqlstatement copy];
 }
 
-+ (NSString *)stringWithInsertColumns:(NSArray <NSString *>*)columns
-                            fromClass:(Class)dbClass
-               SQLStatementWithFormat:(NSString *)format
++ (NSString *)stringWithUpdateFromClass:(Class)dbClass
+                 SQLStatementWithFormat:(NSString *)format
 {
     NSMutableString *sqlstatement = [NSMutableString string];
     NSString *tableName = [dbClass tableName];
-    NSString *columnsString = [NSString stringWithColumns:columns];
-    [sqlstatement appendFormat:@"insert into `%@` ",tableName];
-    [sqlstatement appendFormat:@"(%@)",columnsString];
-    [sqlstatement appendFormat:@"values(%@)",format];
+    [sqlstatement appendFormat:@"update `%@` %@",tableName,format];
+    return [sqlstatement copy];
+}
+
++ (NSString *)stringWithUpdateObject:(__kindof FFDataBaseModel *)model
+                             columns:(NSArray <NSString *>*)columns
+{
+    NSMutableString *sqlstatement = [NSMutableString string];
+    NSString *tableName = [[model class] tableName];
+    if (columns.count == 0)
+    {
+        columns = [[model class]columsOfSelf];
+    }
+    [sqlstatement appendFormat:@"update `%@` ",tableName];
+    [sqlstatement appendFormat:@"set %@",[model stringWithUpdateSetValueOfColumns:columns]];
+    [sqlstatement appendFormat:@"where primaryID = '%@'",model.primaryID];
     return [sqlstatement copy];
 }
 

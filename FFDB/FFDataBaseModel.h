@@ -96,12 +96,6 @@ extern NSString *const kDatabaseHeadname;
 - (void)updateObjectWithBlock:(void(^)())update_block;
 
 
-/**
- get database
- 
- @return database
- */
-+ (FMDatabase *)FFDatabase;
 
 
 

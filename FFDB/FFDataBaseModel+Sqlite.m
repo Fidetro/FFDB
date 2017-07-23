@@ -136,6 +136,24 @@
     return values;
 }
 
+- (NSString *)stringWithUpdateSetValueOfColumns:(NSArray <NSString *>*)columns
+{
+    NSMutableString *values = [NSMutableString string];
+    for (NSInteger index = 0; index < columns.count; index++)
+    {
+        NSString *column = columns[index];
+        if (index == 0)
+        {
+            [values appendFormat:@"%@ = '%@'",column,[self getIvarWithName:column]];
+        }
+        else
+        {
+            [values appendFormat:@",%@ = '%@'",column,[self getIvarWithName:column]];
+        }
+    }
+    return values;
+}
+
 - (id)getIvarWithName:(NSString *)propertyname
 {
     id obj = [self sendGetMethodWithPropertyName:propertyname];

@@ -22,4 +22,9 @@
 + (NSString *)stringWithInsertObject:(__kindof FFDataBaseModel *)model
                              columns:(NSArray <NSString *>*)columns;
 
++ (NSString *)stringWithUpdateFromClass:(Class)dbClass
+                 SQLStatementWithFormat:(NSString *)format;
+
++ (NSString *)stringWithUpdateObject:(__kindof FFDataBaseModel *)model
+                             columns:(NSArray <NSString *>*)columns;
 @end
