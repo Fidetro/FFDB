@@ -32,6 +32,7 @@ CGFloat BNRTimeBlock (void (^block)(void)) {
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+  
     
 }
 

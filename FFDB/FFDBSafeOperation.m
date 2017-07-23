@@ -12,7 +12,7 @@
 #import "FFDataBaseModel+Sqlite.h"
 #import "FFDataBaseModel+Custom.h"
 #import "NSObject+FIDProperty.h"
-
+#import "NSString+FFDBSQLStatement.h"
 @implementation FFDBSafeOperation
 
 + (NSArray <__kindof FFDataBaseModel *>*)selectObjectWithFFDBClass:(Class)dbClass
@@ -26,7 +26,7 @@
     NSMutableArray *objectList = [NSMutableArray array];
     [queue inDatabase:^(FMDatabase *db) {
         FMResultSet *resultSet;
-        resultSet = [db executeQuery:[dbClass selectFromClassSQLStatementWithFormat:format]];
+        resultSet = [db executeQuery:[NSString stringWithSelectColumns:nil fromClasses:@[dbClass] SQLStatementWithFormat:nil]];
         while ([resultSet next])
         {
             
@@ -49,7 +49,8 @@
     [queue inDatabase:^(FMDatabase *db) {
         for (FFDataBaseModel *dbModel in objectList)
         {
-            NSString *sql = [dbModel insertFromClassSQLStatementWithColumns:[[dbModel class]columsOfSelf]];
+            
+            NSString *sql = [NSString stringWithInsertObject:dbModel columns:nil];
             BOOL result = [db executeUpdate:sql];
             if (result == NO)
             {
@@ -66,7 +67,8 @@
     [queue inDatabase:^(FMDatabase *db) {
         for (FFDataBaseModel *dbModel in objectList)
         {
-            NSString *sql = [dbModel updateFromClassSQLStatementWithColumns:[[dbModel class]columsOfSelf]];
+            
+            NSString *sql = [NSString stringWithUpdateObject:dbModel columns:nil];
             BOOL result = [db executeUpdate:sql];
             if (result == NO)
             {
@@ -82,7 +84,8 @@
     FMDatabaseQueue *queue = [FMDatabaseQueue databaseQueueWithPath:[FFDBManager databasePath]];
     __block BOOL result = NO;
     [queue inDatabase:^(FMDatabase *db) {
-        result = [db executeUpdate:[NSString stringWithFormat:@"update `%@` %@",[dbClass tableName],format]];
+        
+        result = [db executeUpdate:[NSString stringWithUpdateFromClass:dbClass SQLStatementWithFormat:format]];
     }];
     return result;
 }
@@ -93,7 +96,7 @@
     [queue inDatabase:^(FMDatabase *db) {
         for (FFDataBaseModel *dbModel in objectList)
         {
-            NSString *sql = [[dbModel class] deleteFromSQLStatementWithFormat:[dbModel deleteObjectSqlstatement]];
+            NSString *sql = [NSString stringWithDeleteFromClass:[dbModel class] SQLStatementWithFormat:[dbModel deleteObjectSqlstatement]];
             BOOL result = [db executeUpdate:sql];
             if (result == NO)
             {
@@ -109,7 +112,8 @@
     FMDatabaseQueue *queue = [FMDatabaseQueue databaseQueueWithPath:[FFDBManager databasePath]];
     __block BOOL result = NO;
     [queue inDatabase:^(FMDatabase *db) {
-        result = [db executeUpdate:[dbClass deleteFromSQLStatementWithFormat:format]];
+        
+        result = [db executeUpdate:[NSString stringWithDeleteFromClass:dbClass SQLStatementWithFormat:format]];
     }];
     return result;
 }

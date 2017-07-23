@@ -122,7 +122,7 @@ NSString const* kUpdateContext = @"kUpdateContext";
     }
     else
     {
-        [FFDBManager CreateTableFromClass:self];
+        [FFDBManager createTableFromClass:self];
         [FFDBManager alertFromClass:self columns:nil];
     }
 }

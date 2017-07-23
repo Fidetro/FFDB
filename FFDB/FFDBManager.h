@@ -34,7 +34,7 @@
 + (void)alertFromClass:(Class)dbClass
                columns:(NSArray <NSString *>*)columns;
 
-+ (BOOL)CreateTableFromClass:(Class)dbClass;
++ (BOOL)createTableFromClass:(Class)dbClass;
 
 + (NSString *)databasePath;
 

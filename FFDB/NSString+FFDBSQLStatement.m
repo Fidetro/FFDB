@@ -10,6 +10,7 @@
 #import "NSString+FFDBExtern.h"
 #import "FFDataBaseModel+Custom.h"
 #import "FFDataBaseModel+Sqlite.h"
+
 @implementation NSString (FFDBSQLStatement)
 
 + (NSString *)stringWithSelectColumns:(NSArray <NSString *>*)columns
@@ -54,11 +55,12 @@
 {
     NSMutableString *sqlstatement = [NSMutableString string];
     NSString *tableName = [[model class] tableName];
-    NSString *columnsString = [NSString stringWithColumns:columns];
     if (columns.count == 0)
     {
         columns = [[model class]columsOfSelf];
     }
+    NSString *columnsString = [NSString stringWithColumns:columns];
+    
     
     [sqlstatement appendFormat:@"insert into `%@` ",tableName];
     [sqlstatement appendFormat:@"(%@)",columnsString];
@@ -86,7 +88,7 @@
     }
     [sqlstatement appendFormat:@"update `%@` ",tableName];
     [sqlstatement appendFormat:@"set %@",[model stringWithUpdateSetValueOfColumns:columns]];
-    [sqlstatement appendFormat:[model updateObjectSqlstatement]];
+    [sqlstatement appendString:[model updateObjectSqlstatement]];
     return [sqlstatement copy];
 }
 
