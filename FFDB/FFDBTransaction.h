@@ -33,14 +33,16 @@
  
  @param objectList Need to insert the array of objects
  */
-+ (void)insertObjectList:(NSArray <__kindof FFDataBaseModel *>*)objectList;
++ (void)insertObjectList:(NSArray <__kindof FFDataBaseModel *>*)objectList
+              isRollBack:(BOOL)isRollBack;
 
 /**
  update object
  
  @param objectList Need to update the array of objects
  */
-+ (void)updateObjectList:(NSArray<__kindof FFDataBaseModel *> *)objectList;
++ (void)updateObjectList:(NSArray<__kindof FFDataBaseModel *> *)objectList
+              isRollBack:(BOOL)isRollBack;
 
 /**
  update object by format
@@ -49,14 +51,17 @@
  @param format Like sqlstatement rule, example: set age = '24' where name = 'fidetro'
  @return update successfully
  */
-+ (BOOL)updateObjectWithFFDBClass:(Class)dbClass format:(NSString *)format;
++ (BOOL)updateObjectWithFFDBClass:(Class)dbClass
+                           format:(NSString *)format
+                       isRollBack:(BOOL)isRollBack;
 
 /**
  delete object
  
  @param objectList Need to delete the array of objects
  */
-+ (void)deleteObjectList:(NSArray<__kindof FFDataBaseModel *> *)objectList;
++ (void)deleteObjectList:(NSArray<__kindof FFDataBaseModel *> *)objectList
+              isRollBack:(BOOL)isRollBack;
 
 /**
  delete object by format
@@ -65,6 +70,8 @@
  @param format format Like sqlstatement rule, example: where name = 'fidetro' and age = '21'
  @return delete successfully
  */
-+ (BOOL)deleteObjectWithFFDBClass:(Class)dbClass format:(NSString *)format;
++ (BOOL)deleteObjectWithFFDBClass:(Class)dbClass
+                           format:(NSString *)format
+                       isRollBack:(BOOL)isRollBack;
 
 @end

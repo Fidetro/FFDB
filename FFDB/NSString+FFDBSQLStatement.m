@@ -50,21 +50,21 @@
 }
 
 
-+ (NSString *)stringWithInsertObject:(__kindof FFDataBaseModel *)model
++ (NSString *)stringWithInsertObject:(__kindof FFDataBaseModel *)dbModel
                             columns:(NSArray <NSString *>*)columns
 {
     NSMutableString *sqlstatement = [NSMutableString string];
-    NSString *tableName = [[model class] tableName];
+    NSString *tableName = [[dbModel class] tableName];
     if (columns.count == 0)
     {
-        columns = [[model class]columsOfSelf];
+        columns = [[dbModel class]columsOfSelf];
     }
     NSString *columnsString = [NSString stringWithColumns:columns];
     
     
     [sqlstatement appendFormat:@"insert into `%@` ",tableName];
     [sqlstatement appendFormat:@"(%@)",columnsString];
-    [sqlstatement appendFormat:@"values(%@)",[model stringWithInsertValueOfColumns:columns]];
+    [sqlstatement appendFormat:@"values(%@)",[dbModel stringWithInsertValueOfColumns:columns]];
     return [sqlstatement copy];
 }
 
@@ -77,18 +77,18 @@
     return [sqlstatement copy];
 }
 
-+ (NSString *)stringWithUpdateObject:(__kindof FFDataBaseModel *)model
++ (NSString *)stringWithUpdateObject:(__kindof FFDataBaseModel *)dbModel
                              columns:(NSArray <NSString *>*)columns
 {
     NSMutableString *sqlstatement = [NSMutableString string];
-    NSString *tableName = [[model class] tableName];
+    NSString *tableName = [[dbModel class] tableName];
     if (columns.count == 0)
     {
-        columns = [[model class]columsOfSelf];
+        columns = [[dbModel class]columsOfSelf];
     }
     [sqlstatement appendFormat:@"update `%@` ",tableName];
-    [sqlstatement appendFormat:@"set %@",[model stringWithUpdateSetValueOfColumns:columns]];
-    [sqlstatement appendString:[model updateObjectSqlstatement]];
+    [sqlstatement appendFormat:@"set %@",[dbModel stringWithUpdateSetValueOfColumns:columns]];
+    [sqlstatement appendString:[dbModel updateObjectSqlstatement]];
     return [sqlstatement copy];
 }
 

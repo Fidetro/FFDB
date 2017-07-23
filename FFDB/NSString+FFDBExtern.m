@@ -27,12 +27,12 @@
     return [columnsString copy];
 }
 
-+ (NSString *)stringWithTableNameOfClasses:(NSArray <Class>*)Classes
++ (NSString *)stringWithTableNameOfClasses:(NSArray <Class>*)dbClasses
 {
     NSMutableString *classesString = [NSMutableString string];
-    for (NSInteger index = 0; index < Classes.count; index++)
+    for (NSInteger index = 0; index < dbClasses.count; index++)
     {
-        Class class = Classes[index];
+        Class class = dbClasses[index];
         NSString *tableName = [class tableName];
         if (index == 0)
         {

@@ -15,7 +15,7 @@
 
 @interface FFDBManager : NSObject
 
-+ (NSArray *)selectColumns:(NSArray <NSString *>*)columns
++ (NSArray <__kindof FFDataBaseModel *>*)selectColumns:(NSArray <NSString *>*)columns
                  fromClass:(Class)dbClass
     SQLStatementWithFormat:(NSString *)format;
 

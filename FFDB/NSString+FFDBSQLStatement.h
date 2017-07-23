@@ -19,13 +19,13 @@
 + (NSString *)stringWithDeleteFromClass:(Class)dbClass
                  SQLStatementWithFormat:(NSString *)format;
 
-+ (NSString *)stringWithInsertObject:(__kindof FFDataBaseModel *)model
++ (NSString *)stringWithInsertObject:(__kindof FFDataBaseModel *)dbModel
                              columns:(NSArray <NSString *>*)columns;
 
 + (NSString *)stringWithUpdateFromClass:(Class)dbClass
                  SQLStatementWithFormat:(NSString *)format;
 
-+ (NSString *)stringWithUpdateObject:(__kindof FFDataBaseModel *)model
++ (NSString *)stringWithUpdateObject:(__kindof FFDataBaseModel *)dbModel
                              columns:(NSArray <NSString *>*)columns;
 
 + (NSString *)stringWithCreateTableFromClass:(Class)dbClass;

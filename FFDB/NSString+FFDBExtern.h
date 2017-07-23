@@ -12,7 +12,7 @@
 
 + (NSString *)stringWithColumns:(NSArray <NSString *>*)columns;
 
-+ (NSString *)stringWithTableNameOfClasses:(NSArray <Class>*)Classes;
++ (NSString *)stringWithTableNameOfClasses:(NSArray <Class>*)dbClasses;
 
 
 @end

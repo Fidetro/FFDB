@@ -44,6 +44,7 @@
 }
 
 + (void)insertObjectList:(NSArray <__kindof FFDataBaseModel *>*)objectList
+              isRollBack:(BOOL)isRollBack
 {
     FMDatabaseQueue *queue = [FMDatabaseQueue databaseQueueWithPath:[FFDBManager databasePath]];
     [queue inTransaction:^(FMDatabase *db, BOOL *rollback) {
@@ -53,7 +54,7 @@
             BOOL result = [db executeUpdate:sql];
             if (result == NO)
             {
-                *rollback = YES;
+                *rollback = isRollBack;
                 FFDBDLog(@"error rollback");
             }
             
@@ -62,6 +63,7 @@
 }
 
 + (void)updateObjectList:(NSArray<__kindof FFDataBaseModel *> *)objectList
+              isRollBack:(BOOL)isRollBack
 {
     FMDatabaseQueue *queue = [FMDatabaseQueue databaseQueueWithPath:[FFDBManager databasePath]];
     [queue inTransaction:^(FMDatabase *db, BOOL *rollback) {
@@ -71,7 +73,7 @@
             BOOL result = [db executeUpdate:sql];
             if (result == NO)
             {
-                *rollback = YES;
+                *rollback = isRollBack;
                 FFDBDLog(@"error rollback");
             }
             
@@ -79,17 +81,25 @@
     }];
 }
 
-+ (BOOL)updateObjectWithFFDBClass:(Class)dbClass format:(NSString *)format
++ (BOOL)updateObjectWithFFDBClass:(Class)dbClass
+                           format:(NSString *)format
+                       isRollBack:(BOOL)isRollBack
 {
     FMDatabaseQueue *queue = [FMDatabaseQueue databaseQueueWithPath:[FFDBManager databasePath]];
     __block BOOL result = NO;
     [queue inTransaction:^(FMDatabase *db, BOOL *rollback) {
         result = [db executeUpdate:[NSString stringWithUpdateFromClass:dbClass SQLStatementWithFormat:format]];
+        if (result == NO)
+        {
+            *rollback = isRollBack;
+            FFDBDLog(@"error rollback");
+        }
     }];
     return result;
 }
 
 + (void)deleteObjectList:(NSArray<__kindof FFDataBaseModel *> *)objectList
+              isRollBack:(BOOL)isRollBack
 {
     FMDatabaseQueue *queue = [FMDatabaseQueue databaseQueueWithPath:[FFDBManager databasePath]];
     [queue inTransaction:^(FMDatabase *db, BOOL *rollback) {
@@ -99,7 +109,7 @@
             BOOL result = [db executeUpdate:sql];
             if (result == NO)
             {
-                *rollback = YES;
+                *rollback = isRollBack;
                 FFDBDLog(@"error rollback");
             }
             
@@ -107,12 +117,19 @@
     }];
 }
 
-+ (BOOL)deleteObjectWithFFDBClass:(Class)dbClass format:(NSString *)format
++ (BOOL)deleteObjectWithFFDBClass:(Class)dbClass
+                           format:(NSString *)format
+                       isRollBack:(BOOL)isRollBack
 {
     FMDatabaseQueue *queue = [FMDatabaseQueue databaseQueueWithPath:[FFDBManager databasePath]];
     __block BOOL result = NO;
     [queue inTransaction:^(FMDatabase *db, BOOL *rollback) {
         result = [db executeUpdate:[NSString stringWithDeleteFromClass:dbClass SQLStatementWithFormat:format]];
+        if (result == NO)
+        {
+            *rollback = isRollBack;
+            FFDBDLog(@"error rollback");
+        }
     }];
     return result;
 }
