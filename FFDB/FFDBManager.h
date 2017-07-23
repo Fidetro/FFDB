@@ -9,7 +9,7 @@
 
 #import <Foundation/Foundation.h>
 #import <FMDB/FMDB.h>
-#import "FMDatabase+FFExtern.h"
+
 
 @class FFDataBaseModel;
 

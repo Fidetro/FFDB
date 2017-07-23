@@ -111,7 +111,7 @@ NSArray<Dog *> *dogs = [Dog selectFromClassPredicateWithFormat:@"where age < 5 o
 
 [CocoaPod这里](https://cocoapods.org/pods/FFDB)
 
-pod 'FFDB’,’~>2.x’
+pod 'FFDB’,’~>3.x’
 pod search FFDB如果没有找到，pod setup之后就ok了
 
 如果不使用CocoaPod，请导入`FMDB`，并且在target的Linked Frameworks and Libraries导入
@@ -121,7 +121,7 @@ libsqlite3.0.tbd
 
 同时把目录中的这些文件拉到工程中
 
-![image](https://github.com/Fidetro/FFDB/blob/master/src/2.png)
+![image](https://github.com/Fidetro/FFDB/blob/master/src/4.png)
 
 建立好要创建的类继承`FFDataBaseModel`，声明属性即可，
 如一个`Person`表里，有人名，年龄字段。

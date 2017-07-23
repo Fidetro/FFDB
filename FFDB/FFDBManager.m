@@ -12,6 +12,8 @@
 #import "NSObject+FIDProperty.h"
 #import "NSString+FFDBSQLStatement.h"
 #import "FFDataBaseModel+Custom.h"
+#import "FMDatabase+FFExtern.h"
+
 @implementation FFDBManager
 
 + (NSArray *)selectColumns:(NSArray <NSString *>*)columns
