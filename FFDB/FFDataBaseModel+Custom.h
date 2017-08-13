@@ -36,6 +36,11 @@
 + (NSDictionary *)columnsType;
 
 
-+ (NSArray *)columsOfSelf;
+/**
+ custom columns
+ 
+ @return <#return value description#>
+ */
++ (NSArray *)columnsOfSelf;
 
 @end

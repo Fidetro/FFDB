@@ -28,7 +28,7 @@
     return nil;
 }
 
-+ (NSArray *)columsOfSelf
++ (NSArray *)columnsOfSelf
 {
     unsigned int count = 0;
     Ivar *ivarList = class_copyIvarList(self, &count);

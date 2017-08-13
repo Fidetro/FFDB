@@ -19,11 +19,12 @@
  */
 - (NSString *)deleteObjectSqlstatement;
 
+/**
+ UPDATE Object SQL statement String
+ 
+ @return SQL statement String
+ */
 - (NSString *)updateObjectSqlstatement;
-
-
-
-
 
 - (NSString *)stringWithInsertValueOfColumns:(NSArray <NSString *>*)columns;
 

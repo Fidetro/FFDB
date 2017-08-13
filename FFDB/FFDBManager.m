@@ -25,7 +25,7 @@
     NSMutableArray *dataArray = [NSMutableArray array];
     if (columns.count == 0)
     {
-        dataColumns = [dbClass columsOfSelf];
+        dataColumns = [dbClass columnsOfSelf];
     }
     else
     {
@@ -89,7 +89,7 @@
     NSString *tableName = [dbClass tableName];
     if (columns.count == 0)
     {
-        columns = [dbClass columsOfSelf];
+        columns = [dbClass columnsOfSelf];
     }
     
     if ([database open])

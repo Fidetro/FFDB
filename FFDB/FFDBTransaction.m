@@ -31,7 +31,7 @@
         {
             
             id object = [[dbClass alloc]init];
-            for (NSString *propertyname in [dbClass columsOfSelf])
+            for (NSString *propertyname in [dbClass columnsOfSelf])
             {
                 NSString *objStr = [[resultSet stringForColumn:propertyname]length] == 0 ? @"" :[resultSet stringForColumn:propertyname];
                 [object setPropertyWithName:propertyname object:objStr];

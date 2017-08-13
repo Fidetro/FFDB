@@ -50,7 +50,7 @@ NSString const* kUpdateContext = @"kUpdateContext";
 
 - (BOOL)insertObject
 {
-    NSArray *propertyNames = [[self class]columsOfSelf];
+    NSArray *propertyNames = [[self class]columnsOfSelf];
     return [FFDBManager insertObject:self columns:propertyNames];
 }
 
@@ -67,7 +67,7 @@ NSString const* kUpdateContext = @"kUpdateContext";
 
 - (BOOL)updateObject
 {
-    NSArray *propertyNames = [[self class]columsOfSelf];
+    NSArray *propertyNames = [[self class]columnsOfSelf];
     return [FFDBManager updateObject:self columns:propertyNames];
 }
 
@@ -78,7 +78,7 @@ NSString const* kUpdateContext = @"kUpdateContext";
 
 - (void)updateObjectWithBlock:(void(^)())update_block
 {
-    NSArray *propertyNames = [[self class]columsOfSelf];
+    NSArray *propertyNames = [[self class]columnsOfSelf];
     if (update_block)
     {
         for (NSString *propertyName in propertyNames)

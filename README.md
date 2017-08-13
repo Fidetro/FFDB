@@ -10,6 +10,7 @@
 - [2.x和3.x的版本有什么不同？](#2.x和3.x的版本有什么不同？)
 - [补充](#补充)
 - [Pod版本更新说明](#Pod版本更新说明)
+-[UML类图](#UML类图)
 
 <h2 id="为什么会有FFDB？">为什么会有FFDB？</h2>
 
@@ -179,3 +180,5 @@ Person *person = [personArray lastObject];
 <br>4. FFDB支持与swift 3混编。
 
 <h2 id="Pod版本更新说明">Pod版本更新说明</h2>
+<h2 id="UML类图">UML类图</h2>
+![image](https://github.com/Fidetro/FFDB/blob/master/src/3.xUML.png)

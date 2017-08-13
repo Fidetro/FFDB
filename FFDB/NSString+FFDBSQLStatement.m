@@ -57,7 +57,7 @@
     NSString *tableName = [[dbModel class] tableName];
     if (columns.count == 0)
     {
-        columns = [[dbModel class]columsOfSelf];
+        columns = [[dbModel class]columnsOfSelf];
     }
     NSString *columnsString = [NSString stringWithColumns:columns];
     
@@ -84,7 +84,7 @@
     NSString *tableName = [[dbModel class] tableName];
     if (columns.count == 0)
     {
-        columns = [[dbModel class]columsOfSelf];
+        columns = [[dbModel class]columnsOfSelf];
     }
     [sqlstatement appendFormat:@"update `%@` ",tableName];
     [sqlstatement appendFormat:@"set %@",[dbModel stringWithUpdateSetValueOfColumns:columns]];
@@ -95,7 +95,7 @@
 + (NSString *)stringWithCreateTableFromClass:(Class)dbClass
 {
     NSString *tableKey = [NSString string];
-    NSArray *propertyNames = [dbClass columsOfSelf];
+    NSArray *propertyNames = [dbClass columnsOfSelf];
     NSString *tableName = [dbClass tableName];
     
     for (NSInteger index = 0; index < [propertyNames count]; index++)
