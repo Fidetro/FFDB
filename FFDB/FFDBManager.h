@@ -19,6 +19,12 @@
                  fromClass:(Class)dbClass
     SQLStatementWithFormat:(NSString *)format;
 
++ (NSArray <__kindof FFDataBaseModel *>*)selectColumns:(NSArray <NSString *>*)columns
+                                           fromClasses:(NSArray <Class>*)dbClasses
+                                               toClass:(Class)toClass
+                                SQLStatementWithFormat:(NSString *)format;
+
+
 + (BOOL)deleteFromClass:(Class)dbClass
  SQLStatementWithFormat:(NSString *)format;
 
