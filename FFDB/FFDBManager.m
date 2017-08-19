@@ -54,6 +54,47 @@
     return dataArray;
 }
 
++ (NSArray <__kindof FFDataBaseModel *>*)selectColumns:(NSArray <NSString *>*)columns
+                                           fromClasses:(NSArray<Class> *)dbClasses
+                                               toClass:(Class)toClass
+                                SQLStatementWithFormat:(NSString *)format
+{
+    FMDatabase *database = [self database];
+    NSMutableArray *dataColumns = [NSMutableArray array];
+    NSMutableArray *dataArray = [NSMutableArray array];
+    if (columns.count == 0)
+    {
+        for (Class dbClass in dbClasses)
+        {
+            [dataColumns addObjectsFromArray:[toClass columnsOfSelf]];
+        }
+    }
+    else
+    {
+        dataColumns = [columns copy];
+    }
+    if ([database open])
+    {
+        FMResultSet *resultSet;
+        resultSet = [database executeQuery:[NSString stringWithSelectColumns:columns fromClasses:dbClasses SQLStatementWithFormat:format]];
+        while ([resultSet next])
+        {
+            id object = [[toClass alloc]init];
+            for (NSString *propertyname in dataColumns)
+            {
+                NSString *result = [resultSet stringForColumn:propertyname];
+                NSString *objStr = [result length] == 0 ? @"" :result;
+                [object setPropertyWithName:propertyname object:objStr];
+            }
+            [dataArray addObject:object];
+        }
+        
+    }
+    
+    [database close];
+    return dataArray;
+}
+
 + (BOOL)deleteFromClass:(Class)dbClass
  SQLStatementWithFormat:(NSString *)format
 {

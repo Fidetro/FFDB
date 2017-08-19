@@ -37,9 +37,9 @@
 
 
 /**
- custom columns
+ default columns
  
- @return <#return value description#>
+ @return columns
  */
 + (NSArray *)columnsOfSelf;
 

@@ -180,6 +180,33 @@ Person *person = [personArray lastObject];
 <br>4. FFDB支持与swift 3混编。
 
 <h2 id="Pod版本更新说明">Pod版本更新说明</h2>
+
+### 3.1.0
+1. 新增了联表查询功能
+
+```
++ (NSArray <__kindof FFDataBaseModel *>*)selectColumns:(NSArray <NSString *>*)columns
+                                           fromClasses:(NSArray <Class>*)dbClasses
+                                               toClass:(Class)toClass
+                                SQLStatementWithFormat:(NSString *)format;
+
+columns是需要查询返回的字段，dbClasses要传你需要联表查的类，toClass会返回联表查询后成功返回的字段，要注意的是columns要和toClass的property能对应上
+
+```
+2. 插入、更新数据库的数据的时候，会以下部分特殊符号进行替换然后转义
+```
+   /   ->    //
+   '   ->    ''
+   [   ->    /[
+   ]   ->    /]
+   %   ->    /%
+   &   ->    /&
+   _   ->    /_
+   (   ->    /(
+   )   ->    /)
+```
+
+
 <h2 id="UML类图">UML类图</h2>
 
 
