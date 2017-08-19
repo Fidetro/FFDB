@@ -64,10 +64,7 @@
     NSMutableArray *dataArray = [NSMutableArray array];
     if (columns.count == 0)
     {
-        for (Class dbClass in dbClasses)
-        {
             [dataColumns addObjectsFromArray:[toClass columnsOfSelf]];
-        }
     }
     else
     {
