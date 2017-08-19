@@ -66,7 +66,7 @@
     {
         for (Class dbClass in dbClasses)
         {
-            [dataColumns addObjectsFromArray:[dbClass columnsOfSelf]];
+            [dataColumns addObjectsFromArray:[toClass columnsOfSelf]];
         }
     }
     else
@@ -86,7 +86,6 @@
                 NSString *objStr = [result length] == 0 ? @"" :result;
                 [object setPropertyWithName:propertyname object:objStr];
             }
-            [object setPropertyWithName:@"primaryID" object:[resultSet stringForColumn:@"primaryID"]];
             [dataArray addObject:object];
         }
         

@@ -98,6 +98,19 @@
     {
         obj = @"";
     };
+    if ([obj isKindOfClass:[NSString class]])
+    {
+        NSString *str = obj;
+        [str stringByReplacingOccurrencesOfString:@"/" withString:@"//"];
+        [str stringByReplacingOccurrencesOfString:@"'" withString:@"''"];
+        [str stringByReplacingOccurrencesOfString:@"[" withString:@"/["];
+        [str stringByReplacingOccurrencesOfString:@"]" withString:@"/]"];
+        [str stringByReplacingOccurrencesOfString:@"%" withString:@"/%"];
+        [str stringByReplacingOccurrencesOfString:@"&" withString:@"/&"];
+        [str stringByReplacingOccurrencesOfString:@"_" withString:@"/_"];
+        [str stringByReplacingOccurrencesOfString:@"(" withString:@"/("];
+        [str stringByReplacingOccurrencesOfString:@")" withString:@"/)"];
+    }
     return obj;
 }
 
