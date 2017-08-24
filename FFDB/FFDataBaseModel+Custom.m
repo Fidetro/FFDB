@@ -58,4 +58,37 @@
     
 }
 
++ (NSDictionary *)customColumns
+{
+    return nil;
+}
+
+- (id)sendGetMethodWithPropertyName:(NSString *)propertyName
+{
+    NSArray *propertyNames = [[[self class]customColumns] allKeysForObject:propertyName];
+    if (propertyNames.count == 0)
+    {
+        return [self valueForKey:propertyName];
+    }
+    else
+    {
+        NSString *tureropertyName = [propertyNames lastObject];
+        return [self valueForKey:tureropertyName];
+    }
+}
+
+- (void)setPropertyWithName:(NSString *)propertyName object:(id)object
+{
+    NSArray *propertyNames = [[[self class]customColumns] allKeysForObject:propertyName];
+    if (propertyNames.count == 0)
+    {
+        [self setValue:object forKey:propertyName];
+    }
+    else
+    {
+        NSString *tureropertyName = [propertyNames lastObject];
+        [self setValue:object forKey:tureropertyName];
+    }
+}
+
 @end
