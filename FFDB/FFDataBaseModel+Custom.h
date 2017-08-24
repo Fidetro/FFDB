@@ -43,4 +43,14 @@
  */
 + (NSArray *)columnsOfSelf;
 
+/**
+ If you want custom column you need overwirte in subclass ,like:
+
+ + (NSDictionary *)customColumns
+ {
+    return @{@"d":@"dog"};
+ }
+ */
++ (NSDictionary *)customColumns;
+
 @end
