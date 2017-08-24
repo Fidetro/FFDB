@@ -175,6 +175,18 @@ Person *person = [personArray lastObject];
    return @"CustomTableName";
 }
 
+如果需要自定义字段的属性，需要在子类重写  + (NSDictionary *)columnsType;
+ + (NSDictionary *)columnsType
+ {
+    return @{@"age":@"integer"};
+ }
+ 
+ 如果有字段不想被存进数据库中，需要在子类重写  + (NSArray *)memoryPropertys;
+ + (NSArray *)memoryPropertys
+ {
+    return @[@"_id"];
+ }
+ 
 ```
 通过获取了这两个，可以自己结合FMDB原有的方法进行操作。
 <br>4. FFDB支持与swift 3混编。
