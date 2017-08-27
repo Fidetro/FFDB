@@ -9,7 +9,7 @@
 
 #import "FFDataBaseModel+Custom.h"
 #import <objc/runtime.h>
-
+#import "NSObject+FIDProperty.h"
  NSString *const kDatabaseHeadname = @"FID";
 @implementation FFDataBaseModel (Custom)
 
@@ -50,6 +50,11 @@
         {
             continue;
         }
+        NSString *customColumn = [self customColumns][key];
+        if (customColumn != nil)
+        {
+            key = customColumn;
+        }
         [propertyNames addObject:key];
     }
     free(ivarList);
@@ -68,13 +73,14 @@
     NSArray *propertyNames = [[[self class]customColumns] allKeysForObject:propertyName];
     if (propertyNames.count == 0)
     {
-        return [self valueForKey:propertyName];
+        return [super sendGetMethodWithPropertyName:propertyName];;
     }
     else
     {
-        NSString *tureropertyName = [propertyNames lastObject];
-        return [self valueForKey:tureropertyName];
+        NSString *customColumn = [propertyNames lastObject];
+        return [super sendGetMethodWithPropertyName:customColumn];;
     }
+    
 }
 
 - (void)setPropertyWithName:(NSString *)propertyName object:(id)object
@@ -82,12 +88,12 @@
     NSArray *propertyNames = [[[self class]customColumns] allKeysForObject:propertyName];
     if (propertyNames.count == 0)
     {
-        [self setValue:object forKey:propertyName];
+        [super setPropertyWithName:propertyName object:object];
     }
     else
     {
-        NSString *tureropertyName = [propertyNames lastObject];
-        [self setValue:object forKey:tureropertyName];
+        NSString *customColumn = [propertyNames lastObject];
+        [super setPropertyWithName:customColumn object:object];
     }
 }
 

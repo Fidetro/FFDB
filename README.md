@@ -222,4 +222,4 @@ columns是需要查询返回的字段，dbClasses要传你需要联表查的类�
 <h2 id="UML类图">UML类图</h2>
 
 
-![image](https://github.com/Fidetro/FFDB/blob/master/src/5.png)
+![image](https://github.com/Fidetro/FFDB/blob/master/src/6.pdf)

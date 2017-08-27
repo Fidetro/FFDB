@@ -72,12 +72,12 @@
         
         if (index == 0)
         {
-            [columnsType appendFormat:@"%@%@",propertyname,columnType];
+            [columnsType appendFormat:@"%@ %@",propertyname,columnType];
             
         }
         else
         {
-            [columnsType appendFormat:@",%@%@",propertyname,columnType];
+            [columnsType appendFormat:@",%@ %@",propertyname,columnType];
         }
     }
     return columnsType;

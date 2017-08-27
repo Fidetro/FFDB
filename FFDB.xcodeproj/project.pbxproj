@@ -20,6 +20,7 @@
 		9A32CAB61E82C58A0097324D /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9A32CAB41E82C58A0097324D /* LaunchScreen.storyboard */; };
 		9A32CB041E82C69D0097324D /* libsqlite3.0.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 9A32CB031E82C69D0097324D /* libsqlite3.0.tbd */; };
 		9A5863271F1B0A5300E2C0BC /* FFDataBaseModel+Custom.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A5863261F1B0A5300E2C0BC /* FFDataBaseModel+Custom.m */; };
+		9AA045751F528A8A00F35C7B /* CustomModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 9AA045741F528A8A00F35C7B /* CustomModel.m */; };
 		9AA7D4CF1F1B29BE00177A32 /* FFDBTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 9AA7D4CE1F1B29BE00177A32 /* FFDBTests.m */; };
 		9AA7D4D81F1B2A7C00177A32 /* TestModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 9AA7D4D71F1B2A7C00177A32 /* TestModel.m */; };
 		9AB169861EC5FCAE00DDC817 /* FFDBLog.m in Sources */ = {isa = PBXBuildFile; fileRef = 9AB169851EC5FCAE00DDC817 /* FFDBLog.m */; };
@@ -68,6 +69,8 @@
 		9A5863251F1B0A5300E2C0BC /* FFDataBaseModel+Custom.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "FFDataBaseModel+Custom.h"; sourceTree = "<group>"; };
 		9A5863261F1B0A5300E2C0BC /* FFDataBaseModel+Custom.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "FFDataBaseModel+Custom.m"; sourceTree = "<group>"; };
 		9A755F711E8D78BD00B2A4B5 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = Info.plist; path = ../Example/Info.plist; sourceTree = "<group>"; };
+		9AA045731F528A8A00F35C7B /* CustomModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CustomModel.h; sourceTree = "<group>"; };
+		9AA045741F528A8A00F35C7B /* CustomModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CustomModel.m; sourceTree = "<group>"; };
 		9AA7D4CC1F1B29BE00177A32 /* FFDBTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = FFDBTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		9AA7D4CE1F1B29BE00177A32 /* FFDBTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FFDBTests.m; sourceTree = "<group>"; };
 		9AA7D4D01F1B29BE00177A32 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -183,6 +186,8 @@
 			children = (
 				9AA7D4D61F1B2A7C00177A32 /* TestModel.h */,
 				9AA7D4D71F1B2A7C00177A32 /* TestModel.m */,
+				9AA045731F528A8A00F35C7B /* CustomModel.h */,
+				9AA045741F528A8A00F35C7B /* CustomModel.m */,
 				9AA7D4CE1F1B29BE00177A32 /* FFDBTests.m */,
 				9A1253A51F2442AE004BFE4D /* SQLFormatTests.m */,
 				9AA7D4D01F1B29BE00177A32 /* Info.plist */,
@@ -459,6 +464,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				9AA045751F528A8A00F35C7B /* CustomModel.m in Sources */,
 				9AA7D4CF1F1B29BE00177A32 /* FFDBTests.m in Sources */,
 				9AA7D4D81F1B2A7C00177A32 /* TestModel.m in Sources */,
 				9A1253A61F2442AE004BFE4D /* SQLFormatTests.m in Sources */,

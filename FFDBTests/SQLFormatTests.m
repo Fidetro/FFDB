@@ -12,6 +12,7 @@
 #import "FFDBLog.h"
 #import "TestModel.h"
 #import "ClassRoom.h"
+#import "CustomModel.h"
 @interface SQLFormatTests : XCTestCase
 
 @end
@@ -50,6 +51,20 @@
     FFDBDLog(@"%@",[NSString stringWithInsertObject:model columns:nil])
     FFDBDLog(@"%@",[NSString stringWithInsertObject:model columns:@[@"name"]])
     FFDBDLog(@"%@",[NSString stringWithInsertObject:model columns:@[@"time"]])
+}
+
+- (void)testCreateStatement
+{
+    FFDBDLog(@"%@",[NSString stringWithCreateTableFromClass:[CustomModel class]])
+    FFDBDLog(@"%@",[NSString stringWithDeleteFromClass:[CustomModel class] SQLStatementWithFormat:nil])
+     FFDBDLog(@"%@",[NSString stringWithSelectColumns:nil fromClasses:@[[CustomModel class]] SQLStatementWithFormat:nil])
+    CustomModel *custom = [[CustomModel alloc]init];
+    custom._id = @"67";
+    custom.mem = @"hey";
+    FFDBDLog(@"%@",[NSString stringWithInsertObject:custom columns:nil])
+    FFDBDLog(@"%@",[NSString stringWithUpdateFromClass:[CustomModel class] SQLStatementWithFormat:nil])
+    FFDBDLog(@"%@",[NSString stringWithUpdateObject:custom columns:nil])
+    
 }
 
 - (void)testUpdateStatement
