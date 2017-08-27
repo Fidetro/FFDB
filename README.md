@@ -159,39 +159,67 @@ Person *person = [personArray lastObject];
 
 
 <h2 id="补充">补充</h2>
+
 <br>1. 所有字段都是默认是TEXT，在后面的版本会增加自定义字段类型这个功能;
 <br>2. 所有继承FFDataBaseModel的对象，在插入数据库后，都会自带一个primaryID作为唯一标识，同时这是一个自增的字段;
 <br>3. 目前FFDB只是提供了简单的增删改查接口，如果要使用目前接口没办法满足的功能，可以通过以下几个方法进行扩充的操作;
+通过获取了这两个，可以自己结合FMDB原有的方法进行操作。
 
 ```
 获取FMDatabase对象
 [FFDBManager database];
 获取类在FMDB对应的表名
 [Class tableName];
-
 需要自定义表名，需要在子类重写 + (NSString *)tableName;
 + (NSString *)tableName
 {
    return @"CustomTableName";
 }
 
-如果需要自定义字段的属性，需要在子类重写  + (NSDictionary *)columnsType;
- + (NSDictionary *)columnsType
- {
-    return @{@"age":@"integer"};
- }
- 
- 如果有字段不想被存进数据库中，需要在子类重写  + (NSArray *)memoryPropertys;
- + (NSArray *)memoryPropertys
- {
-    return @[@"_id"];
- }
- 
 ```
-通过获取了这两个，可以自己结合FMDB原有的方法进行操作。
-<br>4. FFDB支持与swift 3混编。
+<br>4. 有不需要创建到表的属性的时候，现在通过在子类重写`+ (NSArray *)memoryPropertys` 可以达到效果
+
+```
+//例子
+@interface TestModel : FFDataBaseModel
+@property(nonatomic,copy) NSString *name;
+/** 这是不需要加到表中的字段 **/
+@property(nonatomic,copy) NSString *memory;
+@property(nonatomic,copy) NSString *_id;
+@property(nonatomic,assign) double time;
+@end
+
++ (NSArray *)memoryPropertys
+{
+   return @[@"memory"];
+}
+```
+<br>5. 想修改字段的存储类型可以通过重写 `+ (NSDictionary *)columnsType` 自定义字段的属性，修改字段属性，没有重写的字段都会默认是`text`类型
+
+```
++ (NSDictionary *)columnsType
+{
+    return @{@"time":@"double"};
+}
+```
+<br>6. 自定义字段名可以重写`+ (NSDictionary *)customColumns;`
+```
+这样表的字段是id建的，而不是_id
+ + (NSDictionary *)customColumns
+ {
+ return @{@"_id":@"id"};
+ }
+
+
+```
+<br>7. FFDB支持与swift 3混编。
 
 <h2 id="Pod版本更新说明">Pod版本更新说明</h2>
+
+### 3.2.0
+1. 新增自定义字段功能
+2. 写完了拖了很久没写的单元测试，之前重构完3.0的时候没仔细测试就放到项目中用了，幸好也没出什么bug
+3. 目前在计划写4.0的swift版本，应该4.0的同时也会发一个兼容perfect服务器使用的ORM数据库
 
 ### 3.1.0
 1. 新增了联表查询功能
@@ -222,4 +250,4 @@ columns是需要查询返回的字段，dbClasses要传你需要联表查的类�
 <h2 id="UML类图">UML类图</h2>
 
 
-![image](https://github.com/Fidetro/FFDB/blob/master/src/6.pdf)
+![image](https://github.com/Fidetro/FFDB/blob/master/src/5.png)
