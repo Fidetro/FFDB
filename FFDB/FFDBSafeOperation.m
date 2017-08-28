@@ -26,7 +26,7 @@
     NSMutableArray *objectList = [NSMutableArray array];
     [queue inDatabase:^(FMDatabase *db) {
         FMResultSet *resultSet;
-        resultSet = [db executeQuery:[NSString stringWithSelectColumns:nil fromClasses:@[dbClass] SQLStatementWithFormat:nil]];
+        resultSet = [db executeQuery:[NSString stringWithSelectColumns:nil fromClasses:@[dbClass] SQLStatementWithFormat:format]];
         while ([resultSet next])
         {
             
