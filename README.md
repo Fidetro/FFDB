@@ -216,6 +216,9 @@ Person *person = [personArray lastObject];
 
 <h2 id="Pod版本更新说明">Pod版本更新说明</h2>
 
+### 3.2.1
+1. 修复了`FFDBSafeOperation`和`FFDBTransaction`查询时format没用的bug
+
 ### 3.2.0
 1. 新增自定义字段功能
 2. 写完了拖了很久没写的单元测试，之前重构完3.0的时候没仔细测试就放到项目中用了，幸好也没出什么bug
