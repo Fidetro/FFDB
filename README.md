@@ -2,6 +2,8 @@
 
 1.x的文档请移步
 [这里](https://github.com/Fidetro/FFDB/blob/master/1.x_README.md)
+2.x的文档请移步
+[这里](https://github.com/Fidetro/FFDB/blob/master/2.x_README.md)
 
 - [为什么会有FFDB？](#为什么会有FFDB？)
 - [CoreData、Realm和对FMDB封装后的FFDB对比](#CoreData、Realm和对FMDB封装后的FFDB对比)
@@ -215,6 +217,16 @@ Person *person = [personArray lastObject];
 <br>7. FFDB支持与swift 3混编。
 
 <h2 id="Pod版本更新说明">Pod版本更新说明</h2>
+
+### 3.2.2
+增加了两个方法，方便用于复杂的复合查询的时候不需要重新写很多的get、set代码，方法的实现并没有内置任何操作语句，`format`参数需要自己写完整的数据库语句
+```
+//查询方法
++ (NSArray <__kindof FFDataBaseModel *>*)selectDBToClass:(Class)toClass
+SQLStatementWithFormat:(NSString *)format;
+//更新方法，PS：插入、删除、更新都属于更新方法
++ (BOOL)updateDBWithSQLStatementWithFormat:(NSString *)format;
+```
 
 ### 3.2.1
 1. 修复了`FFDBSafeOperation`和`FFDBTransaction`查询时format没用的bug

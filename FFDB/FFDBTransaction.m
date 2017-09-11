@@ -33,7 +33,8 @@
             id object = [[dbClass alloc]init];
             for (NSString *propertyname in [dbClass columnsOfSelf])
             {
-                NSString *objStr = [[resultSet stringForColumn:propertyname]length] == 0 ? @"" :[resultSet stringForColumn:propertyname];
+                NSString *result = [resultSet stringForColumn:propertyname];
+                NSString *objStr = [result length] == 0 ? @"" :result;
                 [object setPropertyWithName:propertyname object:objStr];
             }
             [object setPropertyWithName:@"primaryID" object:[resultSet stringForColumn:@"primaryID"]];
@@ -134,5 +135,47 @@
     return result;
 }
 
+
++ (NSArray <__kindof FFDataBaseModel *>*)selectDBToClass:(Class)toClass
+                                  SQLStatementWithFormat:(NSString *)format
+{
+    FMDatabaseQueue *queue = [FMDatabaseQueue databaseQueueWithPath:[FFDBManager databasePath]];
+    NSMutableArray *objectList = [NSMutableArray array];
+    NSArray *dataColumns = [toClass columnsOfSelf];
+
+    [queue inTransaction:^(FMDatabase *db, BOOL *rollback) {
+        FMResultSet *resultSet;
+        resultSet = [db executeQuery:format];
+        while ([resultSet next])
+        {
+            
+            id object = [[toClass alloc]init];
+            for (NSString *propertyname in dataColumns)
+            {
+                NSString *result = [resultSet stringForColumn:propertyname];
+                NSString *objStr = [result length] == 0 ? @"" :result;
+                [object setPropertyWithName:propertyname object:objStr];
+            }
+            [objectList addObject:object];
+        }
+    }];
+    return [objectList copy];
+}
+
++ (BOOL)updateDBWithSQLStatementWithFormat:(NSString *)format
+                                isRollBack:(BOOL)isRollBack
+{
+    FMDatabaseQueue *queue = [FMDatabaseQueue databaseQueueWithPath:[FFDBManager databasePath]];
+    __block BOOL result = NO;
+    [queue inTransaction:^(FMDatabase *db, BOOL *rollback) {
+        result = [db executeUpdate:format];
+        if (result == NO)
+        {
+            *rollback = isRollBack;
+            FFDBDLog(@"error rollback");
+        }
+    }];
+    return result;
+}
 
 @end

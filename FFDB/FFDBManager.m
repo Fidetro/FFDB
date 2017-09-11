@@ -59,38 +59,13 @@
                                                toClass:(Class)toClass
                                 SQLStatementWithFormat:(NSString *)format
 {
-    FMDatabase *database = [self database];
-    NSMutableArray *dataColumns = [NSMutableArray array];
-    NSMutableArray *dataArray = [NSMutableArray array];
-    if (columns.count == 0)
-    {
-            [dataColumns addObjectsFromArray:[toClass columnsOfSelf]];
-    }
-    else
-    {
-        dataColumns = [columns copy];
-    }
-    if ([database open])
-    {
-        FMResultSet *resultSet;
-        resultSet = [database executeQuery:[NSString stringWithSelectColumns:columns fromClasses:dbClasses SQLStatementWithFormat:format]];
-        while ([resultSet next])
-        {
-            id object = [[toClass alloc]init];
-            for (NSString *propertyname in dataColumns)
-            {
-                NSString *result = [resultSet stringForColumn:propertyname];
-                NSString *objStr = [result length] == 0 ? @"" :result;
-                [object setPropertyWithName:propertyname object:objStr];
-            }
-            [dataArray addObject:object];
-        }
-        
-    }
-    
-    [database close];
+
+    NSString *SQLStatement = [NSString stringWithSelectColumns:columns fromClasses:dbClasses SQLStatementWithFormat:format];
+    NSArray *dataArray = [self selectDBToClass:toClass SQLStatementWithFormat:SQLStatement];
     return dataArray;
 }
+
+
 
 + (BOOL)deleteFromClass:(Class)dbClass
  SQLStatementWithFormat:(NSString *)format
@@ -118,6 +93,38 @@
 {
     FMDatabase *database = [self database];
     return [database executeUpdateWithSqlstatementAfterClose:[NSString stringWithUpdateObject:model columns:columns]];
+}
+
++ (NSArray <__kindof FFDataBaseModel *>*)selectDBToClass:(Class)toClass
+                                  SQLStatementWithFormat:(NSString *)format
+{
+    FMDatabase *database = [self database];
+    NSMutableArray *dataArray = [NSMutableArray array];
+    NSArray *dataColumns = [toClass columnsOfSelf];
+    if ([database open])
+    {
+        FMResultSet *resultSet;
+        resultSet = [database executeQuery:format];
+        while ([resultSet next])
+        {
+            id object = [[toClass alloc]init];
+            for (NSString *propertyname in dataColumns)
+            {
+                NSString *result = [resultSet stringForColumn:propertyname];
+                NSString *objStr = [result length] == 0 ? @"" :result;
+                [object setPropertyWithName:propertyname object:objStr];
+            }
+            [dataArray addObject:object];
+        }
+    }
+    [database close];
+    return dataArray;
+}
+
++ (BOOL)updateDBWithSQLStatementWithFormat:(NSString *)format
+{
+    FMDatabase *database = [self database];
+    return [database executeUpdateWithSqlstatementAfterClose:format];
 }
 
 + (void)alertFromClass:(Class)dbClass

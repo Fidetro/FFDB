@@ -74,4 +74,31 @@
                            format:(NSString *)format
                        isRollBack:(BOOL)isRollBack;
 
+/**
+ custom query SQL
+ 
+ @param toClass return toClass Object
+ @param format SQL statement exmaple:select * from person
+ @return return this class Objects
+ */
++ (NSArray <__kindof FFDataBaseModel *>*)selectDBToClass:(Class)toClass
+                                  SQLStatementWithFormat:(NSString *)format;
+
+/**
+ custom update
+ 
+ @param format SQL statement
+ @return isSuccess
+ */
+
+
+/**
+ custom update
+
+ @param format SQL statement
+ @return isSuccess
+ */
++ (BOOL)updateDBWithSQLStatementWithFormat:(NSString *)format
+                                isRollBack:(BOOL)isRollBack;
+
 @end

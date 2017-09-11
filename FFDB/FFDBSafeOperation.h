@@ -27,7 +27,8 @@
  @param format Like sqlstatement rule, example: where name = 'fidetro' and age = '21'
  @return class objects
  */
-+ (NSArray <__kindof FFDataBaseModel *>*)selectObjectWithFFDBClass:(Class)dbClass format:(NSString *)format;
++ (NSArray <__kindof FFDataBaseModel *>*)selectObjectWithFFDBClass:(Class)dbClass
+                                                            format:(NSString *)format;
 
 /**
  insert object
@@ -51,7 +52,8 @@
  @param format Like sqlstatement rule, example: set age = '24' where name = 'fidetro'
  @return update successfully
  */
-+ (BOOL)updateObjectWithFFDBClass:(Class)dbClass format:(NSString *)format;
++ (BOOL)updateObjectWithFFDBClass:(Class)dbClass
+                           format:(NSString *)format;
 
 /**
  delete object
@@ -68,6 +70,25 @@
  @param format format Like sqlstatement rule, example: where name = 'fidetro' and age = '21'
  @return delete successfully
  */
-+ (BOOL)deleteObjectWithFFDBClass:(Class)dbClass format:(NSString *)format;
++ (BOOL)deleteObjectWithFFDBClass:(Class)dbClass
+                           format:(NSString *)format;
+
+/**
+ custom query SQL
+ 
+ @param toClass return toClass Object
+ @param format SQL statement exmaple:select * from person
+ @return return this class Objects
+ */
++ (NSArray <__kindof FFDataBaseModel *>*)selectDBToClass:(Class)toClass
+                                  SQLStatementWithFormat:(NSString *)format;
+
+/**
+ custom update
+ 
+ @param format SQL statement
+ @return isSuccess
+ */
++ (BOOL)updateDBWithSQLStatementWithFormat:(NSString *)format;
 
 @end

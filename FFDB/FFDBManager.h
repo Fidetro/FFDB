@@ -12,7 +12,6 @@
 
 
 @class FFDataBaseModel;
-
 @interface FFDBManager : NSObject
 
 /**
@@ -42,6 +41,7 @@
                                            fromClasses:(NSArray <Class>*)dbClasses
                                                toClass:(Class)toClass
                                 SQLStatementWithFormat:(NSString *)format;
+
 
 
 /**
@@ -86,6 +86,25 @@
  */
 + (BOOL)updateObject:(__kindof FFDataBaseModel *)model
              columns:(NSArray <NSString *>*)columns;
+
+
+/**
+ custom query SQL
+
+ @param toClass return toClass Object
+ @param format SQL statement exmaple:select * from person
+ @return return this class Objects
+ */
++ (NSArray <__kindof FFDataBaseModel *>*)selectDBToClass:(Class)toClass
+                                  SQLStatementWithFormat:(NSString *)format;
+
+/**
+ custom update
+
+ @param format SQL statement
+ @return isSuccess
+ */
++ (BOOL)updateDBWithSQLStatementWithFormat:(NSString *)format;
 
 /**
  alert new columns to dbClass

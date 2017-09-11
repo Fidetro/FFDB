@@ -16,6 +16,9 @@
  */
 - (BOOL)executeUpdateWithSqlstatementAfterClose:(NSString *)sqlstatement;
 
+/**
+ use FMDatabase update,but unclose
+ */
 - (BOOL)executeUpdateWithSqlstatement:(NSString *)sqlstatement;
 
 @end
