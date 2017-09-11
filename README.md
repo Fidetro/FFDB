@@ -15,7 +15,7 @@
 - [2.x和3.x的版本有什么不同？](#2.x和3.x的版本有什么不同？)
 - [补充](#补充)
 - [Pod版本更新说明](#Pod版本更新说明)
--[UML类图](#UML类图)
+- [UML类图](#UML类图)
 
 <h2 id="为什么会有FFDB？">为什么会有FFDB？</h2>
 
@@ -221,8 +221,9 @@ Person *person = [personArray lastObject];
 
 <h2 id="Pod版本更新说明">Pod版本更新说明</h2>
 
-### 3.2.2
-增加了两个方法，方便用于复杂的复合查询的时候不需要重新写很多的get、set代码，方法的实现并没有内置任何操作语句，`format`参数需要自己写完整的数据库语句
+### 3.2.2~3.2.3
+1. README更新
+2. 增加了两个方法，方便用于复杂的复合查询的时候不需要重新写很多的get、set代码，方法的实现并没有内置任何操作语句，`format`参数需要自己写完整的数据库语句
 ```
 //查询方法
 + (NSArray <__kindof FFDataBaseModel *>*)selectDBToClass:(Class)toClass
