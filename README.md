@@ -1,7 +1,10 @@
 # FFDB
+[![DUB](https://img.shields.io/dub/l/vibe-d.svg)](https://github.com/Fidetro/FFDB/blob/master/LICENSE)
+[![GitHub stars](https://img.shields.io/github/stars/Fidetro/FFDB.svg)](https://github.com/Fidetro/FFDB/stargazers)
 
 1.x的文档请移步
-[这里](https://github.com/Fidetro/FFDB/blob/master/1.x_README.md)
+[这里](https://github.com/Fidetro/FFDB/blob/master/1.x_README.md)<br>
+
 2.x的文档请移步
 [这里](https://github.com/Fidetro/FFDB/blob/master/2.x_README.md)
 

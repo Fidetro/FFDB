@@ -64,7 +64,7 @@
     }
     
     ClassRoom *classRoom = self.classroomArray[indexPath.row];
-    cell.textLabel.text = classRoom.memberCount;
+    cell.textLabel.text = classRoom.name;
     return cell;
     
 }
@@ -133,7 +133,8 @@
             
         }
         
-        _classroomArray = [NSMutableArray arrayWithArray:dataArray];
+        _classroomArray = [NSMutableArray arrayWithArray:[ClassRoom selectFromClassAllObject]];
+        [self.tableView reloadData];
     }
     return _classroomArray;
 }
