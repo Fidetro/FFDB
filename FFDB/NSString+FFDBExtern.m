@@ -45,4 +45,14 @@
     }
     return [classesString copy];
 }
+
+
+/**
+ fix property NSUInteger bug
+ */
+- (unsigned long long)unsignedLongLongValue
+{    
+    return self.longLongValue;
+}
+
 @end

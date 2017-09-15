@@ -12,5 +12,6 @@
 
 @property(nonatomic,copy) NSString *name;
 @property(nonatomic,copy) NSString *memory;
+@property(nonatomic,assign) NSUInteger testUint;
 @property(nonatomic,assign) double time;
 @end

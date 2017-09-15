@@ -29,6 +29,7 @@
     testModel.name = @"hello";
     testModel.memory = @"is me";
     testModel.time = [NSDate date].timeIntervalSince1970;
+    testModel.testUint = 223;
     [testModel insertObject];
     NSArray *testArray = [TestModel selectFromClassPredicateWithFormat:@"where name = 'hello'"];
     XCTAssertTrue(testArray.count > 0,@"insert success");

@@ -221,6 +221,9 @@ Person *person = [personArray lastObject];
 
 <h2 id="Pod版本更新说明">Pod版本更新说明</h2>
 
+### 3.2.4
+1. 修复了类型为`NSUInteger`的时候会crash的情况
+
 ### 3.2.2~3.2.3
 1. README更新
 2. 增加了两个方法，方便用于复杂的复合查询的时候不需要重新写很多的get、set代码，方法的实现并没有内置任何操作语句，`format`参数需要自己写完整的数据库语句
