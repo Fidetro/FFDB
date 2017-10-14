@@ -71,6 +71,18 @@ NSString const* kUpdateContext = @"kUpdateContext";
     return [FFDBManager updateObject:self columns:propertyNames];
 }
 
+- (BOOL)upsert
+{
+    if (self.primaryID == nil)
+    {
+        return [self insertObject];
+    }
+    else
+    {
+        return [self updateObject];
+    }
+}
+
 - (BOOL)updateObjectSetColumns:(NSArray *)columns
 {
     return [FFDBManager updateObject:self columns:columns];

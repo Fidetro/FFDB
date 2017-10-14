@@ -80,6 +80,11 @@ extern NSString *const kDatabaseHeadname;
 
 
 /**
+ find primaryID will update object,if not insert
+ */
+- (BOOL)upsert;
+
+/**
  update object by columns
 
  @param columns Need to update columns
@@ -88,12 +93,15 @@ extern NSString *const kDatabaseHeadname;
 - (BOOL)updateObjectSetColumns:(NSArray *)columns;
 
 
+
+
 /**
  update object by KVO
  
  @param update_block You can set object property into update_block
  */
 - (void)updateObjectWithBlock:(void(^)())update_block;
+
 
 
 
