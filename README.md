@@ -221,6 +221,12 @@ Person *person = [personArray lastObject];
 
 <h2 id="Pod版本更新说明">Pod版本更新说明</h2>
 
+### 3.2.7
+1. 新增`- (BOOL)upsertWithColumns:(NSArray *)columns;`判断表中是否有和当前模型`columns`相等的字段，如果有则更新，没有则插入
+
+### 3.2.5-3.2.6
+1. 新增了`- (void)upsert`,根据`primaryID`判断是否存在这个数据，不存在则插入，否则更新
+
 ### 3.2.4
 1. 修复了类型为`NSUInteger`的时候会crash的情况
 
@@ -234,11 +240,6 @@ SQLStatementWithFormat:(NSString *)format;
 //更新方法，PS：插入、删除、更新都属于更新方法
 + (BOOL)updateDBWithSQLStatementWithFormat:(NSString *)format;
 ```
-### 3.2.7
-1. 新增`- (BOOL)upsertWithColumns:(NSArray *)columns;`判断表中是否有和当前模型`columns`相等的字段，如果有则更新，没有则插入
-
-### 3.2.5-3.2.6
-1. 新增了`- (void)upsert`,根据`primaryID`判断是否存在这个数据，不存在则插入，否则更新
 
 ### 3.2.1
 1. 修复了`FFDBSafeOperation`和`FFDBTransaction`查询时format没用的bug
