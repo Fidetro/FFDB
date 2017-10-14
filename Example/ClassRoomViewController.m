@@ -29,16 +29,16 @@
 - (IBAction)addNewClassRoom:(id)sender
 {
     ClassRoom *classRoom = [[ClassRoom alloc]init];
-    classRoom.memberCount = @"new room";
+    classRoom.name = @"new room";
     [classRoom insertObject];
     [self selectAndUpdateEvent];
-    [self.tableView reloadData];
 }
 
 - (void)selectAndUpdateEvent
 {
     NSArray *dataArray = [ClassRoom selectFromClassAllObject];
     self.classroomArray = [NSMutableArray arrayWithArray:dataArray];
+    [self.tableView reloadData];
 }
 
 #pragma mark - --------------------------UITableView dataSource--------------------------
@@ -95,9 +95,9 @@
         UIAlertAction *enterAction = [UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleDefault
                                                              handler:^(UIAlertAction * action) {
         UITextField *textField = [alert.textFields lastObject];
-        classRoom.memberCount = textField.text;
+        classRoom.name = textField.text;
         [classRoom updateObject];
-        [tableView reloadRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationAutomatic];
+        [self selectAndUpdateEvent];
                                                              }];
         UIAlertAction *cancelAction = [UIAlertAction actionWithTitle:@"Cancel" style:UIAlertActionStyleDefault
                                                               handler:^(UIAlertAction * action) {}];
@@ -108,7 +108,6 @@
     UITableViewRowAction *deleteAction =[UITableViewRowAction rowActionWithStyle:UITableViewRowActionStyleDefault title:@"Delete" handler:^(UITableViewRowAction * _Nonnull action, NSIndexPath * _Nonnull indexPath) {
         [classRoom deleteObject];
         [self selectAndUpdateEvent];
-        [tableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationRight];
     }];
     return @[deleteAction,editAction];
 }

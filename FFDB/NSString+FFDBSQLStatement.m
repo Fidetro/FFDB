@@ -13,6 +13,20 @@
 
 @implementation NSString (FFDBSQLStatement)
 
++ (NSString *)stringWithSelectCountfromClasses:(NSArray <Class>*)dbClasses
+                        SQLStatementWithFormat:(NSString *)format
+{
+    NSMutableString *sqlstatement = [NSMutableString string];
+    [sqlstatement appendString:@"select count(*) from "];
+    [sqlstatement appendString:[NSString stringWithTableNameOfClasses:dbClasses]];
+    
+    if ([format length] != 0)
+    {
+        [sqlstatement appendFormat:@" %@",format];
+    }
+    
+    return [sqlstatement copy];
+}
 + (NSString *)stringWithSelectColumns:(NSArray <NSString *>*)columns
                           fromClasses:(NSArray <Class>*)dbClasses
                SQLStatementWithFormat:(NSString *)format
@@ -35,6 +49,8 @@
     
     return [sqlstatement copy];
 }
+
+
 
 + (NSString *)stringWithDeleteFromClass:(Class)dbClass
                  SQLStatementWithFormat:(NSString *)format
@@ -67,6 +83,8 @@
     [sqlstatement appendFormat:@"values(%@)",[dbModel stringWithInsertValueOfColumns:columns]];
     return [sqlstatement copy];
 }
+
+
 
 + (NSString *)stringWithUpdateFromClass:(Class)dbClass
                  SQLStatementWithFormat:(NSString *)format

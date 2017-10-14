@@ -10,7 +10,6 @@
 #import "FFDataBaseModel+Sqlite.h"
 #import "FFDataBaseModel+Custom.h"
 #import "NSObject+FIDProperty.h"
-
 @implementation FFDataBaseModel (Sqlite)
 
 - (NSString *)deleteObjectSqlstatement
@@ -61,6 +60,24 @@
     return values;
 }
 
+- (NSString *)stringWithWhereValueOfColumns:(NSArray <NSString *>*)columns
+{
+    NSMutableString *values = [NSMutableString string];
+    for (NSInteger index = 0; index < columns.count; index++)
+    {
+        NSString *column = columns[index];
+        if (index == 0)
+        {
+            [values appendFormat:@"%@ = '%@'",column,[self getIvarWithName:column]];
+        }
+        else
+        {
+            [values appendFormat:@",%@ = '%@'",column,[self getIvarWithName:column]];
+        }
+    }
+    return values;
+}
+
 + (NSString *)stringToColumnTypeWithColumns:(NSArray <NSString *>*)columns
 {
     NSMutableString *columnsType = [NSMutableString string];
@@ -82,6 +99,9 @@
     }
     return columnsType;
 }
+
+
+
 
 - (id)getIvarWithName:(NSString *)propertyname
 {

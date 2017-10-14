@@ -30,6 +30,9 @@
 
 - (NSString *)stringWithUpdateSetValueOfColumns:(NSArray <NSString *>*)columns;
 
+- (NSString *)stringWithWhereValueOfColumns:(NSArray <NSString *>*)columns;
+
 + (NSString *)stringToColumnTypeWithColumns:(NSArray <NSString *>*)columns;
+
 
 @end

@@ -26,7 +26,8 @@
                  fromClass:(Class)dbClass
     SQLStatementWithFormat:(NSString *)format;
 
-
++ (long long int)selectCountfromClasses:(NSArray <Class>*)dbClasses
+                 SQLStatementWithFormat:(NSString *)format;
 
 /**
  Contingency query

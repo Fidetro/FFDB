@@ -54,6 +54,27 @@
     return dataArray;
 }
 
++ (long long int)selectCountfromClasses:(NSArray <Class>*)dbClasses
+                 SQLStatementWithFormat:(NSString *)format
+{
+    FMDatabase *database = [self database];
+    long long int totalCount = 0;
+    if ([database open])
+    {
+        FMResultSet *resultSet;
+        resultSet = [database executeQuery:[NSString stringWithSelectCountfromClasses:dbClasses SQLStatementWithFormat:format]];
+        
+        while ([resultSet next])
+        {
+             totalCount = [resultSet longLongIntForColumnIndex:0];
+        }
+        
+    }
+    
+    [database close];
+    return totalCount;
+}
+
 + (NSArray <__kindof FFDataBaseModel *>*)selectColumns:(NSArray <NSString *>*)columns
                                            fromClasses:(NSArray<Class> *)dbClasses
                                                toClass:(Class)toClass

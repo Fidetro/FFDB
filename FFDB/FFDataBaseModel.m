@@ -83,6 +83,29 @@ NSString const* kUpdateContext = @"kUpdateContext";
     }
 }
 
+
+- (BOOL)upsertWithColumns:(NSArray *)columns
+{
+    if (columns.count == 0)
+    {
+        return [self upsert];
+    }
+    else
+    {
+       long long int totalCount = [FFDBManager selectCountfromClasses:@[[self class]] SQLStatementWithFormat:[NSString stringWithFormat:@" where %@",[self stringWithWhereValueOfColumns:columns]]];
+        if (totalCount == 0)
+        {
+            [self insertObject];
+        }
+        else
+        {
+            [self updateObject];
+        }
+        return YES;
+    }
+ 
+}
+
 - (BOOL)updateObjectSetColumns:(NSArray *)columns
 {
     return [FFDBManager updateObject:self columns:columns];

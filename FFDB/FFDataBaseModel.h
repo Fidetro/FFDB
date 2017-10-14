@@ -84,6 +84,12 @@ extern NSString *const kDatabaseHeadname;
  */
 - (BOOL)upsert;
 
+
+/**
+ find columns will update object,if not insert
+ */
+- (BOOL)upsertWithColumns:(NSArray *)columns;
+
 /**
  update object by columns
 
