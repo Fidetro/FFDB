@@ -19,9 +19,6 @@
                           fromClasses:(NSArray <Class>*)dbClasses
                SQLStatementWithFormat:(NSString *)format;
 
-+ (NSString *)stringWithSelectCountfromClasses:(NSArray <Class>*)dbClasses
-                        SQLStatementWithFormat:(NSString *)format;
-
 + (NSString *)stringWithDeleteFromClass:(Class)dbClass
                  SQLStatementWithFormat:(NSString *)format;
 
