@@ -73,7 +73,7 @@ NSString const* kUpdateContext = @"kUpdateContext";
 
 - (BOOL)upsert
 {
-    if (self.primaryID == nil)
+    if ([self.primaryID length] == 0)
     {
         return [self insertObject];
     }

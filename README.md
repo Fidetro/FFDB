@@ -234,7 +234,7 @@ SQLStatementWithFormat:(NSString *)format;
 //更新方法，PS：插入、删除、更新都属于更新方法
 + (BOOL)updateDBWithSQLStatementWithFormat:(NSString *)format;
 ```
-### 3.2.5
+### 3.2.5-3.2.6
 1. 新增了`- (void)upsert`,根据`primaryID`判断是否存在这个数据，不存在则插入，否则更新
 
 ### 3.2.1
