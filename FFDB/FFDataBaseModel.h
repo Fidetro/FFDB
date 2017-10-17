@@ -77,7 +77,13 @@ extern NSString *const kDatabaseHeadname;
  @return update successfully
  */
 - (BOOL)updateObject;
-
+/**
+ update object by columns
+ 
+ @param columns Need to update columns
+ @return update successfully
+ */
+- (BOOL)updateObjectSetColumns:(NSArray *)columns;
 
 /**
  find primaryID will update object,if not insert
@@ -90,13 +96,7 @@ extern NSString *const kDatabaseHeadname;
  */
 - (BOOL)upsertWithColumns:(NSArray *)columns;
 
-/**
- update object by columns
 
- @param columns Need to update columns
- @return update successfully
- */
-- (BOOL)updateObjectSetColumns:(NSArray *)columns;
 
 
 

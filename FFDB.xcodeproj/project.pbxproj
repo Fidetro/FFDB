@@ -11,6 +11,7 @@
 		3CEBC4B4DB9F0DF83198E3B3 /* Pods_FFDB.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9411C3043211AE7CA790CB34 /* Pods_FFDB.framework */; };
 		9A0E9E751ECA04EE008B9A8A /* FFDBSafeOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A0E9E741ECA04EE008B9A8A /* FFDBSafeOperation.m */; };
 		9A1253A61F2442AE004BFE4D /* SQLFormatTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A1253A51F2442AE004BFE4D /* SQLFormatTests.m */; };
+		9A19577A1F92025400F8A37B /* FFStore.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A1957791F92025400F8A37B /* FFStore.m */; };
 		9A28B9481F244CE0005A2A5F /* NSString+FFDBSQLStatement.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A28B9471F244CE0005A2A5F /* NSString+FFDBSQLStatement.m */; };
 		9A28B94B1F244D01005A2A5F /* NSString+FFDBExtern.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A28B94A1F244D01005A2A5F /* NSString+FFDBExtern.m */; };
 		9A32CAAB1E82C58A0097324D /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A32CAAA1E82C58A0097324D /* AppDelegate.m */; };
@@ -53,6 +54,8 @@
 		9A0E9E731ECA04EE008B9A8A /* FFDBSafeOperation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FFDBSafeOperation.h; sourceTree = "<group>"; };
 		9A0E9E741ECA04EE008B9A8A /* FFDBSafeOperation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FFDBSafeOperation.m; sourceTree = "<group>"; };
 		9A1253A51F2442AE004BFE4D /* SQLFormatTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SQLFormatTests.m; sourceTree = "<group>"; };
+		9A1957781F92025400F8A37B /* FFStore.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FFStore.h; sourceTree = "<group>"; };
+		9A1957791F92025400F8A37B /* FFStore.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FFStore.m; sourceTree = "<group>"; };
 		9A28B9461F244CE0005A2A5F /* NSString+FFDBSQLStatement.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "NSString+FFDBSQLStatement.h"; sourceTree = "<group>"; };
 		9A28B9471F244CE0005A2A5F /* NSString+FFDBSQLStatement.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "NSString+FFDBSQLStatement.m"; sourceTree = "<group>"; };
 		9A28B9491F244D01005A2A5F /* NSString+FFDBExtern.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "NSString+FFDBExtern.h"; sourceTree = "<group>"; };
@@ -234,6 +237,8 @@
 				9A32CAAD1E82C58A0097324D /* ClassRoomViewController.m */,
 				9AE6720F1E88020900F2AB6C /* ClassRoom.h */,
 				9AE672101E88020900F2AB6C /* ClassRoom.m */,
+				9A1957781F92025400F8A37B /* FFStore.h */,
+				9A1957791F92025400F8A37B /* FFStore.m */,
 			);
 			name = Example;
 			path = ../Example;
@@ -467,6 +472,7 @@
 				9AB169891EC6087E00DDC817 /* FFDBTransaction.m in Sources */,
 				9A28B94B1F244D01005A2A5F /* NSString+FFDBExtern.m in Sources */,
 				9AB169861EC5FCAE00DDC817 /* FFDBLog.m in Sources */,
+				9A19577A1F92025400F8A37B /* FFStore.m in Sources */,
 				9A5863271F1B0A5300E2C0BC /* FFDataBaseModel+Custom.m in Sources */,
 				9AE672111E88020900F2AB6C /* ClassRoom.m in Sources */,
 			);
