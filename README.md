@@ -221,6 +221,9 @@ Person *person = [personArray lastObject];
 
 <h2 id="Pod版本更新说明">Pod版本更新说明</h2>
 
+### 3.2.8
+1. 修复了更新版本在原来的基础上新增字段属性，依旧默认`TEXT`的bug
+
 ### 3.2.7
 1. 新增`- (BOOL)upsertWithColumns:(NSArray *)columns;`判断表中是否有和当前模型`columns`相等的字段，如果有则更新，没有则插入
 

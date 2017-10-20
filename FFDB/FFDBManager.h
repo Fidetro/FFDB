@@ -113,7 +113,7 @@
  @param dbClass dbClass
  @param columns alert columns
  */
-+ (void)alertFromClass:(Class)dbClass
++ (void)alterFromClass:(Class)dbClass
                columns:(NSArray <NSString *>*)columns;
 
 /**

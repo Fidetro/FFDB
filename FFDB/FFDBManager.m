@@ -148,7 +148,7 @@
     return [database executeUpdateWithSqlstatementAfterClose:format];
 }
 
-+ (void)alertFromClass:(Class)dbClass
++ (void)alterFromClass:(Class)dbClass
                columns:(NSArray <NSString *>*)columns
 {
     FMDatabase *database = [self database];
@@ -165,7 +165,8 @@
         {
             if (![database columnExists:propertyname inTableWithName:tableName])
             {
-                [database executeUpdateWithSqlstatement:[NSString stringWithFormat:@"alter table `%@` add %@ text",tableName,propertyname]];
+                   NSString *columnType = [[[dbClass class] columnsType][propertyname]length] == 0 ? @"text":[[dbClass class] columnsType][propertyname];
+                [database executeUpdateWithSqlstatement:[NSString stringWithFormat:@"alter table `%@` add %@ %@",tableName,propertyname,columnType]];
             }
         }
     }
