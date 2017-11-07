@@ -10,7 +10,8 @@
 #import "ClassRoom.h"
 #import <mach/mach_time.h>
 #import "FFDBSafeOperation.h"
-
+#import "FFDBTransaction.h"
+extern uint64_t dispatch_benchmark(size_t count, void (^block)(void));
 @interface ClassRoomViewController ()<UITableViewDelegate,UITableViewDataSource>
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
 /** 教室 **/
@@ -22,16 +23,49 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+//    dispatch_async(dispatch_get_global_queue(0, 0), ^{
+//        NSMutableArray *array = [NSMutableArray array];
+//        for (int i = 0; i<100; i++) {
+//            ClassRoom *room = [[ClassRoom alloc]init];
+//            [array addObject:room];
+//            [FFDBTransaction insertObjectList:array isRollBack:YES];
+//        }
+//    });
+//
+//    dispatch_async(dispatch_get_global_queue(0, 0), ^{
+//        NSMutableArray *array = [NSMutableArray array];
+//        for (int i = 0; i<100; i++) {
+//            ClassRoom *room = [[ClassRoom alloc]init];
+//            [array addObject:room];
+//            [[NSOperationQueue mainQueue]addOperationWithBlock:^{
+//                [FFDBTransaction insertObjectList:array isRollBack:YES];
+//            }];
+//        }
+//    });
+    
+  
     
 }
 
 
 - (IBAction)addNewClassRoom:(id)sender
 {
-    ClassRoom *classRoom = [[ClassRoom alloc]init];
-    classRoom.name = @"new room";
-    [classRoom insertObject];
-    [self selectAndUpdateEvent];
+    dispatch_async(dispatch_get_global_queue(0, 0), ^{
+        NSMutableArray *array = [NSMutableArray array];
+        for (int i = 0; i<1000000000; i++) {
+            ClassRoom *room = [[ClassRoom alloc]init];
+            [array addObject:room];
+            [FFDBTransaction insertObjectList:array isRollBack:YES];
+        }
+        
+    });
+
+    
+//    ClassRoom *classRoom = [[ClassRoom alloc]init];
+//    classRoom.name = @"new room";
+//    [classRoom insertObject];
+//    [self selectAndUpdateEvent];
+    
 }
 
 - (void)selectAndUpdateEvent

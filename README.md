@@ -221,6 +221,9 @@ Person *person = [personArray lastObject];
 
 <h2 id="Pod版本更新说明">Pod版本更新说明</h2>
 
+### 3.2.8.1
+1. 修复`BOOL`类型在32位上的架构上会因为`[__NSCFString charValue]: unrecognized selector sent to instance`导致的崩溃
+
 ### 3.2.8
 1. 修复了更新版本在原来的基础上新增字段属性，依旧默认`TEXT`的bug
 

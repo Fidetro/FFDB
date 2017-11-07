@@ -55,4 +55,18 @@
     return self.longLongValue;
 }
 
+/**
+ fix bool with 32 bit on ios problem https://stackoverflow.com/questions/31267325/bool-with-64-bit-on-ios/31270249#31270249
+ */
+- (BOOL)charValue
+{
+    if ([self boolValue] == YES)
+    {
+        return YES;
+    }else
+    {
+        return NO;
+    }
+}
+
 @end
