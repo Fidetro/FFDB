@@ -1,12 +1,14 @@
 # FFDB
 [![DUB](https://img.shields.io/dub/l/vibe-d.svg)](https://github.com/Fidetro/FFDB/blob/master/LICENSE)
-[![GitHub stars](https://img.shields.io/github/stars/Fidetro/FFDB.svg)](https://github.com/Fidetro/FFDB/stargazers)
+[![GitHub stars](https://img.shields.io/github/stars/Fidetro/FFDB.svg)](https://github.com/Fidetro/FFDB/stargazers)  
+[更详细的使用介绍在WiKi](https://github.com/Fidetro/FFDB/wiki)
 
 1.x的文档请移步
 [这里](https://github.com/Fidetro/FFDB/blob/master/1.x_README.md)<br>
 
 2.x的文档请移步
-[这里](https://github.com/Fidetro/FFDB/blob/master/2.x_README.md)
+[这里](https://github.com/Fidetro/FFDB/blob/master/2.x_README.md)  
+
 
 - [为什么会有FFDB？](#为什么会有FFDB？)
 - [CoreData、Realm和对FMDB封装后的FFDB对比](#CoreData、Realm和对FMDB封装后的FFDB对比)
@@ -21,8 +23,8 @@
 
 1. 直接用FMDB代码并不优雅而且十分繁琐，而且并不能像使用CoreData能面向对象管理;
 2. 在项目中经常会遇到不得不使用数据库去存储数据的情况；
-3. 主流的移动端数据库，用过的只有FMDB，CoreData，CoreData在使用的时候觉得要写太多代码了，后来放弃了，只用FMDB的话，没有使用ORM的方便，所以有了FFDB。
-4. 解释下FFDB的名字含义，是因为了纪念可能再也见不到的芳芳，不能一起工作真是太可惜了
+3. 主流的移动端数据库，用过的只有FMDB，CoreData，CoreData在使用的时候觉得要写太多代码了，后来放弃了，只用FMDB的话，没有使用ORM的方便，所以有了FFDB。  
+~~4. 解释下FFDB的名字含义，是因为了纪念可能再也见不到的芳芳，不能一起工作真是太可惜了~~
 
 <h2 id="CoreData、Realm和对FMDB封装后的FFDB对比">CoreData、Realm和对FMDB封装后的FFDB对比</h2>
 

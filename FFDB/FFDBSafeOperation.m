@@ -21,7 +21,7 @@
 }
 
 + (NSArray <__kindof FFDataBaseModel *>*)selectObjectWithFFDBClass:(Class)dbClass
-                                                            format:(NSString *)format
+                                                            format:(NSString *)format 
 {
     FMDatabaseQueue *queue = [FMDatabaseQueue databaseQueueWithPath:[FFDBManager databasePath]];
     NSMutableArray *objectList = [NSMutableArray array];
