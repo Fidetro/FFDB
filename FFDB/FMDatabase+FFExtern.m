@@ -11,16 +11,6 @@
 
 @implementation FMDatabase (FFExtern)
 
-- (BOOL)executeUpdateWithSqlstatementAfterClose:(NSString *)sqlstatement
-{
-    BOOL update = NO;
-    if ([self open])
-    {
-        update =  [self executeUpdate:sqlstatement];
-    }
-    [self close];
-    return update;
-}
 
 - (BOOL)executeUpdateWithSqlstatement:(NSString *)sqlstatement
 {

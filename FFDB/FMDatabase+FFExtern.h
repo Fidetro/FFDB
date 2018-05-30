@@ -11,10 +11,6 @@
 
 @interface FMDatabase (FFExtern)
 
-/**
- use FMDatabase update after Close
- */
-- (BOOL)executeUpdateWithSqlstatementAfterClose:(NSString *)sqlstatement;
 
 /**
  use FMDatabase update,but unclose

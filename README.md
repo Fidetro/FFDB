@@ -224,6 +224,9 @@ Person *person = [personArray lastObject];
 
 <h2 id="Pod版本更新说明">Pod版本更新说明</h2>
 
+### 3.2.9 
+1. 取消了每次db操作都关闭db，由此引起CPU使用率突然增大的问题。
+
 ### 3.2.8.1
 1. 修复`BOOL`类型在32位上的架构上会因为`[__NSCFString charValue]: unrecognized selector sent to instance`导致的崩溃
 

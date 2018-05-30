@@ -32,7 +32,7 @@
             skipped = "NO">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "9A32CABB1E82C58A0097324D"
+               BlueprintIdentifier = "9AA7D4CB1F1B29BE00177A32"
                BuildableName = "FFDBTests.xctest"
                BlueprintName = "FFDBTests"
                ReferencedContainer = "container:FFDB.xcodeproj">

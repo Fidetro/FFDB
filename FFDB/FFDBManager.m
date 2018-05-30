@@ -92,28 +92,28 @@
  SQLStatementWithFormat:(NSString *)format
 {
     FMDatabase *database = [self database];
-    return [database executeUpdateWithSqlstatementAfterClose:[NSString stringWithDeleteFromClass:dbClass SQLStatementWithFormat:format]];
+    return [database executeUpdateWithSqlstatement:[NSString stringWithDeleteFromClass:dbClass SQLStatementWithFormat:format]];
 }
 
 + (BOOL)insertObject:(__kindof FFDataBaseModel *)model
              columns:(NSArray <NSString *>*)columns
 {
     FMDatabase *database = [self database];
-    return [database executeUpdateWithSqlstatementAfterClose:[NSString stringWithInsertObject:model columns:columns]];
+    return [database executeUpdateWithSqlstatement:[NSString stringWithInsertObject:model columns:columns]];
 }
 
 + (BOOL)updateFromClass:(Class)dbClass
  SQLStatementWithFormat:(NSString *)format
 {
     FMDatabase *database = [self database];
-    return [database executeUpdateWithSqlstatementAfterClose:[NSString stringWithUpdateFromClass:dbClass SQLStatementWithFormat:format]];
+    return [database executeUpdateWithSqlstatement:[NSString stringWithUpdateFromClass:dbClass SQLStatementWithFormat:format]];
 }
 
 + (BOOL)updateObject:(__kindof FFDataBaseModel *)model
              columns:(NSArray <NSString *>*)columns
 {
     FMDatabase *database = [self database];
-    return [database executeUpdateWithSqlstatementAfterClose:[NSString stringWithUpdateObject:model columns:columns]];
+    return [database executeUpdateWithSqlstatement:[NSString stringWithUpdateObject:model columns:columns]];
 }
 
 + (NSArray <__kindof FFDataBaseModel *>*)selectDBToClass:(Class)toClass
@@ -145,7 +145,7 @@
 + (BOOL)updateDBWithSQLStatementWithFormat:(NSString *)format
 {
     FMDatabase *database = [self database];
-    return [database executeUpdateWithSqlstatementAfterClose:format];
+    return [database executeUpdateWithSqlstatement:format];
 }
 
 + (void)alterFromClass:(Class)dbClass
@@ -176,7 +176,7 @@
 + (BOOL)createTableFromClass:(Class)dbClass
 {
     FMDatabase *database = [self database];
-    return [database executeUpdateWithSqlstatementAfterClose:[NSString stringWithCreateTableFromClass:dbClass]];
+    return [database executeUpdateWithSqlstatement:[NSString stringWithCreateTableFromClass:dbClass]];
     
 }
 
