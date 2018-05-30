@@ -162,7 +162,8 @@ Person *person = [personArray lastObject];
 ```
 
 <h2 id="2.x和3.x的版本有什么不同？">2.x和3.x的版本有什么不同？</h2>
-1. 这次的改动在接口层没有过多的改动，在实现上，把原来的db操作，移到了`FFDBManager`,`FFDataBaseModel`不再直接能获取到db，同时也因为这个原因，之前生成SQL语句的`FFDataBaseModel+sqlite`,也进行了改动，现在由`NSString+FFDBSQLStatement`生成SQL语句，`FFDataBaseModel+sqlite`只负责模型自身属性生成的字符串的部分，这样做之后，会在后面的版本新增联表查询等的一些操作
+
+这次的改动在接口层没有过多的改动，在实现上，把原来的db操作，移到了`FFDBManager`,`FFDataBaseModel`不再直接能获取到db，同时也因为这个原因，之前生成SQL语句的`FFDataBaseModel+sqlite`,也进行了改动，现在由`NSString+FFDBSQLStatement`生成SQL语句，`FFDataBaseModel+sqlite`只负责模型自身属性生成的字符串的部分，这样做之后，会在后面的版本新增联表查询等的一些操作
 
 
 <h2 id="补充">补充</h2>
