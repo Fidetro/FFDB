@@ -9,10 +9,8 @@
 /* Begin PBXBuildFile section */
 		16B41BB306AABCC4EC0FA1BB /* Pods_FFDBTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 465FC558033641CFF3804250 /* Pods_FFDBTests.framework */; };
 		3CEBC4B4DB9F0DF83198E3B3 /* Pods_FFDB.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9411C3043211AE7CA790CB34 /* Pods_FFDB.framework */; };
-		9A0E9E751ECA04EE008B9A8A /* FFDBSafeOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A0E9E741ECA04EE008B9A8A /* FFDBSafeOperation.m */; };
 		9A1253A61F2442AE004BFE4D /* SQLFormatTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A1253A51F2442AE004BFE4D /* SQLFormatTests.m */; };
 		9A19577A1F92025400F8A37B /* FFStore.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A1957791F92025400F8A37B /* FFStore.m */; };
-		9A28B9481F244CE0005A2A5F /* NSString+FFDBSQLStatement.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A28B9471F244CE0005A2A5F /* NSString+FFDBSQLStatement.m */; };
 		9A28B94B1F244D01005A2A5F /* NSString+FFDBExtern.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A28B94A1F244D01005A2A5F /* NSString+FFDBExtern.m */; };
 		9A32CAAB1E82C58A0097324D /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A32CAAA1E82C58A0097324D /* AppDelegate.m */; };
 		9A32CAAE1E82C58A0097324D /* ClassRoomViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A32CAAD1E82C58A0097324D /* ClassRoomViewController.m */; };
@@ -21,11 +19,29 @@
 		9A32CAB61E82C58A0097324D /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9A32CAB41E82C58A0097324D /* LaunchScreen.storyboard */; };
 		9A32CB041E82C69D0097324D /* libsqlite3.0.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 9A32CB031E82C69D0097324D /* libsqlite3.0.tbd */; };
 		9A5863271F1B0A5300E2C0BC /* FFDataBaseModel+Custom.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A5863261F1B0A5300E2C0BC /* FFDataBaseModel+Custom.m */; };
+		9A8BE7E920C80A850026855F /* Insert.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A8BE7E820C80A850026855F /* Insert.m */; };
+		9A8BE7EC20C80A960026855F /* STMT.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A8BE7EB20C80A960026855F /* STMT.m */; };
 		9AA045751F528A8A00F35C7B /* CustomModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 9AA045741F528A8A00F35C7B /* CustomModel.m */; };
 		9AA7D4CF1F1B29BE00177A32 /* FFDBTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 9AA7D4CE1F1B29BE00177A32 /* FFDBTests.m */; };
 		9AA7D4D81F1B2A7C00177A32 /* TestModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 9AA7D4D71F1B2A7C00177A32 /* TestModel.m */; };
+		9AA9547D20CA1B2800B63405 /* Into.m in Sources */ = {isa = PBXBuildFile; fileRef = 9AA9547C20CA1B2800B63405 /* Into.m */; };
+		9AA9548020CA294700B63405 /* Select.m in Sources */ = {isa = PBXBuildFile; fileRef = 9AA9547F20CA294700B63405 /* Select.m */; };
 		9AB169861EC5FCAE00DDC817 /* FFDBLog.m in Sources */ = {isa = PBXBuildFile; fileRef = 9AB169851EC5FCAE00DDC817 /* FFDBLog.m */; };
-		9AB169891EC6087E00DDC817 /* FFDBTransaction.m in Sources */ = {isa = PBXBuildFile; fileRef = 9AB169881EC6087E00DDC817 /* FFDBTransaction.m */; };
+		9AB53B8F20CB93A700AB1A2C /* From.m in Sources */ = {isa = PBXBuildFile; fileRef = 9AB53B8E20CB93A600AB1A2C /* From.m */; };
+		9AB53B9220CB93B700AB1A2C /* Where.m in Sources */ = {isa = PBXBuildFile; fileRef = 9AB53B9120CB93B700AB1A2C /* Where.m */; };
+		9AB53B9520CB9EDF00AB1A2C /* OrderBy.m in Sources */ = {isa = PBXBuildFile; fileRef = 9AB53B9420CB9EDF00AB1A2C /* OrderBy.m */; };
+		9AB53B9820CBAA1000AB1A2C /* Limit.m in Sources */ = {isa = PBXBuildFile; fileRef = 9AB53B9720CBAA1000AB1A2C /* Limit.m */; };
+		9AB53B9B20CBAAB300AB1A2C /* Offset.m in Sources */ = {isa = PBXBuildFile; fileRef = 9AB53B9A20CBAAB300AB1A2C /* Offset.m */; };
+		9AB53B9E20CBAD4000AB1A2C /* Columns.m in Sources */ = {isa = PBXBuildFile; fileRef = 9AB53B9D20CBAD4000AB1A2C /* Columns.m */; };
+		9AB53BA120CBB04800AB1A2C /* Values.m in Sources */ = {isa = PBXBuildFile; fileRef = 9AB53BA020CBB04800AB1A2C /* Values.m */; };
+		9AB53BA420CBB37600AB1A2C /* Update.m in Sources */ = {isa = PBXBuildFile; fileRef = 9AB53BA320CBB37600AB1A2C /* Update.m */; };
+		9AB53BA720CBB6CE00AB1A2C /* Set.m in Sources */ = {isa = PBXBuildFile; fileRef = 9AB53BA620CBB6CE00AB1A2C /* Set.m */; };
+		9AB53BAA20CBB9AD00AB1A2C /* Delete.m in Sources */ = {isa = PBXBuildFile; fileRef = 9AB53BA920CBB9AD00AB1A2C /* Delete.m */; };
+		9AB53BD520CBBE0B00AB1A2C /* Create.m in Sources */ = {isa = PBXBuildFile; fileRef = 9AB53BD420CBBE0B00AB1A2C /* Create.m */; };
+		9AB53BD820CC089C00AB1A2C /* Alter.m in Sources */ = {isa = PBXBuildFile; fileRef = 9AB53BD720CC089C00AB1A2C /* Alter.m */; };
+		9AB53BDB20CC099800AB1A2C /* Add.m in Sources */ = {isa = PBXBuildFile; fileRef = 9AB53BDA20CC099700AB1A2C /* Add.m */; };
+		9AB53BDC20CD206200AB1A2C /* FFDBTransaction.m in Sources */ = {isa = PBXBuildFile; fileRef = 9AB169881EC6087E00DDC817 /* FFDBTransaction.m */; };
+		9AB53BDD20CD206500AB1A2C /* FFDBSafeOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A0E9E741ECA04EE008B9A8A /* FFDBSafeOperation.m */; };
 		9AB7B9801E94003C001D837B /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 9AB7B97F1E94003C001D837B /* main.m */; };
 		9AB7B9851E940053001D837B /* FFDataBaseModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 9AB7B9821E940053001D837B /* FFDataBaseModel.m */; };
 		9ADF9A761F244540001C46E7 /* NSObject+FIDProperty.m in Sources */ = {isa = PBXBuildFile; fileRef = 9ADF9A751F244540001C46E7 /* NSObject+FIDProperty.m */; };
@@ -56,8 +72,6 @@
 		9A1253A51F2442AE004BFE4D /* SQLFormatTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SQLFormatTests.m; sourceTree = "<group>"; };
 		9A1957781F92025400F8A37B /* FFStore.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FFStore.h; sourceTree = "<group>"; };
 		9A1957791F92025400F8A37B /* FFStore.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FFStore.m; sourceTree = "<group>"; };
-		9A28B9461F244CE0005A2A5F /* NSString+FFDBSQLStatement.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "NSString+FFDBSQLStatement.h"; sourceTree = "<group>"; };
-		9A28B9471F244CE0005A2A5F /* NSString+FFDBSQLStatement.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "NSString+FFDBSQLStatement.m"; sourceTree = "<group>"; };
 		9A28B9491F244D01005A2A5F /* NSString+FFDBExtern.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "NSString+FFDBExtern.h"; sourceTree = "<group>"; };
 		9A28B94A1F244D01005A2A5F /* NSString+FFDBExtern.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "NSString+FFDBExtern.m"; sourceTree = "<group>"; };
 		9A32CAA31E82C58A0097324D /* FFDB.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FFDB.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -72,6 +86,10 @@
 		9A5863251F1B0A5300E2C0BC /* FFDataBaseModel+Custom.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "FFDataBaseModel+Custom.h"; sourceTree = "<group>"; };
 		9A5863261F1B0A5300E2C0BC /* FFDataBaseModel+Custom.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "FFDataBaseModel+Custom.m"; sourceTree = "<group>"; };
 		9A755F711E8D78BD00B2A4B5 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = Info.plist; path = ../Example/Info.plist; sourceTree = "<group>"; };
+		9A8BE7E720C80A850026855F /* Insert.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Insert.h; sourceTree = "<group>"; };
+		9A8BE7E820C80A850026855F /* Insert.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Insert.m; sourceTree = "<group>"; };
+		9A8BE7EA20C80A960026855F /* STMT.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = STMT.h; sourceTree = "<group>"; };
+		9A8BE7EB20C80A960026855F /* STMT.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = STMT.m; sourceTree = "<group>"; };
 		9AA045731F528A8A00F35C7B /* CustomModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CustomModel.h; sourceTree = "<group>"; };
 		9AA045741F528A8A00F35C7B /* CustomModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CustomModel.m; sourceTree = "<group>"; };
 		9AA7D4CC1F1B29BE00177A32 /* FFDBTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = FFDBTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -79,10 +97,40 @@
 		9AA7D4D01F1B29BE00177A32 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		9AA7D4D61F1B2A7C00177A32 /* TestModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TestModel.h; sourceTree = "<group>"; };
 		9AA7D4D71F1B2A7C00177A32 /* TestModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TestModel.m; sourceTree = "<group>"; };
+		9AA9547B20CA1B2800B63405 /* Into.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Into.h; sourceTree = "<group>"; };
+		9AA9547C20CA1B2800B63405 /* Into.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Into.m; sourceTree = "<group>"; };
+		9AA9547E20CA294700B63405 /* Select.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Select.h; sourceTree = "<group>"; };
+		9AA9547F20CA294700B63405 /* Select.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Select.m; sourceTree = "<group>"; };
 		9AB169841EC5FCAE00DDC817 /* FFDBLog.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FFDBLog.h; sourceTree = "<group>"; };
 		9AB169851EC5FCAE00DDC817 /* FFDBLog.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FFDBLog.m; sourceTree = "<group>"; };
 		9AB169871EC6087E00DDC817 /* FFDBTransaction.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FFDBTransaction.h; sourceTree = "<group>"; };
 		9AB169881EC6087E00DDC817 /* FFDBTransaction.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FFDBTransaction.m; sourceTree = "<group>"; };
+		9AB53B8D20CB93A600AB1A2C /* From.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = From.h; sourceTree = "<group>"; };
+		9AB53B8E20CB93A600AB1A2C /* From.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = From.m; sourceTree = "<group>"; };
+		9AB53B9020CB93B700AB1A2C /* Where.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Where.h; sourceTree = "<group>"; };
+		9AB53B9120CB93B700AB1A2C /* Where.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Where.m; sourceTree = "<group>"; };
+		9AB53B9320CB9EDF00AB1A2C /* OrderBy.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = OrderBy.h; sourceTree = "<group>"; };
+		9AB53B9420CB9EDF00AB1A2C /* OrderBy.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = OrderBy.m; sourceTree = "<group>"; };
+		9AB53B9620CBAA1000AB1A2C /* Limit.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Limit.h; sourceTree = "<group>"; };
+		9AB53B9720CBAA1000AB1A2C /* Limit.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Limit.m; sourceTree = "<group>"; };
+		9AB53B9920CBAAB300AB1A2C /* Offset.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Offset.h; sourceTree = "<group>"; };
+		9AB53B9A20CBAAB300AB1A2C /* Offset.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Offset.m; sourceTree = "<group>"; };
+		9AB53B9C20CBAD4000AB1A2C /* Columns.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Columns.h; sourceTree = "<group>"; };
+		9AB53B9D20CBAD4000AB1A2C /* Columns.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Columns.m; sourceTree = "<group>"; };
+		9AB53B9F20CBB04800AB1A2C /* Values.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Values.h; sourceTree = "<group>"; };
+		9AB53BA020CBB04800AB1A2C /* Values.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Values.m; sourceTree = "<group>"; };
+		9AB53BA220CBB37600AB1A2C /* Update.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Update.h; sourceTree = "<group>"; };
+		9AB53BA320CBB37600AB1A2C /* Update.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Update.m; sourceTree = "<group>"; };
+		9AB53BA520CBB6CE00AB1A2C /* Set.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Set.h; sourceTree = "<group>"; };
+		9AB53BA620CBB6CE00AB1A2C /* Set.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Set.m; sourceTree = "<group>"; };
+		9AB53BA820CBB9AD00AB1A2C /* Delete.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Delete.h; sourceTree = "<group>"; };
+		9AB53BA920CBB9AD00AB1A2C /* Delete.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Delete.m; sourceTree = "<group>"; };
+		9AB53BD320CBBE0B00AB1A2C /* Create.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Create.h; sourceTree = "<group>"; };
+		9AB53BD420CBBE0B00AB1A2C /* Create.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Create.m; sourceTree = "<group>"; };
+		9AB53BD620CC089C00AB1A2C /* Alter.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Alter.h; sourceTree = "<group>"; };
+		9AB53BD720CC089C00AB1A2C /* Alter.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Alter.m; sourceTree = "<group>"; };
+		9AB53BD920CC099700AB1A2C /* Add.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Add.h; sourceTree = "<group>"; };
+		9AB53BDA20CC099700AB1A2C /* Add.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Add.m; sourceTree = "<group>"; };
 		9AB7B97F1E94003C001D837B /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = main.m; path = ../Example/main.m; sourceTree = "<group>"; };
 		9AB7B9811E940053001D837B /* FFDataBaseModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FFDataBaseModel.h; sourceTree = "<group>"; };
 		9AB7B9821E940053001D837B /* FFDataBaseModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FFDataBaseModel.m; sourceTree = "<group>"; };
@@ -220,10 +268,42 @@
 				9AE94CD41EC4B07D006CBC5E /* FFDataBaseModel+Sqlite.m */,
 				9ADF9A741F244540001C46E7 /* NSObject+FIDProperty.h */,
 				9ADF9A751F244540001C46E7 /* NSObject+FIDProperty.m */,
-				9A28B9461F244CE0005A2A5F /* NSString+FFDBSQLStatement.h */,
-				9A28B9471F244CE0005A2A5F /* NSString+FFDBSQLStatement.m */,
 				9A28B9491F244D01005A2A5F /* NSString+FFDBExtern.h */,
 				9A28B94A1F244D01005A2A5F /* NSString+FFDBExtern.m */,
+				9A8BE7EA20C80A960026855F /* STMT.h */,
+				9A8BE7EB20C80A960026855F /* STMT.m */,
+				9A8BE7E720C80A850026855F /* Insert.h */,
+				9A8BE7E820C80A850026855F /* Insert.m */,
+				9AA9547B20CA1B2800B63405 /* Into.h */,
+				9AA9547C20CA1B2800B63405 /* Into.m */,
+				9AB53B9C20CBAD4000AB1A2C /* Columns.h */,
+				9AB53B9D20CBAD4000AB1A2C /* Columns.m */,
+				9AB53B9F20CBB04800AB1A2C /* Values.h */,
+				9AB53BA020CBB04800AB1A2C /* Values.m */,
+				9AA9547E20CA294700B63405 /* Select.h */,
+				9AA9547F20CA294700B63405 /* Select.m */,
+				9AB53B8D20CB93A600AB1A2C /* From.h */,
+				9AB53B8E20CB93A600AB1A2C /* From.m */,
+				9AB53B9020CB93B700AB1A2C /* Where.h */,
+				9AB53B9120CB93B700AB1A2C /* Where.m */,
+				9AB53B9320CB9EDF00AB1A2C /* OrderBy.h */,
+				9AB53B9420CB9EDF00AB1A2C /* OrderBy.m */,
+				9AB53B9620CBAA1000AB1A2C /* Limit.h */,
+				9AB53B9720CBAA1000AB1A2C /* Limit.m */,
+				9AB53B9920CBAAB300AB1A2C /* Offset.h */,
+				9AB53B9A20CBAAB300AB1A2C /* Offset.m */,
+				9AB53BA220CBB37600AB1A2C /* Update.h */,
+				9AB53BA320CBB37600AB1A2C /* Update.m */,
+				9AB53BA520CBB6CE00AB1A2C /* Set.h */,
+				9AB53BA620CBB6CE00AB1A2C /* Set.m */,
+				9AB53BA820CBB9AD00AB1A2C /* Delete.h */,
+				9AB53BA920CBB9AD00AB1A2C /* Delete.m */,
+				9AB53BD320CBBE0B00AB1A2C /* Create.h */,
+				9AB53BD420CBBE0B00AB1A2C /* Create.m */,
+				9AB53BD620CC089C00AB1A2C /* Alter.h */,
+				9AB53BD720CC089C00AB1A2C /* Alter.m */,
+				9AB53BD920CC099700AB1A2C /* Add.h */,
+				9AB53BDA20CC099700AB1A2C /* Add.m */,
 			);
 			name = FFDB;
 			sourceTree = "<group>";
@@ -459,22 +539,38 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				9AB53BDB20CC099800AB1A2C /* Add.m in Sources */,
 				9AE94CCC1EC49D3B006CBC5E /* FFDBManager.m in Sources */,
 				9AB7B9801E94003C001D837B /* main.m in Sources */,
 				9ADF9A761F244540001C46E7 /* NSObject+FIDProperty.m in Sources */,
+				9AA9548020CA294700B63405 /* Select.m in Sources */,
 				9A32CAAE1E82C58A0097324D /* ClassRoomViewController.m in Sources */,
+				9AB53B9B20CBAAB300AB1A2C /* Offset.m in Sources */,
+				9AB53BA120CBB04800AB1A2C /* Values.m in Sources */,
 				9AB7B9851E940053001D837B /* FFDataBaseModel.m in Sources */,
 				9AE94CD21EC4A75E006CBC5E /* FMDatabase+FFExtern.m in Sources */,
 				9AE94CD51EC4B07D006CBC5E /* FFDataBaseModel+Sqlite.m in Sources */,
-				9A28B9481F244CE0005A2A5F /* NSString+FFDBSQLStatement.m in Sources */,
+				9A8BE7E920C80A850026855F /* Insert.m in Sources */,
+				9AB53B9820CBAA1000AB1A2C /* Limit.m in Sources */,
+				9AB53B9220CB93B700AB1A2C /* Where.m in Sources */,
+				9AB53B9520CB9EDF00AB1A2C /* OrderBy.m in Sources */,
+				9AB53BDC20CD206200AB1A2C /* FFDBTransaction.m in Sources */,
+				9AB53BDD20CD206500AB1A2C /* FFDBSafeOperation.m in Sources */,
+				9AB53BA420CBB37600AB1A2C /* Update.m in Sources */,
+				9AA9547D20CA1B2800B63405 /* Into.m in Sources */,
 				9A32CAAB1E82C58A0097324D /* AppDelegate.m in Sources */,
-				9A0E9E751ECA04EE008B9A8A /* FFDBSafeOperation.m in Sources */,
-				9AB169891EC6087E00DDC817 /* FFDBTransaction.m in Sources */,
+				9AB53BAA20CBB9AD00AB1A2C /* Delete.m in Sources */,
 				9A28B94B1F244D01005A2A5F /* NSString+FFDBExtern.m in Sources */,
+				9AB53B8F20CB93A700AB1A2C /* From.m in Sources */,
+				9AB53BA720CBB6CE00AB1A2C /* Set.m in Sources */,
+				9A8BE7EC20C80A960026855F /* STMT.m in Sources */,
 				9AB169861EC5FCAE00DDC817 /* FFDBLog.m in Sources */,
+				9AB53BD820CC089C00AB1A2C /* Alter.m in Sources */,
 				9A19577A1F92025400F8A37B /* FFStore.m in Sources */,
 				9A5863271F1B0A5300E2C0BC /* FFDataBaseModel+Custom.m in Sources */,
 				9AE672111E88020900F2AB6C /* ClassRoom.m in Sources */,
+				9AB53BD520CBBE0B00AB1A2C /* Create.m in Sources */,
+				9AB53B9E20CBAD4000AB1A2C /* Columns.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

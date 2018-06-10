@@ -15,33 +15,38 @@
 @interface FFDBManager : NSObject
 
 /**
- select object by params
+ insertObject by columns
  
- @param columns query columns
- @param dbClass query dbClass
- @param format Like sqlstatement rule, example: where name = 'fidetro' and age = '21'
- @return class objects
+ @param model need insert model
+ @param columns insert Columns,if nil,then will be insert model all property
+ @param values values of columns
+ @param db set database when use SafeOperation or Transaction,it should be alway nil
+ @return isSuccess
  */
-+ (NSArray <__kindof FFDataBaseModel *>*)selectColumns:(NSArray <NSString *>*)columns
-                 fromClass:(Class)dbClass
-    SQLStatementWithFormat:(NSString *)format;
-
-+ (long long int)selectCountfromClasses:(NSArray <Class>*)dbClasses
-                 SQLStatementWithFormat:(NSString *)format;
++ (BOOL)insertObject:(__kindof FFDataBaseModel *)model
+             columns:(NSArray <NSString *>*)columns
+              values:(NSArray <id>*)values
+                  db:(FMDatabase *)db;
 
 /**
- Contingency query
+ select object by params
  
- @param columns query columns ,if nil,then will be query toClass all property
- @param dbClasses query dbClass
- @param toClass return this class Objects
- @param format Like sqlstatement rule, example: where name = 'fidetro' and age = '21'
- @return toClass Array
+ @param dbClass query dbClass
+ @param columns query columns
+ @param whereFormat Like sqlstatement rule, example: name = 'fidetro' and age = '21'
+ @param toClass return to class
+ @param values values of columns
+ @param db set database when use SafeOperation or Transaction,it should be alway nil
+ @return class objects
  */
-+ (NSArray <__kindof FFDataBaseModel *>*)selectColumns:(NSArray <NSString *>*)columns
-                                           fromClasses:(NSArray <Class>*)dbClasses
-                                               toClass:(Class)toClass
-                                SQLStatementWithFormat:(NSString *)format;
++ (NSArray *)selectFromClass:(Class)dbClass
+                     columns:(NSArray <NSString *>*)columns
+                       where:(NSString *)whereFormat
+                      values:(NSArray <id>*)values
+                     toClass:(Class)toClass
+                          db:(FMDatabase *)db;
+
+
 
 
 
@@ -49,72 +54,45 @@
  delete all object from class
  
  @param dbClass delete dbClass
- @param format Like sqlstatement rule, example: where name = 'fidetro' and age = '21'
+ @param whereFormat Like sqlstatement rule, example: name = 'fidetro' and age = '21'
+ @param values values of columns
+ @param db set database when use SafeOperation or Transaction,it should be alway nil
  @return isSuccess
  */
 + (BOOL)deleteFromClass:(Class)dbClass
- SQLStatementWithFormat:(NSString *)format;
+                  where:(NSString *)whereFormat
+                 values:(NSArray <id>*)values
+                     db:(FMDatabase *)db;
 
-
-/**
- insertObject by columns
- 
- @param model need insert model
- @param columns insert Columns,if nil,then will be insert model all property
- @return isSuccess
- */
-+ (BOOL)insertObject:(__kindof FFDataBaseModel *)model
-             columns:(NSArray <NSString *>*)columns;
 
 
 /**
  Update dbClass
  
  @param dbClass need update dbClass
- @param format Like sqlstatement rule, example: where name = 'fidetro' and age = '21'
+ @param setColumns columns
+ @param whereFormat Like sqlstatement rule, example: name = 'fidetro' and age = '21'
+ @param values values of columns
+ @param db set database when use SafeOperation or Transaction,it should be alway nil
  @return isSuccess
  */
 + (BOOL)updateFromClass:(Class)dbClass
- SQLStatementWithFormat:(NSString *)format;
+                    set:(NSArray <NSString *>*)setColumns
+                  where:(NSString *)whereFormat
+                 values:(NSArray <id>*)values
+                     db:(FMDatabase *)db;
 
 
-/**
- update object by columns
- 
- @param model need update model
- @param columns update columns,if nil,then will be update model all property
- @return isSuccess
- */
-+ (BOOL)updateObject:(__kindof FFDataBaseModel *)model
-             columns:(NSArray <NSString *>*)columns;
 
 
-/**
- custom query SQL
 
- @param toClass return toClass Object
- @param format SQL statement exmaple:select * from person
- @return return this class Objects
- */
-+ (NSArray <__kindof FFDataBaseModel *>*)selectDBToClass:(Class)toClass
-                                  SQLStatementWithFormat:(NSString *)format;
-
-/**
- custom update
-
- @param format SQL statement
- @return isSuccess
- */
-+ (BOOL)updateDBWithSQLStatementWithFormat:(NSString *)format;
 
 /**
  alert new columns to dbClass
  
  @param dbClass dbClass
- @param columns alert columns
  */
-+ (void)alterFromClass:(Class)dbClass
-               columns:(NSArray <NSString *>*)columns;
++ (void)alterFromClass:(Class)dbClass;
 
 /**
  then will be create Table by Class property

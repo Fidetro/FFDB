@@ -130,7 +130,8 @@ extern uint64_t dispatch_benchmark(size_t count, void (^block)(void));
                                                              handler:^(UIAlertAction * action) {
         UITextField *textField = [alert.textFields lastObject];
         classRoom.name = textField.text;
-        [classRoom updateObject];
+//        [classRoom updateObject];
+#warning fix me
         [self selectAndUpdateEvent];
                                                              }];
         UIAlertAction *cancelAction = [UIAlertAction actionWithTitle:@"Cancel" style:UIAlertActionStyleDefault
@@ -140,7 +141,8 @@ extern uint64_t dispatch_benchmark(size_t count, void (^block)(void));
         [self presentViewController:alert animated:YES completion:nil];
     }];
     UITableViewRowAction *deleteAction =[UITableViewRowAction rowActionWithStyle:UITableViewRowActionStyleDefault title:@"Delete" handler:^(UITableViewRowAction * _Nonnull action, NSIndexPath * _Nonnull indexPath) {
-        [classRoom deleteObject];
+//        [classRoom deleteObject];
+        NSLog(@"fix me");
         [self selectAndUpdateEvent];
     }];
     return @[deleteAction,editAction];

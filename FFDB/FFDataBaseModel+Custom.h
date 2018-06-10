@@ -53,5 +53,5 @@
  */
 + (NSString *)tableName;
 
-
++ (NSString *)primaryKeyColumn;
 @end

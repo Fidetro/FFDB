@@ -16,8 +16,8 @@ extern NSString *const kDatabaseHeadname;
 
 
 @interface FFDataBaseModel : NSObject
-/** primary id,use to update **/
-@property(nonatomic,strong,readonly) NSString *primaryID;
+///** primary id,use to update **/
+//@property(nonatomic,strong,readonly) NSString *primaryID;
 
 /**
  select all object from class
@@ -32,7 +32,8 @@ extern NSString *const kDatabaseHeadname;
  @param format Like sqlstatement rule, example: where name = 'fidetro' and age = '21'
  @return class objects
  */
-+ (NSArray <__kindof FFDataBaseModel *>*)selectFromClassPredicateWithFormat:(NSString *)format;
++ (NSArray <__kindof FFDataBaseModel *>*)selectFromClassPredicateWithFormat:(NSString *)format
+                                                                     values:(NSArray <id>*)values;
 
 /**
  delete all object from class
@@ -41,20 +42,16 @@ extern NSString *const kDatabaseHeadname;
  */
 + (BOOL)deleteFromClassAllObject;
 
-/**
- delete object
-
- @return delete successfully
- */
-- (BOOL)deleteObject;
 
 /**
  delete object by format
  
- @param format Like sqlstatement rule,  example: where name = 'fidetro' and age = '21'
+ @param whereFormat Like sqlstatement rule,  example: name = 'fidetro' and age = '21'
+ @param values values of columns
  @return delete successfully
  */
-+ (BOOL)deleteFromClassPredicateWithFormat:(NSString *)format;
++ (BOOL)deleteFromClassWhereFormat:(NSString *)whereFormat
+                            values:(NSArray <id>*)values;
 
 /**
  insert object
@@ -66,36 +63,14 @@ extern NSString *const kDatabaseHeadname;
 /**
  update object by format
 
- @param format Like sqlstatement rule,  example: set age = '24' where name = 'fidetro'
+ @param setColumns columns
+ @param whereFormat Like sqlstatement rule, example: name = 'fidetro' and age = '21'
+ @param values values of columns
  @return update successfully
  */
-+ (BOOL)updateFromClassPredicateWithFormat:(NSString *)format;
-
-/**
- update object for all columns
-
- @return update successfully
- */
-- (BOOL)updateObject;
-/**
- update object by columns
- 
- @param columns Need to update columns
- @return update successfully
- */
-- (BOOL)updateObjectSetColumns:(NSArray *)columns;
-
-/**
- find primaryID will update object,if not insert
- */
-- (BOOL)upsert;
-
-
-/**
- find columns will update object,if not insert
- */
-- (BOOL)upsertWithColumns:(NSArray *)columns;
-
++ (BOOL)updateFromClassSet:(NSArray <NSString *>*)setColumns
+                     where:(NSString *)whereFormat
+                    values:(NSArray <id>*)values;
 
 
 

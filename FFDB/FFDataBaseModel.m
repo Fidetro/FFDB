@@ -23,93 +23,49 @@ NSString const* kUpdateContext = @"kUpdateContext";
 
 + (NSArray <__kindof FFDataBaseModel *>*)selectFromClassAllObject
 {
-    return [[self class] selectFromClassPredicateWithFormat:nil];
+    return [[self class] selectFromClassPredicateWithFormat:nil values:nil];
 }
 
 + (NSArray <__kindof FFDataBaseModel *>*)selectFromClassPredicateWithFormat:(NSString *)format
+                                                                     values:(NSArray <id>*)values
 {
-    
-    return [FFDBManager selectColumns:nil fromClass:[self class] SQLStatementWithFormat:format];
-    
+    return [FFDBManager selectFromClass:[self class] columns:nil where:format values:values toClass:nil db:nil];
 }
 
 + (BOOL)deleteFromClassAllObject
 {
-    return [[self class]deleteFromClassPredicateWithFormat:nil];
+    return [[self class]deleteFromClassWhereFormat:nil values:nil];
 }
 
-- (BOOL)deleteObject
++ (BOOL)deleteFromClassWhereFormat:(NSString *)whereFormat
+                            values:(NSArray <id>*)values
 {
-    return [[self class]deleteFromClassPredicateWithFormat:[self deleteObjectSqlstatement]];
-}
-
-+ (BOOL)deleteFromClassPredicateWithFormat:(NSString *)format
-{
-    return [FFDBManager deleteFromClass:[self class] SQLStatementWithFormat:format];
+    return [FFDBManager deleteFromClass:[self class] where:whereFormat values:values db:nil];
 }
 
 - (BOOL)insertObject
 {
     NSArray *propertyNames = [[self class]columnsOfSelf];
-    return [FFDBManager insertObject:self columns:propertyNames];
+    
+    return [FFDBManager insertObject:self columns:propertyNames values:nil db:nil];
 }
 
 - (BOOL)insertObjectWithColumns:(NSArray *)columns
 {
-    return [FFDBManager insertObject:self columns:columns];
+    return [FFDBManager insertObject:self columns:columns values:nil db:nil];
 }
 
-+ (BOOL)updateFromClassPredicateWithFormat:(NSString *)format
++ (BOOL)updateFromClassSet:(NSArray <NSString *>*)setColumns
+                     where:(NSString *)whereFormat
+                    values:(NSArray <id>*)values
 {
     
-    return [FFDBManager updateFromClass:[self class] SQLStatementWithFormat:format];
-}
-
-- (BOOL)updateObject
-{
-    NSArray *propertyNames = [[self class]columnsOfSelf];
-    return [FFDBManager updateObject:self columns:propertyNames];
-}
-
-- (BOOL)upsert
-{
-    if ([self.primaryID length] == 0)
-    {
-        return [self insertObject];
-    }
-    else
-    {
-        return [self updateObject];
-    }
+    return [FFDBManager updateFromClass:self set:setColumns where:whereFormat values:values db:nil];
 }
 
 
-- (BOOL)upsertWithColumns:(NSArray *)columns
-{
-    if (columns.count == 0)
-    {
-        return [self upsert];
-    }
-    else
-    {
-       long long int totalCount = [FFDBManager selectCountfromClasses:@[[self class]] SQLStatementWithFormat:[NSString stringWithFormat:@" where %@",[self stringWithWhereValueOfColumns:columns]]];
-        if (totalCount == 0)
-        {
-            [self insertObject];
-        }
-        else
-        {
-            [self updateObject];
-        }
-        return YES;
-    }
- 
-}
 
-- (BOOL)updateObjectSetColumns:(NSArray *)columns
-{
-    return [FFDBManager updateObject:self columns:columns];
-}
+
 
 - (void)updateObjectWithBlock:(void(^)())update_block
 {
@@ -132,7 +88,8 @@ NSString const* kUpdateContext = @"kUpdateContext";
 {
     if (context == &kUpdateContext)
     {
-        [self updateObjectSetColumns:@[keyPath]];
+        #warning fix me
+//        [self updateObjectSetColumns:@[keyPath]];
     }
 }
 
@@ -158,7 +115,7 @@ NSString const* kUpdateContext = @"kUpdateContext";
     else
     {
         [FFDBManager createTableFromClass:self];
-        [FFDBManager alterFromClass:self columns:nil];
+        [FFDBManager alterFromClass:self];
     }
 }
 

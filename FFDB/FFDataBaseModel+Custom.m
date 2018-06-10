@@ -28,6 +28,11 @@
     return nil;
 }
 
++ (NSString *)primaryKeyColumn
+{
+    return nil;
+}
+
 + (NSArray *)columnsOfSelf
 {
     unsigned int count = 0;
