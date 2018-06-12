@@ -50,6 +50,7 @@
 {
     NSMutableString *sql = [NSMutableString string];
     [sql appendString:newColumn];
+    [sql appendString:@" "];
     NSString *type = [table columnsType][newColumn];
     if ([type length] != 0)
     {

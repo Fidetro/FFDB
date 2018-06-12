@@ -22,23 +22,25 @@
 + (Select *(^)(id))begin
 {
     return ^(id param){
-        if ([param isSubclassOfClass:[NSArray class]])
+        if ([param isKindOfClass:[NSArray class]])
         {
             NSArray *columns = (NSArray *)param;
-            NSString *columnString = @"";
+            NSMutableString *columnString = [NSMutableString string];
+            [columnString appendString:@"("];
             for (NSInteger index = 0; index<columns.count; index++)
             {
                 NSString *column = columns[index];
                 if (index == 0)
                 {
-                    columnString = [NSString stringWithFormat:@"%@",column];
+                    
+                    [columnString appendString:column];
                 }else
                 {
-                    columnString = [NSString stringWithFormat:@"%@,%@",columnString,column];
+                    [columnString appendFormat:@",%@",column];
                 }
             }
-            
-            return [[Select alloc]initWithSTMT:param];
+            [columnString appendString:@")"];
+            return [[Select alloc]initWithSTMT:[columnString copy]];
         }
         return [[Select alloc]initWithSTMT:param];
     };
@@ -47,7 +49,10 @@
 - (From *(^)(id))from
 {
     return ^(id param){
-        if ([param isSubclassOfClass:[FFDataBaseModel class]]) {
+        if ([param isKindOfClass:[NSString class]])
+        {
+        return [[From alloc]initWithSTMT:self.stmt format:param];
+        }else if ([param isSubclassOfClass:[FFDataBaseModel class]]) {
             return [[From alloc]initWithSTMT:self.stmt table:param];
         }
         return [[From alloc]initWithSTMT:self.stmt format:param];

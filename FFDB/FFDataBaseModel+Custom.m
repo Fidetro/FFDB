@@ -10,7 +10,7 @@
 #import "FFDataBaseModel+Custom.h"
 #import <objc/runtime.h>
 #import "NSObject+FIDProperty.h"
- NSString *const kDatabaseHeadname = @"FID";
+ NSString *const kDatabaseHeadname = @"FF";
 @implementation FFDataBaseModel (Custom)
 
 + (NSString *)tableName
@@ -30,7 +30,8 @@
 
 + (NSString *)primaryKeyColumn
 {
-    return nil;
+    NSAssert(0, @"you need orrwrite method");    
+    return @"";
 }
 
 + (NSArray *)columnsOfSelf
@@ -72,6 +73,9 @@
 {
     return nil;
 }
+
+
+
 
 - (id)sendGetMethodWithPropertyName:(NSString *)propertyName
 {

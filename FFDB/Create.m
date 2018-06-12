@@ -27,7 +27,7 @@
 
 - (instancetype)initWithTable:(Class)table
 {
-    NSString *stmt = [NSString stringWithFormat:@"table if  not exists %@ %@",[table tableName],[self createTableSQL:table]];
+    NSString *stmt = [NSString stringWithFormat:@"table if  not exists %@ (%@)",[table tableName],[self createTableSQL:table]];
     self = [self initWithSTMT:stmt];
     if (self)
     {
@@ -52,43 +52,49 @@
 {
     NSMutableString *sql = [NSMutableString string];
     NSString *primaryKeyColumn = [table primaryKeyColumn];
-    if ([primaryKeyColumn length] != 0)
-    {
-        NSString *type = [table columnsType][primaryKeyColumn];
-        if ([type length] == 0) {
-           type = @"integer PRIMARY KEY AUTOINCREMENT";
-        }
-        NSString *customAutoColumn = [table customColumns][primaryKeyColumn];
-        if ([customAutoColumn length] != 0)
-        {
-            [sql appendFormat:@"%@ %@",customAutoColumn,type];
-        }else
-        {
-            [sql appendFormat:@"%@ %@",primaryKeyColumn,type];
-        }
-    }
+
     
     for (NSInteger index = 0;index<[table columnsOfSelf].count;index++)
     {
         NSString *column = [table columnsOfSelf][index];
         NSString *name = [table customColumns][column];
-        if ([name length] != 0)
+        
+        if ([primaryKeyColumn isEqualToString:column])
         {
-            [sql appendString:name];
+            NSString *type = [table columnsType][primaryKeyColumn];
+            if ([type length] == 0) {
+                type = @"integer PRIMARY KEY AUTOINCREMENT";
+            }
+            NSString *customAutoColumn = [table customColumns][primaryKeyColumn];
+            if ([customAutoColumn length] != 0)
+            {
+                [sql appendFormat:@"%@ %@",customAutoColumn,type];
+            }else
+            {
+                [sql appendFormat:@"%@ %@",primaryKeyColumn,type];
+            }
         }else
         {
-            [sql appendString:column];
+            if ([name length] != 0)
+            {
+                [sql appendString:name];
+            }else
+            {
+                [sql appendString:column];
+            }
+            [sql appendString:@" "];
+            NSString *type = [table columnsType][column];
+            if ([type length] != 0)
+            {
+                [sql appendString:type];
+            }else
+            {
+                [sql appendString:@"TEXT"];
+            }
+            
         }
-        [sql appendString:@" "];
-        NSString *type = [table columnsType][column];
-        if ([type length] != 0)
+        if (index != ([table columnsOfSelf].count - 1))
         {
-            [sql appendString:type];
-        }else
-        {
-            [sql appendString:@"TEXT"];
-        }
-        if (index != [table columnsOfSelf].count-1) {
             [sql appendString:@","];
         }
     }

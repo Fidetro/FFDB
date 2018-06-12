@@ -12,7 +12,13 @@
 
 + (NSDictionary *)customColumns
 {
-    return @{@"_id":@"id"};
+    return @{@"_id":@"id",
+             @"_name":@"name"};
+}
+
++ (NSString *)tableName
+{
+    return @"Custom";
 }
 
 + (NSDictionary *)columnsType
@@ -24,5 +30,11 @@
 {
     return @[@"mem"];
 }
+
++ (NSString *)primaryKeyColumn
+{
+    return @"coustomKey";
+}
+
 
 @end

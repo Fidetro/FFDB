@@ -33,7 +33,7 @@
 - (Columns *(^)(id))columns
 {
     return ^(id param){
-        if ([param isSubclassOfClass:[NSArray class]]) {
+        if ([param isKindOfClass:[NSArray class]]) {
             return [[Columns alloc]initWithSTMT:self.stmt columns:param];
         }
         return [[Columns alloc]initWithSTMT:self.stmt format:param];

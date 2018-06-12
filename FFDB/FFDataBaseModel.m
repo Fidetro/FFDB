@@ -23,11 +23,11 @@ NSString const* kUpdateContext = @"kUpdateContext";
 
 + (NSArray <__kindof FFDataBaseModel *>*)selectFromClassAllObject
 {
-    return [[self class] selectFromClassPredicateWithFormat:nil values:nil];
+    return [[self class] selectFromClassWhereFormat:nil values:nil];
 }
 
-+ (NSArray <__kindof FFDataBaseModel *>*)selectFromClassPredicateWithFormat:(NSString *)format
-                                                                     values:(NSArray <id>*)values
++ (NSArray <__kindof FFDataBaseModel *>*)selectFromClassWhereFormat:(NSString *)format
+                                                             values:(NSArray <id>*)values
 {
     return [FFDBManager selectFromClass:[self class] columns:nil where:format values:values toClass:nil db:nil];
 }
@@ -45,15 +45,32 @@ NSString const* kUpdateContext = @"kUpdateContext";
 
 - (BOOL)insertObject
 {
-    NSArray *propertyNames = [[self class]columnsOfSelf];
-    
-    return [FFDBManager insertObject:self columns:propertyNames values:nil db:nil];
+    return [self insertObject:nil];
+}
+
+- (BOOL)insertObject:(FMDatabase *)db
+{
+    NSMutableArray *propertyNames = [NSMutableArray arrayWithArray:[[self class]columnsOfSelf]];
+    [propertyNames removeObject:[[self class]primaryKeyColumn]];
+    return [FFDBManager insertObject:self columns:[propertyNames copy] values:nil db:db];
 }
 
 - (BOOL)insertObjectWithColumns:(NSArray *)columns
 {
     return [FFDBManager insertObject:self columns:columns values:nil db:nil];
 }
+
+- (BOOL)deleteObject
+{
+    return [self deleteObject:nil];
+}
+
+- (BOOL)deleteObject:(FMDatabase *)db
+{
+    return [FFDBManager deleteFromClass:[self class] where:[NSString stringWithFormat:@"%@ = ?",[[self class] primaryKeyColumn]] values:@[[self getIvarWithName:[[self class] primaryKeyColumn]]] db:db];
+}
+
+
 
 + (BOOL)updateFromClassSet:(NSArray <NSString *>*)setColumns
                      where:(NSString *)whereFormat
@@ -63,35 +80,37 @@ NSString const* kUpdateContext = @"kUpdateContext";
     return [FFDBManager updateFromClass:self set:setColumns where:whereFormat values:values db:nil];
 }
 
-
-
-
-
-- (void)updateObjectWithBlock:(void(^)())update_block
+- (BOOL)updateObject
 {
-    NSArray *propertyNames = [[self class]columnsOfSelf];
-    if (update_block)
-    {
-        for (NSString *propertyName in propertyNames)
-        {
-            [self addObserver:self forKeyPath:propertyName options:NSKeyValueObservingOptionNew|NSKeyValueObservingOptionOld context:&kUpdateContext];
-        }
-        update_block();
-        for (NSString *propertyName in propertyNames)
-        {
-            [self removeObserver:self forKeyPath:propertyName];
-        }
-    }
+    return [self updateObject:nil];
 }
 
-- (void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary<NSKeyValueChangeKey,id> *)change context:(void *)context
+- (BOOL)updateObject:(FMDatabase *)db
 {
-    if (context == &kUpdateContext)
-    {
-        #warning fix me
-//        [self updateObjectSetColumns:@[keyPath]];
-    }
+    return [self updateObjectByCloumns:nil db:db];
 }
+
+
+- (BOOL)updateObjectByCloumns:(NSArray *)columns db:(FMDatabase *)db
+{
+    if (columns.count == 0)
+    {
+        columns = [[self class]columnsOfSelf];
+    }
+    NSMutableArray *muColumns = [NSMutableArray arrayWithArray:columns];
+    NSMutableArray *values = [NSMutableArray array];
+    for (NSString *column in muColumns)
+    {
+        id value = [self getIvarWithName:column];
+        [values addObject:value];
+    }
+    [muColumns removeObject:[[self class] primaryKeyColumn]];
+    [values addObject:[self getIvarWithName:[[self class] primaryKeyColumn]]];
+    return [FFDBManager updateFromClass:[self class] set:columns where:[NSString stringWithFormat:@"%@ = ?",[[self class] primaryKeyColumn]] values:values db:db];
+
+}
+
+
 
 #pragma mark - --------------------------base method--------------------------
 

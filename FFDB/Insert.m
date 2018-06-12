@@ -35,7 +35,9 @@
 - (Into *(^)(id))into
 {
     return ^(id param){
-        if ([param isSubclassOfClass:[FFDataBaseModel class]]) {
+        if ([param isKindOfClass:[NSString class]]) {
+            return [[Into alloc]initWithSTMT:self.stmt format:param];
+        }else  if ([param isSubclassOfClass:[FFDataBaseModel class]]) {
             return [[Into alloc]initWithSTMT:self.stmt table:param];
         }
         return [[Into alloc]initWithSTMT:self.stmt format:param];

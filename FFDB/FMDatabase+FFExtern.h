@@ -13,10 +13,6 @@ typedef void(^UpdateResult)(BOOL result);
 @interface FMDatabase (FFExtern)
 
 
-/**
- use FMDatabase update,but unclose
- */
-- (BOOL)executeUpdateWithSqlstatement:(NSString *)sqlstatement;
 
 - (void)executeUpdateWithSqlstatement:(NSString *)sqlstatement
                                values:(NSArray <id>*)values

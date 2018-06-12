@@ -50,21 +50,21 @@ extern uint64_t dispatch_benchmark(size_t count, void (^block)(void));
 
 - (IBAction)addNewClassRoom:(id)sender
 {
-    dispatch_async(dispatch_get_global_queue(0, 0), ^{
-        NSMutableArray *array = [NSMutableArray array];
-        for (int i = 0; i<1000000000; i++) {
-            ClassRoom *room = [[ClassRoom alloc]init];
-            [array addObject:room];
-            [FFDBTransaction insertObjectList:array isRollBack:YES];
-        }
-        
-    });
+//    dispatch_async(dispatch_get_global_queue(0, 0), ^{
+//        NSMutableArray *array = [NSMutableArray array];
+//        for (int i = 0; i<100; i++) {
+//            ClassRoom *room = [[ClassRoom alloc]init];
+//            [array addObject:room];
+//            [FFDBTransaction insertObjectList:array isRollBack:YES completion:nil];
+//        }
+//
+//    });
 
     
-//    ClassRoom *classRoom = [[ClassRoom alloc]init];
-//    classRoom.name = @"new room";
-//    [classRoom insertObject];
-//    [self selectAndUpdateEvent];
+    ClassRoom *classRoom = [[ClassRoom alloc]init];
+    classRoom.name = @"new room";
+    [classRoom insertObject];
+    [self selectAndUpdateEvent];
     
 }
 
@@ -130,8 +130,8 @@ extern uint64_t dispatch_benchmark(size_t count, void (^block)(void));
                                                              handler:^(UIAlertAction * action) {
         UITextField *textField = [alert.textFields lastObject];
         classRoom.name = textField.text;
-//        [classRoom updateObject];
-#warning fix me
+        [classRoom updateObject];
+
         [self selectAndUpdateEvent];
                                                              }];
         UIAlertAction *cancelAction = [UIAlertAction actionWithTitle:@"Cancel" style:UIAlertActionStyleDefault
@@ -141,8 +141,7 @@ extern uint64_t dispatch_benchmark(size_t count, void (^block)(void));
         [self presentViewController:alert animated:YES completion:nil];
     }];
     UITableViewRowAction *deleteAction =[UITableViewRowAction rowActionWithStyle:UITableViewRowActionStyleDefault title:@"Delete" handler:^(UITableViewRowAction * _Nonnull action, NSIndexPath * _Nonnull indexPath) {
-//        [classRoom deleteObject];
-        NSLog(@"fix me");
+        [classRoom deleteObject];        
         [self selectAndUpdateEvent];
     }];
     return @[deleteAction,editAction];

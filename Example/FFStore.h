@@ -15,4 +15,6 @@
 @property(nonatomic,assign) NSInteger memberCount;
 /** 商店说明 **/
 @property(nonatomic,copy) NSString *desc;
+
+@property(nonatomic,copy) NSString *storePrimaryKeyColumn;
 @end

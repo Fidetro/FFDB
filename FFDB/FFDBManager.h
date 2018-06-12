@@ -27,6 +27,19 @@
              columns:(NSArray <NSString *>*)columns
               values:(NSArray <id>*)values
                   db:(FMDatabase *)db;
+/**
+ insertObject by columns
+ 
+ @param table need insert table class
+ @param columns insert Columns,if nil,then will be insert model all property
+ @param values values of columns
+ @param db set database when use SafeOperation or Transaction,it should be alway nil
+ @return isSuccess
+ */
++ (BOOL)insertTable:(Class)table
+            columns:(NSArray <NSString *>*)columns
+             values:(NSArray <id>*)values
+                 db:(FMDatabase *)db;
 
 /**
  select object by params

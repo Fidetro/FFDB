@@ -38,7 +38,11 @@
 + (Update *(^)(id))begin
 {
     return ^(id param){
-        if ([param isSubclassOfClass:[FFDataBaseModel class]])
+        if ([param isKindOfClass:[NSString class]])
+        {
+            return [[Update alloc]initWithSTMT:param];
+        }
+        else if ([param isSubclassOfClass:[FFDataBaseModel class]])
         {
             return [[Update alloc]initWithTable:param];
         }
@@ -49,7 +53,7 @@
 - (Set *(^)(id))set
 {
     return ^(id param){
-        if ([param isSubclassOfClass:[NSArray class]])
+        if ([param isKindOfClass:[NSArray class]])
         {
             return [[Set alloc]initWithSTMT:self.stmt columns:param];
         }

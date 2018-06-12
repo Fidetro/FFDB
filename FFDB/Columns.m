@@ -34,7 +34,7 @@
 - (Values *(^)(id))values
 {
     return ^(id param){
-        if ([param isSubclassOfClass:[NSNumber class]]) {
+        if ([param isKindOfClass:[NSNumber class]]) {
             return [[Values alloc]initWithSTMT:self.stmt count:param];
         }
         return [[Values alloc]initWithSTMT:self.stmt format:param];
@@ -56,9 +56,9 @@
         }else
         {
             [columnsString appendFormat:@",%@",column];
-        }
-        [columnsString appendString:@")"];
+        }        
     }
+    [columnsString appendString:@")"];
     return [columnsString copy];
 }
 

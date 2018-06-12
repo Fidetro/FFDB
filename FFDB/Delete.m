@@ -36,6 +36,11 @@
 - (From *(^)(id))from
 {
     return ^(id param){
+        if ([param isKindOfClass:[NSString class]])
+        {
+            return [[From alloc]initWithSTMT:self.stmt format:param];
+        }
+        
         if ([param isSubclassOfClass:[FFDataBaseModel class]]) {
             return [[From alloc]initWithSTMT:self.stmt table:param];
         }

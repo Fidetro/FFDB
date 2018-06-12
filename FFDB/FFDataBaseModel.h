@@ -32,8 +32,14 @@ extern NSString *const kDatabaseHeadname;
  @param format Like sqlstatement rule, example: where name = 'fidetro' and age = '21'
  @return class objects
  */
-+ (NSArray <__kindof FFDataBaseModel *>*)selectFromClassPredicateWithFormat:(NSString *)format
-                                                                     values:(NSArray <id>*)values;
++ (NSArray <__kindof FFDataBaseModel *>*)selectFromClassWhereFormat:(NSString *)format
+                                                             values:(NSArray <id>*)values;
+
+/**
+ delete object
+ @return delete successfully
+ */
+- (BOOL)deleteObject;
 
 /**
  delete all object from class
@@ -61,6 +67,21 @@ extern NSString *const kDatabaseHeadname;
 - (BOOL)insertObject;
 
 /**
+ update object for all columns
+ @return update successfully
+ */
+- (BOOL)updateObject;
+
+/**
+ update object by columns
+ 
+ @param columns Need to update columns
+ @param db set database when use SafeOperation or Transaction,it should be alway nil
+ @return update successfully
+ */
+- (BOOL)updateObjectByCloumns:(NSArray *)columns db:(FMDatabase *)db;
+
+/**
  update object by format
 
  @param setColumns columns
@@ -74,18 +95,9 @@ extern NSString *const kDatabaseHeadname;
 
 
 
-
-
-/**
- update object by KVO
- 
- @param update_block You can set object property into update_block
- */
-- (void)updateObjectWithBlock:(void(^)())update_block;
-
-
-
-
+- (BOOL)insertObject:(FMDatabase *)db;
+- (BOOL)deleteObject:(FMDatabase *)db;
+- (BOOL)updateObject:(FMDatabase *)db;
 
 
 

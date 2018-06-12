@@ -12,18 +12,6 @@
 #import "NSObject+FIDProperty.h"
 @implementation FMDatabase (FFExtern)
 
-
-- (BOOL)executeUpdateWithSqlstatement:(NSString *)sqlstatement
-{
-    BOOL update = NO;
-    if ([self open])
-    {
-        update =  [self executeUpdate:sqlstatement];
-    }
-    
-    return update;
-}
-
 - (void)executeUpdateWithSqlstatement:(NSString *)sqlstatement
                                values:(NSArray <id>*)values
                            completion:(UpdateResult)block
@@ -64,7 +52,6 @@
                 NSString *objStr = [result length] == 0 ? @"" :result;
                 [object setPropertyWithName:propertyname object:objStr];
             }
-//            [object setPropertyWithName:@"primaryID" object:[resultSet stringForColumn:@"primaryID"]];
             [dataArray addObject:object];
         }
         if (error)
