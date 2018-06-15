@@ -53,5 +53,10 @@
  */
 + (NSString *)tableName;
 
-
+/**
+ you should orrwirte primaryKeyColumn and return primaryKey column name
+ 
+ @return table name
+ */
++ (NSString *)primaryKeyColumn;
 @end

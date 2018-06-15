@@ -12,27 +12,5 @@
 @interface FFDataBaseModel (Sqlite)
 
 
-/**
- DELETE SQL statement String
-
- @return SQL statement String
- */
-- (NSString *)deleteObjectSqlstatement;
-
-/**
- UPDATE Object SQL statement String
- 
- @return SQL statement String
- */
-- (NSString *)updateObjectSqlstatement;
-
-- (NSString *)stringWithInsertValueOfColumns:(NSArray <NSString *>*)columns;
-
-- (NSString *)stringWithUpdateSetValueOfColumns:(NSArray <NSString *>*)columns;
-
-- (NSString *)stringWithWhereValueOfColumns:(NSArray <NSString *>*)columns;
-
-+ (NSString *)stringToColumnTypeWithColumns:(NSArray <NSString *>*)columns;
-
-
+- (id)getIvarWithName:(NSString *)propertyname;
 @end

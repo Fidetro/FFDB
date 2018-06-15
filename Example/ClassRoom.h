@@ -16,4 +16,5 @@
 
 @property(nonatomic,copy) NSString *memberCount;
 
+@property(nonatomic,copy) NSString *primaryKeyColumn;
 @end

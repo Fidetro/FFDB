@@ -10,174 +10,205 @@
 #import "FFDBManager.h"
 #import "FFDataBaseModel+Sqlite.h"
 #import "NSObject+FIDProperty.h"
-#import "NSString+FFDBSQLStatement.h"
 #import "FFDataBaseModel+Custom.h"
 #import "FMDatabase+FFExtern.h"
-
+#import "Insert.h"
+#import "Select.h"
+#import "Delete.h"
+#import "Update.h"
+#import "Alter.h"
+#import "Create.h"
 @implementation FFDBManager
 
-+ (NSArray *)selectColumns:(NSArray <NSString *>*)columns
-                 fromClass:(Class)dbClass
-    SQLStatementWithFormat:(NSString *)format
++ (BOOL)insertObject:(__kindof FFDataBaseModel *)model
+             columns:(NSArray <NSString *>*)columns
+              values:(NSArray <id>*)values
+                  db:(FMDatabase *)db
 {
-    FMDatabase *database = [self database];
-    NSArray *dataColumns = [NSArray array];
-    NSMutableArray *dataArray = [NSMutableArray array];
-    if (columns.count == 0)
+    if ([columns count] == 0)
     {
-        dataColumns = [dbClass columnsOfSelf];
+        columns = [[model class]columnsOfSelf];
     }
-    else
+    if ([values count] == 0)
     {
-        dataColumns = columns;
-    }
-    if ([database open])
-    {
-        FMResultSet *resultSet;
-        resultSet = [database executeQuery:[NSString stringWithSelectColumns:columns fromClasses:@[dbClass] SQLStatementWithFormat:format]];
-        while ([resultSet next])
+        NSMutableArray *muValues = [NSMutableArray array];
+        for (NSString *column in columns)
         {
-            id object = [[dbClass alloc]init];
-            for (NSString *propertyname in dataColumns)
-            {
-                NSString *result = [resultSet stringForColumn:propertyname];
-                NSString *objStr = [result length] == 0 ? @"" :result;
-                [object setPropertyWithName:propertyname object:objStr];
-            }
-            [object setPropertyWithName:@"primaryID" object:[resultSet stringForColumn:@"primaryID"]];
-            [dataArray addObject:object];
+           id values = [model getIvarWithName:column];
+            [muValues addObject:values];
         }
-        
+        values = [muValues copy];
+    }
+    __block BOOL _result = NO;
+    
+    Insert
+    .begin(nil)
+    .into([model class])
+    .columns(columns)
+    .values(@(columns.count))
+    .endUpdate(values,db,^(BOOL result){
+        _result = result;
+    });
+    
+    return _result;
+}
+
++ (BOOL)insertTable:(Class)table
+            columns:(NSArray <NSString *>*)columns
+            values:(NSArray <id>*)values
+                db:(FMDatabase *)db
+{
+    __block BOOL _result = NO;
+    
+    Insert
+    .begin(nil)
+    .into(table)
+    .columns(columns)
+    .values(@(columns.count))
+    .endUpdate(values,db,^(BOOL result){
+        _result = result;
+    });
+    
+    return _result;
+}
+
++ (NSArray *)selectFromClass:(Class)dbClass
+                     columns:(NSArray <NSString *>*)columns
+                       where:(NSString *)whereFormat
+                      values:(NSArray <id>*)values
+                     toClass:(Class)toClass
+                          db:(FMDatabase *)db
+{
+    __block NSArray *_result = nil;
+    if ([whereFormat length] == 0)
+    {
+        Select
+        .begin([columns count] == 0 ? @"*":columns)
+        .from(dbClass)
+        .endQuery(values,toClass==nil?dbClass:toClass,db,^(NSArray *result){
+            _result = result;
+        });
+    }else
+    {
+        Select
+        .begin([columns count] == 0 ? @"*":columns)
+        .from(dbClass)
+        .where(whereFormat)
+        .endQuery(values,toClass==nil?dbClass:toClass,db,^(NSArray *result){
+            _result = result;
+        });
     }
     
-    [database close];
-    return dataArray;
+    return _result;
 }
 
-+ (long long int)selectCountfromClasses:(NSArray <Class>*)dbClasses
-                 SQLStatementWithFormat:(NSString *)format
-{
-    FMDatabase *database = [self database];
-    long long int totalCount = 0;
-    if ([database open])
-    {
-        FMResultSet *resultSet;
-        resultSet = [database executeQuery:[NSString stringWithSelectCountfromClasses:dbClasses SQLStatementWithFormat:format]];
-        
-        while ([resultSet next])
-        {
-             totalCount = [resultSet longLongIntForColumnIndex:0];
-        }
-        
-    }
-    
-    [database close];
-    return totalCount;
-}
 
-+ (NSArray <__kindof FFDataBaseModel *>*)selectColumns:(NSArray <NSString *>*)columns
-                                           fromClasses:(NSArray<Class> *)dbClasses
-                                               toClass:(Class)toClass
-                                SQLStatementWithFormat:(NSString *)format
-{
-
-    NSString *SQLStatement = [NSString stringWithSelectColumns:columns fromClasses:dbClasses SQLStatementWithFormat:format];
-    NSArray *dataArray = [self selectDBToClass:toClass SQLStatementWithFormat:SQLStatement];
-    return dataArray;
-}
 
 
 
 + (BOOL)deleteFromClass:(Class)dbClass
- SQLStatementWithFormat:(NSString *)format
+                  where:(NSString *)whereFormat
+                 values:(NSArray <id>*)values
+                     db:(FMDatabase *)db
 {
-    FMDatabase *database = [self database];
-    return [database executeUpdateWithSqlstatement:[NSString stringWithDeleteFromClass:dbClass SQLStatementWithFormat:format]];
+    __block BOOL _result = NO;
+
+    if ([whereFormat length] == 0)
+    {
+        Delete
+        .begin(nil)
+        .from(dbClass)
+        .where(whereFormat)
+        .endUpdate(values,db,^(BOOL result){
+            _result = result;
+        });
+    }else
+    {
+        Delete
+        .begin(nil)
+        .from(dbClass)        
+        .endUpdate(values,db,^(BOOL result){
+            _result = result;
+        });
+    }
+
+    
+    return _result;
 }
 
-+ (BOOL)insertObject:(__kindof FFDataBaseModel *)model
-             columns:(NSArray <NSString *>*)columns
-{
-    FMDatabase *database = [self database];
-    return [database executeUpdateWithSqlstatement:[NSString stringWithInsertObject:model columns:columns]];
-}
+
 
 + (BOOL)updateFromClass:(Class)dbClass
- SQLStatementWithFormat:(NSString *)format
+                    set:(NSArray <NSString *>*)setColumns
+                  where:(NSString *)whereFormat
+                 values:(NSArray <id>*)values
+                     db:(FMDatabase *)db
 {
-    FMDatabase *database = [self database];
-    return [database executeUpdateWithSqlstatement:[NSString stringWithUpdateFromClass:dbClass SQLStatementWithFormat:format]];
-}
+    __block BOOL _result = NO;
+    Update
+    .begin(dbClass)
+    .set(setColumns)
+    .where(whereFormat)
+    .endUpdate(values,db,^(BOOL result){
+        _result = result;
+    });
+    
+    return _result;
 
-+ (BOOL)updateObject:(__kindof FFDataBaseModel *)model
-             columns:(NSArray <NSString *>*)columns
-{
-    FMDatabase *database = [self database];
-    return [database executeUpdateWithSqlstatement:[NSString stringWithUpdateObject:model columns:columns]];
-}
-
-+ (NSArray <__kindof FFDataBaseModel *>*)selectDBToClass:(Class)toClass
-                                  SQLStatementWithFormat:(NSString *)format
-{
-    FMDatabase *database = [self database];
-    NSMutableArray *dataArray = [NSMutableArray array];
-    NSArray *dataColumns = [toClass columnsOfSelf];
-    if ([database open])
-    {
-        FMResultSet *resultSet;
-        resultSet = [database executeQuery:format];
-        while ([resultSet next])
-        {
-            id object = [[toClass alloc]init];
-            for (NSString *propertyname in dataColumns)
-            {
-                NSString *result = [resultSet stringForColumn:propertyname];
-                NSString *objStr = [result length] == 0 ? @"" :result;
-                [object setPropertyWithName:propertyname object:objStr];
-            }
-            [dataArray addObject:object];
-        }
-    }
-    [database close];
-    return dataArray;
-}
-
-+ (BOOL)updateDBWithSQLStatementWithFormat:(NSString *)format
-{
-    FMDatabase *database = [self database];
-    return [database executeUpdateWithSqlstatement:format];
 }
 
 + (void)alterFromClass:(Class)dbClass
-               columns:(NSArray <NSString *>*)columns
 {
-    FMDatabase *database = [self database];
-    NSString *tableName = [dbClass tableName];
-    if (columns.count == 0)
+    NSArray *newColumns = [self findNewColumns:dbClass];
+    __block BOOL _result = NO;
+    for (NSString *newColumn in newColumns)
     {
-        columns = [dbClass columnsOfSelf];
+        Alter
+        .begin(dbClass)
+        .add(newColumn,dbClass)
+        .endUpdate(nil,nil,^(BOOL result){
+            _result = result;
+        });
     }
-    
-    if ([database open])
+}
+
++ (NSArray <NSString *>*)findNewColumns:(Class)dbClass
+{
+    NSString *tableName = [dbClass tableName];
+    NSMutableArray *newColumns = [NSMutableArray array];
+    for (NSString *column in [dbClass columnsOfSelf])
     {
-        
-        for (NSString *propertyname in columns)
+        BOOL result = [self columnExists:column inTableWithName:tableName];
+        if (result == NO)
         {
-            if (![database columnExists:propertyname inTableWithName:tableName])
-            {
-                   NSString *columnType = [[[dbClass class] columnsType][propertyname]length] == 0 ? @"text":[[dbClass class] columnsType][propertyname];
-                [database executeUpdateWithSqlstatement:[NSString stringWithFormat:@"alter table `%@` add %@ %@",tableName,propertyname,columnType]];
-            }
+            [newColumns addObject:column];
         }
     }
-    [database close];
+    return  [newColumns copy];
+}
+
++ (BOOL)columnExists:(NSString *)column inTableWithName:(NSString *)tableName
+{
+    FMDatabase *database = [self database];
+    BOOL result = NO;
+    if ([database open])
+    {
+        result = [database columnExists:column inTableWithName:tableName];
+    }
+    return result;
 }
 
 + (BOOL)createTableFromClass:(Class)dbClass
 {
-    FMDatabase *database = [self database];
-    return [database executeUpdateWithSqlstatement:[NSString stringWithCreateTableFromClass:dbClass]];
+    __block BOOL _result = NO;
+
+    Create
+    .begin(dbClass)
+    .endUpdate(nil,nil,^(BOOL result){
+        _result = result;
+    });
     
+    return _result;
 }
 
 + (NSString *)databasePath
