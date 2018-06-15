@@ -11,6 +11,7 @@
 @interface CustomModel : FFDataBaseModel
 
 @property (nonatomic,strong)NSString *_id;
+@property (nonatomic,strong)NSString *_name;
 @property (nonatomic,strong)NSString *mem;
-
+@property (nonatomic,assign)NSInteger coustomKey;
 @end

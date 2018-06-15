@@ -8,6 +8,7 @@
 //  https://github.com/Fidetro/FFDB
 
 #import <Foundation/Foundation.h>
+#import "FMDatabase+FFExtern.h"
 @class FFDataBaseModel;
 @interface FFDBSafeOperation : NSObject
 
@@ -16,79 +17,88 @@
  select all object
 
  @param dbClass  by class
- @return class objects
  */
-+ (NSArray <__kindof FFDataBaseModel *>*)selectObjectWithFFDBClass:(Class)dbClass;
++ (void)selectAllObjectFromClass:(Class)dbClass
+                      completion:(QueryResult)block;
 
 /**
  select object by format
 
- @param dbClass by class
- @param format Like sqlstatement rule, example: where name = 'fidetro' and age = '21'
- @return class objects
+ @param dbClass query dbClass
+ @param columns query columns
+ @param whereFormat Like sqlstatement rule, example: name = 'fidetro' and age = '21'
+ @param toClass return to class
+ @param values values of columns
  */
-+ (NSArray <__kindof FFDataBaseModel *>*)selectObjectWithFFDBClass:(Class)dbClass
-                                                            format:(NSString *)format;
++ (void)selectFromClass:(Class)dbClass
+                columns:(NSArray <NSString *>*)columns
+                  where:(NSString *)whereFormat
+                 values:(NSArray <id>*)values
+                toClass:(Class)toClass
+             completion:(QueryResult)block;
 
 /**
  insert object
  
  @param objectList Need to insert the array of objects
  */
-+ (void)insertObjectList:(NSArray <__kindof FFDataBaseModel *>*)objectList;
++ (void)insertObjectList:(NSArray <__kindof FFDataBaseModel *>*)objectList
+              completion:(UpdateResult)block;
+
+/**
+ insertObject by columns
+ 
+ @param table need insert table class
+ @param columns insert Columns,if nil,then will be insert model all property
+ @param values values of columns
+ */
++ (void)insertTable:(Class)table
+            columns:(NSArray <NSString *>*)columns
+             values:(NSArray <id>*)values
+         completion:(UpdateResult)block;
 
 /**
  update object
  
  @param objectList Need to update the array of objects
  */
-+ (void)updateObjectList:(NSArray<__kindof FFDataBaseModel *> *)objectList;
-
++ (void)updateObjectList:(NSArray<__kindof FFDataBaseModel *> *)objectList
+              completion:(UpdateResult)block;
 
 /**
- update object by format
-
- @param dbClass Need to update the class
- @param format Like sqlstatement rule, example: set age = '24' where name = 'fidetro'
- @return update successfully
+ Update dbClass
+ 
+ @param dbClass need update dbClass
+ @param setColumns columns
+ @param whereFormat Like sqlstatement rule, example: name = 'fidetro' and age = '21'
+ @param values values of columns
  */
-+ (BOOL)updateObjectWithFFDBClass:(Class)dbClass
-                           format:(NSString *)format;
++ (void)updateFromClass:(Class)dbClass
+                    set:(NSArray <NSString *>*)setColumns
+                  where:(NSString *)whereFormat
+                 values:(NSArray <id>*)values
+             completion:(UpdateResult)block;
 
 /**
  delete object
  
  @param objectList Need to delete the array of objects
  */
-+ (void)deleteObjectList:(NSArray<__kindof FFDataBaseModel *> *)objectList;
++ (void)deleteObjectList:(NSArray<__kindof FFDataBaseModel *> *)objectList
+              completion:(UpdateResult)block;
 
 
 /**
- delete object by format
-
- @param dbClass Need to update the class
- @param format format Like sqlstatement rule, example: where name = 'fidetro' and age = '21'
- @return delete successfully
- */
-+ (BOOL)deleteObjectWithFFDBClass:(Class)dbClass
-                           format:(NSString *)format;
-
-/**
- custom query SQL
+ delete all object from class
  
- @param toClass return toClass Object
- @param format SQL statement exmaple:select * from person
- @return return this class Objects
+ @param dbClass delete dbClass
+ @param whereFormat Like sqlstatement rule, example: name = 'fidetro' and age = '21'
+ @param values values of columns
  */
-+ (NSArray <__kindof FFDataBaseModel *>*)selectDBToClass:(Class)toClass
-                                  SQLStatementWithFormat:(NSString *)format;
++ (void)deleteFromClass:(Class)dbClass
+                  where:(NSString *)whereFormat
+                 values:(NSArray <id>*)values
+             completion:(UpdateResult)block;
 
-/**
- custom update
- 
- @param format SQL statement
- @return isSuccess
- */
-+ (BOOL)updateDBWithSQLStatementWithFormat:(NSString *)format;
 
 @end

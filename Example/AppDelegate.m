@@ -7,7 +7,8 @@
 //
 
 #import "AppDelegate.h"
-
+#import "FFDBManager.h"
+#import "FFStore.h"
 @interface AppDelegate ()
 
 @end
@@ -16,6 +17,13 @@
 
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
+    
+    if ([[FFStore class] isKindOfClass:[FFDataBaseModel class]])
+    {
+        
+    }
+
+    
     // Override point for customization after application launch.
     return YES;
 }

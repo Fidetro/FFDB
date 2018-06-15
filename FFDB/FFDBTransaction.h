@@ -8,6 +8,8 @@
 //  https://github.com/Fidetro/FFDB
 
 #import <Foundation/Foundation.h>
+#import "FMDatabase+FFExtern.h"
+
 @class FFDataBaseModel;
 @interface FFDBTransaction : NSObject
 
@@ -15,18 +17,25 @@
  select all object
  
  @param dbClass  by class
- @return class objects
  */
-+ (NSArray <__kindof FFDataBaseModel *>*)selectObjectWithFFDBClass:(Class)dbClass;
++ (void)selectAllObjectFromClass:(Class)dbClass
+                      completion:(QueryResult)block;
 
 /**
  select object by format
  
- @param dbClass by class
- @param format Like sqlstatement rule, example: where name = 'fidetro' and age = '21'
- @return class objects
+ @param dbClass query dbClass
+ @param columns query columns
+ @param whereFormat Like sqlstatement rule, example: name = 'fidetro' and age = '21'
+ @param toClass return to class
+ @param values values of columns
  */
-+ (NSArray <__kindof FFDataBaseModel *>*)selectObjectWithFFDBClass:(Class)dbClass format:(NSString *)format;
++ (void)selectFromClass:(Class)dbClass
+                columns:(NSArray <NSString *>*)columns
+                  where:(NSString *)whereFormat
+                 values:(NSArray <id>*)values
+                toClass:(Class)toClass
+             completion:(QueryResult)block;
 
 /**
  insert object
@@ -34,7 +43,21 @@
  @param objectList Need to insert the array of objects
  */
 + (void)insertObjectList:(NSArray <__kindof FFDataBaseModel *>*)objectList
-              isRollBack:(BOOL)isRollBack;
+              isRollBack:(BOOL)isRollBack
+              completion:(UpdateResult)block;
+
+/**
+ insertObject by columns
+ 
+ @param table need insert table class
+ @param columns insert Columns,if nil,then will be insert model all property
+ @param values values of columns
+ */
++ (void)insertTable:(Class)table
+            columns:(NSArray <NSString *>*)columns
+             values:(NSArray <id>*)values
+         isRollBack:(BOOL)isRollBack
+         completion:(UpdateResult)block;
 
 /**
  update object
@@ -42,18 +65,23 @@
  @param objectList Need to update the array of objects
  */
 + (void)updateObjectList:(NSArray<__kindof FFDataBaseModel *> *)objectList
-              isRollBack:(BOOL)isRollBack;
+              isRollBack:(BOOL)isRollBack
+              completion:(UpdateResult)block;
 
 /**
- update object by format
+ Update dbClass
  
- @param dbClass Need to update the class
- @param format Like sqlstatement rule, example: set age = '24' where name = 'fidetro'
- @return update successfully
+ @param dbClass need update dbClass
+ @param setColumns columns
+ @param whereFormat Like sqlstatement rule, example: name = 'fidetro' and age = '21'
+ @param values values of columns
  */
-+ (BOOL)updateObjectWithFFDBClass:(Class)dbClass
-                           format:(NSString *)format
-                       isRollBack:(BOOL)isRollBack;
++ (void)updateFromClass:(Class)dbClass
+                    set:(NSArray <NSString *>*)setColumns
+                  where:(NSString *)whereFormat
+                 values:(NSArray <id>*)values
+             isRollBack:(BOOL)isRollBack
+             completion:(UpdateResult)block;
 
 /**
  delete object
@@ -61,44 +89,21 @@
  @param objectList Need to delete the array of objects
  */
 + (void)deleteObjectList:(NSArray<__kindof FFDataBaseModel *> *)objectList
-              isRollBack:(BOOL)isRollBack;
+              isRollBack:(BOOL)isRollBack
+              completion:(UpdateResult)block;
+
 
 /**
- delete object by format
+ delete all object from class
  
- @param dbClass Need to update the class
- @param format format Like sqlstatement rule, example: where name = 'fidetro' and age = '21'
- @return delete successfully
+ @param dbClass delete dbClass
+ @param whereFormat Like sqlstatement rule, example: name = 'fidetro' and age = '21'
+ @param values values of columns
  */
-+ (BOOL)deleteObjectWithFFDBClass:(Class)dbClass
-                           format:(NSString *)format
-                       isRollBack:(BOOL)isRollBack;
-
-/**
- custom query SQL
- 
- @param toClass return toClass Object
- @param format SQL statement exmaple:select * from person
- @return return this class Objects
- */
-+ (NSArray <__kindof FFDataBaseModel *>*)selectDBToClass:(Class)toClass
-                                  SQLStatementWithFormat:(NSString *)format;
-
-/**
- custom update
- 
- @param format SQL statement
- @return isSuccess
- */
-
-
-/**
- custom update
-
- @param format SQL statement
- @return isSuccess
- */
-+ (BOOL)updateDBWithSQLStatementWithFormat:(NSString *)format
-                                isRollBack:(BOOL)isRollBack;
++ (void)deleteFromClass:(Class)dbClass
+                  where:(NSString *)whereFormat
+                 values:(NSArray <id>*)values
+             isRollBack:(BOOL)isRollBack
+             completion:(UpdateResult)block;
 
 @end

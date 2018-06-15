@@ -20,4 +20,9 @@
     return @{@"time":@"double"};
 }
 
++ (NSString *)primaryKeyColumn
+{
+    return @"testKey";
+}
+
 @end

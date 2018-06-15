@@ -10,4 +10,11 @@
 
 @implementation FFStore
 
+
++ (NSString *)primaryKeyColumn
+{
+    return @"storePrimaryKeyColumn";
+}
+
+
 @end

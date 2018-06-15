@@ -28,13 +28,13 @@
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "FFDBTests/FFDBTests.m"
-            timestampString = "549356724.248431"
+            filePath = "FFDBTests/SQLFormatTests.m"
+            timestampString = "549356757.374859"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "134"
-            endingLineNumber = "134"
-            landmarkName = "-testSafe"
+            startingLineNumber = "67"
+            endingLineNumber = "67"
+            landmarkName = "-testCreateStatement"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -44,13 +44,29 @@
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "FFDBTests/SQLFormatTests.m"
-            timestampString = "549356757.374859"
+            filePath = "Example/AppDelegate.m"
+            timestampString = "550332657.93173"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "67"
-            endingLineNumber = "67"
-            landmarkName = "-testCreateStatement"
+            startingLineNumber = "23"
+            endingLineNumber = "23"
+            landmarkName = "-application:didFinishLaunchingWithOptions:"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Example/ClassRoomViewController.m"
+            timestampString = "550405337.554844"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "133"
+            endingLineNumber = "133"
+            landmarkName = "-tableView:editActionsForRowAtIndexPath:"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>

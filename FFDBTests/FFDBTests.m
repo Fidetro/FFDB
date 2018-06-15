@@ -9,7 +9,6 @@
 #import <XCTest/XCTest.h>
 #import <Foundation/Foundation.h>
 #import "TestModel.h"
-#import "CustomModel.h"
 #import "FFDBSafeOperation.h"
 #import "FFDBTransaction.h"
 @interface FFDBTests : XCTestCase
@@ -18,125 +17,178 @@
 
 @implementation FFDBTests
 
-- (void)setUp {
-    [super setUp];
 
-    
-}
 
-- (void)testInsertTestModel {
-    TestModel *testModel = [[TestModel alloc]init];
-    testModel.name = @"hello";
-    testModel.memory = @"is me";
-    testModel.time = [NSDate date].timeIntervalSince1970;
-    testModel.testUint = 223;
-    [testModel insertObject];
-    NSArray *testArray = [TestModel selectFromClassPredicateWithFormat:@"where name = 'hello'"];
-    XCTAssertTrue(testArray.count > 0,@"insert success");
-}
-
-- (void)testMemoryColumIsNull
+- (void)testModel
 {
-        NSArray *testArray = [TestModel selectFromClassPredicateWithFormat:@"where name = 'hello'"];
-    
-    for (TestModel *testModel in testArray) {
-        XCTAssertTrue([testModel.memory length] == 0,@"is ture");
-    }
-    
+    TestModel *testModel1 = [[TestModel alloc]init];
+    testModel1.name = @"hello";
+    testModel1.memory = @"is me";
+    testModel1.time = [NSDate date].timeIntervalSince1970;
+    testModel1.testUint = 223;
+    [testModel1 insertObject];
+    TestModel *testModel2 = [[TestModel alloc]init];
+    testModel2.name = @"test2";
+    [testModel2 insertObject];
+    TestModel *testModel3 = [[TestModel alloc]init];
+    testModel3.name = @"test3";
+    [testModel3 insertObject];
+    NSArray *array1 = [TestModel selectFromClassAllObject];
+    XCTAssertTrue(array1.count == 3);
+    NSArray *array2 = [TestModel selectFromClassWhereFormat:@"name = ?" values:@[@"hello"]];
+    TestModel *dbModel = [array2 lastObject];
+    XCTAssertTrue(array2.count == 1&&[dbModel.name isEqualToString:@"hello"]&&(dbModel.memory.length == 0)&&(dbModel.testUint == 223));
+    dbModel.name = @"test1";
+    XCTAssertTrue([dbModel updateObject]);
+    NSArray *array3 = [TestModel selectFromClassWhereFormat:@"name = ?" values:@[@"test1"]];
+    TestModel *dbTModel = [array3 lastObject];
+    XCTAssertTrue(array3.count == 1&&[dbTModel.name isEqualToString:@"test1"]&&(dbTModel.memory.length == 0)&&(dbTModel.testUint == 223));
+    XCTAssertTrue([TestModel deleteFromClassWhereFormat:@"name = ?" values:@[@"test2"]]);
+    XCTAssertTrue([TestModel selectFromClassWhereFormat:@"name = ?" values:@[@"test2"]].count == 0);
+    XCTAssertTrue([TestModel deleteFromClassAllObject]);
+    XCTAssertTrue([TestModel selectFromClassAllObject].count == 0);
 }
 
-
-- (void)testCustom
+- (void)testFFDBManager
 {
-    [CustomModel deleteFromClassPredicateWithFormat:@"where id = '77'"];
-    NSArray *customCount = [CustomModel selectFromClassAllObject];
-    XCTAssert(customCount.count == 0,@"删除出错");
-    
-    CustomModel *custom = [[CustomModel alloc]init];
-    custom._id = @"66";
-    custom.mem = @"66";
-    [custom insertObject];
-    NSArray *customArray = [CustomModel selectFromClassPredicateWithFormat:@"where id = '66'"];
-    XCTAssert(customArray.count != 0,@"插入出错");
-    for (CustomModel *custom in customArray) {
-        XCTAssertTrue([custom._id isEqualToString:@"66"],@"is ture");
-        XCTAssertTrue([custom.mem length] == 0,@"is ture");
-        custom._id = @"77";
-        custom.mem = @"77";
-        [custom updateObject];
-    }
-   NSArray *sevenArray = [CustomModel selectFromClassPredicateWithFormat:@"where id = '77'"];
-    XCTAssert(sevenArray.count != 0,@"更新出错");
-    for (CustomModel *custom in sevenArray) {
-        XCTAssertTrue([custom._id isEqualToString:@"77"],@"is ture");
-        XCTAssertTrue([custom.mem length] == 0,@"is ture");
+    [FFDBManager insertTable:[TestModel class] columns:@[@"name",@"testUint"] values:@[@"hello",@(223)] db:nil];
+    [FFDBManager insertTable:[TestModel class] columns:@[@"name"] values:@[@"test2"] db:nil];
+    [FFDBManager insertTable:[TestModel class] columns:@[@"name"] values:@[@"test3"] db:nil];
+    NSArray *array1 = [FFDBManager selectFromClass:[TestModel class] columns:nil where:nil values:nil toClass:nil db:nil];
+    XCTAssertTrue(array1.count == 3);
+    NSArray *array2 = [FFDBManager selectFromClass:[TestModel class] columns:nil where:@"name = ?" values:@[@"hello"] toClass:nil db:nil];
+    TestModel *dbModel = [array2 lastObject];
+    XCTAssertTrue(array2.count == 1&&[dbModel.name isEqualToString:@"hello"]&&(dbModel.memory.length == 0)&&(dbModel.testUint == 223));
+    BOOL result = [FFDBManager updateFromClass:[TestModel class] set:@[@"name"] where:@"name = ?" values:@[@"test1",@"hello"] db:nil];
+    XCTAssertTrue(result);
+    NSArray *array3 = [FFDBManager selectFromClass:[TestModel class] columns:nil where:@"name = ?" values:@[@"test1"] toClass:nil db:nil];
+    TestModel *dbTModel = [array3 lastObject];
+    XCTAssertTrue(array3.count == 1&&[dbTModel.name isEqualToString:@"test1"]&&(dbTModel.memory.length == 0)&&(dbTModel.testUint == 223));
+    XCTAssertTrue([FFDBManager deleteFromClass:[TestModel class] where:@"name = ?" values:@[@"test2"] db:nil]);
+    XCTAssertTrue([FFDBManager selectFromClass:[TestModel class] columns:nil where:@"name = ?" values:@[@"test2"] toClass:nil db:nil].count == 0);
+    XCTAssertTrue([FFDBManager deleteFromClass:[TestModel class] where:nil values:nil db:nil]);
+    XCTAssertTrue([FFDBManager selectFromClass:[TestModel class] columns:nil where:nil values:nil toClass:nil db:nil].count == 0);
+}
+
+- (void)testFFDBSafe
+{
+    TestModel *testModel1 = [[TestModel alloc]init];
+    testModel1.name = @"hello";
+    testModel1.memory = @"is me";
+    testModel1.time = [NSDate date].timeIntervalSince1970;
+    testModel1.testUint = 223;
+    TestModel *testModel2 = [[TestModel alloc]init];
+    testModel2.name = @"test2";
+    [FFDBSafeOperation insertObjectList:@[testModel1,testModel2] completion:^(BOOL result) {
+        XCTAssertTrue(result);
+    }];
+    [FFDBSafeOperation insertTable:[TestModel class] columns:@[@"name"] values:@[@"test3"] completion:^(BOOL result) {
+        XCTAssertTrue(result);
+    }];
+    [FFDBSafeOperation selectAllObjectFromClass:[TestModel class] completion:^(NSArray *result) {
+        XCTAssertTrue(result.count == 3);
+    }];
+    __block NSArray *array2;
+    [FFDBSafeOperation selectFromClass:[TestModel class] columns:nil where:@"name = ?" values:@[@"hello"] toClass:nil completion:^(NSArray *result) {
+        array2 = result;
+    }];
+    TestModel *dbModel = [array2 lastObject];
+    XCTAssertTrue(array2.count == 1&&[dbModel.name isEqualToString:@"hello"]&&(dbModel.memory.length == 0)&&(dbModel.testUint == 223));
+    [FFDBSafeOperation updateFromClass:[TestModel class] set:@[@"name"] where:@"name = ?" values:@[@"test1",@"hello"] completion:^(BOOL result) {
+        XCTAssertTrue(result);
+    }];
+    __block NSArray *array3 = nil;
+    [FFDBSafeOperation selectFromClass:[TestModel class] columns:nil where:@"name = ?" values:@[@"test1"] toClass:nil completion:^(NSArray *result) {
+        array3 = result;
+    }];
+    TestModel *dbTModel = [array3 lastObject];
+    XCTAssertTrue(array3.count == 1&&[dbTModel.name isEqualToString:@"test1"]&&(dbTModel.memory.length == 0)&&(dbTModel.testUint == 223));
+    [FFDBSafeOperation deleteFromClass:[TestModel class] where:@"name = ?" values:@[@"test2"] completion:^(BOOL result) {
+        XCTAssertTrue(result);
+    }];
+    [FFDBSafeOperation selectFromClass:[TestModel class] columns:nil where:@"name = ?" values:@[@"test2"] toClass:nil completion:^(NSArray *result) {
+        XCTAssertTrue(result.count == 0);
+    }];
+    [FFDBSafeOperation deleteFromClass:[TestModel class] where:nil values:nil completion:^(BOOL result) {
+        XCTAssertTrue(result);
+    }];
+    [FFDBSafeOperation selectAllObjectFromClass:[TestModel class] completion:^(NSArray *result) {
+        XCTAssertTrue(result.count == 0);
+    }];
+    [FFDBSafeOperation insertObjectList:@[testModel1,testModel2] completion:^(BOOL result) {
+        XCTAssertTrue(result);
+    }];
+    [FFDBSafeOperation selectAllObjectFromClass:[TestModel class] completion:^(NSArray *result) {
+        XCTAssertTrue(result.count == 2);
+        [FFDBSafeOperation deleteObjectList:result completion:^(BOOL result) {
+            XCTAssertTrue(result);
+                [FFDBSafeOperation selectAllObjectFromClass:[TestModel class] completion:^(NSArray *result) {
+                    XCTAssertTrue(result.count == 0);
+                }];
+        }];
+    }];
+}
+
+- (void)testFFDBTransaction
+{
+    TestModel *testModel1 = [[TestModel alloc]init];
+    testModel1.name = @"hello";
+    testModel1.memory = @"is me";
+    testModel1.time = [NSDate date].timeIntervalSince1970;
+    testModel1.testUint = 223;
+    TestModel *testModel2 = [[TestModel alloc]init];
+    testModel2.name = @"test2";
+    [FFDBTransaction insertObjectList:@[testModel1,testModel2] isRollBack:YES completion:^(BOOL result) {
+        XCTAssertTrue(result);
+    }];
+    [FFDBTransaction insertTable:[TestModel class] columns:@[@"name"] values:@[@"test3"] isRollBack:YES completion:^(BOOL result) {
+        XCTAssertTrue(result);
+    }];
+    [FFDBTransaction selectAllObjectFromClass:[TestModel class] completion:^(NSArray *result) {
+        XCTAssertTrue(result.count == 3);
+    }];
+    __block NSArray *array2;
+    [FFDBTransaction selectFromClass:[TestModel class] columns:nil where:@"name = ?" values:@[@"hello"] toClass:nil completion:^(NSArray *result) {
+        array2 = result;
+    }];
+    TestModel *dbModel = [array2 lastObject];
+    XCTAssertTrue(array2.count == 1&&[dbModel.name isEqualToString:@"hello"]&&(dbModel.memory.length == 0)&&(dbModel.testUint == 223));
+    [FFDBTransaction updateFromClass:[TestModel class] set:@[@"name"] where:@"name = ?" values:@[@"test1",@"hello"] isRollBack:YES completion:^(BOOL result) {
+        XCTAssertTrue(result);
+    }];
+    __block NSArray *array3 = nil;
+    [FFDBTransaction selectFromClass:[TestModel class] columns:nil where:@"name = ?" values:@[@"test1"] toClass:nil completion:^(NSArray *result) {
+        array3 = result;
+    }];
+    TestModel *dbTModel = [array3 lastObject];
+    XCTAssertTrue(array3.count == 1&&[dbTModel.name isEqualToString:@"test1"]&&(dbTModel.memory.length == 0)&&(dbTModel.testUint == 223));
+    [FFDBTransaction deleteFromClass:[TestModel class] where:@"name = ?" values:@[@"test2"] isRollBack:YES completion:^(BOOL result) {
+        XCTAssertTrue(result);
+    }];
+    [FFDBTransaction selectFromClass:[TestModel class] columns:nil where:@"name = ?" values:@[@"test2"] toClass:nil completion:^(NSArray *result) {
+        XCTAssertTrue(result.count == 0);
+    }];
+    [FFDBTransaction deleteFromClass:[TestModel class] where:nil values:nil isRollBack:YES completion:^(BOOL result) {
+        XCTAssertTrue(result);
+    }];
+    [FFDBTransaction selectAllObjectFromClass:[TestModel class] completion:^(NSArray *result) {
+        XCTAssertTrue(result.count == 0);
+    }];
+    [FFDBTransaction insertObjectList:@[testModel1,testModel2] isRollBack:YES completion:^(BOOL result) {
+        XCTAssertTrue(result);
+    }];
+    __block NSArray *array4 = nil;
+    [FFDBTransaction selectAllObjectFromClass:[TestModel class] completion:^(NSArray *result) {
+        XCTAssertTrue(result.count == 2);
+        array4 = result;
+    }];
+    [FFDBTransaction deleteObjectList:array4 isRollBack:YES completion:^(BOOL result) {
+        XCTAssertTrue(result);
         
-    }
-    
-}
-
-- (void)testTransaction
-{
-    [FFDBTransaction deleteObjectWithFFDBClass:[CustomModel class] format:@"where id = '77'" isRollBack:YES];
-    
-    NSArray *customCount = [FFDBTransaction selectObjectWithFFDBClass:[CustomModel class]];;
-    XCTAssert(customCount.count == 0,@"删除出错");
-    
-    CustomModel *custom = [[CustomModel alloc]init];
-    custom._id = @"66";
-    custom.mem = @"66";
-    [FFDBTransaction insertObjectList:@[custom] isRollBack:YES];
-    NSArray *customArray = [FFDBTransaction selectObjectWithFFDBClass:[CustomModel class] format:@"where id = '66'"];
-    
-    XCTAssert(customArray.count != 0,@"插入出错");
-    for (CustomModel *custom in customArray) {
-        XCTAssertTrue([custom._id isEqualToString:@"66"],@"is ture");
-        XCTAssertTrue([custom.mem length] == 0,@"is ture");
-        custom._id = @"77";
-        custom.mem = @"77";
-        [FFDBTransaction updateObjectList:@[custom] isRollBack:YES];
-    }
-    
-    NSArray *sevenArray = [FFDBTransaction selectObjectWithFFDBClass:[CustomModel class] format:@"where id = '77'"];;
-    XCTAssert(sevenArray.count != 0,@"更新出错");
-    for (CustomModel *custom in sevenArray) {
-        XCTAssertTrue([custom._id isEqualToString:@"77"],@"is ture");
-        XCTAssertTrue([custom.mem length] == 0,@"is ture");
-        
-    }
-}
-
-- (void)testSafe
-{
-    [FFDBSafeOperation deleteObjectWithFFDBClass:[CustomModel class] format:@"where id = '77'"];
-    NSArray *customCount = [FFDBSafeOperation selectObjectWithFFDBClass:[CustomModel class]];;
-    XCTAssert(customCount.count == 0,@"删除出错");
-    CustomModel *custom = [[CustomModel alloc]init];
-    custom._id = @"66";
-    custom.mem = @"66";
-    [FFDBSafeOperation insertObjectList:@[custom]];
-    NSArray *customArray = [FFDBSafeOperation selectObjectWithFFDBClass:[CustomModel class] format:@"where id = '66'"];
-    XCTAssert(customArray.count != 0,@"插入出错");
-    for (CustomModel *custom in customArray) {
-        XCTAssertTrue([custom._id isEqualToString:@"66"],@"is ture");
-        XCTAssertTrue([custom.mem length] == 0,@"is ture");
-        custom._id = @"77";
-        custom.mem = @"77";
-        [FFDBSafeOperation updateObjectList:@[custom]];
-    }
-    
-    NSArray *sevenArray = [FFDBSafeOperation selectObjectWithFFDBClass:[CustomModel class] format:@"where id = '77'"];;
-    XCTAssert(sevenArray.count != 0,@"更新出错");
-    for (CustomModel *custom in sevenArray) {
-        XCTAssertTrue([custom._id isEqualToString:@"77"],@"is ture");
-        XCTAssertTrue([custom.mem length] == 0,@"is ture");
-        
-    }
-}
-
-- (void)tearDown {
-    // Put teardown code here. This method is called after the invocation of each test method in the class.
-    [super tearDown];
+    }];
+    [FFDBTransaction selectAllObjectFromClass:[TestModel class] completion:^(NSArray *result) {
+        XCTAssertTrue(result.count == 0);
+    }];
 }
 
 

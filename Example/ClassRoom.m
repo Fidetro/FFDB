@@ -20,7 +20,10 @@
     return self;
 }
 
-
++ (NSString *)primaryKeyColumn
+{
+    return @"primaryKeyColumn";
+}
 
 
 

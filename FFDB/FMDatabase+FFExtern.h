@@ -8,13 +8,19 @@
 //  https://github.com/Fidetro/FFDB
 
 #import <FMDB/FMDB.h>
-
+typedef void(^QueryResult)(NSArray *result);
+typedef void(^UpdateResult)(BOOL result);
 @interface FMDatabase (FFExtern)
 
 
-/**
- use FMDatabase update,but unclose
- */
-- (BOOL)executeUpdateWithSqlstatement:(NSString *)sqlstatement;
+
+- (void)executeUpdateWithSqlstatement:(NSString *)sqlstatement
+                               values:(NSArray <id>*)values
+                           completion:(UpdateResult)block;
+
+- (void)executeQueryWithSqlstatement:(NSString *)sqlstatement
+                              values:(NSArray <id>*)values
+                             toClass:(Class)toClass
+                          completion:(QueryResult)block;
 
 @end
