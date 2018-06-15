@@ -13,7 +13,6 @@
 		9A0474DD20CF64FA0013197D /* FFDBTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 9AA7D4CE1F1B29BE00177A32 /* FFDBTests.m */; };
 		9A0474DF20CFB5E50013197D /* FFDBCustomTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A0474DE20CFB5E50013197D /* FFDBCustomTests.m */; };
 		9A19577A1F92025400F8A37B /* FFStore.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A1957791F92025400F8A37B /* FFStore.m */; };
-		9A28B94B1F244D01005A2A5F /* NSString+FFDBExtern.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A28B94A1F244D01005A2A5F /* NSString+FFDBExtern.m */; };
 		9A32CAAB1E82C58A0097324D /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A32CAAA1E82C58A0097324D /* AppDelegate.m */; };
 		9A32CAAE1E82C58A0097324D /* ClassRoomViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A32CAAD1E82C58A0097324D /* ClassRoomViewController.m */; };
 		9A32CAB11E82C58A0097324D /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9A32CAAF1E82C58A0097324D /* Main.storyboard */; };
@@ -53,7 +52,6 @@
 		9AB53BE820CE73C900AB1A2C /* FFDataBaseModel+Custom.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A5863261F1B0A5300E2C0BC /* FFDataBaseModel+Custom.m */; };
 		9AB53BE920CE73C900AB1A2C /* FFDataBaseModel+Sqlite.m in Sources */ = {isa = PBXBuildFile; fileRef = 9AE94CD41EC4B07D006CBC5E /* FFDataBaseModel+Sqlite.m */; };
 		9AB53BEA20CE73C900AB1A2C /* NSObject+FIDProperty.m in Sources */ = {isa = PBXBuildFile; fileRef = 9ADF9A751F244540001C46E7 /* NSObject+FIDProperty.m */; };
-		9AB53BEB20CE73C900AB1A2C /* NSString+FFDBExtern.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A28B94A1F244D01005A2A5F /* NSString+FFDBExtern.m */; };
 		9AB53BEC20CE73C900AB1A2C /* STMT.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A8BE7EB20C80A960026855F /* STMT.m */; };
 		9AB53BED20CE73C900AB1A2C /* Insert.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A8BE7E820C80A850026855F /* Insert.m */; };
 		9AB53BEE20CE73C900AB1A2C /* Into.m in Sources */ = {isa = PBXBuildFile; fileRef = 9AA9547C20CA1B2800B63405 /* Into.m */; };
@@ -104,8 +102,6 @@
 		9A0E9E741ECA04EE008B9A8A /* FFDBSafeOperation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FFDBSafeOperation.m; sourceTree = "<group>"; };
 		9A1957781F92025400F8A37B /* FFStore.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FFStore.h; sourceTree = "<group>"; };
 		9A1957791F92025400F8A37B /* FFStore.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FFStore.m; sourceTree = "<group>"; };
-		9A28B9491F244D01005A2A5F /* NSString+FFDBExtern.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "NSString+FFDBExtern.h"; sourceTree = "<group>"; };
-		9A28B94A1F244D01005A2A5F /* NSString+FFDBExtern.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "NSString+FFDBExtern.m"; sourceTree = "<group>"; };
 		9A32CAA31E82C58A0097324D /* FFDB.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FFDB.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		9A32CAA91E82C58A0097324D /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = AppDelegate.h; path = ../Example/AppDelegate.h; sourceTree = "<group>"; };
 		9A32CAAA1E82C58A0097324D /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = AppDelegate.m; path = ../Example/AppDelegate.m; sourceTree = "<group>"; };
@@ -317,8 +313,6 @@
 				9AE94CD41EC4B07D006CBC5E /* FFDataBaseModel+Sqlite.m */,
 				9ADF9A741F244540001C46E7 /* NSObject+FIDProperty.h */,
 				9ADF9A751F244540001C46E7 /* NSObject+FIDProperty.m */,
-				9A28B9491F244D01005A2A5F /* NSString+FFDBExtern.h */,
-				9A28B94A1F244D01005A2A5F /* NSString+FFDBExtern.m */,
 				9A8BE7EA20C80A960026855F /* STMT.h */,
 				9A8BE7EB20C80A960026855F /* STMT.m */,
 				9A8BE7E720C80A850026855F /* Insert.h */,
@@ -609,7 +603,6 @@
 				9AA9547D20CA1B2800B63405 /* Into.m in Sources */,
 				9A32CAAB1E82C58A0097324D /* AppDelegate.m in Sources */,
 				9AB53BAA20CBB9AD00AB1A2C /* Delete.m in Sources */,
-				9A28B94B1F244D01005A2A5F /* NSString+FFDBExtern.m in Sources */,
 				9AB53B8F20CB93A700AB1A2C /* From.m in Sources */,
 				9AB53BA720CBB6CE00AB1A2C /* Set.m in Sources */,
 				9A8BE7EC20C80A960026855F /* STMT.m in Sources */,
@@ -647,7 +640,6 @@
 				9AB53BF420CE73C900AB1A2C /* OrderBy.m in Sources */,
 				9AB53BF520CE73C900AB1A2C /* Limit.m in Sources */,
 				9A0474DD20CF64FA0013197D /* FFDBTests.m in Sources */,
-				9AB53BEB20CE73C900AB1A2C /* NSString+FFDBExtern.m in Sources */,
 				9AB53BEC20CE73C900AB1A2C /* STMT.m in Sources */,
 				9AB53BF820CE73C900AB1A2C /* Set.m in Sources */,
 				9A0474DF20CFB5E50013197D /* FFDBCustomTests.m in Sources */,

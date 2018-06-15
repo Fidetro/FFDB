@@ -33,12 +33,15 @@
     XCTAssertTrue(array1.count == 3);
     NSArray *array2 = [CustomModel selectFromClassWhereFormat:@"name = ?" values:@[@"hello"]];
     CustomModel *dbModel = [array2 lastObject];
-    XCTAssertTrue(array2.count == 1&&[dbModel._name isEqualToString:@"hello"]&&(dbModel.memory.length == 0)&&([dbModel._id isEqualToString:@"1123"]);
-    dbModel.name = @"test1";
+    
+    XCTAssertTrue(array2.count == 1&&[dbModel._name isEqualToString:@"hello"]&&(dbModel.mem.length == 0)&&[dbModel._id isEqualToString:@"1123"]);
+    
+    
+    dbModel._name = @"test1";
     XCTAssertTrue([dbModel updateObject]);
     NSArray *array3 = [CustomModel selectFromClassWhereFormat:@"name = ?" values:@[@"test1"]];
     CustomModel *dbTModel = [array3 lastObject];
-    XCTAssertTrue(array3.count == 1&&[dbTModel._name isEqualToString:@"test1"]&&(dbTModel.memory.length == 0)&&([dbModel._id isEqualToString:@"1123"]));
+    XCTAssertTrue(array3.count == 1&&[dbTModel._name isEqualToString:@"test1"]&&(dbTModel.mem.length == 0)&&([dbModel._id isEqualToString:@"1123"]));
     XCTAssertTrue([CustomModel deleteFromClassWhereFormat:@"name = ?" values:@[@"test2"]]);
     XCTAssertTrue([CustomModel selectFromClassWhereFormat:@"name = ?" values:@[@"test2"]].count == 0);
     XCTAssertTrue([CustomModel deleteFromClassAllObject]);
