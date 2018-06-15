@@ -135,7 +135,7 @@ libsqlite3.0.tbd
 
 同时把目录中的这些文件拉到工程中
 
-![image](https://github.com/Fidetro/FFDB/blob/master/src/4.png)
+![image](https://github.com/Fidetro/FFDB/blob/master/src/8.png)
 
 建立好要创建的类继承`FFDataBaseModel`，声明属性即可，
 如一个`Person`表里，有人名，年龄字段。
