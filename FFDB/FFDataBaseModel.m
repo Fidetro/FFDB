@@ -51,7 +51,6 @@ NSString const* kUpdateContext = @"kUpdateContext";
 - (BOOL)insertObject:(FMDatabase *)db
 {
     NSMutableArray *propertyNames = [NSMutableArray arrayWithArray:[[self class]columnsOfSelf]];
-    [propertyNames removeObject:[[self class]primaryKeyColumn]];
     return [FFDBManager insertObject:self columns:[propertyNames copy] values:nil db:db];
 }
 

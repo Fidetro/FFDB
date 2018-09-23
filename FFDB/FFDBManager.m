@@ -27,7 +27,9 @@
 {
     if ([columns count] == 0)
     {
-        columns = [[model class]columnsOfSelf];
+        NSMutableArray *muColumns = [[[model class]columnsOfSelf] mutableCopy];
+        [muColumns removeObject:[[model class] primaryKeyColumn]];
+        columns = [muColumns copy];
     }
     if ([values count] == 0)
     {
@@ -41,14 +43,25 @@
     }
     __block BOOL _result = NO;
     
-    Insert
-    .begin(nil)
-    .into([model class])
-    .columns(columns)
-    .values(@(columns.count))
-    .endUpdate(values,db,^(BOOL result){
-        _result = result;
-    });
+    if (columns.count == 0)
+    {
+        Insert
+        .begin(nil)
+        .into([model class])
+        .endUpdate(values,db,^(BOOL result){
+            _result = result;
+        });
+    }else
+    {
+        Insert
+        .begin(nil)
+        .into([model class])
+        .columns(columns)
+        .values(@(columns.count))
+        .endUpdate(values,db,^(BOOL result){
+            _result = result;
+        });
+    }
     
     return _result;
 }

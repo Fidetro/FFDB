@@ -20,6 +20,9 @@
 		9A32CAB61E82C58A0097324D /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9A32CAB41E82C58A0097324D /* LaunchScreen.storyboard */; };
 		9A32CB041E82C69D0097324D /* libsqlite3.0.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 9A32CB031E82C69D0097324D /* libsqlite3.0.tbd */; };
 		9A5863271F1B0A5300E2C0BC /* FFDataBaseModel+Custom.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A5863261F1B0A5300E2C0BC /* FFDataBaseModel+Custom.m */; };
+		9A5C87C62157748200011751 /* BoardModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A5C87C52157748200011751 /* BoardModel.m */; };
+		9A5C87CA2157762700011751 /* BoardModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A5C87C52157748200011751 /* BoardModel.m */; };
+		9A5C87CC215776FF00011751 /* BoardTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A5C87CB215776FF00011751 /* BoardTests.m */; };
 		9A8BE7E920C80A850026855F /* Insert.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A8BE7E820C80A850026855F /* Insert.m */; };
 		9A8BE7EC20C80A960026855F /* STMT.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A8BE7EB20C80A960026855F /* STMT.m */; };
 		9AA045751F528A8A00F35C7B /* CustomModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 9AA045741F528A8A00F35C7B /* CustomModel.m */; };
@@ -113,6 +116,9 @@
 		9A32CB031E82C69D0097324D /* libsqlite3.0.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libsqlite3.0.tbd; path = usr/lib/libsqlite3.0.tbd; sourceTree = SDKROOT; };
 		9A5863251F1B0A5300E2C0BC /* FFDataBaseModel+Custom.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "FFDataBaseModel+Custom.h"; sourceTree = "<group>"; };
 		9A5863261F1B0A5300E2C0BC /* FFDataBaseModel+Custom.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "FFDataBaseModel+Custom.m"; sourceTree = "<group>"; };
+		9A5C87C42157748200011751 /* BoardModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BoardModel.h; sourceTree = "<group>"; };
+		9A5C87C52157748200011751 /* BoardModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BoardModel.m; sourceTree = "<group>"; };
+		9A5C87CB215776FF00011751 /* BoardTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BoardTests.m; sourceTree = "<group>"; };
 		9A755F711E8D78BD00B2A4B5 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = Info.plist; path = ../Example/Info.plist; sourceTree = "<group>"; };
 		9A8BE7E720C80A850026855F /* Insert.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Insert.h; sourceTree = "<group>"; };
 		9A8BE7E820C80A850026855F /* Insert.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Insert.m; sourceTree = "<group>"; };
@@ -277,7 +283,10 @@
 				9AB53C0A20CE835F00AB1A2C /* TestUpdate.m */,
 				9A0474DB20CF5B090013197D /* TestSelect.m */,
 				9AA7D4CE1F1B29BE00177A32 /* FFDBTests.m */,
+				9A5C87C42157748200011751 /* BoardModel.h */,
+				9A5C87C52157748200011751 /* BoardModel.m */,
 				9A0474DE20CFB5E50013197D /* FFDBCustomTests.m */,
+				9A5C87CB215776FF00011751 /* BoardTests.m */,
 				9AA7D4D01F1B29BE00177A32 /* Info.plist */,
 			);
 			path = FFDBTests;
@@ -582,6 +591,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				9A5C87CA2157762700011751 /* BoardModel.m in Sources */,
 				9AB53BDB20CC099800AB1A2C /* Add.m in Sources */,
 				9AE94CCC1EC49D3B006CBC5E /* FFDBManager.m in Sources */,
 				9AB7B9801E94003C001D837B /* main.m in Sources */,
@@ -638,6 +648,7 @@
 				9AB53BED20CE73C900AB1A2C /* Insert.m in Sources */,
 				9AA7D4D81F1B2A7C00177A32 /* TestModel.m in Sources */,
 				9AB53BF420CE73C900AB1A2C /* OrderBy.m in Sources */,
+				9A5C87CC215776FF00011751 /* BoardTests.m in Sources */,
 				9AB53BF520CE73C900AB1A2C /* Limit.m in Sources */,
 				9A0474DD20CF64FA0013197D /* FFDBTests.m in Sources */,
 				9AB53BEC20CE73C900AB1A2C /* STMT.m in Sources */,
@@ -647,6 +658,7 @@
 				9AB53BF720CE73C900AB1A2C /* Update.m in Sources */,
 				9AB53BE920CE73C900AB1A2C /* FFDataBaseModel+Sqlite.m in Sources */,
 				9AB53BEE20CE73C900AB1A2C /* Into.m in Sources */,
+				9A5C87C62157748200011751 /* BoardModel.m in Sources */,
 				9AB53BF120CE73C900AB1A2C /* Select.m in Sources */,
 				9AB53BE120CE739800AB1A2C /* TestInsert.m in Sources */,
 				9AB53BF320CE73C900AB1A2C /* Where.m in Sources */,
