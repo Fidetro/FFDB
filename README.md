@@ -162,10 +162,10 @@ person.name = @"Fidetro";//设置属性
 
 查询:
 [Person selectFromClassAllObject];//等同于查询Person表中所有的对象
-[Person selectFromClassWhereFormat:@"where age == ? and name ==  ? " values:@[@"15",@"Fidetro"]]//等同于查询年龄是15和名字叫Fidetro的数据
+[Person selectFromClassWhereFormat:@"where age = ? and name =  ? " values:@[@"15",@"Fidetro"]]//等同于查询年龄是15和名字叫Fidetro的数据
 更新：
 
-NSArray *personArray = [Person selectFromClassWhereFormat:@"where age == ? and name ==  ? " values:@[@"15",@"Fidetro"]]//先查询到要更新的数据
+NSArray *personArray = [Person selectFromClassWhereFormat:@"where age = ? and name = ? " values:@[@"15",@"Fidetro"]]//先查询到要更新的数据
 Person *person = [personArray lastObject];
 person.age = @"24";
 [person updateObject];
