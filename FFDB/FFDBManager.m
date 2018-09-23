@@ -131,7 +131,6 @@
         Delete
         .begin(nil)
         .from(dbClass)
-        .where(whereFormat)
         .endUpdate(values,db,^(BOOL result){
             _result = result;
         });
@@ -139,7 +138,8 @@
     {
         Delete
         .begin(nil)
-        .from(dbClass)        
+        .from(dbClass)
+        .where(whereFormat)
         .endUpdate(values,db,^(BOOL result){
             _result = result;
         });
