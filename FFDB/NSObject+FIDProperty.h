@@ -73,4 +73,5 @@
  */
 - (void)setPropertyWithName:(NSString *)propertyName object:(id)object;
 
++ (NSDictionary *)propertysType;
 @end

@@ -20,6 +20,7 @@
 		9A32CAB61E82C58A0097324D /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9A32CAB41E82C58A0097324D /* LaunchScreen.storyboard */; };
 		9A32CB041E82C69D0097324D /* libsqlite3.0.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 9A32CB031E82C69D0097324D /* libsqlite3.0.tbd */; };
 		9A5863271F1B0A5300E2C0BC /* FFDataBaseModel+Custom.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A5863261F1B0A5300E2C0BC /* FFDataBaseModel+Custom.m */; };
+		9A5C87E421589BE200011751 /* NSString+FFExtern.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A5C87E321589BE100011751 /* NSString+FFExtern.m */; };
 		9A8BE7E920C80A850026855F /* Insert.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A8BE7E820C80A850026855F /* Insert.m */; };
 		9A8BE7EC20C80A960026855F /* STMT.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A8BE7EB20C80A960026855F /* STMT.m */; };
 		9AA045751F528A8A00F35C7B /* CustomModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 9AA045741F528A8A00F35C7B /* CustomModel.m */; };
@@ -113,6 +114,8 @@
 		9A32CB031E82C69D0097324D /* libsqlite3.0.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libsqlite3.0.tbd; path = usr/lib/libsqlite3.0.tbd; sourceTree = SDKROOT; };
 		9A5863251F1B0A5300E2C0BC /* FFDataBaseModel+Custom.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "FFDataBaseModel+Custom.h"; sourceTree = "<group>"; };
 		9A5863261F1B0A5300E2C0BC /* FFDataBaseModel+Custom.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "FFDataBaseModel+Custom.m"; sourceTree = "<group>"; };
+		9A5C87E221589BE100011751 /* NSString+FFExtern.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "NSString+FFExtern.h"; sourceTree = "<group>"; };
+		9A5C87E321589BE100011751 /* NSString+FFExtern.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "NSString+FFExtern.m"; sourceTree = "<group>"; };
 		9A755F711E8D78BD00B2A4B5 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = Info.plist; path = ../Example/Info.plist; sourceTree = "<group>"; };
 		9A8BE7E720C80A850026855F /* Insert.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Insert.h; sourceTree = "<group>"; };
 		9A8BE7E820C80A850026855F /* Insert.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Insert.m; sourceTree = "<group>"; };
@@ -313,6 +316,8 @@
 				9AE94CD41EC4B07D006CBC5E /* FFDataBaseModel+Sqlite.m */,
 				9ADF9A741F244540001C46E7 /* NSObject+FIDProperty.h */,
 				9ADF9A751F244540001C46E7 /* NSObject+FIDProperty.m */,
+				9A5C87E221589BE100011751 /* NSString+FFExtern.h */,
+				9A5C87E321589BE100011751 /* NSString+FFExtern.m */,
 				9A8BE7EA20C80A960026855F /* STMT.h */,
 				9A8BE7EB20C80A960026855F /* STMT.m */,
 				9A8BE7E720C80A850026855F /* Insert.h */,
@@ -601,6 +606,7 @@
 				9AB53BDD20CD206500AB1A2C /* FFDBSafeOperation.m in Sources */,
 				9AB53BA420CBB37600AB1A2C /* Update.m in Sources */,
 				9AA9547D20CA1B2800B63405 /* Into.m in Sources */,
+				9A5C87E421589BE200011751 /* NSString+FFExtern.m in Sources */,
 				9A32CAAB1E82C58A0097324D /* AppDelegate.m in Sources */,
 				9AB53BAA20CBB9AD00AB1A2C /* Delete.m in Sources */,
 				9AB53B8F20CB93A700AB1A2C /* From.m in Sources */,

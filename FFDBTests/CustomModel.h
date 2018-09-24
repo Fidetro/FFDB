@@ -14,4 +14,5 @@
 @property (nonatomic,strong)NSString *_name;
 @property (nonatomic,strong)NSString *mem;
 @property (nonatomic,assign)NSInteger coustomKey;
+@property (nonatomic,strong)NSData *testData;
 @end

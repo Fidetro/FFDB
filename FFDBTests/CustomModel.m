@@ -23,7 +23,7 @@
 
 + (NSDictionary *)columnsType
 {
-    return @{@"id":@"integer"};
+    return @{@"id":@"integer",@"testData":@"blob"};
 }
 
 + (NSArray *)memoryPropertys

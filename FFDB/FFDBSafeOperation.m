@@ -104,13 +104,12 @@
     [self excuteDBUpdate:^(FMDatabase *db) {
         for (FFDataBaseModel *model in objectList)
         {
-            BOOL result = [model deleteObject:db];
-            if (block)
-            {
-                block(result);
-            }
+            [model deleteObject:db];
         }
-
+        if (block)
+        {
+            block(YES);
+        }
     }];
 }
 

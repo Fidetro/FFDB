@@ -48,4 +48,16 @@
     XCTAssertTrue([CustomModel selectFromClassAllObject].count == 0);
 }
 
+- (void)testModel1
+{
+    CustomModel *testModel = [[CustomModel alloc]init];
+    testModel.testData = [@"123" dataUsingEncoding:NSUTF8StringEncoding];
+    [testModel insertObject];
+    for (CustomModel *dbModel in [CustomModel selectFromClassAllObject])
+    {
+        NSLog(@"%@",dbModel.testData);
+    }
+
+}
+
 @end

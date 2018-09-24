@@ -10,6 +10,7 @@
 #import "FMDatabase+FFExtern.h"
 #import "FFDBLog.h"
 #import "NSObject+FIDProperty.h"
+#import "FFDataBaseModel+Custom.h"
 @implementation FMDatabase (FFExtern)
 
 - (void)executeUpdateWithSqlstatement:(NSString *)sqlstatement
@@ -46,11 +47,21 @@
         while ([resultSet next])
         {
             id object = [[toClass alloc]init];
-            for (NSString *propertyname in resultSet.resultDictionary)
+//            NSDictionary *types = [[object class] propertysType];
+            for (NSString *propertyname in [[object class] propertyOfSelf])
             {
-                NSString *result = [resultSet stringForColumn:propertyname];
-                NSString *objStr = [result length] == 0 ? @"" :result;
-                [object setPropertyWithName:propertyname object:objStr];
+                NSString *customColumns = [[object class] customColumns][propertyname];
+                if ([customColumns length] == 0)
+                {
+                    id value = resultSet.resultDictionary[propertyname];
+                    value = [self covertToPropertyValue:value];
+                    [object setPropertyWithName:propertyname object:value];
+                }else
+                {
+                    id value = resultSet.resultDictionary[customColumns];
+                    value = [self covertToPropertyValue:value];
+                    [object setPropertyWithName:customColumns object:value];
+                }
             }
             [dataArray addObject:object];
         }
@@ -63,6 +74,18 @@
     {
         block(dataArray);
     }
+}
+
+- (id)covertToPropertyValue:(id)value
+{
+    if ([value isKindOfClass:[NSNumber class]])
+    {
+        value = [NSString stringWithFormat:@"%@",value];
+    }else if ([value isKindOfClass:[NSNull class]])
+    {
+        value = @"";
+    }
+    return value;
 }
 
 @end
