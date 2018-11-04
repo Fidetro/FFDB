@@ -154,6 +154,11 @@ libsqlite3.0.tbd
 {
     return @"primaryID";
 }
+//从4.x后版本，如需主键自增，还需要自行设置字段属性
++ (NSDictionary *)columnsType
+{
+    return @{@"priamryID":@"integer PRIMARY KEY AUTOINCREMENT"};
+}
 
 插入:
 Person *person = [[Person alloc]init];//创建对象
