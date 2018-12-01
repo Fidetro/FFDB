@@ -19,6 +19,8 @@
 		9A32CAB31E82C58A0097324D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9A32CAB21E82C58A0097324D /* Assets.xcassets */; };
 		9A32CAB61E82C58A0097324D /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9A32CAB41E82C58A0097324D /* LaunchScreen.storyboard */; };
 		9A32CB041E82C69D0097324D /* libsqlite3.0.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 9A32CB031E82C69D0097324D /* libsqlite3.0.tbd */; };
+		9A35BAF621B242CC00AFEBA3 /* ReadmeTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A35BAF521B242CC00AFEBA3 /* ReadmeTests.m */; };
+		9A35BAF921B242F900AFEBA3 /* Person.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A35BAF821B242F900AFEBA3 /* Person.m */; };
 		9A5863271F1B0A5300E2C0BC /* FFDataBaseModel+Custom.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A5863261F1B0A5300E2C0BC /* FFDataBaseModel+Custom.m */; };
 		9A5C87E421589BE200011751 /* NSString+FFExtern.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A5C87E321589BE100011751 /* NSString+FFExtern.m */; };
 		9A8BE7E920C80A850026855F /* Insert.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A8BE7E820C80A850026855F /* Insert.m */; };
@@ -112,6 +114,9 @@
 		9A32CAB21E82C58A0097324D /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Assets.xcassets; path = ../Example/Assets.xcassets; sourceTree = "<group>"; };
 		9A32CAB51E82C58A0097324D /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		9A32CB031E82C69D0097324D /* libsqlite3.0.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libsqlite3.0.tbd; path = usr/lib/libsqlite3.0.tbd; sourceTree = SDKROOT; };
+		9A35BAF521B242CC00AFEBA3 /* ReadmeTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ReadmeTests.m; sourceTree = "<group>"; };
+		9A35BAF721B242F900AFEBA3 /* Person.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Person.h; sourceTree = "<group>"; };
+		9A35BAF821B242F900AFEBA3 /* Person.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Person.m; sourceTree = "<group>"; };
 		9A5863251F1B0A5300E2C0BC /* FFDataBaseModel+Custom.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "FFDataBaseModel+Custom.h"; sourceTree = "<group>"; };
 		9A5863261F1B0A5300E2C0BC /* FFDataBaseModel+Custom.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "FFDataBaseModel+Custom.m"; sourceTree = "<group>"; };
 		9A5C87E221589BE100011751 /* NSString+FFExtern.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "NSString+FFExtern.h"; sourceTree = "<group>"; };
@@ -273,6 +278,7 @@
 			children = (
 				9AA7D4D61F1B2A7C00177A32 /* TestModel.h */,
 				9AA7D4D71F1B2A7C00177A32 /* TestModel.m */,
+				9A35BAF521B242CC00AFEBA3 /* ReadmeTests.m */,
 				9AA045731F528A8A00F35C7B /* CustomModel.h */,
 				9AA045741F528A8A00F35C7B /* CustomModel.m */,
 				9AB53BE020CE739800AB1A2C /* TestInsert.m */,
@@ -282,6 +288,8 @@
 				9AA7D4CE1F1B29BE00177A32 /* FFDBTests.m */,
 				9A0474DE20CFB5E50013197D /* FFDBCustomTests.m */,
 				9AA7D4D01F1B29BE00177A32 /* Info.plist */,
+				9A35BAF721B242F900AFEBA3 /* Person.h */,
+				9A35BAF821B242F900AFEBA3 /* Person.m */,
 			);
 			path = FFDBTests;
 			sourceTree = "<group>";
@@ -632,6 +640,7 @@
 				9AB53BEA20CE73C900AB1A2C /* NSObject+FIDProperty.m in Sources */,
 				9AB53BF220CE73C900AB1A2C /* From.m in Sources */,
 				9AB53BE320CE73C900AB1A2C /* FFDBManager.m in Sources */,
+				9A35BAF921B242F900AFEBA3 /* Person.m in Sources */,
 				9AB53BFA20CE73C900AB1A2C /* Create.m in Sources */,
 				9AA045751F528A8A00F35C7B /* CustomModel.m in Sources */,
 				9AB53BE220CE73C900AB1A2C /* FMDatabase+FFExtern.m in Sources */,
@@ -657,6 +666,7 @@
 				9AB53BE120CE739800AB1A2C /* TestInsert.m in Sources */,
 				9AB53BF320CE73C900AB1A2C /* Where.m in Sources */,
 				9AB53BE720CE73C900AB1A2C /* FFDataBaseModel.m in Sources */,
+				9A35BAF621B242CC00AFEBA3 /* ReadmeTests.m in Sources */,
 				9AB53BE620CE73C900AB1A2C /* FFDBLog.m in Sources */,
 				9AB53BFB20CE73C900AB1A2C /* Alter.m in Sources */,
 				9AB53BEF20CE73C900AB1A2C /* Columns.m in Sources */,

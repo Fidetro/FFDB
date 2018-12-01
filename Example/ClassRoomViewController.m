@@ -22,45 +22,12 @@ extern uint64_t dispatch_benchmark(size_t count, void (^block)(void));
 
 - (void)viewDidLoad
 {
-    [super viewDidLoad];
-//    dispatch_async(dispatch_get_global_queue(0, 0), ^{
-//        NSMutableArray *array = [NSMutableArray array];
-//        for (int i = 0; i<100; i++) {
-//            ClassRoom *room = [[ClassRoom alloc]init];
-//            [array addObject:room];
-//            [FFDBTransaction insertObjectList:array isRollBack:YES];
-//        }
-//    });
-//
-//    dispatch_async(dispatch_get_global_queue(0, 0), ^{
-//        NSMutableArray *array = [NSMutableArray array];
-//        for (int i = 0; i<100; i++) {
-//            ClassRoom *room = [[ClassRoom alloc]init];
-//            [array addObject:room];
-//            [[NSOperationQueue mainQueue]addOperationWithBlock:^{
-//                [FFDBTransaction insertObjectList:array isRollBack:YES];
-//            }];
-//        }
-//    });
-    
-  
-    
+    [super viewDidLoad];    
 }
 
 
 - (IBAction)addNewClassRoom:(id)sender
 {
-//    dispatch_async(dispatch_get_global_queue(0, 0), ^{
-//        NSMutableArray *array = [NSMutableArray array];
-//        for (int i = 0; i<100; i++) {
-//            ClassRoom *room = [[ClassRoom alloc]init];
-//            [array addObject:room];
-//            [FFDBTransaction insertObjectList:array isRollBack:YES completion:nil];
-//        }
-//
-//    });
-
-    
     ClassRoom *classRoom = [[ClassRoom alloc]init];
     classRoom.name = @"new room";
     [classRoom insertObject];
