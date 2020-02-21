@@ -44,7 +44,7 @@
  */
 + (void)insertObjectList:(NSArray <__kindof FFDataBaseModel *>*)objectList
               isRollBack:(BOOL)isRollBack
-              completion:(UpdateResult)block;
+              completion:(UpdateListResult)block;
 
 /**
  insertObject by columns
@@ -66,7 +66,7 @@
  */
 + (void)updateObjectList:(NSArray<__kindof FFDataBaseModel *> *)objectList
               isRollBack:(BOOL)isRollBack
-              completion:(UpdateResult)block;
+              completion:(UpdateListResult)block;
 
 /**
  Update dbClass
@@ -90,7 +90,7 @@
  */
 + (void)deleteObjectList:(NSArray<__kindof FFDataBaseModel *> *)objectList
               isRollBack:(BOOL)isRollBack
-              completion:(UpdateResult)block;
+              completion:(UpdateListResult)block;
 
 
 /**

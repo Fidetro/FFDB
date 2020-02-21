@@ -35,7 +35,8 @@
 {
     [self excuteDBQuery:^(FMDatabase *db,BOOL *rollback) {
         NSArray *objectList = [FFDBManager selectFromClass:dbClass columns:columns where:whereFormat values:values toClass:toClass db:db];
-        if (block) {
+        if (block)
+        {
             block(objectList);
         }
     }];
@@ -43,21 +44,25 @@
 
 + (void)insertObjectList:(NSArray <__kindof FFDataBaseModel *>*)objectList
               isRollBack:(BOOL)isRollBack
-              completion:(UpdateResult)block
+              completion:(UpdateListResult)block
 
 {
     [self excuteDBUpdate:^(FMDatabase *db,BOOL *rollback) {
-        for (FFDataBaseModel *model in objectList)
+        for (int i = 0; i < objectList.count; i++)
         {
-            BOOL result = [model insertObject:db];
-            if (result == NO)
+            @autoreleasepool
             {
-                *rollback = isRollBack;
-                FFDBDLog(@"error rollback");
-            }
-            if (block)
-            {
-                block(result);
+                FFDataBaseModel *model = objectList[i];
+                BOOL result = [model insertObject:db];
+                if (result == NO)
+                {
+                    *rollback = isRollBack;
+                    FFDBDLog(@"error rollback");
+                }
+                if (block)
+                {
+                    block(result,(objectList.count-1) == i ? YES:NO);
+                }
             }
         }
     }];
@@ -84,19 +89,24 @@
 
 + (void)updateObjectList:(NSArray<__kindof FFDataBaseModel *> *)objectList
               isRollBack:(BOOL)isRollBack
-              completion:(UpdateResult)block
+              completion:(UpdateListResult)block
 {
     [self excuteDBUpdate:^(FMDatabase *db,BOOL *rollback) {
-        for (FFDataBaseModel *model in objectList)
+        for (int i = 0; i < objectList.count; i++)
         {
-            BOOL result = [model updateObject:db];
-            if (result == NO)
+            @autoreleasepool
             {
-                *rollback = isRollBack;
-                FFDBDLog(@"error rollback");
-            }
-            if (block) {
-                block(result);
+                FFDataBaseModel *model = objectList[i];
+                BOOL result = [model updateObject:db];
+                if (result == NO)
+                {
+                    *rollback = isRollBack;
+                    FFDBDLog(@"error rollback");
+                }
+                if (block)
+                {
+                    block(result,(objectList.count-1) == i ? YES:NO);
+                }
             }
         }
     }];
@@ -125,23 +135,26 @@
 
 + (void)deleteObjectList:(NSArray<__kindof FFDataBaseModel *> *)objectList
               isRollBack:(BOOL)isRollBack
-              completion:(UpdateResult)block
+              completion:(UpdateListResult)block
 {
     [self excuteDBUpdate:^(FMDatabase *db,BOOL *rollback) {
-        for (FFDataBaseModel *model in objectList)
+        for (int i = 0; i < objectList.count; i++)
         {
-            BOOL result = [model deleteObject:db];
-            if (result == NO)
+            @autoreleasepool
             {
-                *rollback = isRollBack;
-                FFDBDLog(@"error rollback");
-            }
-            if (block)
-            {
-                block(result);
+                FFDataBaseModel *model = objectList[i];
+                BOOL result = [model deleteObject:db];
+                if (result == NO)
+                {
+                    *rollback = isRollBack;
+                    FFDBDLog(@"error rollback");
+                }
+                if (block)
+                {
+                    block(result,(objectList.count-1) == i ? YES:NO);
+                }
             }
         }
-        
     }];
 }
 

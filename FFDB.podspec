@@ -1,7 +1,7 @@
 Pod::Spec.new do |s|
 
   s.name         = "FFDB"
-  s.version      = "4.0.3"
+  s.version      = "4.1.3"
   s.summary      = "easy to use FMDB"
   s.homepage     = "https://github.com/Fidetro/FFDB"
   s.license          = { :type => "MIT", :file => "LICENSE" }

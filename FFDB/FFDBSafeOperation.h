@@ -43,7 +43,7 @@
  @param objectList Need to insert the array of objects
  */
 + (void)insertObjectList:(NSArray <__kindof FFDataBaseModel *>*)objectList
-              completion:(UpdateResult)block;
+              completion:(UpdateListResult)block;
 
 /**
  insertObject by columns
@@ -63,7 +63,7 @@
  @param objectList Need to update the array of objects
  */
 + (void)updateObjectList:(NSArray<__kindof FFDataBaseModel *> *)objectList
-              completion:(UpdateResult)block;
+              completion:(UpdateListResult)block;
 
 /**
  Update dbClass
@@ -85,7 +85,7 @@
  @param objectList Need to delete the array of objects
  */
 + (void)deleteObjectList:(NSArray<__kindof FFDataBaseModel *> *)objectList
-              completion:(UpdateResult)block;
+              completion:(UpdateListResult)block;
 
 
 /**

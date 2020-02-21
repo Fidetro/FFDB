@@ -51,6 +51,7 @@
 
 - (void)testFFDBManager
 {
+    [TestModel deleteFromClassAllObject];
     [FFDBManager insertTable:[TestModel class] columns:@[@"name",@"testUint"] values:@[@"hello",@(223)] db:nil];
     [FFDBManager insertTable:[TestModel class] columns:@[@"name"] values:@[@"test2"] db:nil];
     [FFDBManager insertTable:[TestModel class] columns:@[@"name"] values:@[@"test3"] db:nil];
@@ -79,8 +80,17 @@
     testModel1.testUint = 223;
     TestModel *testModel2 = [[TestModel alloc]init];
     testModel2.name = @"test2";
-    [FFDBSafeOperation insertObjectList:@[testModel1,testModel2] completion:^(BOOL result) {
+    __block int i = 0;
+    [FFDBSafeOperation insertObjectList:@[testModel1,testModel2] completion:^(BOOL result, BOOL isFinal) {
         XCTAssertTrue(result);
+        if (i == 0)
+        {
+            XCTAssertFalse(isFinal);
+        }else
+        {
+            XCTAssertTrue(isFinal);
+        }
+        i++;
     }];
     [FFDBSafeOperation insertTable:[TestModel class] columns:@[@"name"] values:@[@"test3"] completion:^(BOOL result) {
         XCTAssertTrue(result);
@@ -115,16 +125,37 @@
     [FFDBSafeOperation selectAllObjectFromClass:[TestModel class] completion:^(NSArray *result) {
         XCTAssertTrue(result.count == 0);
     }];
-    [FFDBSafeOperation insertObjectList:@[testModel1,testModel2] completion:^(BOOL result) {
+    i = 0;
+    [FFDBSafeOperation insertObjectList:@[testModel1,testModel2] completion:^(BOOL result,BOOL isFinal) {
         XCTAssertTrue(result);
+        if (i == 0)
+        {
+            XCTAssertFalse(isFinal);
+        }else
+        {
+            XCTAssertTrue(isFinal);
+        }
+        i++;
     }];
-    [FFDBSafeOperation selectAllObjectFromClass:[TestModel class] completion:^(NSArray *result) {
-        XCTAssertTrue(result.count == 2);
-        [FFDBSafeOperation deleteObjectList:result completion:^(BOOL result) {
+    [FFDBSafeOperation selectAllObjectFromClass:[TestModel class] completion:^(NSArray *list) {
+        XCTAssertTrue(list.count == 2);
+        i = 0;
+        [FFDBSafeOperation deleteObjectList:list completion:^(BOOL result,BOOL isFinal) {
             XCTAssertTrue(result);
+            if (i == 0)
+            {
+                XCTAssertFalse(isFinal);
+            }else
+            {
+                XCTAssertTrue(isFinal);
+            }
+            i++;
+            if (isFinal)
+            {
                 [FFDBSafeOperation selectAllObjectFromClass:[TestModel class] completion:^(NSArray *result) {
                     XCTAssertTrue(result.count == 0);
                 }];
+            }
         }];
     }];
 }
@@ -138,8 +169,17 @@
     testModel1.testUint = 223;
     TestModel *testModel2 = [[TestModel alloc]init];
     testModel2.name = @"test2";
-    [FFDBTransaction insertObjectList:@[testModel1,testModel2] isRollBack:YES completion:^(BOOL result) {
+    __block int i = 0;
+    [FFDBTransaction insertObjectList:@[testModel1,testModel2] isRollBack:YES completion:^(BOOL result,BOOL isFinal) {
         XCTAssertTrue(result);
+        if (i == 0)
+        {
+            XCTAssertFalse(isFinal);
+        }else
+        {
+            XCTAssertTrue(isFinal);
+        }
+        i++;
     }];
     [FFDBTransaction insertTable:[TestModel class] columns:@[@"name"] values:@[@"test3"] isRollBack:YES completion:^(BOOL result) {
         XCTAssertTrue(result);
@@ -174,17 +214,34 @@
     [FFDBTransaction selectAllObjectFromClass:[TestModel class] completion:^(NSArray *result) {
         XCTAssertTrue(result.count == 0);
     }];
-    [FFDBTransaction insertObjectList:@[testModel1,testModel2] isRollBack:YES completion:^(BOOL result) {
+    i = 0;
+    [FFDBTransaction insertObjectList:@[testModel1,testModel2] isRollBack:YES completion:^(BOOL result,BOOL isFinal) {
         XCTAssertTrue(result);
+        if (i == 0)
+        {
+            XCTAssertFalse(isFinal);
+        }else
+        {
+            XCTAssertTrue(isFinal);
+        }
+        i++;
     }];
     __block NSArray *array4 = nil;
     [FFDBTransaction selectAllObjectFromClass:[TestModel class] completion:^(NSArray *result) {
         XCTAssertTrue(result.count == 2);
         array4 = result;
     }];
-    [FFDBTransaction deleteObjectList:array4 isRollBack:YES completion:^(BOOL result) {
+    i = 0;
+    [FFDBTransaction deleteObjectList:array4 isRollBack:YES completion:^(BOOL result,BOOL isFinal) {
         XCTAssertTrue(result);
-        
+        if (i == 0)
+        {
+            XCTAssertFalse(isFinal);
+        }else
+        {
+            XCTAssertTrue(isFinal);
+        }
+        i++;
     }];
     [FFDBTransaction selectAllObjectFromClass:[TestModel class] completion:^(NSArray *result) {
         XCTAssertTrue(result.count == 0);

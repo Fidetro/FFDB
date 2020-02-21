@@ -10,6 +10,7 @@
 #import <FMDB/FMDB.h>
 typedef void(^QueryResult)(NSArray *result);
 typedef void(^UpdateResult)(BOOL result);
+typedef void(^UpdateListResult)(BOOL result,BOOL isFinal);
 @interface FMDatabase (FFExtern)
 
 

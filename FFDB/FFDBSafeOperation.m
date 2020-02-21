@@ -36,22 +36,27 @@
 {
     [self excuteDBQuery:^(FMDatabase *db) {
         NSArray *objectList = [FFDBManager selectFromClass:dbClass columns:columns where:whereFormat values:values toClass:toClass db:db];
-        if (block) {
+        if (block)
+        {
             block(objectList);
         }
     }];
 }
 
 + (void)insertObjectList:(NSArray <__kindof FFDataBaseModel *>*)objectList
-              completion:(UpdateResult)block
+              completion:(UpdateListResult)block
 {
     [self excuteDBUpdate:^(FMDatabase *db) {
-        for (FFDataBaseModel *model in objectList)
+        for (int i = 0; i < objectList.count; i++)
         {
-            BOOL result = [model insertObject:db];
-            if (block)
+            @autoreleasepool
             {
-                block(result);
+                FFDataBaseModel *model = objectList[i];
+                BOOL result = [model insertObject:db];
+                if (block)
+                {
+                    block(result,(objectList.count-1) == i ? YES:NO);
+                }
             }
         }
     }];
@@ -64,21 +69,27 @@
 {
     [self excuteDBUpdate:^(FMDatabase *db) {
         BOOL result = [FFDBManager insertTable:table columns:columns values:values db:db];
-        if (block) {
+        if (block)
+        {
             block(result);
         }
     }];
 }
 
 + (void)updateObjectList:(NSArray<__kindof FFDataBaseModel *> *)objectList
-              completion:(UpdateResult)block
+              completion:(UpdateListResult)block
 {
     [self excuteDBUpdate:^(FMDatabase *db) {
-        for (FFDataBaseModel *model in objectList)
+        for (int i = 0; i < objectList.count; i++)
         {
-            BOOL result = [model updateObject:db];
-            if (block) {
-                block(result);
+            @autoreleasepool
+            {
+                FFDataBaseModel *model = objectList[i];
+                BOOL result = [model updateObject:db];
+                if (block)
+                {
+                    block(result,(objectList.count-1) == i ? YES:NO);
+                }
             }
         }
     }];
@@ -99,16 +110,20 @@
 }
 
 + (void)deleteObjectList:(NSArray<__kindof FFDataBaseModel *> *)objectList
-              completion:(UpdateResult)block
+              completion:(UpdateListResult)block
 {
     [self excuteDBUpdate:^(FMDatabase *db) {
-        for (FFDataBaseModel *model in objectList)
+        for (int i = 0; i < objectList.count; i++)
         {
-            [model deleteObject:db];
-        }
-        if (block)
-        {
-            block(YES);
+            @autoreleasepool
+            {
+                FFDataBaseModel *model = objectList[i];
+                BOOL result = [model deleteObject:db];
+                if (block)
+                {
+                    block(result,(objectList.count-1) == i ? YES:NO);
+                }
+            }
         }
     }];
 }

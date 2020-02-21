@@ -18,6 +18,7 @@
 
 - (void)testModel
 {
+    [CustomModel deleteFromClassAllObject];
     CustomModel *testModel1 = [[CustomModel alloc]init];
     testModel1._name = @"hello";
     testModel1.mem = @"is me";
