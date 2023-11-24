@@ -15,7 +15,7 @@
     self = [super init];
     if (self)
     {
-        self.stmt = [NSString stringWithFormat:@"%@orderby %@ ",stmt,format];
+        self.stmt = [NSString stringWithFormat:@"%@order by %@ ",stmt,format];
     }
     return self;
 }
