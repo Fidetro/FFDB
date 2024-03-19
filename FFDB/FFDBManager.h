@@ -59,8 +59,20 @@
                      toClass:(Class)toClass
                           db:(FMDatabase *)db;
 
-
-
+/**
+ select object by params extra
+ 
+ example: [FFDBManager selectFromClass:[TestModel class] columns:@[@"time"] where:nil orderBy:@"time desc" limit:@"2" offset:@"2" values:nil toClass:[TestModel class] db:nil];
+ */
++ (NSArray *)selectFromClass:(Class)dbClass
+                     columns:(NSArray <NSString *>*)columns
+                       where:(NSString *)whereFormat
+                     orderBy:(NSString *)orderBy
+                       limit:(NSString *)limit
+                      offset:(NSString *)offset
+                      values:(NSArray <id>*)values
+                     toClass:(Class)toClass
+                          db:(FMDatabase *)db;
 
 
 /**

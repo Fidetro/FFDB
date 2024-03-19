@@ -73,6 +73,7 @@
 
 - (void)testFFDBSafe
 {
+    [TestModel deleteFromClassAllObject];
     TestModel *testModel1 = [[TestModel alloc]init];
     testModel1.name = @"hello";
     testModel1.memory = @"is me";
@@ -248,6 +249,87 @@
     }];
 }
 
+- (void)testFFDBManagerSelect
+{
+    [TestModel deleteFromClassAllObject];
+    for (int i = 1; i < 10; i++)
+    {
+        TestModel *model = [[TestModel alloc] init];
+        model.time = i;
+        [model insertObject];
+    }
+    
+    NSArray <TestModel *>*list1 = [FFDBManager selectFromClass:[TestModel class] columns:@[@"time"] where:nil orderBy:@"time desc" limit:nil offset:nil values:nil toClass:[TestModel class] db:nil];
+    double tmp1 = 0;
+    for (TestModel *model in list1)
+    {
+        if (tmp1 != 0)
+        {
+            XCTAssertTrue(tmp1 > model.time);
+        }
+        tmp1 = tmp1 == 0 ? model.time : tmp1;
+    }
+    
+    
+    NSArray <TestModel *>*list2 = [FFDBManager selectFromClass:[TestModel class] columns:@[@"time"] where:nil orderBy:@"time asc" limit:nil offset:nil values:nil toClass:[TestModel class] db:nil];
+    double tmp2 = 0;
+    for (TestModel *model in list2)
+    {
+        if (tmp2 != 0)
+        {
+            XCTAssertTrue(tmp2 < model.time);
+        }
+        tmp2 = tmp2 == 0 ? model.time : tmp2;
+    }
+    
+    NSArray <TestModel *>*list3 = [FFDBManager selectFromClass:[TestModel class] columns:@[@"time"] where:nil orderBy:@"time asc" limit:@"5" offset:nil values:nil toClass:[TestModel class] db:nil];
+    XCTAssertTrue(list3.count == 5);
+    
+    NSArray <TestModel *>*list4 = [FFDBManager selectFromClass:[TestModel class] columns:@[@"time"] where:nil orderBy:@"time desc" limit:@"2" offset:@"2" values:nil toClass:[TestModel class] db:nil];
+    XCTAssertTrue(list4[0].time == 7);
+    XCTAssertTrue(list4[1].time == 6);
+}
 
 
+- (void)testSelect
+{
+    [TestModel deleteFromClassAllObject];
+    for (int i = 1; i < 10; i++)
+    {
+        TestModel *model = [[TestModel alloc] init];
+        model.time = i;
+        [model insertObject];
+    }
+    
+    
+    NSArray <TestModel *>*list1 = [TestModel selectFromClassWhereFormat:nil orderBy:@"time desc" limit:nil offset:nil values:nil];;
+    double tmp1 = 0;
+    for (TestModel *model in list1)
+    {
+        if (tmp1 != 0)
+        {
+            XCTAssertTrue(tmp1 > model.time);
+        }
+        tmp1 = tmp1 == 0 ? model.time : tmp1;
+    }
+    
+    
+    NSArray <TestModel *>*list2 = [TestModel selectFromClassWhereFormat:nil orderBy:@"time asc" limit:nil offset:nil values:nil];
+    double tmp2 = 0;
+    for (TestModel *model in list2)
+    {
+        if (tmp2 != 0)
+        {
+            XCTAssertTrue(tmp2 < model.time);
+        }
+        tmp2 = tmp2 == 0 ? model.time : tmp2;
+    }
+    
+    NSArray <TestModel *>*list3 = [TestModel selectFromClassWhereFormat:nil orderBy:@"time asc" limit:@"5" offset:nil values:nil];
+    XCTAssertTrue(list3.count == 5);
+    
+    NSArray <TestModel *>*list4 = [TestModel selectFromClassWhereFormat:nil orderBy:@"time desc" limit:@"2" offset:@"2" values:nil];
+    XCTAssertTrue(list4[0].time == 7);
+    XCTAssertTrue(list4[1].time == 6);
+}
 @end

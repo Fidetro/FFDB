@@ -35,6 +35,22 @@ extern NSString *const kDatabaseHeadname;
 + (NSArray <__kindof FFDataBaseModel *>*)selectFromClassWhereFormat:(NSString *)format
                                                              values:(NSArray <id>*)values;
 
+
+
+/**
+ select object by format extra
+ 
+ exmaple: [TestModel selectFromClassWhereFormat:nil orderBy:@"time desc" limit:@"2" offset:@"2" values:nil];
+ 
+ @return class objects
+ */
++ (NSArray <__kindof FFDataBaseModel *>*)selectFromClassWhereFormat:(NSString *)whereFormat
+                                                            orderBy:(NSString *)orderBy
+                                                              limit:(NSString *)limit
+                                                             offset:(NSString *)offset
+                                                             values:(NSArray <id>*)values;
+
+
 /**
  delete object
  @return delete successfully

@@ -14,7 +14,14 @@
     self = [super init];
     if (self)
     {
-        self.stmt = [NSString stringWithFormat:@"%@offset %@ ",stmt,format];
+        if ([format length] == 0)
+        {
+            self.stmt = [NSString stringWithFormat:@"%@",stmt];
+        }
+        else
+        {
+            self.stmt = [NSString stringWithFormat:@"%@offset %@ ",stmt,format];
+        }
     }
     return self;
 }

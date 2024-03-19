@@ -43,6 +43,26 @@
     }];
 }
 
+
++ (void)selectFromClass:(Class)dbClass
+                columns:(NSArray <NSString *>*)columns
+                  where:(NSString *)whereFormat
+                orderBy:(NSString *)orderBy
+                  limit:(NSString *)limit
+                 offset:(NSString *)offset
+                 values:(NSArray <id>*)values
+                toClass:(Class)toClass
+             completion:(QueryResult)block
+{
+    [self excuteDBQuery:^(FMDatabase *db) {
+        NSArray *objectList = [FFDBManager selectFromClass:dbClass columns:columns where:whereFormat orderBy:orderBy limit:limit offset:offset values:values toClass:toClass db:db];
+        if (block)
+        {
+            block(objectList);
+        }
+    }];
+}
+
 + (void)insertObjectList:(NSArray <__kindof FFDataBaseModel *>*)objectList
               completion:(UpdateListResult)block
 {

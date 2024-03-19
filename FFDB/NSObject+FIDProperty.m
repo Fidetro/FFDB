@@ -143,12 +143,10 @@
     
 }
 - (void)setPropertyWithName:(NSString *)propertyName object:(id)object{
-//    NSString *firstCharater = [propertyName substringToIndex:1].uppercaseString;
-//    NSString *setPropertyName = [NSString stringWithFormat:@"set%@%@:",firstCharater,[propertyName substringFromIndex:1]];
-//    SEL setSel = NSSelectorFromString(setPropertyName);
-//    [self performSelector:setSel withObject:object];
-    
-    [self setValue:object forKey:propertyName];
+    if (object != nil)
+    {
+        [self setValue:object forKey:propertyName];
+    }
     
 }
 

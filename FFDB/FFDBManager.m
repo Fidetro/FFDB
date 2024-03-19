@@ -116,7 +116,30 @@
 }
 
 
-
++ (NSArray *)selectFromClass:(Class)dbClass
+                     columns:(NSArray <NSString *>*)columns
+                       where:(NSString *)whereFormat
+                     orderBy:(NSString *)orderBy
+                       limit:(NSString *)limit
+                      offset:(NSString *)offset
+                      values:(NSArray <id>*)values
+                     toClass:(Class)toClass
+                          db:(FMDatabase *)db
+{
+    __block NSArray *_result = nil;
+    Select
+        .begin([columns count] == 0 ? @"*":columns)
+        .from(dbClass)
+        .where(whereFormat)
+        .orderBy(orderBy)
+        .limit(limit)
+        .offset(offset)
+        .endQuery(values,toClass==nil?dbClass:toClass,db,^(NSArray *result){
+            _result = result;
+        });
+    
+    return _result;
+}
 
 
 + (BOOL)deleteFromClass:(Class)dbClass

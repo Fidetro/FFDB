@@ -38,6 +38,19 @@
              completion:(QueryResult)block;
 
 /**
+ select object by params extra
+ */
++ (void)selectFromClass:(Class)dbClass
+                columns:(NSArray <NSString *>*)columns
+                  where:(NSString *)whereFormat
+                orderBy:(NSString *)orderBy
+                  limit:(NSString *)limit
+                 offset:(NSString *)offset
+                 values:(NSArray <id>*)values
+                toClass:(Class)toClass
+             completion:(QueryResult)block;
+
+/**
  insert object
  
  @param objectList Need to insert the array of objects

@@ -32,6 +32,16 @@ NSString const* kUpdateContext = @"kUpdateContext";
     return [FFDBManager selectFromClass:[self class] columns:nil where:format values:values toClass:nil db:nil];
 }
 
++ (NSArray <__kindof FFDataBaseModel *>*)selectFromClassWhereFormat:(NSString *)whereFormat
+                                                            orderBy:(NSString *)orderBy
+                                                              limit:(NSString *)limit
+                                                             offset:(NSString *)offset
+                                                             values:(NSArray <id>*)values
+{
+    return [FFDBManager selectFromClass:[self class] columns:nil where:whereFormat orderBy:orderBy limit:limit offset:offset values:values toClass:nil db:nil];
+}
+
+
 + (BOOL)deleteFromClassAllObject
 {
     return [[self class]deleteFromClassWhereFormat:nil values:nil];
