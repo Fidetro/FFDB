@@ -166,8 +166,15 @@ person.name = @"Fidetro";//设置属性
 [person insertObject];//插入数据
 
 //查询:
-[Person selectFromClassAllObject];//等同于查询Person表中所有的对象
-[Person selectFromClassWhereFormat:@"age = ? and name =  ? " values:@[@"15",@"Fidetro"]];//等同于查询年龄是15和名字叫Fidetro的数据
+//等同于查询Person表中所有的对象
+[Person selectFromClassAllObject];
+
+//等同于查询年龄是15和名字叫Fidetro的数据
+[Person selectFromClassWhereFormat:@"age = ? and name =  ? " values:@[@"15",@"Fidetro"]];
+
+//限制只查询2个并从第2个开始
+[TestModel selectFromClassWhereFormat:nil orderBy:@"time desc" limit:@"2" offset:@"2" values:nil];
+ 
 //更新：
 NSArray *updatePersonArray = [Person selectFromClassWhereFormat:@" name = ? " values:@[@"Fidetro"]];//先查询到要更新的数据
 Person *lastPerson = [updatePersonArray lastObject];
